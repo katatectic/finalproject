@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/* пока такой роут, здесь никакой логики не задейстовано.
+Данный роут должен подтягивать новости из базы*/
+Route::get('/news', function () {
+    return view('news');
+})->name('news');
