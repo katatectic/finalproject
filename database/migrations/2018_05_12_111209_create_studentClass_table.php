@@ -17,8 +17,8 @@ class CreateStudentClassTable extends Migration
         {
             $table->increments('id');
             $table->string('letter_class', 2)->comment('литера класса');
-            $table->smallInteger('start_year')->lenght(4)->comment('первый учебный год');
-            $table->smallInteger('year_of_issue')->lenght(4)->comment('год выпуска');
+            $table->smallInteger('start_year')->length(4)->comment('первый учебный год');
+            $table->smallInteger('year_of_issue')->length(4)->comment('год выпуска');
             $table->boolean('fourth_class')->default(0)->comment('включён 4 класс');
             $table->timestamps();
         });

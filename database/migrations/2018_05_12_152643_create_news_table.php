@@ -21,6 +21,8 @@ class CreateNewsTable extends Migration
             $table->dateTime('date')->nullable();
             $table->string('photo')->nullable();
             $table->string('content')->nullable();
+            $table->integer('author_id')->unsigned()->nullable();
+            $table->foreign('author_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
