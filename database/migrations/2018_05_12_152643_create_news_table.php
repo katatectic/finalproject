@@ -20,6 +20,7 @@ class CreateNewsTable extends Migration
             $table->string('address')->nullable();
             $table->dateTime('date')->nullable();
             $table->string('photo')->nullable();
+            $table->string('content')->nullable();
             $table->timestamps();
         });
     }
