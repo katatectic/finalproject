@@ -24,3 +24,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/news', function () {
     return view('news');
 })->name('news');
+
+/* пока такой роут, здесь никакой логики не задейстовано.
+Данный роут должен подтягивать новость из базы*/
+Route::get('/article', function () {
+    return view('article');
+})->name('article');
+
+/* пока такой роут, здесь никакой логики не задейстовано.
+Данный роут должен подтягивать события из базы*/
+Route::get('/events', function () {
+    return view('events');
+})->name('events');
+
+/* пока такой роут, здесь никакой логики не задейстовано.
+Данный роут подтягивает событие из базы*/
+Route::get('/event', function () {
+    return view('event');
+})->name('event');

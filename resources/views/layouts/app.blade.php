@@ -180,7 +180,7 @@ var panelsStyles = {"fullContainer":"body"};
                         <a title="" href="{{route('news')}}">Новости</a>
                     </li>
                     <li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
-                        <a title="" href="http://buntington2.wpshow.me/doublef-events/school-events/">События</a>
+                        <a title="" href="{{route('events')}}">События</a>
                     </li>
                     <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="http://buntington2.wpshow.me/doublef-courses/courses/">Просто так</a></li>
                     <li id="search-menu-item"><a href="#" data-remodal-target="modal" title="Search"><i class="fa fa-search"></i></a></li></ul>                    
