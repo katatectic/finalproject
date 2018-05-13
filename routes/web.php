@@ -42,3 +42,21 @@ Route::get('/events', function () {
 Route::get('/event', function () {
     return view('event');
 })->name('event');
+
+/* пока такой роут, здесь никакой логики не задейстовано.
+Данный роут подтягивает перечень комитетов школы из базы*/
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+/* пока такой роут, здесь никакой логики не задейстовано.
+Данный роут просто содержит контакты*/
+Route::get('/contacts', function () {
+    return view('contacts');
+})->name('contacts');
+
+/* пока такой роут, здесь никакой логики не задейстовано.
+Данный роут подтягивает информацию о конкретном комитете класса из базы*/
+Route::get('/committee', function () {
+    return view('committee');
+})->name('committee');

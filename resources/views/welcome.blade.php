@@ -31,10 +31,7 @@
                                                                 <div class="clide-content-wrappr invert"
                                                                      style="margin: 0px 0px 0px 0px; padding: 60px; background: rgba( 0,0,0,0.3 );">
                                                                     <h3>Это первый хороший слайд!</h3>
-                                                                    <p class="remove-margin-bottom">We could brag about
-                                                                        all of the great opportunities that our students
-                                                                        have... or you could hear it from the students
-                                                                        themselves.</p>
+                                                                    <p class="remove-margin-bottom">Не следует, однако забывать, что укрепление и развитие структуры.</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -47,11 +44,7 @@
                                                                 <div class="clide-content-wrappr invert"
                                                                      style="margin: 0px 0px 0px 0px; padding: 60px; background: rgba( 0,0,0,0.3 );">
                                                                     <h3>Это второй хороший слайд!</h3>
-                                                                    <p class="remove-margin-bottom">Pellentesque
-                                                                        habitant morbi tristique senectus et netus et
-                                                                        malesuada fames ac turpis egestas. Morbi enim
-                                                                        nisi, aliquet quis suscipit eget, convallis nec
-                                                                        nulla.</p>
+                                                                    <p class="remove-margin-bottom">Разнообразный и богатый опыт постоянное информационно-пропагандистское.</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -64,10 +57,7 @@
                                                                 <div class="clide-content-wrappr invert"
                                                                      style="margin: 0px 0px 0px 0px; padding: 60px; background: rgba( 0,0,0,0.3 );">
                                                                     <h3>Это третий хороший слайд!</h3>
-                                                                    <p class="remove-margin-bottom">Mauris egestas
-                                                                        accumsan est, ac hendrerit massa. Nullam
-                                                                        ultricies dolor tellus, fermentum ornare est
-                                                                        blandit in. Integer ac est magna.</p>
+                                                                    <p class="remove-margin-bottom">Значимость этих проблем настолько очевидна, что постоянное.</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -79,12 +69,8 @@
                                                                  style="vertical-align: bottom;">
                                                                 <div class="clide-content-wrappr invert"
                                                                      style="margin: 0px 0px 0px 0px; padding: 60px; background: rgba( 0,0,0,0.3 );">
-                                                                    <h3>Together and Forever!</h3>
-                                                                    <p class="remove-margin-bottom">Vestibulum euismod
-                                                                        lectus vel tortor lobortis, ut accumsan erat
-                                                                        condimentum. Nullam id justo elit. Vivamus orci
-                                                                        felis, tempus a posuere eget, scelerisque vel
-                                                                        magna.</p>
+                                                                    <h3>Это четвертый хороший слайд!</h3>
+                                                                    <p class="remove-margin-bottom">Не следует, однако забывать, что сложившаяся структура.</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -307,16 +293,23 @@
                                             <div class="panel-widget-style panel-widget-style-for-425-1-2-1">
                                                 <div class="so-widget-buntington2-button-banner so-widget-buntington2-button-banner-base">
                                                     <h2 class="widget-title">Полезные ссылки</h2>
-                                                    <a href="http://buntington2.wpshow.me/doublef-event/school-talents-gathering/"
+                                                    <a href="http://www.mon.gov.ua/"
                                                        target="_self" class="button-banner-link">
-                                                        <div class="button-banner-wrapper"
-                                                             style="background-color: #5dca9d; ; text-align: left; padding: 20px 20px 20px 20px;">
+                                                        <div class="button-banner-wrapper" style="background-color: #5dca9d; ; text-align: left; padding: 20px 20px 20px 20px;">
                                                             <div class="button-banner-text">
-                                                                <h2 class="button-banner-title"
-                                                                    style="color: #f7f5de; font-size: 22px;">
-                                                                    Министерство</h2>
+                                                                <h2 class="button-banner-title" style="color: #f7f5de; font-size: 22px;"> Министерство образования и науки Украины</h2>
+                                                                <div class="button-banner-tagline" style="color: #FFFFFF;">Ссылка на сайт МОН </div>
+                                                            </div>
+                                                            <div class="dbb-hover-canvas"></div>
+                                                        </div>
+                                                    </a>
+                                                    <a href="http://testportal.gov.ua/"
+                                                       target="_self" class="button-banner-link" style="margin-top: 10px;">
+                                                        <div class="button-banner-wrapper" style="background-color: #b9becd; ; text-align: left; padding: 20px 20px 20px 20px;">
+                                                            <div class="button-banner-text">
+                                                                <h2 class="button-banner-title" style="color: #f7f5de; font-size: 22px;"> УЦОЯО</h2>
                                                                 <div class="button-banner-tagline"
-                                                                     style="color: #FFFFFF;">Ссылка на сайт МОН
+                                                                     style="color: #FFFFFF;">Ссылка на сайт УЦОЯО
                                                                 </div>
                                                             </div>
                                                             <div class="dbb-hover-canvas"></div>

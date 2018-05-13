@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
-<title>Buntington Public Schools &#8211; The school that rocks!</title>
+<title>Родительский комитет ОШ №25</title>
 <meta name='robots' content='noindex,follow' />
 <link rel='dns-prefetch' href='//use.fontawesome.com' />
 <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
@@ -58,7 +58,6 @@ img.emoji {
 <link rel='stylesheet' id='swiper-css-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/js/swiper/css/swiper.min.css?ver=4.9.5' type='text/css' media='all' />
 <link rel='stylesheet' id='buntington2-style-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/style.css?ver=4.9.5' type='text/css' media='all' />
 <link rel='stylesheet' id='buntington2-wooc-css-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/woocommerce/custom-css/wooc.css?ver=13092017' type='text/css' media='all' />
-<link rel='stylesheet' id='kirki-styles-doublef_courses-css'  href='http://buntington2.wpshow.me/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.25' type='text/css' media='all' />
 <style id='kirki-styles-doublef_courses-inline-css' type='text/css'>
 .single .doublef-course .entry-title{font-size:2.2em;}.single .entry-header-more-courses .entry-title{font-size:1.2em;}.archive .doublef-course.layout_1 .entry-title, .archive .doublef-course.layout_2 .entry-title, .archive .doublef-course.layout_3 .entry-title{font-size:1.4em;}
 </style>
@@ -151,102 +150,96 @@ var panelsStyles = {"fullContainer":"body"};
                 </div>                
             </div>                
         <div class="cast-all-inside site-header--background">    
-        <div class="wrappr">        
-            <div id="navhead" class="site-header--logo-left">            
-                <!-- toggle mobile menu icon -->
-                <span class="menu-toggler">
-                    <span id="nav-icon" class="icon">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+            <div class="wrappr">        
+                <div id="navhead" class="site-header--logo-left">            
+                    <!-- toggle mobile menu icon -->
+                    <span class="menu-toggler">
+                        <span id="nav-icon" class="icon">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </span>
                     </span>
-                </span>
-                <!-- toggle mobile menu icon END -->                            
-        <div class="site-header--branding">
-            <a href="http://buntington2.wpshow.me/" rel="home" class="site-header--branding-a" data-img-width="166" data-img-height="120">
-            <img src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/site-logo.png" class="site-header--branding-img" alt="Buntington Public Schools" />
-            </a>
-        </div><!-- .site-header--branding -->                        
-            <nav id="site-navigation" class="main-navigation" role="navigation">                
-                <ul id="primary-menu" class="">
-                    <li id="menu-item-22" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-22">
-                        <a title=" " href="{{ url('/') }}">Главная</a>
-                    </li>
-                    <li id="menu-item-21" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-21">
-                        <a title="" href="http://buntington2.wpshow.me/about-us/">О нас</a>
-                        
-                    </li>
-                    <li id="menu-item-325" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-325">
-                        <a title="" href="{{route('news')}}">Новости</a>
-                    </li>
-                    <li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
-                        <a title="" href="{{route('events')}}">События</a>
-                    </li>
-                    <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="http://buntington2.wpshow.me/doublef-courses/courses/">Просто так</a></li>
-                    <li id="search-menu-item"><a href="#" data-remodal-target="modal" title="Search"><i class="fa fa-search"></i></a></li></ul>                    
-                                    </nav><!-- #site-navigation -->                                
-            </div>
-        
-        </div><!-- .cast-all-inside -->
-        
+                    <!-- toggle mobile menu icon END -->                            
+                    <div class="site-header--branding">
+                        <a href="{{ url('/') }}" rel="home" class="site-header--branding-a" data-img-width="166" data-img-height="120">
+                        <img src="https://pp.userapi.com/c631424/v631424704/26f3d/Dxs8EtCzOaE.jpg" alt="Buntington Public Schools" />
+                        </a>
+                    </div><!-- .site-header--branding -->                        
+                    <nav id="site-navigation" class="main-navigation" role="navigation">                
+                        <ul id="primary-menu" class="">
+                            <li id="menu-item-21" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-21">
+                                <a title="" href="{{ url('/') }}">Главная</a>                        
+                            </li>
+                            <li id="menu-item-21" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-21">
+                                <a title="" href="{{route('about')}}">О нас</a>
+                            </li>
+                            <li id="menu-item-325" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-325">
+                                <a title="" href="{{route('news')}}">Новости</a>
+                            </li>
+                            <li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
+                                <a title="" href="{{route('events')}}">События</a>
+                            </li>
+                            <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('contacts')}}">Контакты</a></li>                            
+                        </ul>                    
+                    </nav><!-- #site-navigation -->                                
+                </div>        
+            </div><!-- .cast-all-inside -->        
         </div>
-        
-                
     </header><!-- #masthead -->
 
-        @yield('content')
-
+    @yield('content')
         
     <footer id="colophon" class="site-footer" role="contentinfo">    
-     <div class="site-footer-wrap-elements wrappr">                
-        <div class="grid">
-            <div class="grid__col grid__col--3-of-3">                    
-                <section id="siteorigin-panels-builder-4" class="widget widget_siteorigin-panels-builder">
-                    <div id="pl-w5ace24859f29a"  class="panel-layout" >
-                        <div id="pg-w5ace24859f29a-0"  class="panel-grid panel-has-style" >
-                            <div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-w5ace24859f29a-0" data-stretch-type="full" >
-                                <div id="pgc-w5ace24859f29a-0-0"  class="panel-grid-cell" >
-                                    <div id="panel-w5ace24859f29a-0-0-0" class="so-panel widget widget_nav_menu panel-first-child" data-index="0" >
-                                        <h3 class="widget-title">Выберите</h3>
-                                        <ul id="menu-footer-menu" class="menu">
-                                            <li id="menu-item-307" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307">
-                                                <a href="http://buntington2.wpshow.me/about-us/">О нас</a>
-                                            </li>
-                                            <li id="menu-item-310" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-310">
-                                                <a href="http://buntington2.wpshow.me/full-width-page/">Что-то еще</a>
-                                            </li>
-                                            <li id="menu-item-312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312">
-                                                <a href="http://buntington2.wpshow.me/text-formatting/">Опять</a>
-                                            </li>
-                                            <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
-                                                <a href="http://buntington2.wpshow.me/contact-us/">Контакты</a>
-                                            </li>
-                                        </ul>
+        <div class="site-footer-wrap-elements wrappr">                
+            <div class="grid">
+                <div class="grid__col grid__col--3-of-3">                    
+                    <section id="siteorigin-panels-builder-4" class="widget widget_siteorigin-panels-builder">
+                        <div id="pl-w5ace24859f29a"  class="panel-layout" >
+                            <div id="pg-w5ace24859f29a-0"  class="panel-grid panel-has-style" >
+                                <div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-w5ace24859f29a-0" data-stretch-type="full" >
+                                    <div id="pgc-w5ace24859f29a-0-0"  class="panel-grid-cell" >
+                                        <div id="panel-w5ace24859f29a-0-0-0" class="so-panel widget widget_nav_menu panel-first-child" data-index="0" >
+                                            <h3 class="widget-title">Выберите</h3>
+                                            <ul id="menu-footer-menu" class="menu">
+                                                <li id="menu-item-307" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307">
+                                                    <a href="http://buntington2.wpshow.me/about-us/">О нас</a>
+                                                </li>
+                                                <li id="menu-item-310" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-310">
+                                                    <a href="http://buntington2.wpshow.me/full-width-page/">Что-то еще</a>
+                                                </li>
+                                                <li id="menu-item-312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312">
+                                                    <a href="http://buntington2.wpshow.me/text-formatting/">Опять</a>
+                                                </li>
+                                                <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
+                                                    <a href="http://buntington2.wpshow.me/contact-us/">Контакты</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                                <div id="pgc-w5ace24859f29a-0-1"  class="panel-grid-cell" >
-                                    <div id="panel-w5ace24859f29a-0-1-0" class="so-panel widget widget_buntington2-quick-contact panel-first-child panel-last-child" data-index="2" >
-                                        <div class="panel-widget-style panel-widget-style-for-w5ace24859f29a-0-1-0" >
-                                            <div class="so-widget-buntington2-quick-contact so-widget-buntington2-quick-contact-base">
-                                                <h2 class="widget-title">Нас найти легко</h2>
-                                                <div class="quick-contact-address">
-                                                    <span class="quick-contact-pin"><i class="fa fa-map-marker fa-lg"></i></span>
-                                                    <h3 class="quick-contact-title">
-                                                        <a href="//maps.google.com/?q=795+Folsom+Ave%2C+Suite+600%2CSan+Francisco%2C94107%2CUSA" target="_blank">Какая-то школа</a>
-                                                    </h3>    
-                                                    <p class="quick-contact-addr">
-                                                        <p>84300, Украина, г. Краматорск, ул. Парковая 235</p>
-                                                        <p>Телефончики</p>
-                                                    </p>
+                                    <div id="pgc-w5ace24859f29a-0-1"  class="panel-grid-cell" >
+                                        <div id="panel-w5ace24859f29a-0-1-0" class="so-panel widget widget_buntington2-quick-contact panel-first-child panel-last-child" data-index="2" >
+                                            <div class="panel-widget-style panel-widget-style-for-w5ace24859f29a-0-1-0" >
+                                                <div class="so-widget-buntington2-quick-contact so-widget-buntington2-quick-contact-base">
+                                                    <h2 class="widget-title">Нас найти легко</h2>
+                                                    <div class="quick-contact-address">
+                                                        <span class="quick-contact-pin"><i class="fa fa-map-marker fa-lg"></i></span>
+                                                        <h3 class="quick-contact-title">
+                                                            <a href="//maps.google.com/?q=795+Folsom+Ave%2C+Suite+600%2CSan+Francisco%2C94107%2CUSA" target="_blank">Какая-то школа</a>
+                                                        </h3>    
+                                                        <p class="quick-contact-addr">
+                                                            <p>84300, Украина, г. Краматорск, ул. Парковая 235</p>
+                                                            <p>Телефончики</p>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="pgc-w5ace24859f29a-0-2"  class="panel-grid-cell" >
-                                    <div id="panel-w5ace24859f29a-0-2-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="3" >
-                                        <div class="so-widget-sow-editor so-widget-sow-editor-base">
-                                            <h3 class="widget-title">Будет что-то еще?</h3>
+                                    <div id="pgc-w5ace24859f29a-0-2"  class="panel-grid-cell" >
+                                        <div id="panel-w5ace24859f29a-0-2-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="3" >
+                                            <div class="so-widget-sow-editor so-widget-sow-editor-base">
+                                                <h3 class="widget-title">Будет что-то еще?</h3>
                                                 <div class="siteorigin-widget-tinymce textwidget">
                                                     <div id="sb_instagram" class="sbi sbi_mob_col_auto sbi_col_4" style="width:100%; padding-bottom: 4px; " data-id="357082876" data-num="12" data-res="auto" data-cols="4" data-options='{&quot;sortby&quot;: &quot;none&quot;, &quot;showbio&quot;: &quot;false&quot;, &quot;headercolor&quot;: &quot;&quot;, &quot;imagepadding&quot;: &quot;2&quot;, &quot;disablecache&quot;: &quot;false&quot;, &quot;sbiCacheExists&quot;: &quot;true&quot;, &quot;sbiHeaderCache&quot;: &quot;true&quot;}'>
                                                         <div class="sb_instagram_header" style="padding: 4px; padding-bottom: 0;">
@@ -258,7 +251,8 @@ var panelsStyles = {"fullContainer":"body"};
                                                             <a class="sbi_load_btn" href="javascript:void(0);" style="">
                                                                 <span class="sbi_btn_text">Load More...</span><i class="fa fa-spinner fa-pulse" aria-hidden="true" style="display:none;"></i>
                                                             </a>
-                                                            <div class="sbi_follow_btn"><a href="https://www.instagram.com/" style="" target="_blank"><i class="fa fab fa-instagram"></i>Следите на Instagram</a>
+                                                            <div class="sbi_follow_btn">
+                                                                <a href="https://www.instagram.com/" style="" target="_blank"><i class="fa fab fa-instagram"></i>Следите на Instagram</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -270,78 +264,41 @@ var panelsStyles = {"fullContainer":"body"};
                             </div>
                         </div>
                     </section>                        
-                    </div>                                
-                </div>        
-            </div>
+                </div>                                
+            </div>        
+        </div>
     </footer><!-- #colophon -->
+
+    <!-- Нужен ли второй футер??? Вряд ли!
+
+
     <footer id="post-colophon" role="contentinfo">                
         <div class="site-copy-wrap-elements wrappr invert">    
             <div class="site-info">                                
                     <img src="http://buntington2.wpshow.me/wp-content/uploads/2018/02/logo-footer-small.png" class="site-footer-copyright-img" alt="" />
                     <nav id="footer-navigation" class="footer-nav" role="navigation">
-                        
-                        <ul id="secondary-menu" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307"><a href="http://buntington2.wpshow.me/about-us/">About Us</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-310"><a href="http://buntington2.wpshow.me/full-width-page/">Full Width Page</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312"><a href="http://buntington2.wpshow.me/text-formatting/">Text formatting</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309"><a href="http://buntington2.wpshow.me/contact-us/">Contact Us</a></li>
-</ul>                        
-                    </nav><!-- #footer-navigation -->
-                
+                        <ul id="secondary-menu" class="menu">
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307">
+                                <a href="http://buntington2.wpshow.me/about-us/">About Us</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-310">
+                                <a href="http://buntington2.wpshow.me/full-width-page/">Full Width Page</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312">
+                                <a href="http://buntington2.wpshow.me/text-formatting/">Text formatting</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
+                                <a href="http://buntington2.wpshow.me/contact-us/">Contact Us</a>
+                            </li>
+                        </ul>                        
+                    </nav><!-- #footer-navigation -->                
                     <div class="site-footer-copyright">This is my copyright text 2099. I can use HTML tags to format the text but only tags supported by wp_kses_post.</div>
-                    
-                                
-            </div><!-- .site-info -->
-            
-        </div><!-- copy-classes -->
-    
-    </footer><!-- #post-colophon -->
-    
-        
-    
-<div class="remodal" data-remodal-id="modal">
-    <!-- <button data-remodal-action="close" class="remodal-close"></button> -->
-    
-    <h4 class="modal-title"><i class="fa fa-search"></i>Search the site</h4>
-    <button data-remodal-action="close" class="remodal-close"></button>
-    <div class="modal-body">
-        <form action="http://buntington2.wpshow.me/" id="search-menu-item-form-modal" class="one-field-submit" method="get" role="search">
-            
-            <label for="search-menu-item-form-modal-input">
-                <input type="search" name="s" id="search-menu-item-form-modal-input" class="form-control" value="" autocomplete="off" autofocus="autofocus" />
-            </label>
-            <input type="submit" value="Search" class="search-submit" />
-
-        </form>
-    </div>
-
-</div>
-<div class="remodal woocommerce" data-remodal-id="buntington2-cart-modal">
-
-    <h4 class="modal-title"><i class="fa fa-shopping-cart"></i>Your Cart</h4>
-    
-    <button data-remodal-action="close" class="remodal-close"></button>
-    
-    <div class="modal-body">
-    
-        <div class="buntington2-mini-cart-fragment">
-        
-        
-
-    <p class="woocommerce-mini-cart__empty-message">No products in the cart.</p>
-
-
-        
-        </div>
-        
-    </div>
-
-</div>    
-</div><!-- #page -->
+                </div><!-- .site-info -->
+            </div><!-- copy-classes -->
+        </footer><!-- #post-colophon -->
 
 <!-- Instagram Feed JS -->
-<script type="text/javascript">
-var sbiajaxurl = "http://buntington2.wpshow.me/wp-admin/admin-ajax.php";
-</script>
+
                 <style type="text/css" media="all"
                        id="siteorigin-panels-layouts-footer">/* Layout w5acdfeaec6c5d */ #pgc-w5acdfeaec6c5d-0-0 { width:100%;width:calc(100% - ( 0 * 0px ) ) } #pg-w5acdfeaec6c5d-0 , #pl-w5acdfeaec6c5d .so-panel:last-child { margin-bottom:0px } #pl-w5acdfeaec6c5d .so-panel { margin-bottom:60px } #pg-w5acdfeaec6c5d-0> .panel-row-style { padding:0.5em 0em 0.5em 0em } #pg-w5acdfeaec6c5d-0.panel-no-style, #pg-w5acdfeaec6c5d-0.panel-has-style > .panel-row-style { -webkit-align-items:flex-start;align-items:flex-start } @media (max-width:780px){ #pg-w5acdfeaec6c5d-0.panel-no-style, #pg-w5acdfeaec6c5d-0.panel-has-style > .panel-row-style { -webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column } #pg-w5acdfeaec6c5d-0 .panel-grid-cell { margin-right:0 } #pg-w5acdfeaec6c5d-0 .panel-grid-cell { width:100% } #pl-w5acdfeaec6c5d .panel-grid-cell { padding:0 } #pl-w5acdfeaec6c5d .panel-grid .panel-grid-cell-empty { display:none } #pl-w5acdfeaec6c5d .panel-grid .panel-grid-cell-mobile-last { margin-bottom:0px }  } /* Layout w5ace24859f29a */ #pgc-w5ace24859f29a-0-0 , #pgc-w5ace24859f29a-0-1 , #pgc-w5ace24859f29a-0-2 { width:33.3333%;width:calc(33.3333% - ( 0.66666666666667 * 4em ) ) } #pg-w5ace24859f29a-0 , #pl-w5ace24859f29a .so-panel:last-child { margin-bottom:0px } #pl-w5ace24859f29a .so-panel { margin-bottom:60px } #pg-w5ace24859f29a-0.panel-no-style, #pg-w5ace24859f29a-0.panel-has-style > .panel-row-style { -webkit-align-items:flex-start;align-items:flex-start } #panel-w5ace24859f29a-0-1-0> .panel-widget-style { margin-bottom: 2em } @media (max-width:780px){ #pg-w5ace24859f29a-0.panel-no-style, #pg-w5ace24859f29a-0.panel-has-style > .panel-row-style { -webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column } #pg-w5ace24859f29a-0 .panel-grid-cell { margin-right:0 } #pg-w5ace24859f29a-0 .panel-grid-cell { width:100% } #pgc-w5ace24859f29a-0-0 , #pgc-w5ace24859f29a-0-1 { margin-bottom:60px } #pl-w5ace24859f29a .panel-grid-cell { padding:0 } #pl-w5ace24859f29a .panel-grid .panel-grid-cell-empty { display:none } #pl-w5ace24859f29a .panel-grid .panel-grid-cell-mobile-last { margin-bottom:0px }  } </style><link rel='stylesheet' id='siteorigin-widget-icon-font-fontawesome-css'  href='http://buntington2.wpshow.me/wp-content/plugins/so-widgets-bundle/icons/fontawesome/style.css?ver=4.9.5' type='text/css' media='all' />
 <link rel='stylesheet' id='buntington2-quick-contact-styles-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/inc/siteorigin/siteorigin-widgets/buntington2-quick-contact/css/style.css?ver=1.11.8' type='text/css' media='all' />
