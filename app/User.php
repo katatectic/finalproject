@@ -15,6 +15,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Article'); // один пользователь много статей
     }
+	public function events() {
+        return $this->hasMany(Event::class);
+    }
 
     public function comments()
     {
@@ -27,7 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone',  'photo'
+       'surname','name','middle_name', 'email','phone', 'password', 'photo'
     ];
 
     /**

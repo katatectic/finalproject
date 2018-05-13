@@ -7,8 +7,8 @@
                  data-url="http://buntington2.wpshow.me/wp-content/uploads/2014/06/9510947151_ef1d3fdf52_b.jpg"
                  style="background-position: center center; padding-top: 150px; padding-bottom: 20px;">
                 <div class="wrappr text-left">
-                    <h1 class="h-gigant">Upcoming Events</h1>
-                    <p>Find out what's coming up, where, add it to your Google Calendar if you tend to forget stuff or find it much easier to remember.</p>
+                    <h1 class="h-gigant">Ближайшие события</h1>
+                    <p>Список всех событий.</p>
                 </div><!-- .wrappr -->
             </div><!-- .buntington2-cinema -->
         </div><!-- .buntington2-cinema-bg -->
