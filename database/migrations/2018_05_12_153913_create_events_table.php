@@ -18,8 +18,8 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->string('address', 500)->nullable();
             $table->dateTime('event_date')->nullable();
-            $table->string('photo', 200)->nullable();
-            $table->string('content')->nullable();
+            $table->string('photo', 300)->nullable();
+            $table->string('content', 15000)->nullable();
             $table->integer('author_id')->unsigned()->nullable();
             $table->foreign('author_id')->references('id')->on('users');
             $table->timestamps();
