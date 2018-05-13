@@ -19,12 +19,12 @@
                 <div class="article-wrapper layout-sleek"> 
                     <article id="post-35" class="post-35 post type-post status-publish format-standard has-post-thumbnail hentry category-news tag-galleries tag-meetings tag-school">
                         <figure class="post-thumbnail">
-                            <a href="{{route('article')}}" title="Great school post with image gallery inserted">
+                            <a href="{{route('article', '$id')}}" title="Great school post with image gallery inserted">
                                 <img width="1140" height="500" src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b.jpg" class="attachment-full size-full wp-post-image" alt="" srcset="http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b.jpg 1140w, http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b-600x263.jpg 600w" sizes="(max-width: 1140px) 100vw, 1140px" />
                             </a>
                         </figure>
                         <header class="entry-header">            
-                            <h2 class="entry-title"><a href="{{route('article')}}" rel="bookmark">Вот первая новость</a></h2>
+                            <h2 class="entry-title"><a href="{{route('article', '$id')}}" rel="bookmark">Вот первая новость</a></h2>
                             <div class="entry-meta">                
                                 <ul class="post-meta-wrapper ul-horizontal-list">
                                     <li class="post-meta-author">
@@ -45,7 +45,7 @@
                         </header><!-- .entry-header -->        
                         <div class="entry-content">            
                             <p>По своей сути рыбатекст является альтернативой традиционному lorem ipsum, который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.
-                                <a class="more-link button" href="{{route('article')}}">Читать далее...</a>
+                                <a class="more-link button" href="{{route('article', '$id')}}">Читать далее...</a>
                             </p>
                             <span class="screen-reader-text">Continue reading "Great school post with image gallery inserted"</span>
                         </div><!-- .entry-content -->        

@@ -130,7 +130,7 @@
                                                     <div class="news-list-widget-wrap" style="text-align: left;">
                                                         <div class="news-list-item news-list-left has-separator-line-top">
                                                             <figure class="post-thumbnail news-list-item-featured-image">
-                                                                <a href="{{route('article')}}">
+                                                                <a href="{{route('article', '$id')}}">
                                                                     <img width="1140" height="500"
                                                                          src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b.jpg"
                                                                          class="attachment-35 size-35 wp-post-image"
@@ -141,7 +141,7 @@
                                                             </figure>
                                                             <div class="news-list-item-elements ">
                                                                 <h2 class="entry-title news-list-item-title">
-                                                                    <a href="{{route('article')}}"
+                                                                    <a href="{{route('article', '$id')}}"
                                                                        rel="bookmark">Это первая новость!</a>
                                                                 </h2>
                                                                 <div class="entry-meta">
@@ -166,7 +166,7 @@
                                                             </figure>
                                                             <div class="news-list-item-elements ">
                                                                 <h2 class="entry-title news-list-item-title">
-                                                                    <a href="{{route('article')}}"
+                                                                    <a href="{{route('article', '$id')}}"
                                                                        rel="bookmark">Это вторая новость!</a>
                                                                 </h2>
                                                                 <div class="entry-meta">

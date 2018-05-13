@@ -21,15 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут должен подтягивать новости из базы*/
-Route::get('/news', function () {
-    return view('news');
-})->name('news');
+Route::get('/news', 'NewsController@getNews')->name('news');
 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут должен подтягивать новость из базы*/
-Route::get('/article', function () {
-    return view('article');
-})->name('article');
+Route::get('/article/{$id}', 'NewsController@getArticle')->name('article');
 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут должен подтягивать события из базы*/
@@ -60,13 +56,3 @@ Route::get('/contacts', function () {
 Route::get('/committee', function () {
     return view('committee');
 })->name('committee');
-
-Route::group(['middleware' => ['role:1']], function () {
-
-});
-Route::group(['middleware' => ['role:2']], function () {
-
-});
-Route::group(['middleware' => ['role:3']], function () {
-
-});
