@@ -19,12 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('surname');
             $table->string('name');
             $table->string('middle_name');
-            $table->string('email')->unique();
-            $table->integer('phone');
+            $table->string('email', 200)->unique();
+            $table->decimal('phone', 13, 0);
             $table->string('password');
             $table->tinyInteger('role')->default(4);
-            $table->string('appointment', 100)->comment('Должность внутри комитета');
-            $table->string('your_child', 120)->comment('ФИО ребёнка');
+            $table->string('appointment', 100)->nullable()->comment('Должность внутри комитета');
+            $table->string('your_child', 120)->nullable()->comment('ФИО ребёнка');
             $table->string('avatar')->default('storage/app/avatars/default_avatar.jpg');
             $table->rememberToken();
             $table->timestamps();
