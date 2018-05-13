@@ -17,6 +17,7 @@ class CreateReportsTable extends Migration
             $table->increments('id'); // будем выводить как номер протокола, типа Протокол № id от такого-то такого
             $table->dateTime('report_date')->nullable();
             $table->string('content')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }
