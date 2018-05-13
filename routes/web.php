@@ -60,3 +60,13 @@ Route::get('/contacts', function () {
 Route::get('/committee', function () {
     return view('committee');
 })->name('committee');
+
+Route::group(['middleware' => ['role:1']], function () {
+
+});
+Route::group(['middleware' => ['role:2']], function () {
+
+});
+Route::group(['middleware' => ['role:3']], function () {
+
+});
