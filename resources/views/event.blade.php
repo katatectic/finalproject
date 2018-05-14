@@ -19,7 +19,7 @@
                             <h1 class="entry-title">{{$event->title}}</h1>
 							<h3 class="doublef-event-item-date">Глава события {{$event->author_id}}</h3>
                             <h3 class="doublef-event-item-date">Дата проведения {{$event->event_date}}</h3>
-                            <h3 class="doublef-event-item-time">Время проведения {{$event->event_hour}}</h3>
+                            <h3 class="doublef-event-item-time">Время проведения {{$event->event_hours}}</h3>
                             <div class="doublef-event-address">
                                    Место проведения - {{$event->address}}
                             </div><!-- .doublef-event-address -->

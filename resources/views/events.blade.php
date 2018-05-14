@@ -59,7 +59,8 @@
                 </main><!-- #main -->
             </div><!-- #primary -->
         </div>
-		  @endforeach<!-- .grid-->
+		  @endforeach
+		  {{$all->links()}}
     </div><!-- #content -->
 
 @endsection

@@ -224,6 +224,7 @@
                                 <!-- Закончился левый сайдбар с новостями + галерея внизу -->
 
                                 <div id="pgc-425-1-1" class="panel-grid-cell">
+							
                                     <div class="panel-cell-style panel-cell-style-for-425-1-1">
                                         <div id="panel-425-1-1-0"
                                              class="so-panel widget widget_doublef-event-posts-widget panel-first-child panel-last-child"
@@ -231,10 +232,11 @@
                                             <div class="so-widget-doublef-event-posts-widget so-widget-doublef-event-posts-widget-base">
                                                 <h2 class="widget-title">Следующие мероприятия</h2>
                                                 <div class="doublef-event-posts-layout_2">
+													@foreach($events as $event)
                                                     <article id="post-519"
                                                              class="layout_2 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
                                                         <figure class="post-thumbnail">
-                                                            <a href="http://buntington2.wpshow.me/doublef-event/newcomers-welcome-party/"
+                                                            <a href="{{ route('event',['id'=>$event->id]) }}"
                                                                title="Newcomers welcome party">
                                                                 <img width="1140" height="500"
                                                                      src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/13069143783_c1580628f3_h.jpg"
@@ -247,20 +249,24 @@
                                                         <div class="doublef-events-content-wrap">
                                                             <header class="entry-header">
                                                                 <h2 class="entry-title">
-                                                                    <a href="http://buntington2.wpshow.me/doublef-event/newcomers-welcome-party/">Собрание
-                                                                        комитета 5-А класса</a>
+                                                                    <a href="{{ route('event',['id'=>$event->id]) }}">{{$event->title}}</a>
                                                                 </h2>
-                                                                <p class="doublef-event-item-date">25 Января, 2018</p>
-                                                                <p class="doublef-event-item-time">17:00-18:3</p>
-                                                                <div class="doublef-event-address">3-ий этаж, класс 21
+																<p class="doublef-event-item-date">Глава {{$event->author_id}}</p>
+                                                                <p class="doublef-event-item-date">Дата {{$event->event_date}}</p>
+                                                                <p class="doublef-event-item-time">Время {{$event->event_hours}}</p>
+                                                                <div class="doublef-event-address">Адрес {{$event->address}}
+																<a class="more-link button"  href="{{ route('event',['id'=>$event->id]) }}">Читать далее</a>
                                                                 </div><!-- .doublef-event-address -->
                                                             </header><!-- .entry-header -->
                                                         </div><!-- custom/inline style wrapper -->
-                                                    </article><!-- #post-519 -->
+                                                    </article>
+													@endforeach
+													{{$events->links()}}<!-- #post-519 -->
                                                 </div><!-- .doublef-event-posts-* -->
                                             </div>
                                         </div>
                                     </div>
+									
                                 </div>
 
                                 <!-- Закончился блок в середине -->

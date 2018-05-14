@@ -8,7 +8,6 @@ use App\User;
 use DateTime;
 class EventController extends Controller
 {
-	public $puginationIndex = 5; 
     public $puginationEvents = 10;	
 	
     public function eventsPage() {
@@ -19,5 +18,4 @@ class EventController extends Controller
 		$event=Event::select()->where('id',$id)->first();
 		return view('event', compact('event'));
 	}
-	
 }
