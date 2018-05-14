@@ -20,8 +20,8 @@ class CommentsController extends Controller
         	$comment->report_id = $request->report_id;
             $comment->comment = $request->comment;                      
             $comment->save();
-            return redirect()->route('events'); // тут подумать куда и как редиректить. нужен аякс на добавление комментария!!!
+            return back();
         }
-        return redirect()->route('events');
+        return back();
     }
 }
