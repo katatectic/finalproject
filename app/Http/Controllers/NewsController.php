@@ -29,6 +29,6 @@ class NewsController extends Controller
     }
     
      public function newsView() {
-        return view('newsform');
+        return view('admin.news.newsform');
     }
 }
