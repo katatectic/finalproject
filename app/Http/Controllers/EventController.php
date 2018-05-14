@@ -20,5 +20,9 @@ class EventController extends Controller {
         $event = Event::select()->where('id', $id)->first();
         return view('event', compact('event'));
     }
-
+	public function adminEvents() {
+        $all = Event::orderBy('id', 'DESC')->paginate(3);
+        $eventsCount = Event::count();
+        return view('admin.events.allEvents', ['all' => $all, 'eventsCount' => $eventsCount]);
+    }
 }

@@ -9,7 +9,7 @@ use DateTime;
 class AdminEventController extends Controller
 {
 	public function eventView() {
-        return view('admin.events.event');
+        return view('admin.events.addevent');
     }
 	public function addEvent(Request $request) {
         if ($request->method() == 'POST') {
@@ -36,7 +36,7 @@ class AdminEventController extends Controller
             $id = $create->id;
             return redirect()->route('main');
         }
-        return view('admin.events.event');
+        return view('admin.events.addevent');
     }
 
 	public function addPhoto($request) {
