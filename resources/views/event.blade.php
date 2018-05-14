@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<<<<<<< HEAD
     <div id="cinemahead">
         <div id="mobile-nav-container"></div><!-- Small devices menu -->
     </div><!-- #cinemahead -->
@@ -84,7 +83,6 @@
         </div>
 		<!-- .grid-->
     </div><!-- #content -->
-=======
 <div id="cinemahead">
     <div id="mobile-nav-container"></div><!-- Small devices menu -->
 </div><!-- #cinemahead -->
