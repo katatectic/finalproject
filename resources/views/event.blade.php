@@ -23,10 +23,7 @@
                             <div class="doublef-event-address">
                                    Место проведения - {{$event->address}}
                             </div><!-- .doublef-event-address -->
-                            <div class="google-add-wrap">
-                                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Newcomers welcome party&amp;dates=20190105T160000/20180417T233000&amp;details=For+details,+link+here:+http://buntington2.wpshow.me/doublef-event/newcomers-welcome-party/&amp;location=Buntington Public Schools"
-                                        class="GCpopup button btn-small">Add to Calendar</a>
-                            </div>
+                            
                         </header><!-- .entry-header -->
                         <div class="entry-content">
                             <p>{{$event->content}}</p><!--Тут какие-то косяки с вёрсткой. Если в одну строчку лепить, то она вылазит за экран-->
@@ -45,8 +42,8 @@
                                              class='avatar avatar-50 photo' height='50' width='50'/>
                                     </div>
                                     <div class="avatar-body pull-left">
-                                        <h6 class="avatar-name">{{$comment->user->name}}</h6>
-                                        <p class="avatar-time">Дата публикации: {{$comment->created_at->format('d.m.Y')}}</p>
+                                        <h6 class="avatar-name">{{$comment->user->name}} {{$comment->user->surname}}</h6>
+                                        <p class="avatar-time">Дата публикации: {{$comment->created_at->format('d.m.Y в H.m')}}</p>
                                     </div>
                                 </div>
                                 <div class="copy clear">
