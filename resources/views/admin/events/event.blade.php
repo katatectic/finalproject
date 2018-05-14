@@ -16,6 +16,7 @@
                                 <span style="color:red">{{ $errors->first('title') }}</span>
                             </div>
                         </div>
+						<input type="hidden" name="author_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label for="event_date" class="col-md-4 control-label">Дата проведения события</label>
                             <div class="col-md-6">
@@ -48,7 +49,7 @@
                         <div class="form-group">
                             <label for="content" class="col-md-4 control-label">Полное описание события</label>
                             <div class="col-md-6">
-                                <textarea class="form-control" id="content" rows='23' name="content" placeholder="Введите краткое описание события" autofocus>{{ old('content') }}</textarea>
+                                <textarea class="form-control" id="content" rows='23' name="content" placeholder="Введите полное описание события" autofocus>{{ old('content') }}</textarea>
                                 <span style="color:red">{{ $errors->first('content') }}</span>
                             </div>
                         </div>
