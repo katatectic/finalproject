@@ -41,6 +41,16 @@ Route::any('deleteevent/{id}', 'EventController@deleteEvent')->name('deleteevent
 Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* Редактирование события*/
 
  
+        Route::any('users', 'UserController@adminUsers')->name('users'); //Список пользователей
+        Route::any('adminshowuser/{id}', 'UserController@adminUsersShowOne')->name('adminshowuser'); //Просмотр профиля пользователя с админки
+        Route::any('deleteuser/{id}', 'UserController@deleteUser')->name('deleteuser'); //Удаление пользователя
+		Route::any('edituser/{id}', 'UserController@editUser')->name('edituser');/* Редактирование пользователя*/
+ 
+ 
+ 
+ 
+ 
+ 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут подтягивает перечень комитетов школы из базы*/
 Route::get('/about', function () {
