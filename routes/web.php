@@ -36,8 +36,14 @@ Route::get('events', 'EventController@eventsPage')->name('events');
 /* Показ одного события*/
 Route::get('event/{id}','EventController@oneEvent')->name('event');
 /* Вьюха добавления события*/
- Route::get('eventview', 'AdminEventController@eventView')->name('eventview');
-Route::post('addEvent', 'AdminEventController@addEvent')->name('addEvent');
+ Route::get('eventview', 'EventController@eventView')->name('eventview');
+ /* Само добавления события*/
+Route::post('addEvent', 'EventController@addEvent')->name('addEvent');
+/* Список всех событий в админке*/
+Route::any('adminevents', 'EventController@adminEvents')->name('adminevents');
+
+
+
  
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут подтягивает перечень комитетов школы из базы*/
