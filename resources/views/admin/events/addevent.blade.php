@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="event_hours" class="col-md-1 control-label">Дата проведения события</label>
+                            <label for="event_hours" class="col-md-1 control-label">Время проведения события</label>
                             <div class="col-md-6">
                                 <input id="event_hours" type="text" class="form-control" name="event_hours" value="{{ old('event_hours') }}"  autofocus>
                                 <span style="color:red">{{ $errors->first('event_hours') }}</span>

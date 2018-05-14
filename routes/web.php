@@ -30,18 +30,14 @@ Route::get('/article', function () {
 })->name('article');
 
 
-/* Показ всех событий*/
-Route::get('events', 'EventController@eventsPage')->name('events');
-/* Показ одного события*/
-Route::get('event/{id}','EventController@oneEvent')->name('event');
-/* Вьюха добавления события*/
- Route::get('eventview', 'EventController@eventView')->name('eventview');
- /* Само добавления события*/
-Route::post('addEvent', 'EventController@addEvent')->name('addEvent');
-/* Список всех событий в админке*/
-Route::any('adminevents', 'EventController@adminEvents')->name('adminevents');
 
-
+Route::get('events', 'EventController@eventsPage')->name('events');/* Показ всех событий*/
+Route::get('event/{id}','EventController@oneEvent')->name('event');/* Показ одного события*/
+ Route::get('eventview', 'EventController@eventView')->name('eventview');/* Вьюха добавления события*/
+Route::post('addEvent', 'EventController@addEvent')->name('addEvent'); /* Само добавления события*/
+Route::any('adminevents', 'EventController@adminEvents')->name('adminevents');/* Список всех событий в админке*/
+Route::any('deleteevent/{id}', 'EventController@deleteEvent')->name('deleteevent');/* Удаление события*/
+Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* Редактирование события*/
 
  
 /* пока такой роут, здесь никакой логики не задейстовано.

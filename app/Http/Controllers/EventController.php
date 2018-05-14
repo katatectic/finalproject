@@ -15,7 +15,6 @@ class EventController extends Controller {
         $all = Event::orderBy('id', 'DESC')->paginate($this->puginationEvents);
         return view('events')->with(['all' => $all]);
     }
-
     public function oneEvent($id) {
         $event = Event::select()->where('id', $id)->first();
         return view('event', compact('event'));
@@ -64,5 +63,30 @@ class EventController extends Controller {
         $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
         $file->move(public_path() . '/images', $newfilename);
         return $newfilename;
+    }
+	public function deleteEvent($id) {
+        $all = Event::find($id);
+        $img = $all->photo;
+        unlink(public_path() . '/images/' . $img);
+        $all->delete();
+        return redirect()->route('adminevents');
+    }
+	 public function editEvent($id, Request $request) {
+        if ($request->method() == "POST") {
+            $data = $request->all();
+            $date = new DateTime();
+            $data['event_date'] = $date->format('Y-m-d');
+            $data['photo'] = $this->addPhoto($request);
+            $editOne = Event::find($id);
+            $editOne->fill($data);
+            $editOne->save();
+            return redirect()->route('adminevents');
+        }
+        $all = Event::find($id);
+        if (!$all) {
+            return view('404');
+        } else {
+            return view('admin.events.editEvent', ['all' => $all]);
+        }
     }
 }
