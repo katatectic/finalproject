@@ -17,7 +17,7 @@
                         </figure>
                         <header class="entry-header">
                             <h1 class="entry-title">{{$event->title}}</h1>
-							<h3 class="doublef-event-item-date">Глава события {{Auth::user()->name}} {{Auth::user()->surname}}</h3>
+							<h3 class="doublef-event-item-date">Глава события</h3>
                             <h3 class="doublef-event-item-date">Дата проведения {{$event->event_date}}</h3>
                             <h3 class="doublef-event-item-time">Время проведения {{$event->event_hours}}</h3>
                             <div class="doublef-event-address">
