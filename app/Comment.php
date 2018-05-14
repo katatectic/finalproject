@@ -14,7 +14,10 @@ class Comment extends Model
     {
         return $this->belongsTo('App\Article'); // одна статья много комментариев
     }
-
+	public function event()
+    {
+        return $this->belongsTo('App\Event'); // одно событие много комментариев
+    }
     public function user()
     {
         return $this->belongsTo('App\User'); // одна статья от одного автора

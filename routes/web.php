@@ -31,18 +31,15 @@ Route::get('/article', function () {
     return view('article');
 })->name('article');
 
-/* пока такой роут, здесь никакой логики не задейстовано.
-Данный роут должен подтягивать события из базы*/
-Route::get('/events', function () {
-    return view('events');
-})->name('events');
 
-/* пока такой роут, здесь никакой логики не задейстовано.
-Данный роут подтягивает событие из базы*/
-Route::get('/event', function () {
-    return view('event');
-})->name('event');
+/* Показ всех событий*/
+Route::get('events', 'EventController@eventsPage')->name('events');
+/* Показ одного события*/
+Route::get('event/{id}','EventController@oneEvent')->name('event');
+/* Вьюха добавления события*/
+ Route::any('eventview', 'AdminEventController@eventView')->name('eventview');
 
+ 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут подтягивает перечень комитетов школы из базы*/
 Route::get('/about', function () {
