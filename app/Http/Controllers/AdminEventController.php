@@ -38,6 +38,7 @@ class AdminEventController extends Controller
         }
         return view('admin.events.event');
     }
+
 	public function addPhoto($request) {
         $this->validate($request, ['photo' => 'required|image|max:2048'], ['photo.required' => 'Загрузите изображение',
             'photo.image' => 'Загруженный файл должен быть изображением',

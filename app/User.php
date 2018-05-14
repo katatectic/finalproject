@@ -16,7 +16,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Article'); // один пользователь много статей
     }
 	public function events() {
-        return $this->hasMany(Event::class);
+        return $this->hasMany('App\Event');
     }
 
     public function comments()
