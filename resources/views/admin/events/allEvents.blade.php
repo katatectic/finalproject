@@ -33,9 +33,9 @@
                         @endempty
                     </div>
                 </td>
-                <td><a href="{{route('event',['id'=>$event->id])}}" class="btn btn-primary">Просмотр события</a></td>
-                <td><a href="{{route('editevent',['id'=>$event->id]) }}" class="btn btn-primary">Редактировать событие</a></td>
-                <td><a href="{{route('deleteevent',$event->id)}}" onclick="return confirmDelete();" class="btn btn-primary">Удалить событие</a></td>
+                <td><a href="{{route('event',['id'=>$event->id])}}" class="more-link button">Просмотр события</a></td>
+                <td><a href="{{route('editevent',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a></td>
+                <td><a href="{{route('deleteevent',$event->id)}}" onclick="return confirmDelete();" class="more-link button">Удалить событие</a></td>
 
             </tr>
             @endforeach
