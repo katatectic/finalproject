@@ -65,3 +65,8 @@ Route::group(['middleware' => ['role:2']], function () {
 Route::group(['middleware' => ['role:3']], function () {
 
 });
+
+/*
+Добавление комментария к статье, событию и отчету
+*/
+Route::post('/add_comment', 'CommentsController@addComment')->name('add_comment');

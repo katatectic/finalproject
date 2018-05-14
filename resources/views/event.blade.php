@@ -33,6 +33,7 @@
                         </div><!-- .entry-content -->
                     </article>
 					@endif<!-- #post-519 -->
+                    @foreach($event->comments as $comment)
                     <div id="comments" class="comments-area">
                         <div class="comment_list comment-list">
                             <div class="comment byuser comment-author-adminschool bypostauthor even thread-even depth-1" id="comment-7">
@@ -44,44 +45,38 @@
                                              class='avatar avatar-50 photo' height='50' width='50'/>
                                     </div>
                                     <div class="avatar-body pull-left">
-                                        <h6 class="avatar-name">admin@school</h6>
-                                        <p class="avatar-time">Янв 23, 2014 в 17:16</p>
+                                        <h6 class="avatar-name">{{$comment->user->name}}</h6>
+                                        <p class="avatar-time">Дата публикации: {{$comment->created_at->format('d.m.Y')}}</p>
                                     </div>
                                 </div>
                                 <div class="copy clear">
-                                    <p>Задача организации, в особенности же дальнейшее развитие различных форм деятельности представляет собой интересный эксперимент проверки существенных финансовых и административных условий. Разнообразный и богатый опыт реализация намеченных плановых заданий представляет.</p>
+                                    <p>{{$comment->comment}}</p>
                                 </div>
                             </div><!-- #comment-## -->
                         </div><!-- .comment-list -->
+                        @endforeach
+                        @if (!Auth::guest())
                         <div id="respond" class="comment-respond">
                             <h3 id="reply-title" class="comment-reply-title">Оставить комментарий</h3>
-                            <form action="http://buntington2.wpshow.me/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-                                <p class="comment-notes">
+                            <form action="{{route('add_comment')}}" method="post" id="commentform" class="comment-form" novalidate>
+                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                <input type="hidden" name="event_id" value="{{$event->id}}">
+                                {{--<p class="comment-notes">
                                     <span id="email-notes">Ваш адрес электронной почты не будет опубликован.</span> Обязательные для заполнения поля отмечены <span class="required">*</span>
-                                </p>
+                                </p>--}}
                                 <p class="comment-form-comment">
                                     <label for="comment">Комментарий</label>
                                     <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
-                                </p>
-                                <p class="comment-form-author">
-                                    <label for="author">Имя <span class="required">*</span></label>
-                                    <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required'/>
-                                </p>
-                                <p class="comment-form-email">
-                                    <label for="email">Email <span class="required">*</span></label>
-                                    <input id="email" name="email" type="email" value="" size="30"  maxlength="100" aria-describedby="email-notes" required='required'/>
-                                </p>
-                                <p class="comment-form-url">
-                                    <label for="url">Website</label>
-                                    <input id="url" name="url" type="url" value="" size="30" maxlength="200"/>
-                                </p>
+                                </p>                                
                                 <p class="form-submit">
                                     <input name="submit" type="submit" id="submit" class="submit" value="Опубликовать комментарий"/>
                                     <input type='hidden' name='comment_post_ID' value='35' id='comment_post_ID'/>
                                     <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
                                 </p>
+                                {{ csrf_field() }}
                             </form>
                         </div><!-- #respond -->
+                        @endif                      
                     </div><!-- #comments -->
                 </main><!-- #main -->        
             </div><!-- #primary -->                
