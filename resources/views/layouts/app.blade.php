@@ -180,7 +180,8 @@ var panelsStyles = {"fullContainer":"body"};
                             <li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
                                 <a title="" href="{{route('events')}}">События</a>
                             </li>
-                            <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('contacts')}}">Контакты</a></li>                            
+							<li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('contacts')}}">Контакты</a></li>    
+                            <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('eventview')}}">Добавить событие</a></li><!--Просто добавление события с админки. Потом всё нормально настроится-->                            
                         </ul>                    
                     </nav><!-- #site-navigation -->                                
                 </div>        
@@ -214,6 +215,9 @@ var panelsStyles = {"fullContainer":"body"};
                                                 <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
                                                     <a href="http://buntington2.wpshow.me/contact-us/">Контакты</a>
                                                 </li>
+												<li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
+                                                    <a href="{{ route('eventview') }}">Добавить событие</a>
+                                                </li><!--Просто добавление события админом. Потом всё настроится нормально-->
                                             </ul>
                                         </div>
                                     </div>

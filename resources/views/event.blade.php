@@ -13,7 +13,7 @@
 				@if($event)
                     <article id="post-519" class="post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
                         <figure class="post-thumbnail">
-                            <img width="1140" height="500" src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/13069143783_c1580628f3_h.jpg" class="attachment-full size-full wp-post-image" alt="" srcset="http://buntington2.wpshow.me/wp-content/uploads/2014/06/13069143783_c1580628f3_h.jpg 1140w, http://buntington2.wpshow.me/wp-content/uploads/2014/06/13069143783_c1580628f3_h-600x263.jpg 600w" sizes="(max-width: 1140px) 100vw, 1140px"/>
+                            <img width="1140" height="500" src="{{asset('images/'.$event->photo)}}" class="attachment-full size-full wp-post-image" alt="" srcset="{{asset('images/'.$event->photo)}} 1140w, {{asset('images/'.$event->photo)}} 600w" sizes="(max-width: 1140px) 100vw, 1140px"/>
                         </figure>
                         <header class="entry-header">
                             <h1 class="entry-title">{{$event->title}}</h1>

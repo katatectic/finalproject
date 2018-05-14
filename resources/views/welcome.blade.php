@@ -239,10 +239,10 @@
                                                             <a href="{{ route('event',['id'=>$event->id]) }}"
                                                                title="Newcomers welcome party">
                                                                 <img width="1140" height="500"
-                                                                     src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/13069143783_c1580628f3_h.jpg"
+                                                                     src="{{asset('images/'.$event->photo)}}"
                                                                      class="attachment-full size-full wp-post-image"
                                                                      alt=""
-                                                                     srcset="http://buntington2.wpshow.me/wp-content/uploads/2014/06/13069143783_c1580628f3_h.jpg 1140w, http://buntington2.wpshow.me/wp-content/uploads/2014/06/13069143783_c1580628f3_h-600x263.jpg 600w"
+                                                                     srcset="{{asset('images/'.$event->photo)}} 1140w, {{asset('images/'.$event->photo)}} 600w"
                                                                      sizes="(max-width: 1140px) 100vw, 1140px"/>
                                                             </a>
                                                         </figure>
