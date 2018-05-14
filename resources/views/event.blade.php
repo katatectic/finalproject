@@ -27,7 +27,9 @@
                         </header><!-- .entry-header -->
                         <div class="entry-content">
                             <p>{{$event->content}}</p><!--Тут какие-то косяки с вёрсткой. Если в одну строчку лепить, то она вылазит за экран-->
-                        </div><!-- .entry-content -->
+                        </div>
+						<a href="{{ route('editevent',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a>
+                            <a href="{{route('deleteevent',$event->id)}}" class="more-link button" style="float:right">Удалить событие</a><!-- .entry-content -->
                     </article>
 					@endif<!-- #post-519 -->
                     @foreach($event->comments as $comment)
