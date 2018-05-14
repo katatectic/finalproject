@@ -27,4 +27,8 @@ class NewsController extends Controller
         $article = Article::find($id);
         return view('article', ['article'=>$article]);
     }
+    
+     public function newsView() {
+        return view('newsform');
+    }
 }

@@ -22,7 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/news', function () {
     return view('news');
 })->name('news');
-
+Route::get('newsview', 'NewsController@newsView')->name('newsview');
+Route::post('addNews', 'NewsController@addNews')->name('addNews');
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут должен подтягивать новость из базы*/
 Route::get('/article', function () {
