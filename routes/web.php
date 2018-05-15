@@ -85,6 +85,6 @@ Route::group(['middleware' => ['role:3']], function () {
 Route::post('/add_comment', 'CommentsController@addComment')->name('add_comment');
 
 Route::get('/admin/students-classes', 'StudentClassController@index')->name('studentsClasses');
-Route::post('/admin/students-classes', 'StudentClassController@store')->name('storeStudentsClasses');
-Route::post('/admin/students-classes/update/{id}', 'StudentClassController@update')->name('updateStudentsClasses');
+Route::post('/admin/students-classes/create', 'StudentClassController@store')->name('storeStudentsClasses');
+Route::post('/admin/students-classes/update', 'StudentClassController@update')->name('updateStudentsClasses');
 Route::get('/admin/students-classes/delete/{id}', 'StudentClassController@destroy')->name('destroyStudentsClasses');

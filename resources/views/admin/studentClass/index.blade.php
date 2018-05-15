@@ -9,6 +9,9 @@
         .showForm {
             cursor: pointer;
         }
+        .confirmation {display:none;}
+        #confirmForm {float: left;margin-right: 5px}
+        #confirmation {display:flex;justify-content: center;}
     </style>
 </head>
 {{--@extends('layouts.footer')--}}
@@ -28,7 +31,7 @@
 @endif
 <div>
     <p>Добавить учебный класс</p>
-    <form method="post">
+    <form method="post" action="{{route('storeStudentsClasses')}}">
         <label>Литтера класса<input type="text" name="letter_class" class="form-control"></label>
         <label>Первый год обучния<input type="text" name="start_year" class="form-control"></label>
         <label>Год выпуска<input type="text" name="year_of_issue" class="form-control"></label>
@@ -67,20 +70,28 @@
             </tr>
         @endforeach
     </table>
-    <div class='option'  align="center">
-        <form method="post" action="" id="updateClass">
+    <div class='option' align="center">
+        <p><input type="button" class="subm no btn btn-primary" value="Отмена"></p>
+        <p class="className"></p>
+        <form method="post" action="{{route('updateStudentsClasses')}}"  id="updateClass">
             {{ csrf_field() }}
             <p><input type="hidden" class="id" value="" name="id"></p>
-            <p class="className"></p>
-            <label>Литтера класса<input type="text" name="letter_class_edit" class="form-control"></label>
-            <label>Первый год обучния<input type="text" name="start_year_edit" class="form-control"></label>
-            <label>Год выпуска<input type="text" name="year_of_issue_edit" class="form-control"></label>
-            <label>Не пропускают 4 класс<input type="radio" id="class_4_1" name="fourth_class_edit" value="1"></label>
-            <label>Пропускают 4 класс<input type="radio" id="class_4_0" name="fourth_class_edit" value="0"></label>
+            <label>Литтера класса<input type="text" name="letter_class" class="form-control"></label>
+            <label>Первый год обучния<input type="text" name="start_year" class="form-control"></label>
+            <label>Год выпуска<input type="text" name="year_of_issue" class="form-control"></label>
+            <label>Не пропускают 4 класс<input type="radio" id="class_4_1" name="fourth_class" value="1"></label>
+            <label>Пропускают 4 класс<input type="radio" id="class_4_0" name="fourth_class" value="0"></label>
             <input type="submit"  value="Пересохранить" class="btn btn-primary">
         </form>
-        <p><a href="" class="delete">Удалить</a></p>
-        <p><input type="button" class="subm no btn btn-primary" value="Отмена"></p>
+        <div id="confirmation">
+            <div class="delete"><input type="button" id="delete" value="Удалить"></div>
+            <div class="confirmation">
+                <form action="" id="confirmForm">
+                    <input type="submit" id="annulment" value="Подтвердить удаление">
+                </form>
+                <input type="button" id="annulment" value="Не удалять">
+            </div>
+        </div>
     </div>
 </div>
 <script>
@@ -89,6 +100,8 @@
             $('.option').fadeOut('slow');
         });
         $('.showForm').click(function(e){
+            $('.confirmation').fadeOut(10);
+            $('#delete').fadeIn(10);
             $('.option').fadeIn('slow');
             $('.option').css({
                 'top':e.pageY,
@@ -96,10 +109,19 @@
             });
             $('input.id').val($(this).attr('id'));
             $('p.className').text($(this).children('td.className').text());
-            $('input[name="letter_class_edit"]').val($(this).children('td.className').children('span').text());
-            $('input[name="start_year_edit"]').val($(this).children('td.start_year').text());
-            $('input[name="year_of_issue_edit"]').val($(this).children('td.year_of_issue').text());
-            $('input#class_4_'+$(this).children('td.fourth_class').attr('value')).prop( "checked", true );
+            $('.option input[name="letter_class"]').val($(this).children('td.className').children('span').text());
+            $('.option input[name="start_year"]').val($(this).children('td.start_year').text());
+            $('.option input[name="year_of_issue"]').val($(this).children('td.year_of_issue').text());
+            $('.option input#class_4_'+$(this).children('td.fourth_class').attr('value')).prop( "checked", true );
+            $('#confirmForm').attr('action', window.location.href.slice(0,window.location.href.indexOf('\?'))+'/delete/'+$(this).attr('id'));
+        });
+        $('input#delete').click(function() {
+            $('#delete').fadeOut(10);
+            $('.confirmation').fadeIn(10);
+        });
+        $('input#annulment').click(function() {
+            $('#delete').fadeIn(10);
+            $('.confirmation').fadeOut(10);
         });
     });
 </script>
