@@ -16,7 +16,7 @@
                                 <span style="color:red">{{ $errors->first('title') }}</span>
                             </div>
                         </div>
-						<input type="hidden" name="author_id" value="{{Auth::user()->id}}">
+						<input type="hidden" name="author_id" value="">
                         <div class="form-group">
                             <label for="event_date" class="col-md-4 control-label">Дата проведения события</label>
                             <div class="col-md-6">

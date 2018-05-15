@@ -65,6 +65,7 @@ class EventController extends Controller {
         return $newfilename;
     }
 	public function deleteEvent($id) {
+		if (!is_numeric($id)) return false;
         $all = Event::find($id);
         $img = $all->photo;
         unlink(public_path() . '/images/' . $img);
