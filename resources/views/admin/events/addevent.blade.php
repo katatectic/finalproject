@@ -16,7 +16,7 @@
                                 <span style="color:red">{{ $errors->first('title') }}</span>
                             </div>
                         </div>
-						<input type="hidden" name="author_id" value="">
+						<input type="hidden" name="author_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label for="event_date" class="col-md-4 control-label">Дата проведения события</label>
                             <div class="col-md-6">
@@ -60,11 +60,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Добавить событие
-                                </button>
-                            </div>
+                            <input name="submit" type="submit" id="submit" class="submit" value="Добавить событие"/>
                         </div>
                     </form>
                 </div>
