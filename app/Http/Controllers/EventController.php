@@ -42,7 +42,11 @@ class EventController extends Controller {
                 'event_hours' => 'required',
                 'address' => 'required',
                 'description' => 'required',
-                'content' => 'required',], ['*.required' => 'Поле не должно быть пустым'
+                'content' => 'required',
+                'photo' => 'required|image|max:2048',], [
+                '*.required' => 'Поле не должно быть пустым',
+                'photo.image' => 'Загруженный файл должен быть изображением',
+                'photo.max' => 'Максимальный размер изображения=2048'
             ]);
             $data = $request->all();
             $date = new DateTime();
@@ -58,9 +62,6 @@ class EventController extends Controller {
     }
 
     public function addPhoto($request) {
-        $this->validate($request, ['photo' => 'required|image|max:2048'], ['photo.required' => 'Загрузите изображение',
-            'photo.image' => 'Загруженный файл должен быть изображением',
-            'photo.max' => 'Максимальный размер картинки=2048']);
         $file = $request->file('photo');
         $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
         $file->move(public_path() . '/images', $newfilename);
@@ -86,24 +87,24 @@ class EventController extends Controller {
                 'address' => 'required',
                 'description' => 'required',
                 'content' => 'required',
-                'photo' => 'required',
-                    ], ['*.required' => 'Поле не должно быть пустым'
+                'photo' => 'required|image|max:2048',], [
+                '*.required' => 'Поле не должно быть пустым',
+                'photo.image' => 'Загруженный файл должен быть изображением',
+                'photo.max' => 'Максимальный размер изображения=2048'
             ]);
             $data = $request->all();
             $date = new DateTime();
             $data['event_date'] = $date->format('Y-m-d');
-            $data['photo'] = $this->addPhoto($request);
+            if ($request->hasFile('photo')) {
+                $data['photo'] = $this->addPhoto($request);
+            };
             $editOne = Event::find($id);
             $editOne->fill($data);
             $editOne->save();
             return redirect()->route('adminevents');
         }
         $all = Event::find($id);
-        if (!$all) {
-            return view('404');
-        } else {
-            return view('admin.events.editEvent', ['all' => $all]);
-        }
+        return view('admin.events.editEvent', ['all' => $all]);
     }
 
 }

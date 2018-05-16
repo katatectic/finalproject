@@ -56,9 +56,8 @@
                             <label for="photo" class="col-md-4 control-label">Изображение</label>
                             <div class="col-md-6">
                                 <input id="photo" type="file" class="form-control" name="photo" value="{{ old('photo') }}"  autofocus>
-                                <div> <span style="color:red">{{ $errors->first('photo') }}</span></div>
                                 <span style="color:red">{{ $errors->first('photo') }}</span>
-                            </div>
+                            </div><br/>
                         </div>
                         <div class="form-group">
                             <input name="submit" type="submit" id="submit" class="submit" value="Добавить событие"/>
