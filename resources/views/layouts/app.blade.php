@@ -228,15 +228,16 @@ var panelsStyles = {"fullContainer":"body"};
                                         <div id="panel-w5ace24859f29a-0-1-0" class="so-panel widget widget_buntington2-quick-contact panel-first-child panel-last-child" data-index="2" >
                                             <div class="panel-widget-style panel-widget-style-for-w5ace24859f29a-0-1-0" >
                                                 <div class="so-widget-buntington2-quick-contact so-widget-buntington2-quick-contact-base">
-                                                    <h2 class="widget-title">Нас найти легко</h2>
+                                                    <h2 class="widget-title">Свяжитесь с нами</h2>
                                                     <div class="quick-contact-address">
                                                         <span class="quick-contact-pin"><i class="fa fa-map-marker fa-lg"></i></span>
                                                         <h3 class="quick-contact-title">
-                                                            <a href="//maps.google.com/?q=795+Folsom+Ave%2C+Suite+600%2CSan+Francisco%2C94107%2CUSA" target="_blank">Какая-то школа</a>
+                                                            <a href="https://goo.gl/maps/VcBD9V9LD8t" target="_blank">Мы на карте</a>
                                                         </h3>    
                                                         <p class="quick-contact-addr">
-                                                            <p>84300, Украина, г. Краматорск, ул. Парковая 235</p>
-                                                            <p>Телефончики</p>
+                                                            <p>84300, Украина, г. Краматорск, ул. Б. Хмельницкого, 25</p>
+                                                            <p>Телефон</p>
+                                                            <p>06264 71588</p>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -246,8 +247,10 @@ var panelsStyles = {"fullContainer":"body"};
                                     <div id="pgc-w5ace24859f29a-0-2"  class="panel-grid-cell" >
                                         <div id="panel-w5ace24859f29a-0-2-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="3" >
                                             <div class="so-widget-sow-editor so-widget-sow-editor-base">
-                                                <h3 class="widget-title">Будет что-то еще?</h3>
-                                                <div class="siteorigin-widget-tinymce textwidget">
+                                                <h3 class="widget-title">Поделиться ссылкой</h3>
+                                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                                <div class="addthis_inline_share_toolbox"></div>
+                                                {{--<div class="siteorigin-widget-tinymce textwidget">
                                                     <div id="sb_instagram" class="sbi sbi_mob_col_auto sbi_col_4" style="width:100%; padding-bottom: 4px; " data-id="357082876" data-num="12" data-res="auto" data-cols="4" data-options='{&quot;sortby&quot;: &quot;none&quot;, &quot;showbio&quot;: &quot;false&quot;, &quot;headercolor&quot;: &quot;&quot;, &quot;imagepadding&quot;: &quot;2&quot;, &quot;disablecache&quot;: &quot;false&quot;, &quot;sbiCacheExists&quot;: &quot;true&quot;, &quot;sbiHeaderCache&quot;: &quot;true&quot;}'>
                                                         <div class="sb_instagram_header" style="padding: 4px; padding-bottom: 0;">
                                                         </div>
@@ -263,7 +266,7 @@ var panelsStyles = {"fullContainer":"body"};
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -357,5 +360,8 @@ var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax
 WebFont.load({google:{families:['Lato:700i,300i:cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai', 'Open Sans:300:cyrillic,cyrillic-ext,devanagari,greek,greek-ext,khmer,latin,latin-ext,vietnamese,hebrew,arabic,bengali,gujarati,tamil,telugu,thai']}});
 </script>
 <script type="text/javascript">document.body.className = document.body.className.replace("siteorigin-panels-before-js","");</script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5afc1be96e78ffbe"></script>
+
 </body>
 </html><!-- WP Fastest Cache file was created in 2.6187901496887 seconds, on 03-05-18 8:02:59 -->

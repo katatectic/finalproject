@@ -227,7 +227,7 @@
                                          class="so-panel widget widget_doublef-event-posts-widget panel-first-child panel-last-child"
                                          data-index="3">
                                         <div class="so-widget-doublef-event-posts-widget so-widget-doublef-event-posts-widget-base">
-                                            <h2 class="widget-title">Следующие мероприятия</h2>
+                                            <h2 class="widget-title">Будущие мероприятия</h2>
                                             <div class="doublef-event-posts-layout_2">
                                                 @foreach($events as $event)
                                                 <article id="post-519"
