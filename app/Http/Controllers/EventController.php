@@ -42,13 +42,8 @@ class EventController extends Controller {
                 'event_hours' => 'required',
                 'address' => 'required',
                 'description' => 'required',
-                'content' => 'required',], [
-                'title.required' => 'Введите заголовок',
-                'event_date.required' => 'Введите дату события',
-                'event_hours.required' => 'Введите время события',
-                'address.required' => 'Введите месо проведения события',
-                'description.required' => 'Введите краткое описание',
-                'content.required' => 'Введите полный текст статьи',]);
+                'content' => 'required',], ['*.required' => 'Поле не должно быть пустым'
+            ]);
             $data = $request->all();
             $date = new DateTime();
             $data['event_date'] = $date->format('Y-m-d');
@@ -84,6 +79,16 @@ class EventController extends Controller {
 
     public function editEvent($id, Request $request) {
         if ($request->method() == "POST") {
+            $this->validate($request, [
+                'title' => 'required',
+                'event_date' => 'required',
+                'event_hours' => 'required',
+                'address' => 'required',
+                'description' => 'required',
+                'content' => 'required',
+                'photo' => 'required',
+                    ], ['*.required' => 'Поле не должно быть пустым'
+            ]);
             $data = $request->all();
             $date = new DateTime();
             $data['event_date'] = $date->format('Y-m-d');

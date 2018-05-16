@@ -16,7 +16,7 @@
                                 <span style="color:red">{{ $errors->first('title') }}</span>
                             </div>
                         </div>
-						<input type="hidden" name="author_id" value="">
+                        <input type="hidden" name="author_id" value="">
                         <div class="form-group">
                             <label for="event_date" class="col-md-4 control-label">Дата проведения события</label>
                             <div class="col-md-6">
@@ -45,7 +45,6 @@
                                 <span style="color:red">{{ $errors->first('description') }}</span>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="content" class="col-md-4 control-label">Полное описание события</label>
                             <div class="col-md-6">
@@ -54,9 +53,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="photo" class="col-md-4 control-label">Добавить фото</label>
+                            <label for="photo" class="col-md-4 control-label">Аватарка</label>
                             <div class="col-md-6">
-                                <input id="photo" type="file" style="display: none;" class="form-control" name="photo" value="{{ old('photo') }}">
+                                <input id="photo" type="file" class="form-control" name="photo" value="{{ old('photo') }}"  autofocus>
+                                <div> <span style="color:red">{{ $errors->first('photo') }}</span></div>
+                                <span style="color:red">{{ $errors->first('photo') }}</span>
                             </div>
                         </div>
                         <div class="form-group">

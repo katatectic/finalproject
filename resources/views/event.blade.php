@@ -51,23 +51,23 @@
                             <div class="copy clear">
                                 <p>{{$comment->comment}}</p>
                             </div>
-							@if (Auth::user()->role == 1 || Auth::user()->id == $comment->user->id)
-                                        <a style="float:right" onclick="return confirmDeleteComment();" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
-									@endif
+                            @if (Auth::user()->role == 1 || Auth::user()->id == $comment->user->id)
+                            <a style="float:right" onclick="return confirmDeleteComment();" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
+                            @endif
                         </div><!-- #comment-## -->
                     </div><!-- .comment-list -->
                     @endforeach
-					
+
                     @if (!Auth::guest())
                     <div id="respond" class="comment-respond">
                         <h3 id="reply-title" class="comment-reply-title">Оставить комментарий</h3>
                         <form action="{{route('add_comment')}}" method="post" id="commentform" class="comment-form" novalidate>
                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                             <input type="hidden" name="event_id" value="{{$event->id}}">
-                            {{--<p class="comment-notes">
-                                <span id="email-notes">Ваш адрес электронной почты не будет опубликован.</span> Обязательные для заполнения поля отмечены <span class="required">*</span>
+                                {{--<p class="comment-notes">
+                            <span id="email-notes">Ваш адрес электронной почты не будет опубликован.</span> Обязательные для заполнения поля отмечены <span class="required">*</span>
                                 </p>--}}
-                                    <p class="comment-form-comment">
+                            <p class="comment-form-comment">
                                 <label for="comment">Комментарий</label>
                                 <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
                             </p>                                
@@ -84,7 +84,7 @@
             </main><!-- #main -->        
         </div><!-- #primary -->                
     </div>
-	<script>
+    <script>
         function confirmDeleteComment() {
             if (confirm("Удалить комментарий?")) {
                 return true;
