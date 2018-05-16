@@ -17,7 +17,7 @@
                         <h1 class="entry-title">{{$event->title}}</h1>
                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <div class="addthis_inline_share_toolbox"></div>
-                        <h3 class="doublef-event-item-date">Глава события</h3>
+                        <h3 class="doublef-event-item-date">Кто создал {{$event->user->name}} {{$event->user->name}}</h3>
                         <h3 class="doublef-event-item-date">Дата проведения {{$event->event_date}}</h3>
                         <h3 class="doublef-event-item-time">Время проведения {{$event->event_hours}}</h3>
                         <div class="doublef-event-address">

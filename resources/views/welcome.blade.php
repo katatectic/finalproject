@@ -248,7 +248,7 @@
                                                             <h2 class="entry-title">
                                                                 <a href="{{ route('event',['id'=>$event->id]) }}">{{$event->title}}</a>
                                                             </h2>
-                                                            <p class="doublef-event-item-date">Глава {{$event->author_id}}</p>
+                                                            <p class="doublef-event-item-date">Кто создал {{$event->user->name}} {{$event->user->surname}}</p>
                                                             <p class="doublef-event-item-date">Дата {{$event->event_date}}</p>
                                                             <p class="doublef-event-item-time">Время {{$event->event_hours}}</p>
                                                             <div class="doublef-event-address">Адрес {{$event->address}}
