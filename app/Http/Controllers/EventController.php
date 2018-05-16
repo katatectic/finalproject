@@ -9,43 +9,50 @@ use DateTime;
 
 class EventController extends Controller {
 
-    public $puginationEvents = 10;
+    public $puginationEvents = 5;
 
-    public function eventsPage() {
+    public function eventsPage(Request $request) {
         $all = Event::orderBy('id', 'DESC')->paginate($this->puginationEvents);
+        if (request()->ajax()) {
+            return view('events', compact('all'));
+        }
         return view('events')->with(['all' => $all]);
     }
+
     public function oneEvent($id) {
         $event = Event::select()->where('id', $id)->first();
         return view('event', compact('event'));
     }
-	public function adminEvents() {
+
+    public function adminEvents() {
         $all = Event::orderBy('id', 'DESC')->paginate(3);
         $eventsCount = Event::count();
         return view('admin.events.allEvents', ['all' => $all, 'eventsCount' => $eventsCount]);
     }
-	public function eventView() {
+
+    public function eventView() {
         return view('admin.events.addEvent');
     }
-	public function addEvent(Request $request) {
+
+    public function addEvent(Request $request) {
         if ($request->method() == 'POST') {
             $this->validate($request, [
                 'title' => 'required',
-				'event_date' => 'required',
-				'event_hours' => 'required',
-				'address' => 'required',
+                'event_date' => 'required',
+                'event_hours' => 'required',
+                'address' => 'required',
                 'description' => 'required',
                 'content' => 'required',], [
                 'title.required' => 'Введите заголовок',
-				'event_date.required'=> 'Введите дату события',
-				'event_hours.required'=> 'Введите время события',
-				'address.required'=> 'Введите месо проведения события',
+                'event_date.required' => 'Введите дату события',
+                'event_hours.required' => 'Введите время события',
+                'address.required' => 'Введите месо проведения события',
                 'description.required' => 'Введите краткое описание',
                 'content.required' => 'Введите полный текст статьи',]);
             $data = $request->all();
             $date = new DateTime();
             $data['event_date'] = $date->format('Y-m-d');
-			if ($request->hasFile('photo')) {
+            if ($request->hasFile('photo')) {
                 $data['photo'] = $this->addPhoto($request);
             };
             $create = Event::create($data);
@@ -55,7 +62,7 @@ class EventController extends Controller {
         return view('admin.events.addEvent');
     }
 
-	public function addPhoto($request) {
+    public function addPhoto($request) {
         $this->validate($request, ['photo' => 'required|image|max:2048'], ['photo.required' => 'Загрузите изображение',
             'photo.image' => 'Загруженный файл должен быть изображением',
             'photo.max' => 'Максимальный размер картинки=2048']);
@@ -64,15 +71,18 @@ class EventController extends Controller {
         $file->move(public_path() . '/images', $newfilename);
         return $newfilename;
     }
-	public function deleteEvent($id) {
-		if (!is_numeric($id)) return false;
+
+    public function deleteEvent($id) {
+        if (!is_numeric($id))
+            return false;
         $all = Event::find($id);
         $img = $all->photo;
         unlink(public_path() . '/images/' . $img);
         $all->delete();
         return redirect()->route('adminevents');
     }
-	 public function editEvent($id, Request $request) {
+
+    public function editEvent($id, Request $request) {
         if ($request->method() == "POST") {
             $data = $request->all();
             $date = new DateTime();
@@ -90,4 +100,5 @@ class EventController extends Controller {
             return view('admin.events.editEvent', ['all' => $all]);
         }
     }
+
 }

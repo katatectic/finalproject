@@ -32,7 +32,8 @@ Route::get('/article', function () {
 
 
 
-Route::get('events', 'EventController@eventsPage')->name('events');/* Показ всех событий*/
+
+Route::any('events', 'EventController@eventsPage')->name('events');
 Route::get('event/{id}','EventController@oneEvent')->name('event');/* Показ одного события*/
  Route::get('eventview', 'EventController@eventView')->name('eventview');/* Вьюха добавления события*/
 Route::post('addEvent', 'EventController@addEvent')->name('addEvent'); /* Само добавления события*/

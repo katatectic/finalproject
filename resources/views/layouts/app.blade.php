@@ -178,7 +178,7 @@ var panelsStyles = {"fullContainer":"body"};
                                 <a title="" href="{{route('news')}}">Новости</a>
                             </li>
                             <li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
-                                <a title="" href="{{route('events')}}">События</a>
+                                <a title="" href="">События</a>
                             </li>
                             <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('contacts')}}">Контакты</a></li>    
                             <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('eventview')}}">Добавить событие</a></li><!--Просто добавление события с админки. Потом всё нормально настроится-->       
