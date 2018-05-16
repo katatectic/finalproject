@@ -27,13 +27,13 @@
                                     <tr><td class="active">Имя:</td><td>{{$user->name}}</td></tr>
 									<tr><td class="active">Фамилия:</td><td>{{$user->surname}}</td></tr>
                                     <tr><td class="active">Отчество:</td><td>{{$user->middle_name}}</td></tr>
-									 <tr><td class="active">Почта:</td><td>{{$user->email}}</td></tr>
+									<tr><td class="active">Почта:</td><td>{{$user->email}}</td></tr>
 									<tr><td class="active">Телефон:</td><td>{{$user->phone}}</td></tr>
                                     <tr><td class="active">Дата регистрации</td><td>{{$user->created_at}}</td></tr>
                                 </tbody>
                             </table>
-							<a href="{{route('edituser',['id'=>$user->id]) }}" class="more-link button">Изменить пользователя</a>
-                            <a href="{{route('deleteuser',$user->id)}}" onclick="return confirmDelete();" class="more-link button">Удалить пользователя</a>
+							<a href="{{route('edituser',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a>
+                            <a href="{{route('deleteuser',$user->id)}}" onclick="return confirmDelete();" class="more-link button">Удалить профиль</a>
                         </div>
                     </div>
                 </div>

@@ -17,8 +17,8 @@ class UserController extends Controller {
     }
 
     public function adminUsersShowOne($id) {
-        $user = User::select()->where('id', $id)->first();
-        return view('admin.users.adminOneUser', ['user' => $user]);
+        $user = User::select()->where(['id'=>$id])->first();
+        return view('admin.users.oneUser', ['user' => $user]);
     }
 
     public function deleteUser($id) {

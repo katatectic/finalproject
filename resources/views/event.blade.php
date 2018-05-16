@@ -49,9 +49,13 @@
                             <div class="copy clear">
                                 <p>{{$comment->comment}}</p>
                             </div>
+							@if((Auth::check())||(Auth::check() && Auth::id() == $comment->user_id ))
+                                        <a style="float:right" onclick="return confirmDeleteComment();" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
+									@endif
                         </div><!-- #comment-## -->
                     </div><!-- .comment-list -->
                     @endforeach
+					
                     @if (!Auth::guest())
                     <div id="respond" class="comment-respond">
                         <h3 id="reply-title" class="comment-reply-title">Оставить комментарий</h3>
@@ -78,6 +82,15 @@
             </main><!-- #main -->        
         </div><!-- #primary -->                
     </div>
+	<script>
+        function confirmDeleteComment() {
+            if (confirm("Удалить комментарий?")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
     <script>
         function confirmDelete() {
             if (confirm("Вы подтверждаете удаление?")) {
