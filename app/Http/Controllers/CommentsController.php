@@ -24,4 +24,11 @@ class CommentsController extends Controller
         }
         return back();
     }
+	public function deleteComment($id) {
+        if (!is_numeric($id))
+            return view('404');
+        $all = Comment::find($id);
+        $all->delete();
+        return back();
+    }
 }

@@ -22,8 +22,8 @@
 				<td>{{$user->phone}}</td>
                 <td>{{$user->created_at}}</td>
 				<td>Аватарка</td>
-                <td><a href="{{ route('adminshowuser',['id'=>$user->id]) }}" class="more-link button">Просмотр</a></td>
-				<td><a href="{{route('edituser',['id'=>$user->id]) }}" class="more-link button">Изменить пользователя</a></td>
+                <td><a href="{{ route('profile',['id'=>$user->id]) }}" class="more-link button">Просмотр</a></td>
+				<td><a href="{{route('edituser',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a></td>
 				<td><a href="{{route('deleteuser',$user->id)}}" onclick="return confirmDelete();" class="more-link button">Удалить пользователя</a></td>
             </tr>
             @endforeach

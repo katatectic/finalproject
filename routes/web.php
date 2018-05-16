@@ -43,11 +43,10 @@ Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* 
 
  
         Route::any('users', 'UserController@adminUsers')->name('users'); //Список пользователей
-        Route::any('adminshowuser/{id}', 'UserController@adminUsersShowOne')->name('adminshowuser'); //Просмотр профиля пользователя с админки
+        Route::any('profile/id{id}', 'UserController@adminUsersShowOne')->name('profile'); //Просмотр профиля пользователя с админки
         Route::any('deleteuser/{id}', 'UserController@deleteUser')->name('deleteuser'); //Удаление пользователя
-		Route::any('edituser/{id}', 'UserController@editUser')->name('edituser');/* Редактирование пользователя*/
- 
- 
+		Route::any('edituser/id{id}', 'UserController@editUser')->name('edituser');/* Редактирование пользователя*/
+
  
  
  
@@ -84,6 +83,8 @@ Route::group(['middleware' => ['role:3']], function () {
 Добавление комментария к статье, событию и отчету
 */
 Route::post('/add_comment', 'CommentsController@addComment')->name('add_comment');
+Route::any('deletecomment/{id}', 'CommentsController@deleteComment')->name('deleteComment');
+
 
 Route::get('/admin/students-classes', 'StudentClassController@index')->name('studentsClasses');
 Route::post('/admin/students-classes/create', 'StudentClassController@store')->name('storeStudentsClasses');
