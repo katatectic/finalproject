@@ -90,3 +90,24 @@ Route::get('/admin/students-classes', 'StudentClassController@index')->name('stu
 Route::post('/admin/students-classes/create', 'StudentClassController@store')->name('storeStudentsClasses');
 Route::post('/admin/students-classes/update', 'StudentClassController@update')->name('updateStudentsClasses');
 Route::get('/admin/students-classes/delete/{id}', 'StudentClassController@destroy')->name('destroyStudentsClasses');
+
+//admin
+Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
+	Route::get('/', function () { return view('admin');})->name('admin');
+
+	// events
+
+	Route::any('adminevents', 'EventController@adminEvents')->name('adminevents');/* Список всех событий в админке*/
+Route::any('deleteevent/{id}', 'EventController@deleteEvent')->name('deleteevent');/* Удаление события*/
+Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* Редактирование события*/
+
+    // Route::get('/', 'Admin\AccountController@action')->name('admin');
+    // // Articles
+    // Route::get('/articles_edit', 'Admin\ArticlesController@getPosts')->name('articles_edit');
+    // Route::get('/article_del/{id}','Admin\ArticlesController@deleteArticle')->name('article_del');
+    // Route::get('/article_publ/{id}','Admin\ArticlesController@publArticle')->name('article_publ');
+
+    // // Users
+    // Route::get('/users_edit', 'Admin\UsersController@getUsers')->name('users_edit');
+    // Route::get('/user_del/{id}','Admin\UsersController@deleteUser')->name('user_del');
+});
