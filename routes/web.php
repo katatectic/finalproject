@@ -93,10 +93,10 @@ Route::post('/admin/students-classes/update', 'StudentClassController@update')->
 Route::get('/admin/students-classes/delete/{id}', 'StudentClassController@destroy')->name('destroyStudentsClasses');
 
 //admin
-Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
-	Route::get('/', function () { return view('admin');})->name('admin');
-Route::any('deleteevent/{id}', 'EventController@deleteEvent')->name('deleteevent');/* Удаление события*/
-Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* Редактирование события*/
+//Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
+//	Route::get('/', function () { return view('admin');})->name('admin');
+//Route::any('deleteevent/{id}', 'EventController@deleteEvent')->name('deleteevent');/* Удаление события*/
+//Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* Редактирование события*/
 	// events
 /* Редактирование события*/
 
