@@ -125,68 +125,38 @@
                                          data-index="1">
                                         <div class="panel-widget-style panel-widget-style-for-425-1-0-0">
                                             <div class="so-widget-buntington2-news-list so-widget-buntington2-news-list-base">
+                                                
                                                 <h2 class="widget-title">Последние новости</h2>
                                                 <div class="news-list-widget-wrap" style="text-align: left;">
+                                                    @foreach($news as $article)
                                                     <div class="news-list-item news-list-left has-separator-line-top">
                                                         <figure class="post-thumbnail news-list-item-featured-image">
-                                                            <a href="{{route('article')}}">
+                                                            <a href="{{route('article',['id'=>$article->id])}}">
                                                                 <img width="1140" height="500"
-                                                                     src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b.jpg"
-                                                                     class="attachment-35 size-35 wp-post-image"
-                                                                     alt="" large=""
-                                                                     srcset="http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b.jpg 1140w, http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b-600x263.jpg 600w"
-                                                                     sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                                 src="{{asset('images/'.$article->photo)}}"
+                                                                 class="attachment-full size-full wp-post-image"
+                                                                 alt=""
+                                                                 srcset="{{asset('images/'.$article->photo)}} 1140w, {{asset('images/'.$article->photo)}} 600w"
+                                                                 sizes="(max-width: 1140px) 100vw, 1140px"/>
                                                             </a>
                                                         </figure>
                                                         <div class="news-list-item-elements ">
                                                             <h2 class="entry-title news-list-item-title">
-                                                                <a href="{{route('article')}}"
-                                                                   rel="bookmark">Это первая новость!</a>
+                                                                <a href="{{route('article', ['id'=>$article->id])}}"
+                                                                   rel="bookmark">{{$article->title}}</a>
                                                             </h2>
                                                             <div class="entry-meta">
                                                                 <ul class="post-meta-wrapper ul-horizontal-list">
                                                                     <li class="post-meta-date">
-                                                                        <time class="entry-date published" datetime="2018-02-26T12:47:49+00:00">Feb 26, 2018</time> 
+                                                                        <time class="entry-date published">{{$article->date}}</time> 
                                                                     </li>
                                                                 </ul>
                                                             </div>
                                                         </div><!-- .news-list-item-elements -->
                                                     </div><!-- .news-list-item -->
-                                                    <div class="news-list-item news-list-left has-separator-line-top">
-                                                        <figure class="post-thumbnail news-list-item-featured-image">
-                                                            <a href="http://buntington2.wpshow.me/news/great-post-with-image-gallery-inserted/">
-                                                                <img width="1140" height="500"
-                                                                     src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b.jpg"
-                                                                     class="attachment-35 size-35 wp-post-image"
-                                                                     alt="" large=""
-                                                                     srcset="http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b.jpg 1140w, http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b-600x263.jpg 600w"
-                                                                     sizes="(max-width: 1140px) 100vw, 1140px"/>
-                                                            </a>
-                                                        </figure>
-                                                        <div class="news-list-item-elements ">
-                                                            <h2 class="entry-title news-list-item-title">
-                                                                <a href="{{route('article')}}"
-                                                                   rel="bookmark">Это вторая новость!</a>
-                                                            </h2>
-                                                            <div class="entry-meta">
-                                                                <ul class="post-meta-wrapper ul-horizontal-list">
-                                                                    <li class="post-meta-date">
-                                                                        <a href="http://buntington2.wpshow.me/news/great-post-with-image-gallery-inserted/"
-                                                                           rel="bookmark">
-                                                                            <time class="entry-date published"
-                                                                                  datetime="2018-02-26T12:47:49+00:00">
-                                                                                Feb 26, 2018
-                                                                            </time>
-                                                                            <time class="updated"
-                                                                                  datetime="2018-04-12T16:59:47+00:00">
-                                                                                Apr 12, 2018
-                                                                            </time>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div><!-- .news-list-item-elements -->
-                                                    </div><!-- .news-list-item -->
+                                                    @endforeach
+                                                {{$news->links()}}
+                                                    
                                                 </div><!-- .news-list-widget-wrap-->
                                             </div>
                                         </div>

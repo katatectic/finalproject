@@ -1,113 +1,107 @@
 @extends('layouts.app')
 @section('content')
+<div id="cinemahead">
+    <div id="mobile-nav-container"></div><!-- Small devices menu -->
+</div><!-- #cinemahead -->
+<div id="content" class="site-content wrappr">
+    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
+    <div class="grid"><!-- toast grid declaration -->
+        <div id="primary" class="content-area grid__col grid__col--3-of-3">
+            <main id="main" class="site-main" role="main">
+                @if($article)
+                <article id="post-519" class="post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
+                    <figure class="post-thumbnail">
+                        <img width="1140" height="500" src="{{asset('images/'.$article->photo)}}" class="attachment-full size-full wp-post-image" alt="" srcset="{{asset('images/'.$article->photo)}} 1140w, {{asset('images/'.$article->photo)}} 600w" sizes="(max-width: 1140px) 100vw, 1140px"/>
+                    </figure>
+                    <header class="entry-header">
+                        <h1 class="entry-title">{{$article->title}}</h1>
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <div class="addthis_inline_share_toolbox"></div>
+                        <h3 class="doublef-event-item-date">Кто создал {{$article->user->name}} {{$article->user->name}}</h3>
+                        <h3 class="doublef-event-item-date">{{$article->date}}</h3>                     
+                       
+                        </div><!-- .doublef-event-address -->
 
-    <div id="cinemahead">
-        <div class="buntington2-cinema-bg">
-            <div class="element-gradient buntington2-cinema buntington2-cinema-post invert"
-                 data-url="http://buntington2.wpshow.me/wp-content/uploads/2014/06/8748862640_01cd0eb9b8_b.jpg"
-                 style="background-position: center center; padding-top: 350px; padding-bottom: 40px;">
-                <div class="wrappr text-left">
-                    <h1 class="h-gigant">В нашей школе завтра состоится линейка</h1>
-                    <div class="entry-meta single-post-meta">
-                        <ul class="post-meta-wrapper ul-horizontal-list">
-                            <li class="post-meta-author">
-                                <img alt=''
-                                     src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=30&#038;d=mm&#038;r=g'
-                                     srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=60&#038;d=mm&#038;r=g 2x'
-                                     class='avatar avatar-30 photo' height='30' width='30'/>
-                                <span class="author vcard author_name">
-								<a class="url fn n"
-                                   href="#">admin@school</a>
-							</span>
-                            </li>
-                            <li class="post-meta-date">
-                                <a href="#"
-                                   rel="bookmark">
-                                    <time class="entry-date published" datetime="2018-02-26T12:47:49+00:00">26 Февраля, 2018 г.
-                                    </time>                                    
-                                </a>
-                            </li>
-                            <li class="post-meta-comments">
-                                <a href="#">1 comment</a>                            
-                            </li>
-                        </ul>
-                    </div><!-- .entry-meta -->
-                </div><!-- .wrappr -->
-            </div><!-- .buntington2-cinema -->
-        </div><!-- .buntington2-cinema-bg -->
-        <div id="mobile-nav-container"></div><!-- Small devices menu -->
-    </div><!-- #cinemahead -->
-    <div id="content" class="site-content wrappr" style="margin-top: 20px;">
-        <div id="site-to-top">
-            <i class="fa fa-chevron-up fa-lg"></i>
-        </div><!-- back to top button -->
-        <div class="grid"><!-- toast grid declaration -->
-            <div id="primary" class="content-area grid__col grid__col--2-of-3 grid__col--m-1-of-1">
-                <main id="main" class="site-main" role="main">
-                    <article id="post-35"
-                             class="post-35 post type-post status-publish format-standard has-post-thumbnail hentry category-news tag-galleries tag-meetings tag-school">
-                        <div class="entry-content">
-                            <p>Товарищи! рамки и место обучения кадров обеспечивает широкому кругу (специалистов) участие в формировании систем массового участия. Значимость этих проблем настолько очевидна, что рамки и место обучения кадров требуют определения и уточнения систем массового участия. Разнообразный и богатый опыт новая модель организационной деятельности требуют от нас анализа новых предложений. Идейные соображения высшего порядка, а также постоянное информационно-пропагандистское обеспечение нашей деятельности требуют от нас анализа позиций, занимаемых участниками в отношении поставленных задач. Равным образом постоянный количественный рост и сфера нашей активности позволяет оценить значение новых предложений.</p>
-                        </div><!-- .entry-content -->
-                        <div class="entry-footer">
-                            <div class="tags-links tagcloud">
-                                <a href="#" rel="tag">Тег №1</a>
-                                <a href="#" rel="tag">Тег №2</a>
-                                <a  href="#" rel="tag">Тег №3</a>
+                    </header><!-- .entry-header -->
+                    <div class="entry-content">
+                        <p>{{$article->content}}</p><!--Тут какие-то косяки с вёрсткой. Если в одну строчку лепить, то она вылазит за экран-->
+                    </div>
+                    <a href="{{ route('editnews',['id'=>$article->id]) }}" class="more-link button">Редактировать новость</a>
+                    <a href="{{route('deletenews',$article->id)}}" onclick="return confirmDelete();" class="more-link button" style="float:right">Удалить новость</a><!-- .entry-content -->
+                </article>
+                @endif<!-- #post-519 -->
+                @foreach($article->comments as $comment)
+                <div id="comments" class="comments-area">
+                    <div class="comment_list comment-list">
+                        <div class="comment byuser comment-author-adminschool bypostauthor even thread-even depth-1" id="comment-7">
+                            <div class="avatar clear">
+                                <div class="avatar-image pull-left">
+                                    <img alt=''
+                                         src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
+                                         srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
+                                         class='avatar avatar-50 photo' height='50' width='50'/>
+                                </div>
+                                <div class="avatar-body pull-left">
+                                    <h6 class="avatar-name">{{$comment->user->name}} {{$comment->user->surname}}</h6>
+                                    <p class="avatar-time">Дата публикации: {{$comment->created_at->format('d.m.Y в H.m')}}</p>
+                                </div>
                             </div>
-                        </div><!-- .entry-footer -->
-                    </article><!-- #post-35 -->
-                    <div id="comments" class="comments-area">
-                        <div class="comment_list comment-list">
-                            <div class="comment byuser comment-author-adminschool bypostauthor even thread-even depth-1" id="comment-7">
-                                <div class="avatar clear">
-                                    <div class="avatar-image pull-left">
-                                        <img alt=''
-                                             src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
-                                             srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
-                                             class='avatar avatar-50 photo' height='50' width='50'/>
-                                    </div>
-                                    <div class="avatar-body pull-left">
-                                        <h6 class="avatar-name">admin@school</h6>
-                                        <p class="avatar-time">Янв 23, 2014 в 17:16</p>
-                                    </div>
-                                </div>
-                                <div class="copy clear">
-                                    <p>Задача организации, в особенности же дальнейшее развитие различных форм деятельности представляет собой интересный эксперимент проверки существенных финансовых и административных условий. Разнообразный и богатый опыт реализация намеченных плановых заданий представляет.</p>
-                                </div>
-                            </div><!-- #comment-## -->
-                        </div><!-- .comment-list -->
-                        <div id="respond" class="comment-respond">
-                            <h3 id="reply-title" class="comment-reply-title">Оставить комментарий</h3>
-                            <form action="http://buntington2.wpshow.me/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-                                <p class="comment-notes">
-                                    <span id="email-notes">Ваш адрес электронной почты не будет опубликован.</span> Обязательные для заполнения поля отмечены <span class="required">*</span>
-                                </p>
-                                <p class="comment-form-comment">
-                                    <label for="comment">Комментарий</label>
-                                    <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
-                                </p>
-                                <p class="comment-form-author">
-                                    <label for="author">Имя <span class="required">*</span></label>
-                                    <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required'/>
-                                </p>
-                                <p class="comment-form-email">
-                                    <label for="email">Email <span class="required">*</span></label>
-                                    <input id="email" name="email" type="email" value="" size="30"  maxlength="100" aria-describedby="email-notes" required='required'/>
-                                </p>
-                                <p class="comment-form-url">
-                                    <label for="url">Website</label>
-                                    <input id="url" name="url" type="url" value="" size="30" maxlength="200"/>
-                                </p>
-                                <p class="form-submit">
-                                    <input name="submit" type="submit" id="submit" class="submit" value="Опубликовать комментарий"/>
-                                    <input type='hidden' name='comment_post_ID' value='35' id='comment_post_ID'/>
-                                    <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
-                                </p>
-                            </form>
-                        </div><!-- #respond -->
-                    </div><!-- #comments -->
-                </main><!-- #main -->
-            </div><!-- #primary -->
+                            <div class="copy clear">
+                                <p>{{$comment->comment}}</p>
+                            </div>
+                            @if (Auth::user()->role == 1 || Auth::user()->id == $comment->user->id)
+                            <a style="float:right" onclick="return confirmDeleteComment();" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
+                            @endif
+                        </div><!-- #comment-## -->
+                    </div><!-- .comment-list -->
+                    @endforeach
+
+                    @if (!Auth::guest())
+                    <div id="respond" class="comment-respond">
+                        <h3 id="reply-title" class="comment-reply-title">Оставить комментарий</h3>
+                        <form action="{{route('add_comment')}}" method="post" id="commentform" class="comment-form" novalidate>
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                            <input type="hidden" name="event_id" value="{{$event->id}}">
+                                {{--<p class="comment-notes">
+                            <span id="email-notes">Ваш адрес электронной почты не будет опубликован.</span> Обязательные для заполнения поля отмечены <span class="required">*</span>
+                                </p>--}}
+                            <p class="comment-form-comment">
+                                <label for="comment">Комментарий</label>
+                                <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
+                            </p>                                
+                            <p class="form-submit">
+                                <input name="submit" type="submit" id="submit" class="submit" value="Опубликовать комментарий"/>
+                                <input type='hidden' name='comment_post_ID' value='35' id='comment_post_ID'/>
+                                <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
+                            </p>
+                            {{ csrf_field() }}
+                        </form>
+                    </div><!-- #respond -->
+                    @endif                      
+                </div><!-- #comments -->
+            </main><!-- #main -->        
+        </div><!-- #primary -->                
+    </div>
+    <script>
+        function confirmDeleteComment() {
+            if (confirm("Удалить комментарий?")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+    <script>
+        function confirmDelete() {
+            if (confirm("Вы подтверждаете удаление?")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+    <!-- .grid-->
+</div><!-- #content -->
+
 
 @endsection
