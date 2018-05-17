@@ -28,8 +28,11 @@ Route::any('deletenews/{id}', 'NewsController@deleteNews')->name('deletenews');/
 Route::get('article/{id}','NewsController@article')->name('article');/* Показ одной новости*/
 
 
+Route::any('adminfeedbacks', 'FeedbacksController@adminFeedbacks')->name('adminfeedbacks'); //Список заявок
+        Route::any('adminonefeedback/{id}', 'FeedbacksController@adminFeedbacksShowOne')->name('adminonefeedback');
  Route::any('feedback', 'FeedbacksController@index')->name('feedback');
 Route::any('feedback', 'FeedbacksController@addFeedback')->name('addFeedback');
+Route::any('deletefeedback/{id}', 'FeedbacksController@deleteFeedback')->name('deletefeedback');
 
 Route::any('events', 'EventController@eventsPage')->name('events');
 Route::get('event/{id}','EventController@oneEvent')->name('event');/* Показ одного события*/
