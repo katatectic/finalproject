@@ -16,7 +16,7 @@ class CommentsController extends Controller {
         if ($request->method() == 'POST') {
             $comment->user_id = $request->user_id;
             $comment->event_id = $request->event_id;
-            $comment->news_id = $request->news_id;
+            $comment->article_id = $request->article_id;
             $comment->report_id = $request->report_id;
             $comment->comment = $request->comment;
             $comment->save();

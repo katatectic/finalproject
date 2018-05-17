@@ -17,14 +17,14 @@
                         <h1 class="entry-title">{{$article->title}}</h1>
                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <div class="addthis_inline_share_toolbox"></div>
-                        <h3 class="doublef-event-item-date">Кто создал {{$article->user->name}} {{$article->user->name}}</h3>
-                        <h3 class="doublef-event-item-date">{{$article->date}}</h3>                     
-                       
-                        </div><!-- .doublef-event-address -->
-
+                        <h3 class="doublef-event-item-date">
+                            Кто создал <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}</a>
+                        </h3>
+                        <h3 class="doublef-event-item-date">{{$article->date}}</h3>
                     </header><!-- .entry-header -->
                     <div class="entry-content">
-                        <p>{{$article->content}}</p><!--Тут какие-то косяки с вёрсткой. Если в одну строчку лепить, то она вылазит за экран-->
+                        <p>{{$article->content}}</p>
+                        <!--Тут какие-то косяки с вёрсткой. Если в одну строчку лепить, то она вылазит за экран-->
                     </div>
                     <a href="{{ route('editnews',['id'=>$article->id]) }}" class="more-link button">Редактировать новость</a>
                     <a href="{{route('deletenews',$article->id)}}" onclick="return confirmDelete();" class="more-link button" style="float:right">Удалить новость</a><!-- .entry-content -->
@@ -42,42 +42,48 @@
                                          class='avatar avatar-50 photo' height='50' width='50'/>
                                 </div>
                                 <div class="avatar-body pull-left">
-                                    <h6 class="avatar-name">{{$comment->user->name}} {{$comment->user->surname}}</h6>
-                                    <p class="avatar-time">Дата публикации: {{$comment->created_at->format('d.m.Y в H.m')}}</p>
+                                    <h6 class="avatar-name">
+                                        <a href="{{route('profile',['id'=>$comment->user->id])}}">{{$comment->user->name}} {{$comment->user->surname}}<a/>
+                                    </h6>
+                                    <p class="avatar-time">Дата публикации: {{$comment->created_at->format('d.m.Y в H.m')}}
+                                    </p>
                                 </div>
                             </div>
                             <div class="copy clear">
                                 <p>{{$comment->comment}}</p>
                             </div>
+                            @if(Auth::user())
                             @if (Auth::user()->role == 1 || Auth::user()->id == $comment->user->id)
-                            <a style="float:right" onclick="return confirmDeleteComment();" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
+                            <p>
+                                <a style="float:right" onclick="return confirmDeleteComment();" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
+                            </p>
+                            @endif
                             @endif
                         </div><!-- #comment-## -->
                     </div><!-- .comment-list -->
-                    @endforeach
-
-                    @if (!Auth::guest())
-                    <div id="respond" class="comment-respond">
-                        <h3 id="reply-title" class="comment-reply-title">Оставить комментарий</h3>
-                        <form action="{{route('add_comment')}}" method="post" id="commentform" class="comment-form" novalidate>
-                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                            <input type="hidden" name="event_id" value="{{$event->id}}">
-                                {{--<p class="comment-notes">
-                            <span id="email-notes">Ваш адрес электронной почты не будет опубликован.</span> Обязательные для заполнения поля отмечены <span class="required">*</span>
-                                </p>--}}
-                            <p class="comment-form-comment">
-                                <label for="comment">Комментарий</label>
-                                <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
-                            </p>                                
-                            <p class="form-submit">
-                                <input name="submit" type="submit" id="submit" class="submit" value="Опубликовать комментарий"/>
-                                <input type='hidden' name='comment_post_ID' value='35' id='comment_post_ID'/>
-                                <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
-                            </p>
-                            {{ csrf_field() }}
-                        </form>
-                    </div><!-- #respond -->
-                    @endif                      
+                @endforeach
+                @if (!Auth::guest())
+                <div id="respond" class="comment-respond">
+                    <h3 id="reply-title" class="comment-reply-title">Оставить комментарий</h3>
+                    <form action="{{route('add_comment')}}" method="post" id="commentform" class="comment-form" novalidate>
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="article_id" value="{{$article->id}}">
+                        {{--<p class="comment-notes">
+                        <span id="email-notes">Ваш адрес электронной почты не будет опубликован.</span> Обязательные для заполнения поля отмечены <span class="required">*</span>
+                        </p>--}}
+                        <p class="comment-form-comment">
+                            <label for="comment">Комментарий</label>
+                            <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
+                        </p>                                
+                        <p class="form-submit">
+                            <input name="submit" type="submit" id="submit" class="submit" value="Опубликовать комментарий"/>
+                            <input type='hidden' name='comment_post_ID' value='35' id='comment_post_ID'/>
+                            <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
+                        </p>
+                        {{ csrf_field() }}
+                    </form>
+                </div><!-- #respond -->
+                @endif                      
                 </div><!-- #comments -->
             </main><!-- #main -->        
         </div><!-- #primary -->                
@@ -102,6 +108,4 @@
     </script>
     <!-- .grid-->
 </div><!-- #content -->
-
-
 @endsection

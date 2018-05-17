@@ -34,12 +34,13 @@
                             <header class="entry-header">            
                                 <h2 class="entry-title">
                                     <a href="{{route('article',['id'=>$news->id])}}" rel="bookmark">{{$news->title}}</a></h2>
-                                <h3 class="doublef-event-item-date">Кто создал {{$news->user->name}} {{$news->user->name}} </h3>
-                                    <h3 class="doublef-event-item-date">{{$news->date}} </h3>
+                                <h3 class="doublef-event-item-date">Кто создал <a href="{{route('profile',['id'=>$news->user->id])}}">{{$news->user->name}} {{$news->user->surname}}</a>
+                                </h3>
+                                <h3 class="doublef-event-item-date">{{$news->date}} </h3>
                             </header><!-- .entry-header -->        
                             <div class="entry-content">            
                                 <p>{{$news->content}}
-                                    <a class="more-link button" href="{{route('article')}}">Читать далее...</a>
+                                    <a class="more-link button" href="">Читать далее...</a>
                                 </p>
                                 <span class="screen-reader-text">Продолжить чтение  {{ $news->title }}</span>
                             </div><!-- .entry-content -->        

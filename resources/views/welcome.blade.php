@@ -145,10 +145,15 @@
                                                                 <a href="{{route('article', ['id'=>$article->id])}}"
                                                                    rel="bookmark">{{$article->title}}</a>
                                                             </h2>
+                                                            <h3 class="doublef-event-item-date">
+                                                                Кто создал
+                                                                <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}}
+                                                                </a>
+                                                            </h3>
                                                             <div class="entry-meta">
                                                                 <ul class="post-meta-wrapper ul-horizontal-list">
                                                                     <li class="post-meta-date">
-                                                                        <time class="entry-date published">{{$article->date}}</time> 
+                                                                        <time class="entry-date published">Новость создана {{$article->created_at->format('d.m.Y в H.m')}}</time> 
                                                                     </li>
                                                                 </ul>
                                                             </div>
