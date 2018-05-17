@@ -1,7 +1,6 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
+
     <style>
         .option {
             display: none;
@@ -14,8 +13,7 @@
         #confirmation {display:flex;justify-content: center;}
     </style>
 </head>
-{{--@extends('layouts.footer')--}}
-{{--@extends('layouts.header')--}}
+
 @extends('layouts.app')
 @section('content')
 

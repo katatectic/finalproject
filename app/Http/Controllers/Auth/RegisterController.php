@@ -75,19 +75,21 @@ use RegistersUsers;
      */
     protected function create(array $data) {
         $request = request();
-
-        $profileImage = $request->file('avatar');
-        $newfilename = rand(0, 100) . "." . $profileImage->getClientOriginalExtension();
-        $profileImage->move(public_path() . '/images/users', $newfilename);
-
+        if ($request->avatar == '') {
+            $newfilename = 'storage/app/avatars/default_avatar.jpg';
+        } else {
+            $profileImage = $request->file('avatar');
+            $newfilename = rand(0, 100) . "." . $profileImage->getClientOriginalExtension();
+            $profileImage->move(public_path() . '/images/users', $newfilename);
+        }
         return User::create([
-                    'surname' => $data['surname'],
-                    'name' => $data['name'],
-                    'middle_name' => $data['middle_name'],
-                    'email' => $data['email'],
-                    'phone' => $data['phone'],
-                    'avatar' => $newfilename,
-                    'password' => bcrypt($data['password']),
+            'surname' => $data['surname'],
+            'name' => $data['name'],
+            'middle_name' => $data['middle_name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'avatar' => $newfilename,
+            'password' => bcrypt($data['password']),
         ]);
     }
 
