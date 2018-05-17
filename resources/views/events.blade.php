@@ -40,7 +40,7 @@
                                 <h2 class="entry-title">
                                     <a href="{{route('event',['id'=>$event->id])}}">{{ $event->title }}</a>
                                 </h2>
-                                <h3 class="doublef-event-item-date">Кто создал {{$event->user->name}} {{$event->user->name}} </h3>
+                                <h3 class="doublef-event-item-date"><a href="{{route('profile',['id'=>$event->user->id])}}">Кто создал {{$event->user->name}} {{$event->user->name}} </a></h3>
                                 <h3 class="doublef-event-item-date">{{ $event->event_date }} </h3>
                                 <h3 class="doublef-event-item-time">{{ $event->event_hours }}</h3>
                                 <div class="doublef-event-address">

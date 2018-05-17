@@ -31,7 +31,8 @@ Route::get('/article', function () {
 })->name('article');
 
 
-
+ Route::any('feedback', 'FeedbacksController@index')->name('feedback');
+Route::any('feedback', 'FeedbacksController@addFeedback')->name('addFeedback');
 
 Route::any('events', 'EventController@eventsPage')->name('events');
 Route::get('event/{id}','EventController@oneEvent')->name('event');/* Показ одного события*/
@@ -50,7 +51,7 @@ Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* 
 
 	Route::any('profile/{id}/profileevents', 'UserController@profileEvents')->name('profileevents');
  
- 
+
  
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут подтягивает перечень комитетов школы из базы*/
