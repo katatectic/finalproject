@@ -10,6 +10,8 @@ class Article extends Model
 
     /*Relations*/
 
+    public $fillable = ['title', 'user_id', 'event_date', 'content', 'photo'];
+
     public function comments()
     {
         return $this->hasMany('App\Comment'); // одна статья имеет много комментариев
