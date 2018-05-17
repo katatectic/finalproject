@@ -43,11 +43,12 @@ Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* 
 
  
         Route::any('users', 'UserController@adminUsers')->name('users'); //Список пользователей
-        Route::any('profile/id{id}', 'UserController@adminUsersShowOne')->name('profile'); //Просмотр профиля пользователя с админки
+        Route::any('profile/id{id}', 'UserController@profile')->name('profile'); //Просмотр профиля пользователя с админки
         Route::any('deleteuser/{id}', 'UserController@deleteUser')->name('deleteuser'); //Удаление пользователя
 		Route::any('edituser/id{id}', 'UserController@editUser')->name('edituser');/* Редактирование пользователя*/
+		
 
- 
+	Route::any('profile/{id}/profileevents', 'UserController@profileEvents')->name('profileevents');
  
  
  
@@ -94,12 +95,10 @@ Route::get('/admin/students-classes/delete/{id}', 'StudentClassController@destro
 //admin
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function() {
 	Route::get('/', function () { return view('admin');})->name('admin');
-
-	// events
-
-	Route::any('adminevents', 'EventController@adminEvents')->name('adminevents');/* Список всех событий в админке*/
 Route::any('deleteevent/{id}', 'EventController@deleteEvent')->name('deleteevent');/* Удаление события*/
 Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* Редактирование события*/
+	// events
+/* Редактирование события*/
 
     // Route::get('/', 'Admin\AccountController@action')->name('admin');
     // // Articles

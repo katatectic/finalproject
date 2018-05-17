@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\User;
+use App\Comment;
 use App\Article;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +22,16 @@ class UserController extends Controller {
         return view('admin.users.adminUsers', ['users' => $users, 'usersCount' => $usersCount]);
     }
 
-    public function adminUsersShowOne($id) {
-        $user = User::select()->where(['id' => $id])->first();
-        return view('admin.users.oneUser', ['user' => $user]);
+    public function profile($id) {
+        $user = User::find($id);
+        $eventCount = Event::where("user_id", "=", $user->id)->count();
+        return view('profile', compact('user', 'eventCount'));
+    }
+
+    public function profileEvents($id) {
+        $user = User::find($id);
+        $userEvents = $user->events->get();
+        return view('profileevents', compact('user', 'userEvents'));
     }
 
     public function deleteUser($id) {
