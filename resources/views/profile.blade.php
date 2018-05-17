@@ -3,7 +3,7 @@
 <div class="content">
     <section id="contentSection">
         <div class="row">
-            @if($user)
+            @if($user and $eventCount)
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -30,10 +30,18 @@
                                     <tr><td class="active">Почта:</td><td>{{$user->email}}</td></tr>
                                     <tr><td class="active">Телефон:</td><td>{{$user->phone}}</td></tr>
                                     <tr><td class="active">Дата регистрации</td><td>{{$user->created_at}}</td></tr>
+									<tr><td class="active">Всего объявлений</td>
+									@if (!empty($eventCount) )
+									<td>{{$eventCount}}</td></tr>
+									@else <td>0</td></tr>
+									@endif
                                 </tbody>
                             </table>
+							@if (Auth::user()->role == 1 || Auth::user()->id == $user->id)
+                           
                             <a href="{{route('edituser',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a>
                             <a href="{{route('deleteuser',$user->id)}}" onclick="return confirmDelete();" class="more-link button">Удалить профиль</a>
+							@endif
                         </div>
                     </div>
                 </div>

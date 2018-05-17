@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $table = 'comments';
-
+	
     /*Relations*/
-
+	
     public function article()
     {
         return $this->belongsTo('App\Article'); // одна статья много комментариев

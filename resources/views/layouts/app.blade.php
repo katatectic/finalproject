@@ -127,13 +127,15 @@ var panelsStyles = {"fullContainer":"body"};
                                                             <li id="menu-item-1121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1121">
                                                                 <a href="{{--здесь добавить роутинг на профиль--}}">Вы вошли как {{ Auth::user()->name }}</a>
                                                             </li>
-                                                            @if (Auth::user()->role == 1)
+                                                            {{--
+                                                                @if (Auth::user()->role == 1)
                                                             <li>
                                                                 <a href="{{ route('admin') }}">
                                                                     Админ-панель
                                                                 </a>                                        
                                                             </li>
                                                             @endif
+                                                            --}}
                                                             <li id="menu-item-1121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1121" role="menu">
                                                                 <a href="{{ route('logout') }}"
                                                                     onclick="event.preventDefault();

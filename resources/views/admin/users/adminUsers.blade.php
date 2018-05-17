@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="content">
+<div class="content" style="width:500px">
     <p class="btn btn-primary mb1 bg-green">Всего пользователей: {{$usersCount}} </p>
-    <table class="table table-responsive" >
+    <table class="table table-responsive" style="width:500px" >
         <thead class="thead-dark">
         <th>Имя</th>
         <th>Фамилия</th>
@@ -15,11 +15,11 @@
         <tbody >
             @foreach($users as $user)
             <tr>
-                <td>{{$user->name}}</td>
-                <td>{{$user->surname}}</td>
-                <td>{{$user->middle_name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->phone}}</td>
+                <td><div style="width:60px">{{$user->name}}</div></td>
+                <td><div style="width:60px">{{$user->surname}}</div></td>
+                <td><div style="width:60px">{{$user->middle_name}}</div></td>
+                <td><div style="width:60px">{{$user->email}}</div></td>
+                <td><div style="width:60px">{{$user->phone}}</div></td>
                 <td>{{$user->created_at}}</td>
                 <td class="avatar">
                     <div style="width:100px;height:120px">
