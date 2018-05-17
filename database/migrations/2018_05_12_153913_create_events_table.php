@@ -17,11 +17,11 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('address', 500)->nullable();
-            $table->date('event_date')->nullable()->change();
+            $table->date('event_date')->nullable();
             $table->string('photo', 300)->nullable();
             $table->string('content', 15000)->nullable();
             $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
