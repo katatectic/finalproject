@@ -109,4 +109,4 @@ Route::get('/admin/students-classes/delete/{id}', 'StudentClassController@destro
     // // Users
     // Route::get('/users_edit', 'Admin\UsersController@getUsers')->name('users_edit');
     // Route::get('/user_del/{id}','Admin\UsersController@deleteUser')->name('user_del');
-});
+//});
