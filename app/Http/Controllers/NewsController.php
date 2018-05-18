@@ -4,31 +4,102 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\User;
+use DateTime;
 
 class NewsController extends Controller
 {
-    public $puginMain = 3; //количество новостей на главной
-    public $puginNews = 10; //количество новостей на странице новостей
+    public $puginationNews = 10; //количество новостей на странице новостей
     
-    public function getNewsMain()
-    {
-        $news = Article::orderby('id', 'desc')->paginate($this->puginMain);
-        return view('welcome', ['news'=>$news]);
+    public function newsPage(Request $request) {
+        $all = Article::orderBy('id', 'DESC')->paginate($this->puginationNews);
+        if (request()->ajax()) {
+            return view('news', compact('all'));
+        }
+        return view('news')->with(['all' => $all]);
+    }
+
+    public function article($id) {
+        $article = Article::select()->where('id', $id)->first();
+        return view('article', compact('article'));
+    }
+
+   public function adminNews() {
+        $all = Article::orderBy('id', 'DESC')->paginate(3);
+        $newsCount = Article::count();
+        return view('admin.news.allNews', ['all' => $all, 'newsCount' => $newsCount]);
     }
     
-     public function getNews()
-    {
-        $news = Article::orderby('id', 'desc')->paginate($this->puginNews);
-        return view('news', ['news'=>$news]);
-    }
-    
-    public function getArticle($id)
-    {
-        $article = Article::find($id);
-        return view('article', ['article'=>$article]);
-    }
-    
-     public function newsView() {
+    public function newsView() {
         return view('admin.news.newsform');
     }
+
+    public function addNews(Request $request) {
+        if ($request->method() == 'POST') {
+            $this->validate($request, [
+                'title' => 'required',
+                'date' => 'required',   
+                'content' => 'required',
+                'photo' => 'required|image|max:2048',], [
+                '*.required' => 'Поле не должно быть пустым',
+                'photo.image' => 'Загруженный файл должен быть изображением',
+                'photo.max' => 'Максимальный размер изображения=2048'
+            ]);
+            $data = $request->all();
+            
+            $date = new DateTime();
+            $data['date'] = $date->format('Y-m-d');
+            if ($request->hasFile('photo')) {
+                $data['photo'] = $this->addPhoto($request);
+            };
+            $create = Article::create($data);
+            $id = $create->id;
+            return redirect()->route('main');
+        }
+        return view('admin.news.newsform');
+    }
+
+    public function addPhoto($request) {
+        $file = $request->file('photo');
+        $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
+        $file->move(public_path() . '/images', $newfilename);
+        return $newfilename;  
+    }
+    
+    public function deleteNews($id) {
+        if (!is_numeric($id))
+            return false;
+        $all = Article::find($id);
+        $img = $all->photo;
+        unlink(public_path() . '/images/' . $img);
+        $all->delete();
+        return redirect()->route('adminnews');
+    }
+
+    public function editNews($id, Request $request) {
+        if ($request->method() == "POST") {
+            $this->validate($request, [
+                'title' => 'required',
+                'date' => 'required',   
+                'content' => 'required',
+                'photo' => 'required|image|max:2048',], [
+                '*.required' => 'Поле не должно быть пустым',
+                'photo.image' => 'Загруженный файл должен быть изображением',
+                'photo.max' => 'Максимальный размер изображения=2048'
+            ]);
+            $data = $request->all();
+            $date = new DateTime();
+            $data['date'] = $date->format('Y-m-d');
+            if ($request->hasFile('photo')) {
+                $data['photo'] = $this->addPhoto($request);
+            };
+            $editOne = Article::find($id);
+            $editOne->fill($data);
+            $editOne->save();
+            return redirect()->route('adminnews');
+        }
+        $all = Article::find($id);
+        return view('admin.news.editNews', ['all' => $all]);
+    }
+
 }

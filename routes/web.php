@@ -19,19 +19,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут должен подтягивать новости из базы*/
-Route::get('/news', function () {
-    return view('news');
-})->name('news');
+Route::any('news', 'NewsController@newsPage')->name('news');
+Route::any('adminnews', 'NewsController@adminNews')->name('adminnews');/* Список всех новостей в админке*/
 Route::get('newsview', 'NewsController@newsView')->name('newsview');
 Route::post('addNews', 'NewsController@addNews')->name('addNews');
-/* пока такой роут, здесь никакой логики не задейстовано.
-Данный роут должен подтягивать новость из базы*/
-Route::get('/article', function () {
-    return view('article');
-})->name('article');
+Route::any('editnews/{id}', 'NewsController@editNews')->name('editnews');/* Редактирование новость*/
+Route::any('deletenews/{id}', 'NewsController@deleteNews')->name('deletenews');/* Удаление новости*/
+Route::get('article/{id}','NewsController@article')->name('article');/* Показ одной новости*/
 
 
-
+Route::any('adminfeedbacks', 'FeedbacksController@adminFeedbacks')->name('adminfeedbacks'); //Список заявок
+        Route::any('adminonefeedback/{id}', 'FeedbacksController@adminFeedbacksShowOne')->name('adminonefeedback');
+ Route::any('feedback', 'FeedbacksController@index')->name('feedback');
+Route::any('feedback', 'FeedbacksController@addFeedback')->name('addFeedback');
+Route::any('deletefeedback/{id}', 'FeedbacksController@deleteFeedback')->name('deletefeedback');
 
 Route::any('events', 'EventController@eventsPage')->name('events');
 Route::get('event/{id}','EventController@oneEvent')->name('event');/* Показ одного события*/
@@ -50,7 +51,7 @@ Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* 
 
 	Route::any('profile/{id}/profileevents', 'UserController@profileEvents')->name('profileevents');
  
- 
+
  
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут подтягивает перечень комитетов школы из базы*/
