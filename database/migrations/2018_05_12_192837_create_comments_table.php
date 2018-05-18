@@ -17,8 +17,8 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('news_id')->unsigned()->nullable();
-            $table->foreign('news_id')->references('id')->on('news');
+            $table->integer('article_id')->unsigned()->nullable();
+            $table->foreign('article_id')->references('id')->on('news');
             $table->integer('event_id')->unsigned()->nullable();
             $table->foreign('event_id')->references('id')->on('events');
             $table->integer('report_id')->unsigned()->nullable();

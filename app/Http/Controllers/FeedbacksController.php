@@ -29,4 +29,22 @@ class FeedbacksController extends Controller {
         }
         return view('feedback.feedback');
     }
+	public function adminFeedbacks() {
+        $all = Feedback::orderBy('id', 'DESC')->paginate(10);
+        $feedbacksCount = Feedback::count();
+        return view('admin.feedbacks.adminFeedbacks', ['all' => $all, 'feedbacksCount' => $feedbacksCount]);
+    }
+
+    public function adminFeedbacksShowOne($id) {
+        $article = Feedback::select()->where('id', $id)->first();
+        $article->status = '2';
+        $article->save();
+        return view('admin.feedbacks.adminOneFeedback', ['article' => $article]);
+    }
+
+    public function deleteFeedback($id) {
+        $all = Feedback::find($id);
+        $all->delete();
+        return redirect()->route('adminfeedbacks');
+    }
 }
