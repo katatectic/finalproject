@@ -27,7 +27,7 @@ class CommentsController extends Controller {
 
     public function deleteComment($id) {
         if (!is_numeric($id))
-            return view('404');
+            return false;
         $all = Comment::find($id);
         $all->delete();
         return back();

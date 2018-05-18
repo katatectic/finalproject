@@ -25,12 +25,12 @@ class UserController extends Controller {
     public function profile($id) {
         $user = User::find($id);
         $eventCount = Event::where("user_id", "=", $user->id)->count();
-        return view('profile', compact('user', 'eventCount'));
+		$newsCount = Article::where("user_id", "=", $user->id)->count();
+        return view('profile', compact('user', 'eventCount','newsCount'));
     }
 
     public function profileEvents($id) {
         $user = User::find($id);
-        $userEvents = $user->events->get();
         return view('profileevents', compact('user', 'userEvents'));
     }
 

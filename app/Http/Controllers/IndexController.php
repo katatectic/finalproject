@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Article;
 use App\Event;
 use App\User;
+use App\Slider;
 
 class IndexController extends Controller {
 
@@ -15,7 +16,8 @@ class IndexController extends Controller {
     public function getMain() {
         $news = Article::orderby('id', 'desc')->paginate($this->puginNewsMain);
         $events = Event::orderby('id', 'desc')->paginate($this->puginEventsMain);
-        return view('welcome')->with(['news' => $news, 'events' => $events]);
+        $sliders = Slider::get();
+        return view('welcome', compact('news', 'events', 'sliders'));
     }
 
 }

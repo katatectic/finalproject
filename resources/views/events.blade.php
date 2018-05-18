@@ -14,9 +14,9 @@
     <div id="mobile-nav-container"></div><!-- Small devices menu -->
 </div>
 <div id="content" class="site-content wrappr">
-    @if (count($all) > 0)
+    @if (count($events) > 0)
     <section class="events">
-        @foreach($all as $event)
+        @foreach($events as $event)
         <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
         <div class="grid"><!-- toast grid declaration -->
             <div id="primary" class="content-area grid__col grid__col--3-of-3">
@@ -58,7 +58,7 @@
             </div><!-- #primary -->
         </div>
         @endforeach
-        {{ $all->links() }}
+        {{ $events->links() }}
     </section>
     @endif
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

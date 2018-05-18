@@ -3,7 +3,7 @@
 <div class="content">
     <section id="contentSection">
         <div class="row">
-            @if($user or $eventCount)
+            @if($user or $eventCount or $newsCount)
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -33,6 +33,11 @@
 									<tr><td class="active">Всего объявлений</td>
 									@if (!empty($eventCount) )
 									<td>{{$eventCount}}</td></tr>
+									@else <td>0</td>
+									@endif
+									<tr><td class="active">Всего новостей</td>
+									@if (!empty($newsCount) )
+									<td>{{$newsCount}}</td></tr>
 									@else <td>0</td>
 									@endif
                                 </tbody>

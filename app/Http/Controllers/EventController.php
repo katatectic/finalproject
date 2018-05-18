@@ -12,11 +12,11 @@ class EventController extends Controller {
     public $puginationEvents = 5;
 
     public function eventsPage(Request $request) {
-        $all = Event::orderBy('id', 'DESC')->paginate($this->puginationEvents);
+        $events = Event::orderBy('id', 'DESC')->paginate($this->puginationEvents);
         if (request()->ajax()) {
-            return view('events', compact('all'));
+            return view('events', compact('events'));
         }
-        return view('events')->with(['all' => $all]);
+        return view('events', compact('events'));
     }
 
     public function oneEvent($id) {
@@ -25,9 +25,9 @@ class EventController extends Controller {
     }
 
     public function adminEvents() {
-        $all = Event::orderBy('id', 'DESC')->paginate(3);
+        $events = Event::orderBy('id', 'DESC')->paginate(3);
         $eventsCount = Event::count();
-        return view('admin.events.allEvents', ['all' => $all, 'eventsCount' => $eventsCount]);
+        return view('admin.events.allEvents', compact('events', 'eventsCount'));
     }
 
     public function eventView() {
@@ -103,8 +103,8 @@ class EventController extends Controller {
             $editOne->save();
             return redirect()->route('adminevents');
         }
-        $all = Event::find($id);
-        return view('admin.events.editEvent', ['all' => $all]);
+        $event = Event::find($id);
+        return view('admin.events.editEvent', compact('event'));
     }
 
 }

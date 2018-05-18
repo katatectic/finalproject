@@ -10,7 +10,7 @@ class Article extends Model
 
     /*Relations*/
 
-    public $fillable = ['title', 'user_id', 'event_date', 'content', 'photo'];
+    public $fillable = ['title', 'user_id', 'date', 'content', 'photo'];
 
     public function comments()
     {

@@ -8,7 +8,7 @@
                 <div class="panel-heading">Добавить новость</div><br/><br/>
                 <div class="panel-body">
                     <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('addNews')}}">
-                       {{ csrf_field() }}
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label for="title" class="col-md-4 control-label">Заголовок</label>
                             <div class="col-md-6">
@@ -16,7 +16,7 @@
                                 <span style="color:red">{{ $errors->first('title') }}</span>
                             </div>
                         </div>
-			<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label for="event_date" class="col-md-4 control-label">Дата новости</label>
                             <div class="col-md-6">
@@ -32,17 +32,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="photo" class="col-md-4 control-label">Добавить фото</label>
+                            <label for="photo" class="col-md-4 control-label">Изображение</label>
                             <div class="col-md-6">
-                                <input id="photo" type="file" style="display: none;" class="form-control" name="photo" value="{{ old('photo') }}">
-                            </div>
+                                <input id="photo" type="file" class="form-control" name="photo" value="{{ old('photo') }}"  autofocus>
+                                <span style="color:red">{{ $errors->first('photo') }}</span>
+                            </div><br/>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Добавить новость
-                                </button>
-                            </div>
+                            <input name="submit" type="submit" id="submit" class="submit" value="Добавить новость"/>
                         </div>
                     </form>
                 </div>

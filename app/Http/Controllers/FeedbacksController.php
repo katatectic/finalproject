@@ -13,12 +13,10 @@ class FeedbacksController extends Controller {
 
     public function addFeedback(Request $request) {
         if ($request->method() == 'POST') {
-			$this->validate($request, 
-                ['name' => 'required|max:50',
+            $this->validate($request, ['name' => 'required|max:50',
                 'email' => 'required|email',
-                'message' => 'required',], 
-                ['name.required' => 'Введите Ваше имя',
-				'name.max' => 'Максимум 30 символов',
+                'message' => 'required',], ['name.required' => 'Введите Ваше имя',
+                'name.max' => 'Максимум 30 символов',
                 'email.required' => 'Выберите Вашу почту',
                 'email.email' => 'Введите правильный email',
                 'message.required' => 'Введите сообщение',]);
@@ -29,22 +27,26 @@ class FeedbacksController extends Controller {
         }
         return view('feedback.feedback');
     }
-	public function adminFeedbacks() {
-        $all = Feedback::orderBy('id', 'DESC')->paginate(10);
+
+    public function adminFeedbacks() {
+        $feedbacks = Feedback::orderBy('id', 'DESC')->paginate(2);
         $feedbacksCount = Feedback::count();
-        return view('admin.feedbacks.adminFeedbacks', ['all' => $all, 'feedbacksCount' => $feedbacksCount]);
+        return view('admin.feedbacks.adminFeedbacks', compact('feedbacks', 'feedbacksCount'));
     }
 
     public function adminFeedbacksShowOne($id) {
-        $article = Feedback::select()->where('id', $id)->first();
-        $article->status = '2';
-        $article->save();
-        return view('admin.feedbacks.adminOneFeedback', ['article' => $article]);
+        $feedback = Feedback::select()->where('id', $id)->first();
+        $feedback->status = '2';
+        $feedback->save();
+        return view('admin.feedbacks.adminOneFeedback', compact('feedback'));
     }
 
     public function deleteFeedback($id) {
-        $all = Feedback::find($id);
-        $all->delete();
+        if (!is_numeric($id))
+            return false;
+        $feedback = Feedback::find($id);
+        $feedback->delete();
         return redirect()->route('adminfeedbacks');
     }
+
 }

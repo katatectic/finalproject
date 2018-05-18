@@ -53,6 +53,15 @@ Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* 
  
 
  
+ 
+ Route::any('slider', 'SliderController@addView')->name('slider');
+ Route::any('addslider', 'SliderController@addSlider')->name('addSlider');
+ Route::any('adminsliders', 'SliderController@adminSliders')->name('adminSliders');
+ Route::any('adminoneslider/{id}', 'SliderController@adminOneSlider')->name('adminOneSlider');
+ Route::any('deleteslider/{id}', 'SliderController@deleteSlider')->name('deleteSlider');
+ Route::any('editslider/{id}', 'SliderController@editSlider')->name('editSlider');
+ 
+ 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут подтягивает перечень комитетов школы из базы*/
 Route::get('/about', function () {

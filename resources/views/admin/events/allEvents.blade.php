@@ -23,9 +23,9 @@
         <th>Краткое описание</th>
         <th>Полное описание</th>
         <th>Картинка</th>
-        @foreach($all as $event)
+        @foreach($events as $event)
         <tr class="showForm" id="{{$event->id}}">
-            <td class="authod_id">Руководитель</td>
+            <td class="authod_id">{{$event->user->name}}</td>
             <td class="title"><div style="max-height:120px;width:50px;overflow-x:hidden">{{$event->title}}</div></td>
             <td class="event_date">{{$event->event_date}}</td>
             <td class="event_hours">{{$event->event_hours}}</td>
@@ -47,7 +47,7 @@
         </tr>
         @endforeach
     </table>
-    {{$all->links()}}
+    {{$events->links()}}
     <div class='option'  align="center">
         <form method="post" action="" id="updateClass" enctype="multipart/form-data">
             {{ csrf_field() }}

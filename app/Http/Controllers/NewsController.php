@@ -7,16 +7,16 @@ use App\Article;
 use App\User;
 use DateTime;
 
-class NewsController extends Controller
-{
+class NewsController extends Controller {
+
     public $puginationNews = 10; //количество новостей на странице новостей
-    
+
     public function newsPage(Request $request) {
         $all = Article::orderBy('id', 'DESC')->paginate($this->puginationNews);
         if (request()->ajax()) {
             return view('news', compact('all'));
         }
-        return view('news')->with(['all' => $all]);
+        return view('news',compact('all'));
     }
 
     public function article($id) {
@@ -24,12 +24,12 @@ class NewsController extends Controller
         return view('article', compact('article'));
     }
 
-   public function adminNews() {
+    public function adminNews() {
         $all = Article::orderBy('id', 'DESC')->paginate(3);
         $newsCount = Article::count();
-        return view('admin.news.allNews', ['all' => $all, 'newsCount' => $newsCount]);
+        return view('admin.news.allNews', compact('all','newsCount'));
     }
-    
+
     public function newsView() {
         return view('admin.news.newsform');
     }
@@ -38,7 +38,7 @@ class NewsController extends Controller
         if ($request->method() == 'POST') {
             $this->validate($request, [
                 'title' => 'required',
-                'date' => 'required',   
+                'date' => 'required',
                 'content' => 'required',
                 'photo' => 'required|image|max:2048',], [
                 '*.required' => 'Поле не должно быть пустым',
@@ -46,7 +46,7 @@ class NewsController extends Controller
                 'photo.max' => 'Максимальный размер изображения=2048'
             ]);
             $data = $request->all();
-            
+            unset($data['__token']);
             $date = new DateTime();
             $data['date'] = $date->format('Y-m-d');
             if ($request->hasFile('photo')) {
@@ -63,9 +63,9 @@ class NewsController extends Controller
         $file = $request->file('photo');
         $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
         $file->move(public_path() . '/images', $newfilename);
-        return $newfilename;  
+        return $newfilename;
     }
-    
+
     public function deleteNews($id) {
         if (!is_numeric($id))
             return false;
@@ -80,7 +80,7 @@ class NewsController extends Controller
         if ($request->method() == "POST") {
             $this->validate($request, [
                 'title' => 'required',
-                'date' => 'required',   
+                'date' => 'required',
                 'content' => 'required',
                 'photo' => 'required|image|max:2048',], [
                 '*.required' => 'Поле не должно быть пустым',
