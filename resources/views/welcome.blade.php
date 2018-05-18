@@ -232,11 +232,12 @@
 											<div id="panel-425-1-0-1"
                                          class="so-panel widget widget_doublef-featured-gallery panel-last-child"
                                          data-index="2">
-                                        <div class="so-widget-doublef-featured-gallery so-widget-doublef-featured-gallery-base">
-                                            <h2 class="widget-title">Избранная галлерея</h2>
+										 @if($albums)
+                                        <div class="so-widget-doublef-featured-gallery so-widget-doublef-featured-gallery-base"><br/><br/>
+                                            <a href="{{route('getlist')}}"<h5 class="doublef-gallery-photos-num"><h2 class="widget-title">Избранная галлерея</h2></a>
                                             <div class="doublef-gallery-widget-wrap">
                                                 <figure class="post-thumbnail">
-                                                    <a href="http://buntington2.wpshow.me/doublef-gallery/school-photo-shots/"
+                                                    <a href="{{route('getlist')}}"
                                                        title="School Photo Shots">
                                                         <img width="1140" height="500"
                                                              src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg"
@@ -247,13 +248,12 @@
                                                 </figure>
                                                 <div class="doublef-gallery-title-wrap">
                                                     <h2 class="doublef-gallery-title">
-                                                        <a href="http://buntington2.wpshow.me/doublef-gallery/school-photo-shots/"
-                                                           title="School Photo Shots">Нужна ли, хрен ее знает</a>
                                                     </h2>
-                                                    <h5 class="doublef-gallery-photos-num">11 фото</h5>
+                                                    <a href="{{route('getlist')}}"<h5 class="doublef-gallery-photos-num">11 фото</h5></a>
                                                 </div>
                                             </div>
                                         </div>
+										@endif
                                     </div>
                                         </div>
                                     </div>

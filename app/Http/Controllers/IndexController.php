@@ -7,6 +7,8 @@ use App\Article;
 use App\Event;
 use App\User;
 use App\Slider;
+use App\Image;
+use App\Album;
 
 class IndexController extends Controller {
 
@@ -17,7 +19,8 @@ class IndexController extends Controller {
         $news = Article::orderby('id', 'desc')->paginate($this->puginNewsMain);
         $events = Event::orderby('id', 'desc')->paginate($this->puginEventsMain);
         $sliders = Slider::get();
-        return view('welcome', compact('news', 'events', 'sliders'));
+		$albums = Album::with('Photos')->get();
+        return view('welcome', compact('news', 'events', 'sliders','albums'));
     }
 
 }

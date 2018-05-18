@@ -35,7 +35,7 @@
             </td>
             <td><a href="{{route('onenews',['id'=>$news->id])}}" class="more-link button">Просмотр новости</a></td>
             <td><a href="{{route('editnews',['id'=>$news->id]) }}" class="more-link button">Редактировать новость</a></td>
-            <td><a href="{{route('deletenews',$news->id)}}" onclick="return confirmDelete();" class="more-link button">Удалить новость</a></td>
+            <td><a href="{{route('deletenews',$news->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button">Удалить новость</a></td>
         </tr>
         @endforeach
     </table>
@@ -53,15 +53,6 @@
         <p><input type="button" class="subm no btn btn-primary" value="Отмена"></p>
     </div>
 </div>
-<script>
-    function confirmDelete() {
-        if (confirm("Вы подтверждаете удаление?")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-</script>
 <script>
     $(document).ready(function () {
         $('.no').click(function () {

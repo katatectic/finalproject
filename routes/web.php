@@ -62,6 +62,33 @@ Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* 
  Route::any('editslider/{id}', 'SliderController@editSlider')->name('editSlider');
  
  
+Route::get('/addimage/{id}','ImageController@getForm')->name('add_image');
+Route::post('/addimage','ImageController@imageAdd')->name('add_image_to_album');
+Route::get('/deleteimage/{id}','ImageController@deleteImage')->name('deleteImage');
+ 
+ 
+ 
+ Route::any('albums','AlbumController@getlist')->name('getlist');
+Route::any('createalbum','AlbumController@getForm')->name('getform');
+Route::any('createalbum','AlbumController@albumCreate')->name('albumcreate');
+Route::any('album/{id}', 'AlbumController@getAlbum')->name('onealbum');
+ Route::any('deletelbum/{id}', 'AlbumController@deleteAlbum')->name('deleteAlbum');
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут подтягивает перечень комитетов школы из базы*/
 Route::get('/about', function () {

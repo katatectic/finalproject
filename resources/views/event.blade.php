@@ -28,7 +28,7 @@
                         <p>{{$event->content}}</p>
                     </div>
                     <a href="{{ route('editevent',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a>
-                    <a href="{{route('deleteevent',$event->id)}}" onclick="return confirmDelete();" class="more-link button" style="float:right">Удалить событие</a><!-- .entry-content -->
+                    <a href="{{route('deleteevent',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button" style="float:right">Удалить событие</a><!-- .entry-content -->
                 </article>
                 @endif
                 @foreach($event->comments as $comment)
@@ -54,7 +54,7 @@
                             </div>
                             @if (Auth::user()->role == 1 || Auth::user()->id == $comment->user->id)
                             <p>
-                                <a style="float:right" onclick="return confirmDeleteComment();" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
+                                <a style="float:right" onclick="return confirm('Удалить комментарий?')" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
                             </p>
                             @endif
                         </div><!-- #comment-## -->
@@ -86,23 +86,6 @@
             </main><!-- #main -->        
         </div>           
     </div>
-    <script>
-        function confirmDeleteComment() {
-            if (confirm("Удалить комментарий?")) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    </script>
-    <script>
-        function confirmDelete() {
-            if (confirm("Вы подтверждаете удаление?")) {
-                return true;
-            } else {
-                return false;
-            }
-        }
     </script>
 </div>
 @endsection
