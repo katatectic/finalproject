@@ -22,15 +22,15 @@
                         </h3>
                         <h3 class="doublef-event-item-date">Дата проведения {{$event->event_date}}</h3>
                         <h3 class="doublef-event-item-time">Время проведения {{$event->event_hours}}</h3>
-                        <div class="doublef-event-address">Место проведения - {{$event->address}}</div><!-- .doublef-event-address -->
-                    </header><!-- .entry-header -->
+                        <div class="doublef-event-address">Место проведения - {{$event->address}}</div>
+                    </header>
                     <div class="entry-content">
-                        <p>{{$event->content}}</p><!--Тут какие-то косяки с вёрсткой. Если в одну строчку лепить, то она вылазит за экран-->
+                        <p>{{$event->content}}</p>
                     </div>
                     <a href="{{ route('editevent',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a>
                     <a href="{{route('deleteevent',$event->id)}}" onclick="return confirmDelete();" class="more-link button" style="float:right">Удалить событие</a><!-- .entry-content -->
                 </article>
-                @endif<!-- #post-519 -->
+                @endif
                 @foreach($event->comments as $comment)
                 <div id="comments" class="comments-area">
                     <div class="comment_list comment-list">
@@ -38,9 +38,9 @@
                             <div class="avatar clear">
                                 <div class="avatar-image pull-left">
                                     <img alt=''
-                                     src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
-                                     srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
-                                     class='avatar avatar-50 photo' height='50' width='50'/>
+                                         src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
+                                         srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
+                                         class='avatar avatar-50 photo' height='50' width='50'/>
                                 </div>
                                 <div class="avatar-body pull-left">
                                     <h6 class="avatar-name">
@@ -80,11 +80,11 @@
                             </p>
                             {{ csrf_field() }}
                         </form>
-                    </div><!-- #respond -->
+                    </div>
                     @endif                      
                 </div><!-- #comments -->
             </main><!-- #main -->        
-        </div><!-- #primary -->                
+        </div>           
     </div>
     <script>
         function confirmDeleteComment() {
@@ -104,6 +104,5 @@
             }
         }
     </script>
-    <!-- .grid-->
-</div><!-- #content -->
+</div>
 @endsection

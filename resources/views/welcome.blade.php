@@ -22,58 +22,22 @@
                                                  style="height: 600px;"><!-- Slider main container -->
                                                 <!-- wrapper -->
                                                 <div class="swiper-wrapper">
+												@foreach($sliders as $slider)
                                                     <div class="swiper-slide"
-                                                         style="background: #000000 url( http://buntington2.wpshow.me/wp-content/uploads/2014/06/8724862214_8e0a683196_b.jpg ) no-repeat top center; background-size: cover;">
+                                                         style="background: #000000 url( {{asset('images/sliders/'.$slider->photo)}}) no-repeat top center; background-size: cover;">
                                                         <div data-swiper-parallax="-300"
                                                              data-swiper-parallax-duration="500"
                                                              class="swiper-slide-content"
                                                              style="vertical-align: bottom;">
                                                             <div class="clide-content-wrappr invert"
                                                                  style="margin: 0px 0px 0px 0px; padding: 60px; background: rgba( 0,0,0,0.3 );">
-                                                                <h3>Это первый хороший слайд!</h3>
-                                                                <p class="remove-margin-bottom">Не следует, однако забывать, что укрепление и развитие структуры.</p>
+                                                                <h3>{{$slider->title}}</h3>
+                                                                <p class="remove-margin-bottom">{{$slider->description}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="swiper-slide"
-                                                         style="background: #000000 url( http://buntington2.wpshow.me/wp-content/uploads/2014/06/8425536360_8d60723f65_b.jpg ) no-repeat top center; background-size: cover;">
-                                                        <div data-swiper-parallax="-300"
-                                                             data-swiper-parallax-duration="500"
-                                                             class="swiper-slide-content"
-                                                             style="vertical-align: bottom;">
-                                                            <div class="clide-content-wrappr invert"
-                                                                 style="margin: 0px 0px 0px 0px; padding: 60px; background: rgba( 0,0,0,0.3 );">
-                                                                <h3>Это второй хороший слайд!</h3>
-                                                                <p class="remove-margin-bottom">Разнообразный и богатый опыт постоянное информационно-пропагандистское.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-slide"
-                                                         style="background: #000000 url( http://buntington2.wpshow.me/wp-content/uploads/2014/06/11980066934_0df2439628_b.jpg ) no-repeat top center; background-size: cover;">
-                                                        <div data-swiper-parallax="-300"
-                                                             data-swiper-parallax-duration="500"
-                                                             class="swiper-slide-content"
-                                                             style="vertical-align: bottom;">
-                                                            <div class="clide-content-wrappr invert"
-                                                                 style="margin: 0px 0px 0px 0px; padding: 60px; background: rgba( 0,0,0,0.3 );">
-                                                                <h3>Это третий хороший слайд!</h3>
-                                                                <p class="remove-margin-bottom">Значимость этих проблем настолько очевидна, что постоянное.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="swiper-slide"
-                                                         style="background: #000000 url( http://buntington2.wpshow.me/wp-content/uploads/2014/06/9735272477_9f8b8a81e3_b.jpg ) no-repeat top center; background-size: cover;">
-                                                        <div data-swiper-parallax="-300"
-                                                             data-swiper-parallax-duration="500"
-                                                             class="swiper-slide-content"
-                                                             style="vertical-align: bottom;">
-                                                            <div class="clide-content-wrappr invert"
-                                                                 style="margin: 0px 0px 0px 0px; padding: 60px; background: rgba( 0,0,0,0.3 );">
-                                                                <h3>Это четвертый хороший слайд!</h3>
-                                                                <p class="remove-margin-bottom">Не следует, однако забывать, что сложившаяся структура.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+													@endforeach
+                                                   
                                                 </div>
                                                 <!-- navigation buttons -->
                                                 <div class="button-prev" style="color: #ffffff;"><i

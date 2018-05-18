@@ -8,7 +8,7 @@
                 <div class="panel-heading">Добавить новость</div><br/><br/>
                 <div class="panel-body">
                     <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('addNews')}}">
-                       {{ csrf_field() }}
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label for="title" class="col-md-4 control-label">Заголовок</label>
                             <div class="col-md-6">
@@ -16,7 +16,7 @@
                                 <span style="color:red">{{ $errors->first('title') }}</span>
                             </div>
                         </div>
-			<input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label for="event_date" class="col-md-4 control-label">Дата новости</label>
                             <div class="col-md-6">
@@ -39,9 +39,7 @@
                             </div><br/>
                         </div>
                         <div class="form-group">
-                            
-                                <input name="submit" type="submit" id="submit" class="submit" value="Добавить новость"/>
-                            
+                            <input name="submit" type="submit" id="submit" class="submit" value="Добавить новость"/>
                         </div>
                     </form>
                 </div>

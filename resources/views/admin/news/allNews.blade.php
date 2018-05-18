@@ -21,7 +21,6 @@
         <th>Картинка</th>
         @foreach($all as $news)
         <tr class="showForm" id="{{$news->id}}">
-            
             <td class="title"><div style="max-height:120px;width:50px;overflow-x:hidden">{{$news->title}}</div></td>
             <td class="date">{{$news->date}}</td>  
             <td class="content"><div style="max-height:120px;width:100px;overflow-x:hidden">{{$news->content}}</div></td>
@@ -76,7 +75,7 @@
             });
             $('input.id').val($(this).attr('id'));
             $('input[name="title_edit"]').val($(this).children('td.title').text());
-            $('input[name="news_date_edit"]').val($(this).children('td.date').text());            
+            $('input[name="news_date_edit"]').val($(this).children('td.date').text());
             $('textarea[name="content_edit"]').val($(this).children('td.content').text());
             $('input[name="photo_edit"]').val($(this).children('td.photo').text());
         });
