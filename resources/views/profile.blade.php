@@ -95,7 +95,7 @@
                                             <div class="post-text-block grid__col grid__col--6-of-12 grid__col--m-1-of-1">
                                                 <header class="entry-header">
                                                     <h2 class="entry-title">
-                                                        <a href="{{route('event',['id'=>$event->id])}}">{{ $article->title }}</a>
+                                                        <a href="{{route('article',['id'=>$article->id])}}">{{ $article->title }}</a>
                                                     </h2>
                                                 </header><!-- .entry-header -->
                                             </div><!-- .post-text-block -->
