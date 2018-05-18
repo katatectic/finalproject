@@ -28,7 +28,7 @@
                                     <span style="color:red">{{ $errors->first('description') }}</span>
                                 </div>
                             </div>
-                            <input type="submit" value="Отправьте вашу заявку">
+                            <input type="submit" value="Добавить слайдер">
                             {{ csrf_field() }}
                         </form>
                     </div>

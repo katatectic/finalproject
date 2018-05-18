@@ -6,37 +6,30 @@ use Illuminate\Http\Request;
 use App\Album;
 use App\Image;
 
-
 class AlbumController extends Controller {
 
-    
-public function getList()
-  {
-    $albums = Album::with('Photos')->get();
-    return view('album.index',compact('albums'));
-  }
-  
-  public function getAlbum($id)
-  {
-    $album = Album::with('Photos')->find($id);
-	return view('album.album',compact('album'));
-  }
-  
-  
-  
-  
-  public function getForm()
-  {
-    return view('album.createalbum');
-  }
-  
-   public function addPhoto($request) {
+    public function getList() {
+        $albums = Album::with('Photos')->get();
+        return view('album.index', compact('albums'));
+    }
+
+    public function getAlbum($id) {
+        $album = Album::with('Photos')->find($id);
+        return view('album.album', compact('album'));
+    }
+
+    public function getForm() {
+        return view('album.createalbum');
+    }
+
+    public function addPhoto($request) {
         $file = $request->file('cover_image');
         $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
         $file->move(public_path() . '/images/albums', $newfilename);
         return $newfilename;
     }
-  public function albumCreate(Request $request) {
+
+    public function albumCreate(Request $request) {
         if ($request->method() == 'POST') {
             $this->validate($request, [
                 'name' => 'required',
@@ -56,9 +49,8 @@ public function getList()
         }
         return view('album.createalbum');
     }
-	
-	
-	public function deleteAlbum($id) {
+
+    public function deleteAlbum($id) {
         if (!is_numeric($id))
             return false;
         $all = Album::find($id);
@@ -67,4 +59,5 @@ public function getList()
         $all->delete();
         return redirect()->route('getlist');
     }
+
 }

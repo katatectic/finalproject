@@ -16,7 +16,7 @@ class NewsController extends Controller {
         if (request()->ajax()) {
             return view('news', compact('all'));
         }
-        return view('news',compact('all'));
+        return view('news', compact('all'));
     }
 
     public function article($id) {
@@ -27,7 +27,7 @@ class NewsController extends Controller {
     public function adminNews() {
         $all = Article::orderBy('id', 'DESC')->paginate(3);
         $newsCount = Article::count();
-        return view('admin.news.allNews', compact('all','newsCount'));
+        return view('admin.news.allNews', compact('all', 'newsCount'));
     }
 
     public function newsView() {
@@ -62,7 +62,7 @@ class NewsController extends Controller {
     public function addPhoto($request) {
         $file = $request->file('photo');
         $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . '/images', $newfilename);
+        $file->move(public_path() . '/images/news', $newfilename);
         return $newfilename;
     }
 
@@ -71,7 +71,7 @@ class NewsController extends Controller {
             return false;
         $all = Article::find($id);
         $img = $all->photo;
-        unlink(public_path() . '/images/' . $img);
+        unlink(public_path() . '/images/news/' . $img);
         $all->delete();
         return redirect()->route('adminnews');
     }

@@ -19,8 +19,8 @@ class IndexController extends Controller {
         $news = Article::orderby('id', 'desc')->paginate($this->puginNewsMain);
         $events = Event::orderby('id', 'desc')->paginate($this->puginEventsMain);
         $sliders = Slider::get();
-		$albums = Album::with('Photos')->get();
-        return view('welcome', compact('news', 'events', 'sliders','albums'));
+        $albums = Album::with('Photos')->get();
+        return view('welcome', compact('news', 'events', 'sliders', 'albums'));
     }
 
 }

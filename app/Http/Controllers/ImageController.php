@@ -9,15 +9,13 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 class ImageController extends Controller {
-	
 
-	public function getForm($id)
-  {
-    $album = Album::findOrFail($id);
-	 return view('album.addimage', compact('album'));
-  }
-  
-  public function imageAdd(Request $request) {
+    public function getForm($id) {
+        $album = Album::findOrFail($id);
+        return view('album.addimage', compact('album'));
+    }
+
+    public function imageAdd(Request $request) {
         if ($request->method() == 'POST') {
             $this->validate($request, [
                 'description' => 'required',
@@ -36,7 +34,8 @@ class ImageController extends Controller {
         }
         return view('albums.addimage');
     }
-	public function deleteImage($id) {
+
+    public function deleteImage($id) {
         if (!is_numeric($id))
             return false;
         $all = Image::find($id);
@@ -46,12 +45,11 @@ class ImageController extends Controller {
         return redirect()->route('getlist');
     }
 
-		
-  
-   public function image($request) {
+    public function image($request) {
         $file = $request->file('image');
         $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
         $file->move(public_path() . '/images/albums/photos/', $newfilename);
         return $newfilename;
     }
+
 }

@@ -28,7 +28,7 @@ class SliderController extends Controller {
                 $data['photo'] = $this->addSliderPhoto($request);
             };
             $id = $create->id;
-            return redirect()->route('main');
+            return redirect()->route('adminSliders');
         }
         return view('admin.sliders.slider');
     }

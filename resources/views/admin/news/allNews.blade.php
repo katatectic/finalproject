@@ -33,7 +33,7 @@
                     @endempty
                 </div>
             </td>
-            <td><a href="{{route('onenews',['id'=>$news->id])}}" class="more-link button">Просмотр новости</a></td>
+            <td><a href="{{route('article', ['id'=>$news->id])}}" class="more-link button">Просмотр новости</a></td>
             <td><a href="{{route('editnews',['id'=>$news->id]) }}" class="more-link button">Редактировать новость</a></td>
             <td><a href="{{route('deletenews',$news->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button">Удалить новость</a></td>
         </tr>
