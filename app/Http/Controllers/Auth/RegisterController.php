@@ -8,7 +8,6 @@ use App\Http\Controllers\UsersStudentClassController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-
 class RegisterController extends UsersStudentClassController {
     /*
       |--------------------------------------------------------------------------
@@ -54,6 +53,7 @@ use RegistersUsers;
                     'email' => 'required|email|max:30|unique:users',
                     'avatar' => 'nullable|image|max:2048',
                     'password' => 'required|min:6|confirmed',
+                    'captcha' => 'required|captcha'
                         ], [
                     '*.required' => 'Поле не должно быть пустым',
                     '*.max' => 'Максимум 30 символов',
@@ -65,7 +65,8 @@ use RegistersUsers;
                     'avatar.image' => 'Загруженный файл должен быть изображением',
                     'avatar.max' => 'Максимальный размер изображения=2048',
                     'password.min' => 'Пароль должен состоять минимум из 6 символов',
-                    'password.confirmed' => 'Правильно подтвердите пароль'
+                    'password.confirmed' => 'Правильно подтвердите пароль',
+                    'captcha.captcha' => 'Капча введена не верно',
         ]);
     }
 
@@ -84,14 +85,14 @@ use RegistersUsers;
             $newfilename = rand(0, 100) . "." . $profileImage->getClientOriginalExtension();
             $profileImage->move(public_path() . '/images/users', $newfilename);
         }
-         $newUser = User::create([
-            'surname' => $data['surname'],
-            'name' => $data['name'],
-            'middle_name' => $data['middle_name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'avatar' => $newfilename,
-            'password' => bcrypt($data['password']),
+        $newUser = User::create([
+                    'surname' => $data['surname'],
+                    'name' => $data['name'],
+                    'middle_name' => $data['middle_name'],
+                    'email' => $data['email'],
+                    'phone' => $data['phone'],
+                    'avatar' => $newfilename,
+                    'password' => bcrypt($data['password']),
         ]);
         $this->storeUSC($newUser->id, $request->studentsClasses);
         return $newUser;

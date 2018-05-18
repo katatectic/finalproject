@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2" style="margin-left: 200px;">
@@ -71,7 +71,14 @@
                                 <span style="color:red">{{ $errors->first('password-confirm') }}</span>
                             </div>
                         </div>
-						
+                        <div class="form-group">
+                            <label for="captcha" class="col-md-4 control-label">Введите капчу</label>
+                            <div class="col-md-6">
+                                @captcha
+                                <input type="text" id="captcha" name="captcha" autofocus>
+                                <span style="color:red">{{ $errors->first('captcha') }}</span>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
@@ -86,26 +93,27 @@
     </div>
 </div>
 <script>
-    $(document).ready(function(){
-        $.ajax({
-            type: 'get',
-            url: '{{ route('getStudentClasses') }}',
-            data: '',
-            success: function(data){
-                console.log(data);
-                for (var key in data.studentsClasses) {
-                    var id = data.studentsClasses[key].id;
-                    var letter = data.studentsClasses[key].letter_class;
-                    if ( data.thisYear - data.studentsClasses[key].start_year + data.transition < 4 ) {
-                        var studentClass = data.thisYear - data.studentsClasses[key].start_year + data.transition;
-                        $('#classesSelect').append("<option value='"+ id +"'>"+ studentClass +" - "+ letter +"</option>");
-                    } else if ( data.thisYear <= data.studentsClasses[key].year_of_issue ) {
-                        var studentClass = data.thisYear - data.studentsClasses[key].start_year + data.transition + 1 - data.studentsClasses[key].fourth_class;
-                        $('#classesSelect').append("<option value='"+ id +"'>"+ studentClass +" - "+ letter +"</option>");
-                    } else {}
+$(document).ready(function () {
+    $.ajax({
+        type: 'get',
+        url: '{{ route('getStudentClasses') }}',
+        data: '',
+        success: function (data) {
+            console.log(data);
+            for (var key in data.studentsClasses) {
+                var id = data.studentsClasses[key].id;
+                var letter = data.studentsClasses[key].letter_class;
+                if (data.thisYear - data.studentsClasses[key].start_year + data.transition < 4) {
+                    var studentClass = data.thisYear - data.studentsClasses[key].start_year + data.transition;
+                    $('#classesSelect').append("<option value='" + id + "'>" + studentClass + " - " + letter + "</option>");
+                } else if (data.thisYear <= data.studentsClasses[key].year_of_issue) {
+                    var studentClass = data.thisYear - data.studentsClasses[key].start_year + data.transition + 1 - data.studentsClasses[key].fourth_class;
+                    $('#classesSelect').append("<option value='" + id + "'>" + studentClass + " - " + letter + "</option>");
+                } else {
                 }
             }
-        });
+        }
     });
+});
 </script>
 @endsection
