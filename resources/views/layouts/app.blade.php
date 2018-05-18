@@ -125,7 +125,7 @@ var panelsStyles = {"fullContainer":"body"};
                                                             </li>
                                                             @else
                                                             <li id="menu-item-1121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1121">
-                                                                <a href="{{--здесь добавить роутинг на профиль--}}">Вы вошли как {{ Auth::user()->name }}</a>
+                                                                <a href="{{route('profile', ['id'=>Auth::user()->id])}}">Вы вошли как {{ Auth::user()->name }}</a>
                                                             </li>
                                                             {{--
                                                                 @if (Auth::user()->role == 1)
