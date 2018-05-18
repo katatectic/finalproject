@@ -71,12 +71,10 @@ class EventsTableSeeder extends Seeder
             shuffle($title);
             $data[] = [
                 'title' => title_case(title($title)),
-                'user_id' => 1,
+                'author_id' => 1,
                 'content' => content($description),
                 'event_date' => date('Y-m-d h:i:s', time()+$time),
-                'created_at' => date('Y-m-d h:i:s', time()+$time),
-                'description' => 'sdsdsdsdsd',
-                'event_hours' => 'что это?'
+                'created_at' => date('Y-m-d h:i:s', time()+$time)
             ];
         }
         DB::table('events')->insert($data);

@@ -46,7 +46,7 @@ class NewsController extends Controller
                 'photo.max' => 'Максимальный размер изображения=2048'
             ]);
             $data = $request->all();
-            
+            unset($data['__token']);
             $date = new DateTime();
             $data['date'] = $date->format('Y-m-d');
             if ($request->hasFile('photo')) {

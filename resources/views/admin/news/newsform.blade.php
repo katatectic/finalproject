@@ -32,17 +32,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="photo" class="col-md-4 control-label">Добавить фото</label>
+                            <label for="photo" class="col-md-4 control-label">Изображение</label>
                             <div class="col-md-6">
-                                <input id="photo" type="file" style="display: none;" class="form-control" name="photo" value="{{ old('photo') }}">
-                            </div>
+                                <input id="photo" type="file" class="form-control" name="photo" value="{{ old('photo') }}"  autofocus>
+                                <span style="color:red">{{ $errors->first('photo') }}</span>
+                            </div><br/>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Добавить новость
-                                </button>
-                            </div>
+                            
+                                <input name="submit" type="submit" id="submit" class="submit" value="Добавить новость"/>
+                            
                         </div>
                     </form>
                 </div>
