@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UsersStudentClassController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller {
+
+class RegisterController extends UsersStudentClassController {
     /*
       |--------------------------------------------------------------------------
       | Register Controller
@@ -82,7 +84,7 @@ use RegistersUsers;
             $newfilename = rand(0, 100) . "." . $profileImage->getClientOriginalExtension();
             $profileImage->move(public_path() . '/images/users', $newfilename);
         }
-        return User::create([
+         $newUser = User::create([
             'surname' => $data['surname'],
             'name' => $data['name'],
             'middle_name' => $data['middle_name'],
@@ -91,6 +93,8 @@ use RegistersUsers;
             'avatar' => $newfilename,
             'password' => bcrypt($data['password']),
         ]);
+        $this->storeUSC($newUser->id, $request->studentsClasses);
+        return $newUser;
     }
 
 }

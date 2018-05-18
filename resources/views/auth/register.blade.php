@@ -52,9 +52,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="avatar" class="col-md-4 control-label">Фотография</label>
+                            <label for="studentsClasses" class="col-md-4 control-label">Учебный класс</label>
                             <div class="col-md-6">
-                                <select name="studentsClasses" id="classesSelect" multiple></select>
+                                <select name="studentsClasses[]" id="classesSelect" multiple></select>
                             </div>
                         </div>
                         <div class="form-group">
