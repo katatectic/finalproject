@@ -130,32 +130,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="panel-425-1-0-1"
-                                         class="so-panel widget widget_doublef-featured-gallery panel-last-child"
-                                         data-index="2">
-                                        <div class="so-widget-doublef-featured-gallery so-widget-doublef-featured-gallery-base">
-                                            <h2 class="widget-title">Избранная галлерея</h2>
-                                            <div class="doublef-gallery-widget-wrap">
-                                                <figure class="post-thumbnail">
-                                                    <a href="http://buntington2.wpshow.me/doublef-gallery/school-photo-shots/"
-                                                       title="School Photo Shots">
-                                                        <img width="1140" height="500"
-                                                             src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg"
-                                                             class="attachment-full size-full wp-post-image" alt=""
-                                                             srcset="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg 1140w, http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b-600x263.jpg 600w"
-                                                             sizes="(max-width: 1140px) 100vw, 1140px"/>
-                                                    </a>
-                                                </figure>
-                                                <div class="doublef-gallery-title-wrap">
-                                                    <h2 class="doublef-gallery-title">
-                                                        <a href="http://buntington2.wpshow.me/doublef-gallery/school-photo-shots/"
-                                                           title="School Photo Shots">Нужна ли, хрен ее знает</a>
-                                                    </h2>
-                                                    <h5 class="doublef-gallery-photos-num">11 фото</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <!-- Закончился левый сайдбар с новостями + галерея внизу -->
@@ -255,6 +229,32 @@
                                                     </div>
                                                 </a>
                                             </div>
+											<div id="panel-425-1-0-1"
+                                         class="so-panel widget widget_doublef-featured-gallery panel-last-child"
+                                         data-index="2">
+                                        <div class="so-widget-doublef-featured-gallery so-widget-doublef-featured-gallery-base">
+                                            <h2 class="widget-title">Избранная галлерея</h2>
+                                            <div class="doublef-gallery-widget-wrap">
+                                                <figure class="post-thumbnail">
+                                                    <a href="http://buntington2.wpshow.me/doublef-gallery/school-photo-shots/"
+                                                       title="School Photo Shots">
+                                                        <img width="1140" height="500"
+                                                             src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg"
+                                                             class="attachment-full size-full wp-post-image" alt=""
+                                                             srcset="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg 1140w, http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b-600x263.jpg 600w"
+                                                             sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                    </a>
+                                                </figure>
+                                                <div class="doublef-gallery-title-wrap">
+                                                    <h2 class="doublef-gallery-title">
+                                                        <a href="http://buntington2.wpshow.me/doublef-gallery/school-photo-shots/"
+                                                           title="School Photo Shots">Нужна ли, хрен ее знает</a>
+                                                    </h2>
+                                                    <h5 class="doublef-gallery-photos-num">11 фото</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                         </div>
                                     </div>
                                 </div>

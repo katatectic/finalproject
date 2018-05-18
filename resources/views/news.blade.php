@@ -22,7 +22,7 @@
                     <div class="article-wrapper layout-sleek"> 
                         <article id="post-35" class="post-35 post type-post status-publish format-standard has-post-thumbnail hentry category-news tag-galleries tag-meetings tag-school">
                             <figure class="post-thumbnail">
-                                <a href="{{route('article',['id'=>$news->id])}}" title=title="{{ $news->title }}">
+                                <a href="{{route('article',['id'=>$news->id])}}" title="{{ $news->title }}">
                                     <img width="1140" height="500"
                                          src="{{asset('images/'.$news->photo)}}"
                                          class="attachment-full size-full wp-post-image"
@@ -40,7 +40,7 @@
                             </header><!-- .entry-header -->        
                             <div class="entry-content">            
                                 <p>{{$news->content}}
-                                    <a class="more-link button" href="">Читать далее...</a>
+                                    <a class="more-link button" href="{{route('article', ['id'=>$news->id])}}">Читать далее...</a>
                                 </p>
                                 <span class="screen-reader-text">Продолжить чтение  {{ $news->title }}</span>
                             </div><!-- .entry-content -->        
