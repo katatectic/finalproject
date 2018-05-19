@@ -189,14 +189,16 @@ var panelsStyles = {"fullContainer":"body"};
                             <li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
                                 <a title="" href="{{route('event.index')}}">События</a>
                             </li>
-							<li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
+                            <li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
+                                <a title="" href="{{route('report')}}">Отчет</a>
+                            </li>
+                            <li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
                                 <a title="" href="{{route('addFeedback')}}">Обратная связь</a>
                             </li>
                             <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('contacts')}}">Контакты</a></li>    
                             <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('event.create')}}">Добавить событие</a></li><!--Просто добавление события с админки. Потом всё нормально настроится-->       
-                            <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
-                                <a href="{{ route('newsview') }}">Добавить новость</a>
-                            </li>
+                            <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309"><a href="{{ route('newsview') }}">Добавить новость</a></li>
+                            <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309"><a href="{{ route('reportform') }}">Сделать отчет</a></li>ы
                         </ul>                    
                     </nav><!-- #site-navigation -->                                
                 </div>        

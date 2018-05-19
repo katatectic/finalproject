@@ -67,6 +67,14 @@ Route::any('createalbum','AlbumController@getForm')->name('getform');
 Route::any('createalbum','AlbumController@albumCreate')->name('albumcreate');
 Route::any('album/{id}', 'AlbumController@getAlbum')->name('onealbum');
 Route::any('deletelbum/{id}', 'AlbumController@deleteAlbum')->name('deleteAlbum');
+
+//Report
+Route::get('report', 'ReportController@getReport')->name('report');
+Route::any('reportform', 'ReportController@reportForm')->name('reportform');
+Route::any('makereport', 'ReportController@makeReport')->name('makereport');
+Route::get('delete/{id}', 'ReportController@deleteLineReport')->name('delete');
+Route::any('updateform/{id}', 'ReportController@updateForm')->name('updateform');
+Route::any('update/{id}', 'ReportController@updateLineReport')->name('update');
  
 
 /* пока такой роут, здесь никакой логики не задейстовано.
