@@ -7,12 +7,12 @@ use App\Slider;
 
 class SliderController extends Controller {
 
-    public function addView() {
+    public function create() {
 
         return view('admin.sliders.slider');
     }
 
-    public function addSlider(Request $request) {
+    public function store(Request $request) {
         if ($request->method() == 'POST') {
             $this->validate($request, ['title' => 'required|max:50',
                 'photo' => 'required|image|max:2048',
@@ -45,12 +45,12 @@ class SliderController extends Controller {
         return view('admin.sliders.adminSliders', compact('sliders'));
     }
 
-    public function adminOneSlider($id) {
+    public function show($id) {
         $slider = Slider::select()->where('id', $id)->first();
         return view('admin.sliders.adminOneSlider', compact('slider'));
     }
 
-    public function deleteSlider($id) {
+    public function destroy($id) {
         if (!is_numeric($id))
             return false;
         $slider = Slider::find($id);
@@ -58,7 +58,7 @@ class SliderController extends Controller {
         return redirect()->route('adminSliders');
     }
 
-    public function editSlider($id, Request $request) {
+    public function edit($id, Request $request) {
         if ($request->method() == "POST") {
             $this->validate($request, [
                 'title' => 'required',

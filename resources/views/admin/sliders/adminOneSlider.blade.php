@@ -12,19 +12,10 @@
                     <h1 class="entry-title">{{$slider->title}}</h1>
                     <p>{{$slider->description}}</p>
             </div>
-            <a href="{{ route('editSlider',['id'=>$slider->id]) }}" class="more-link button">Редактировать слайдер</a>
-            <a href="{{route('deleteSlider',$slider->id)}}" onclick="return confirmDelete();" class="more-link button" style="float:right">Удалить слайдер</a>
+            <a href="{{ route('slider.edit',['id'=>$slider->id]) }}" class="more-link button">Редактировать слайдер</a>
+            <a href="{{route('slider.destroy',$slider->id)}}" onclick="return confirm('Удалить слайдер?')" class="more-link button" style="float:right">Удалить слайдер</a>
             @endif
         </div>
-        <script>
-            function confirmDelete() {
-                if (confirm("Вы подтверждаете удаление?")) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        </script>
         @endsection    
         </body>
         </html>

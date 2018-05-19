@@ -146,7 +146,7 @@
                                                 <article id="post-519"
                                                          class="layout_2 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
                                                     <figure class="post-thumbnail">
-                                                        <a href="{{ route('event',['id'=>$event->id]) }}"
+                                                        <a href="{{ route('event.show',['id'=>$event->id]) }}"
                                                            title="Newcomers welcome party">
                                                             <img width="1140" height="500"
                                                                  src="{{asset('images/'.$event->photo)}}"
@@ -159,13 +159,13 @@
                                                     <div class="doublef-events-content-wrap">
                                                         <header class="entry-header">
                                                             <h2 class="entry-title">
-                                                                <a href="{{ route('event',['id'=>$event->id]) }}">{{$event->title}}</a>
+                                                                <a href="{{ route('event.show',['id'=>$event->id]) }}">{{$event->title}}</a>
                                                             </h2>
                                                             <p class="doublef-event-item-date"><a href="{{route('profile',['id'=>$event->user->id])}}">Кто создал {{$event->user->name}} {{$event->user->surname}}</a></p>
                                                             <p class="doublef-event-item-date">Дата {{$event->event_date}}</p>
                                                             <p class="doublef-event-item-time">Время {{$event->event_hours}}</p>
                                                             <div class="doublef-event-address">Адрес {{$event->address}}
-                                                                <a class="more-link button"  href="{{ route('event',['id'=>$event->id]) }}">Читать далее</a>
+                                                                <a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>
                                                             </div><!-- .doublef-event-address -->
                                                         </header><!-- .entry-header -->
                                                     </div><!-- custom/inline style wrapper -->

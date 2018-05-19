@@ -31,21 +31,12 @@
                     </div>
                 </td>
                 <td><a href="{{ route('profile',['id'=>$user->id]) }}" class="more-link button">Просмотр</a></td>
-                <td><a href="{{route('edituser',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a></td>
-                <td><a href="{{route('deleteuser',$user->id)}}" onclick="return confirmDelete();" class="more-link button">Удалить пользователя</a></td>
+                <td><a href="{{route('profile.edit',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a></td>
+                <td><a href="{{route('profile.destroy',$user->id)}}" onclick="return confirm('Удалить профиль?')" class="more-link button">Удалить пользователя</a></td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    <script>
-        function confirmDelete() {
-            if (confirm("Вы подтверждаете удаление?")) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    </script>
 </div>@endsection  
 </body>
 </html>

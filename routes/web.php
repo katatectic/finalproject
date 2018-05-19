@@ -27,68 +27,48 @@ Route::any('editnews/{id}', 'NewsController@editNews')->name('editnews');/* Ре
 Route::any('deletenews/{id}', 'NewsController@deleteNews')->name('deletenews');/* Удаление новости*/
 Route::get('article/{id}','NewsController@article')->name('article');/* Показ одной новости*/
 
-
+//Feedbacks
 Route::any('adminfeedbacks', 'FeedbacksController@adminFeedbacks')->name('adminfeedbacks'); //Список заявок
-        Route::any('adminonefeedback/{id}', 'FeedbacksController@adminFeedbacksShowOne')->name('adminonefeedback');
- Route::any('feedback', 'FeedbacksController@index')->name('feedback');
+Route::any('adminonefeedback/{id}', 'FeedbacksController@adminFeedbacksShowOne')->name('adminonefeedback');
+Route::any('feedback', 'FeedbacksController@index')->name('feedback');
 Route::any('feedback', 'FeedbacksController@addFeedback')->name('addFeedback');
-Route::any('deletefeedback/{id}', 'FeedbacksController@deleteFeedback')->name('deletefeedback');
+Route::any('feedback/{id}/delete', 'FeedbacksController@deleteFeedback')->name('deletefeedback');
 
-Route::any('events', 'EventController@eventsPage')->name('events');
-Route::get('event/{id}','EventController@oneEvent')->name('event');/* Показ одного события*/
- Route::get('eventview', 'EventController@eventView')->name('eventview');/* Вьюха добавления события*/
-Route::post('addEvent', 'EventController@addEvent')->name('addEvent'); /* Само добавления события*/
+//Events
+Route::any('events', 'EventController@index')->name('event.index');//Вьюха всех событий
+Route::get('event/{id}','EventController@show')->name('event.show');/* Показ одного события*/
+Route::get('eventcreate', 'EventController@create')->name('event.create');/* Вьюха добавления события*/
+Route::post('eventstore', 'EventController@store')->name('event.store'); /* Само добавления события*/
+Route::any('event/{id}/delete', 'EventController@destroy')->name('event.delete');/* Удаление события*/
+Route::any('event/{id}/edit', 'EventController@edit')->name('event.edit');/* Редактирование события*/
 Route::any('adminevents', 'EventController@adminEvents')->name('adminevents');/* Список всех событий в админке*/
-Route::any('deleteevent/{id}', 'EventController@deleteEvent')->name('deleteevent');/* Удаление события*/
-Route::any('editevent/{id}', 'EventController@editEvent')->name('editevent');/* Редактирование события*/
 
+//Profiles
+Route::any('users', 'UserController@adminUsers')->name('users'); //Список пользователей
+Route::any('profile/id{id}', 'UserController@profile')->name('profile'); //Просмотр профиля пользователя с админки
+Route::any('profile/{id}/delete', 'UserController@destroy')->name('profile.destroy'); //Удаление пользователя
+Route::any('profile/id{id}/edit', 'UserController@edit')->name('profile.edit');/* Редактирование пользователя*/
+Route::any('profile/{id}/profileevents', 'UserController@profileEvents')->name('profileevents');/*пока не работает*/
  
-        Route::any('users', 'UserController@adminUsers')->name('users'); //Список пользователей
-        Route::any('profile/id{id}', 'UserController@profile')->name('profile'); //Просмотр профиля пользователя с админки
-        Route::any('deleteuser/{id}', 'UserController@deleteUser')->name('deleteuser'); //Удаление пользователя
-		Route::any('edituser/id{id}', 'UserController@editUser')->name('edituser');/* Редактирование пользователя*/
-		
+//Sliders
+Route::any('slidercreate', 'SliderController@create')->name('slider.create');
+Route::any('sliderstore', 'SliderController@store')->name('slider.store');
+Route::any('slider/{id}', 'SliderController@show')->name('slider.show');
+Route::any('slider/{id}/edit', 'SliderController@edit')->name('slider.edit');
+Route::any('slider/{id}/delete', 'SliderController@destroy')->name('slider.destroy');
+Route::any('adminsliders', 'SliderController@adminSliders')->name('adminSliders');
 
-	Route::any('profile/{id}/profileevents', 'UserController@profileEvents')->name('profileevents');
- 
-
- 
- 
- Route::any('slider', 'SliderController@addView')->name('slider');
- Route::any('addslider', 'SliderController@addSlider')->name('addSlider');
- Route::any('adminsliders', 'SliderController@adminSliders')->name('adminSliders');
- Route::any('adminoneslider/{id}', 'SliderController@adminOneSlider')->name('adminOneSlider');
- Route::any('deleteslider/{id}', 'SliderController@deleteSlider')->name('deleteSlider');
- Route::any('editslider/{id}', 'SliderController@editSlider')->name('editSlider');
- 
- 
+//Galery
 Route::get('/addimage/{id}','ImageController@getForm')->name('add_image');
 Route::post('/addimage','ImageController@imageAdd')->name('add_image_to_album');
 Route::get('/deleteimage/{id}','ImageController@deleteImage')->name('deleteImage');
- 
- 
- 
- Route::any('albums','AlbumController@getlist')->name('getlist');
+Route::any('albums','AlbumController@getlist')->name('getlist');
 Route::any('createalbum','AlbumController@getForm')->name('getform');
 Route::any('createalbum','AlbumController@albumCreate')->name('albumcreate');
 Route::any('album/{id}', 'AlbumController@getAlbum')->name('onealbum');
- Route::any('deletelbum/{id}', 'AlbumController@deleteAlbum')->name('deleteAlbum');
+Route::any('deletelbum/{id}', 'AlbumController@deleteAlbum')->name('deleteAlbum');
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут подтягивает перечень комитетов школы из базы*/
 Route::get('/about', function () {

@@ -44,8 +44,8 @@
                             </table>
 
 							@if (Auth::user()->role == 1 || Auth::user()->id == $user->id)
-                            <a href="{{route('edituser',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a>
-                            <a href="{{route('deleteuser',$user->id)}}" onclick="return confirmDelete();" class="more-link button">Удалить профиль</a>
+                            <a href="{{route('profile.edit',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a>
+                            <a href="{{route('profile.destroy',$user->id)}}" onclick="return confirm('Удалить профиль?')" class="more-link button">Удалить профиль</a>
 							@endif
                         </div>
                         <div style="margin-top: 20px;">
@@ -57,7 +57,7 @@
                                     <main id="main" class="site-main" role="main">
                                         <article id="post-519" class="grid layout_1 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events" style="margin-top: 15px; margin-bottom: 15px;">
                                             <figure class="post-thumbnail grid__col grid__col--6-of-12 grid__col--m-1-of-1">
-                                                <a href="{{route('event',['id'=>$event->id])}}"
+                                                <a href="{{route('event.show',['id'=>$event->id])}}"
                                                    title="{{ $event->title }}">
                                                     <img width="1140" height="500"
                                                          src="{{asset('images/'.$event->photo)}}"
@@ -70,7 +70,7 @@
                                             <div class="post-text-block grid__col grid__col--6-of-12 grid__col--m-1-of-1">
                                                 <header class="entry-header">
                                                     <h2 class="entry-title">
-                                                        <a href="{{route('event',['id'=>$event->id])}}">{{ $event->title }}</a>
+                                                        <a href="{{route('event.show',['id'=>$event->id])}}">{{ $event->title }}</a>
                                                     </h2>
                                                 </header><!-- .entry-header -->
                                             </div><!-- .post-text-block -->
@@ -115,14 +115,5 @@
             </div>            
             @endif
         </div>
-        <script>
-            function confirmDelete() {
-                if (confirm("Вы подтверждаете удаление?")) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        </script>
     </section>
 @endsection

@@ -12,7 +12,7 @@
     </style>
 </head>
 <p class="btn btn-primary mb1 bg-green">Всего событий: {{$eventsCount}} </p>
-<a href="{{ route('eventview')}}" class="more-link button">Добавить событие</a>
+<a href="{{ route('event.create')}}" class="more-link button">Добавить событие</a>
 <div>
     <table class="adminTable">
         <th>Руководитель</th>
@@ -41,9 +41,9 @@
                     @endempty
                 </div>
             </td>
-            <td><a href="{{route('event',['id'=>$event->id])}}" class="more-link button">Просмотр события</a></td>
-            <td><a href="{{route('editevent',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a></td>
-            <td><a href="{{route('deleteevent',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button">Удалить событие</a></td>
+            <td><a href="{{route('event.show',['id'=>$event->id])}}" class="more-link button">Просмотр события</a></td>
+            <td><a href="{{route('event.edit',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a></td>
+            <td><a href="{{route('event.delete',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button">Удалить событие</a></td>
         </tr>
         @endforeach
     </table>

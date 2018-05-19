@@ -5,7 +5,7 @@
         <div class="col-md-8 col-md-offset-2" style="margin-left: 200px;">
             <div class="panel panel-default">
                 <div class="form">
-                    <form method="POST" action="{{route('editSlider', ['id' => $slider->id ] ) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('slider.edit', ['id' => $slider->id ] ) }}" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="title">Название</label>
                             <input type="text" class="form-control" id="title" name="title" value="{{$slider->title}}"> <span style="color:red">{{ $errors->first('title') }}</span>

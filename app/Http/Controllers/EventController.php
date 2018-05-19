@@ -11,7 +11,7 @@ class EventController extends Controller {
 
     public $puginationEvents = 5;
 
-    public function eventsPage(Request $request) {
+    public function index(Request $request) {
         $events = Event::orderBy('id', 'DESC')->paginate($this->puginationEvents);
         if (request()->ajax()) {
             return view('events', compact('events'));
@@ -19,7 +19,7 @@ class EventController extends Controller {
         return view('events', compact('events'));
     }
 
-    public function oneEvent($id) {
+    public function show($id) {
         $event = Event::select()->where('id', $id)->first();
         return view('event', compact('event'));
     }
@@ -30,11 +30,11 @@ class EventController extends Controller {
         return view('admin.events.allEvents', compact('events', 'eventsCount'));
     }
 
-    public function eventView() {
+    public function create() {
         return view('admin.events.addEvent');
     }
 
-    public function addEvent(Request $request) {
+    public function store(Request $request) {
         if ($request->method() == 'POST') {
             $this->validate($request, [
                 'title' => 'required',
@@ -68,17 +68,7 @@ class EventController extends Controller {
         return $newfilename;
     }
 
-    public function deleteEvent($id) {
-        if (!is_numeric($id))
-            return false;
-        $all = Event::find($id);
-        $img = $all->photo;
-        unlink(public_path() . '/images/' . $img);
-        $all->delete();
-        return redirect()->route('adminevents');
-    }
-
-    public function editEvent($id, Request $request) {
+    public function edit($id, Request $request) {
         if ($request->method() == "POST") {
             $this->validate($request, [
                 'title' => 'required',
@@ -105,6 +95,16 @@ class EventController extends Controller {
         }
         $event = Event::find($id);
         return view('admin.events.editEvent', compact('event'));
+    }
+
+    public function destroy($id) {
+        if (!is_numeric($id))
+            return false;
+        $all = Event::find($id);
+        $img = $all->photo;
+        unlink(public_path() . '/images/' . $img);
+        $all->delete();
+        return redirect()->route('adminevents');
     }
 
 }

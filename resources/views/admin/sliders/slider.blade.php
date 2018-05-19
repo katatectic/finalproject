@@ -6,7 +6,7 @@
             <div class="left_content">
                 <div class="contact_area">
                     <div >
-                        <form enctype="multipart/form-data" action="{{route('addSlider')}}" class="contact_form" method="POST" >
+                        <form enctype="multipart/form-data" action="{{route('slider.store')}}" class="contact_form" method="POST" >
                             <div class="form-group">
                                 <label for="title" class="col-md-4 control-label">Название</label>
                                 <div class="col-md-6">

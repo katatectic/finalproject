@@ -25,16 +25,16 @@ class UserController extends Controller {
     public function profile($id) {
         $user = User::find($id);
         $eventCount = Event::where("user_id", "=", $user->id)->count();
-		$newsCount = Article::where("user_id", "=", $user->id)->count();
-        return view('profile', compact('user', 'eventCount','newsCount'));
+        $newsCount = Article::where("user_id", "=", $user->id)->count();
+        return view('profile', compact('user', 'eventCount', 'newsCount'));
     }
 
-    public function profileEvents($id) {
-        $user = User::find($id);
-        return view('profileevents', compact('user', 'userEvents'));
-    }
+    /* public function profileEvents($id) {
+      $user = User::find($id);
+      return view('profileevents', compact('user', 'userEvents'));
+      } */
 
-    public function deleteUser($id) {
+    public function destroy($id) {
         if (!is_numeric($id))
             return view('404');
         $all = User::find($id);
@@ -42,7 +42,7 @@ class UserController extends Controller {
         return redirect()->route('users');
     }
 
-    public function editUser($id, Request $request) {
+    public function edit($id, Request $request) {
         if ($request->method() == "POST") {
             $this->validate($request, [
                 'name' => 'required|alpha|max:30',

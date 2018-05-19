@@ -27,8 +27,8 @@
                     <div class="entry-content">
                         <p>{{$event->content}}</p>
                     </div>
-                    <a href="{{ route('editevent',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a>
-                    <a href="{{route('deleteevent',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button" style="float:right">Удалить событие</a><!-- .entry-content -->
+                    <a href="{{ route('event.edit',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a>
+                    <a href="{{route('event.delete',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button" style="float:right">Удалить событие</a><!-- .entry-content -->
                 </article>
                 @endif
                 @foreach($event->comments as $comment)

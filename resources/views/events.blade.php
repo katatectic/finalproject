@@ -25,7 +25,7 @@
                              class="grid layout_1 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events"
                              style="margin-top: 15px; margin-bottom: 15px;">
                         <figure class="post-thumbnail grid__col grid__col--6-of-12 grid__col--m-1-of-1">
-                            <a href="{{route('event',['id'=>$event->id])}}"
+                            <a href="{{route('event.show',['id'=>$event->id])}}"
                                title="{{ $event->title }}">
                                 <img width="1140" height="500"
                                      src="{{asset('images/'.$event->photo)}}"
@@ -38,7 +38,7 @@
                         <div class="post-text-block grid__col grid__col--6-of-12 grid__col--m-1-of-1">
                             <header class="entry-header">
                                 <h2 class="entry-title">
-                                    <a href="{{route('event',['id'=>$event->id])}}">{{ $event->title }}</a>
+                                    <a href="{{route('event.show',['id'=>$event->id])}}">{{ $event->title }}</a>
                                 </h2>
                                 <h3 class="doublef-event-item-date"><a href="{{route('profile',['id'=>$event->user->id])}}">Кто создал {{$event->user->name}} {{$event->user->name}} </a></h3>
                                 <h3 class="doublef-event-item-date">{{ $event->event_date }} </h3>
@@ -49,7 +49,7 @@
                             </header><!-- .entry-header -->
                             <div class="entry-content">
                                 <p>{{ $event->description }}
-                                    <a class="more-link button"  href="{{ route('event',['id'=>$event->id]) }}">Читать далее</a>
+                                    <a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>
                                 </p>
                                 <span class="screen-reader-text">Продолжить чтение  {{ $event->title }}</span>
                             </div><!-- .entry-content -->
