@@ -10,7 +10,7 @@
                             <label for="title">Название события</label>
                             <input type="text" class="form-control" id="title" name="title" value="{{$event->title}}"> <span style="color:red">{{ $errors->first('title') }}</span>
                         </div>
-                        <input type="hidden" name="author_id" value="">
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label for="event_date">Дата проведения события</label>
                             <input type="date" class="form-control" id="event_date" name="event_date" value="{{$event->event_date}}"> <span style="color:red">{{ $errors->first('event_date') }}</span>

@@ -10,7 +10,7 @@
                             <label for="title">Заголовок новости</label>
                             <input type="text" class="form-control" id="title" name="title" value="{{$all->title}}"> <span style="color:red">{{ $errors->first('title') }}</span>
                         </div>
-                        <input type="hidden" name="user_id" value="">
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label for="event_date">Дата новости</label>
                             <input type="date" class="form-control" id="date" name="date" value="{{$all->date}}"> <span style="color:red">{{ $errors->first('date') }}</span>

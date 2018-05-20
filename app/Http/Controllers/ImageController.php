@@ -38,10 +38,12 @@ class ImageController extends Controller {
     public function deleteImage($id) {
         if (!is_numeric($id))
             return false;
-        $all = Image::find($id);
-        $img = $all->image;
-        unlink(public_path() . '/images/albums/photos/' . $img);
-        $all->delete();
+        $photo = Image::find($id);
+        $img = $photo->image;
+		if(is_file($img)) {
+			  unlink(public_path() . '/images/albums/photos/' . $img);
+		}	
+        $photo->delete();
         return redirect()->route('getlist');
     }
 

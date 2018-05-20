@@ -64,7 +64,7 @@ class EventController extends Controller {
     public function addPhoto($request) {
         $file = $request->file('photo');
         $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . '/images', $newfilename);
+        $file->move(public_path() . '/images/events', $newfilename);
         return $newfilename;
     }
 
@@ -100,10 +100,12 @@ class EventController extends Controller {
     public function destroy($id) {
         if (!is_numeric($id))
             return false;
-        $all = Event::find($id);
-        $img = $all->photo;
-        unlink(public_path() . '/images/' . $img);
-        $all->delete();
+        $event = Event::find($id);
+        $img = $event->photo;
+        if (is_file($img)) {
+            unlink(public_path() . '/images/events/' . $img);
+        }
+        $event->delete();
         return redirect()->route('adminevents');
     }
 

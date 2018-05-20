@@ -65,14 +65,15 @@ class NewsController extends Controller {
         $file->move(public_path() . '/images/news', $newfilename);
         return $newfilename;
     }
-
     public function deleteNews($id) {
         if (!is_numeric($id))
             return false;
-        $all = Article::find($id);
-        $img = $all->photo;
-        unlink(public_path() . '/images/news/' . $img);
-        $all->delete();
+        $article = Article::find($id);
+        $img = $article->photo;
+		if(is_file($img)) {
+			 unlink(public_path() . '/images/news/' . $img);
+		}	
+        $article->delete();
         return redirect()->route('adminnews');
     }
 

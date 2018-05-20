@@ -53,10 +53,12 @@ class AlbumController extends Controller {
     public function deleteAlbum($id) {
         if (!is_numeric($id))
             return false;
-        $all = Album::find($id);
-        $img = $all->cover_image;
-        unlink(public_path() . '/images/albums/' . $img);
-        $all->delete();
+        $album = Album::find($id);
+        $img = $album->cover_image;
+		if(is_file($img)) {
+			unlink(public_path() . '/images/albums/' . $img);
+		}	
+        $album->delete();
         return redirect()->route('getlist');
     }
 

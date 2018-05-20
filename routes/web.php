@@ -27,6 +27,9 @@ Route::any('editnews/{id}', 'NewsController@editNews')->name('editnews');/* Ре
 Route::any('deletenews/{id}', 'NewsController@deleteNews')->name('deletenews');/* Удаление новости*/
 Route::get('article/{id}','NewsController@article')->name('article');/* Показ одной новости*/
 
+Route::get('/search/results', 'SearchController@search')->name('search');
+
+
 //Feedbacks
 Route::any('adminfeedbacks', 'FeedbacksController@adminFeedbacks')->name('adminfeedbacks'); //Список заявок
 Route::any('adminonefeedback/{id}', 'FeedbacksController@adminFeedbacksShowOne')->name('adminonefeedback');

@@ -35,7 +35,7 @@
             <td class="photo">
                 <div style="width:100px;height:120px">
                     @empty(!$event->photo)
-                    <img class="mw-100" style="width:100%;height:100%" src="{{asset('images/'.$event->photo)}}">
+                    <img class="mw-100" style="width:100%;height:100%" src="{{asset('images/events/'.$event->photo)}}">
                     @else
                     Загрузите изображение
                     @endempty

@@ -54,6 +54,10 @@ class SliderController extends Controller {
         if (!is_numeric($id))
             return false;
         $slider = Slider::find($id);
+        $img = $slider->photo;
+        if (is_file($img)) {
+            unlink(public_path() . '/images/sliders/' . $img);
+        }
         $slider->delete();
         return redirect()->route('adminSliders');
     }

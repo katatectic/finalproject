@@ -10,9 +10,11 @@
             <main id="main" class="site-main" role="main">
                 @if($event)
                 <article id="post-519" class="post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
-                    <figure class="post-thumbnail">
-                        <img width="1140" height="500" src="{{asset('images/'.$event->photo)}}" class="attachment-full size-full wp-post-image" alt="" srcset="{{asset('images/'.$event->photo)}} 1140w, {{asset('images/'.$event->photo)}} 600w" sizes="(max-width: 1140px) 100vw, 1140px"/>
-                    </figure>
+                    <div class="image-lightbox">
+                        <a href="{{asset('images/events/'.$event->photo)}}" data-lightbox="{{asset('images/events/'.$event->photo)}}" title="{{ $event->title }}">
+                            <img width="500" height="500" src="{{asset('images/events/'.$event->photo)}}" class="attachment-full size-full wp-post-image" alt=""/>
+                        </a>
+                    </div>
                     <header class="entry-header">
                         <h1 class="entry-title">{{$event->title}}</h1>
                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -69,7 +71,7 @@
                             {{--<p class="comment-notes">
                             <span id="email-notes">Ваш адрес электронной почты не будет опубликован.</span> Обязательные для заполнения поля отмечены <span class="required">*</span>
                                                  </p>--}}
-                            <p class="comment-form-comment">
+                        <p class="comment-form-comment">
                                 <label for="comment">Комментарий</label>
                                 <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
                             </p>                                
@@ -86,6 +88,6 @@
             </main><!-- #main -->        
         </div>           
     </div>
-    </script>
+</script>
 </div>
 @endsection

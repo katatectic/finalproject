@@ -13,7 +13,7 @@
                         <div class="form-group">
                             <label for="description" class="col-md-4 control-label">Краткое описание</label>
                             <div class="col-md-6">
-                                <textarea class="form-control" id="description" rows='23' name="description" placeholder="Введите краткое описание события" autofocus>{{ old('description') }}</textarea>
+                                <textarea class="form-control" id="description" rows='23' name="description" placeholder="Краткое описание изображения" autofocus>{{ old('description') }}</textarea>
                                 <span style="color:red">{{ $errors->first('description') }}</span>
                             </div>
                         </div>

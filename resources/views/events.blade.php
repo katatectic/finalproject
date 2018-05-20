@@ -28,10 +28,10 @@
                             <a href="{{route('event.show',['id'=>$event->id])}}"
                                title="{{ $event->title }}">
                                 <img width="1140" height="500"
-                                     src="{{asset('images/'.$event->photo)}}"
+                                     src="{{asset('images/events/'.$event->photo)}}"
                                      class="attachment-full size-full wp-post-image"
                                      alt=""
-                                     srcset="{{asset('images/'.$event->photo)}} 1140w, {{asset('images/'.$event->photo)}} 600w"
+                                     srcset="{{asset('images/events/'.$event->photo)}} 1140w, {{asset('images/events/'.$event->photo)}} 600w"
                                      sizes="(max-width: 1140px) 100vw, 1140px"/>
                             </a>
                         </figure>

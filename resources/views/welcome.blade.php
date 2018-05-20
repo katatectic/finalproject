@@ -22,7 +22,7 @@
                                                  style="height: 600px;"><!-- Slider main container -->
                                                 <!-- wrapper -->
                                                 <div class="swiper-wrapper">
-												@foreach($sliders as $slider)
+                                                    @foreach($sliders as $slider)
                                                     <div class="swiper-slide"
                                                          style="background: #000000 url( {{asset('images/sliders/'.$slider->photo)}}) no-repeat top center; background-size: cover;">
                                                         <div data-swiper-parallax="-300"
@@ -36,8 +36,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-													@endforeach
-                                                   
+                                                    @endforeach
                                                 </div>
                                                 <!-- navigation buttons -->
                                                 <div class="button-prev" style="color: #ffffff;"><i
@@ -89,7 +88,7 @@
                                          data-index="1">
                                         <div class="panel-widget-style panel-widget-style-for-425-1-0-0">
                                             <div class="so-widget-buntington2-news-list so-widget-buntington2-news-list-base">
-                                                
+
                                                 <h2 class="widget-title">Последние новости</h2>
                                                 <div class="news-list-widget-wrap" style="text-align: left;">
                                                     @foreach($news as $article)
@@ -97,11 +96,11 @@
                                                         <figure class="post-thumbnail news-list-item-featured-image">
                                                             <a href="{{route('article',['id'=>$article->id])}}">
                                                                 <img width="1140" height="500"
-                                                                 src="{{asset('images/'.$article->photo)}}"
-                                                                 class="attachment-full size-full wp-post-image"
-                                                                 alt=""
-                                                                 srcset="{{asset('images/'.$article->photo)}} 1140w, {{asset('images/'.$article->photo)}} 600w"
-                                                                 sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                                     src="{{asset('images/'.$article->photo)}}"
+                                                                     class="attachment-full size-full wp-post-image"
+                                                                     alt=""
+                                                                     srcset="{{asset('images/'.$article->photo)}} 1140w, {{asset('images/'.$article->photo)}} 600w"
+                                                                     sizes="(max-width: 1140px) 100vw, 1140px"/>
                                                             </a>
                                                         </figure>
                                                         <div class="news-list-item-elements ">
@@ -124,8 +123,7 @@
                                                         </div><!-- .news-list-item-elements -->
                                                     </div><!-- .news-list-item -->
                                                     @endforeach
-                                                {{$news->links()}}
-                                                    
+                                                    {{$news->links()}}
                                                 </div><!-- .news-list-widget-wrap-->
                                             </div>
                                         </div>
@@ -134,7 +132,6 @@
                             </div>
                             <!-- Закончился левый сайдбар с новостями + галерея внизу -->
                             <div id="pgc-425-1-1" class="panel-grid-cell">
-
                                 <div class="panel-cell-style panel-cell-style-for-425-1-1">
                                     <div id="panel-425-1-1-0"
                                          class="so-panel widget widget_doublef-event-posts-widget panel-first-child panel-last-child"
@@ -149,10 +146,10 @@
                                                         <a href="{{ route('event.show',['id'=>$event->id]) }}"
                                                            title="Newcomers welcome party">
                                                             <img width="1140" height="500"
-                                                                 src="{{asset('images/'.$event->photo)}}"
+                                                                 src="{{asset('images/events/'.$event->photo)}}"
                                                                  class="attachment-full size-full wp-post-image"
                                                                  alt=""
-                                                                 srcset="{{asset('images/'.$event->photo)}} 1140w, {{asset('images/'.$event->photo)}} 600w"
+                                                                 srcset="{{asset('images/events/'.$event->photo)}} 1140w, {{asset('images/events/'.$event->photo)}} 600w"
                                                                  sizes="(max-width: 1140px) 100vw, 1140px"/>
                                                         </a>
                                                     </figure>
@@ -187,20 +184,17 @@
                                             <h2 class="widget-title">Что-то будем искать?</h2>
                                             <form role="search" method="get" id="course-finder"
                                                   class="search-form one-field-submit"
-                                                  action="http://buntington2.wpshow.me/">
+                                                  action="{{route('search')}}">
                                                 <label>
                                                     <span class="screen-reader-text">Что-нибудь поищи...</span>
-                                                    <input type="search" class="search-field"
-                                                           placeholder="Поищи..."
-                                                           value="" name="s"
-                                                           title="Find a course..."/>
+                                                    <input type="text" class="search-field" placeholder="Поиск..." name="search"/>
                                                     <input type="hidden" name="post_type" value="doublef-course"/>
                                                 </label>
+                                                {{ csrf_field() }}
                                                 <input type="submit" class="search-submit" value="Go"/>
                                             </form>
-                                            <p class="doublef-courses-search-help">Здесь всякая муть.</p>
                                         </div>
-                                    </div>
+                                    </div><br/>
                                     <div id="panel-425-1-2-1"
                                          class="so-panel widget widget_buntington2-button-banner" data-index="5">
                                         <div class="panel-widget-style panel-widget-style-for-425-1-2-1">
@@ -229,32 +223,32 @@
                                                     </div>
                                                 </a>
                                             </div>
-											<div id="panel-425-1-0-1"
-                                         class="so-panel widget widget_doublef-featured-gallery panel-last-child"
-                                         data-index="2">
-										 @if($albums)
-                                        <div class="so-widget-doublef-featured-gallery so-widget-doublef-featured-gallery-base"><br/><br/>
-                                            <a href="{{route('getlist')}}"<h5 class="doublef-gallery-photos-num"><h2 class="widget-title">Избранная галлерея</h2></a>
-                                            <div class="doublef-gallery-widget-wrap">
-                                                <figure class="post-thumbnail">
-                                                    <a href="{{route('getlist')}}"
-                                                       title="School Photo Shots">
-                                                        <img width="1140" height="500"
-                                                             src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg"
-                                                             class="attachment-full size-full wp-post-image" alt=""
-                                                             srcset="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg 1140w, http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b-600x263.jpg 600w"
-                                                             sizes="(max-width: 1140px) 100vw, 1140px"/>
-                                                    </a>
-                                                </figure>
-                                                <div class="doublef-gallery-title-wrap">
-                                                    <h2 class="doublef-gallery-title">
-                                                    </h2>
-                                                    <a href="{{route('getlist')}}"<h5 class="doublef-gallery-photos-num">11 фото</h5></a>
+                                            <div id="panel-425-1-0-1"
+                                                 class="so-panel widget widget_doublef-featured-gallery panel-last-child"
+                                                 data-index="2">
+                                                @if($albums)
+                                                <div class="so-widget-doublef-featured-gallery so-widget-doublef-featured-gallery-base"><br/><br/>
+                                                    <a href="{{route('getlist')}}"<h5 class="doublef-gallery-photos-num"><h2 class="widget-title">Избранная галлерея</h2></a>
+                                                    <div class="doublef-gallery-widget-wrap">
+                                                        <figure class="post-thumbnail">
+                                                            <a href="{{route('getlist')}}"
+                                                               title="School Photo Shots">
+                                                                <img width="1140" height="500"
+                                                                     src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg"
+                                                                     class="attachment-full size-full wp-post-image" alt=""
+                                                                     srcset="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg 1140w, http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b-600x263.jpg 600w"
+                                                                     sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                            </a>
+                                                        </figure>
+                                                        <div class="doublef-gallery-title-wrap">
+                                                            <h2 class="doublef-gallery-title">
+                                                            </h2>
+                                                            <a href="{{route('getlist')}}"<h5 class="doublef-gallery-photos-num">11 фото</h5></a>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                @endif
                                             </div>
-                                        </div>
-										@endif
-                                    </div>
                                         </div>
                                     </div>
                                 </div>
