@@ -11,16 +11,16 @@
                                             <h3 class="widget-title">Выберите</h3>
                                             <ul id="menu-footer-menu" class="menu">
                                                 <li id="menu-item-307" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307">
-                                                    <a href="http://buntington2.wpshow.me/about-us/">О нас</a>
+                                                    <a title="" href="{{route('about')}}">О нас</a>
                                                 </li>
                                                 <li id="menu-item-310" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-310">
-                                                    <a href="http://buntington2.wpshow.me/full-width-page/">Что-то еще</a>
+                                                    <a title="" href="{{route('news')}}">Новости</a>
                                                 </li>
                                                 <li id="menu-item-312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312">
-                                                    <a href="http://buntington2.wpshow.me/text-formatting/">Опять</a>
+                                                    <a title="" href="{{route('event.index')}}">События</a>
                                                 </li>
                                                 <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
-                                                    <a href="http://buntington2.wpshow.me/contact-us/">Контакты</a>
+                                                    <a title="" href="{{route('addFeedback')}}">Обратная связь</a>
                                                 </li>
 												<li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
                                                     <a href="{{ route('event.create') }}">Добавить событие</a>

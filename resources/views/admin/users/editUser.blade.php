@@ -27,6 +27,21 @@
                             <input type="text" class="form-control" id="phone" name="phone" value="{{$all->phone}}"> <span style="color:red">{{ $errors->first('phone') }}</span>
                         </div>
                         <div class="form-group">
+                            <label for="role">Роль пользователя</label>
+                            <input type="text" class="form-control" id="role" name="role" value="{{$all->role}}">
+                            {{--<span style="color:red">{{ $errors->first('phone') }}</span>--}}
+                        </div>
+
+
+                        {{--
+                        <input type="hidden" name="avatar" value="{{$all->avatar}}">
+                        <input type="hidden" name="password" value="{{$all->password}}">
+                        <input type="hidden" name="password_confirmation" value="{{$all->password_confirmation}}">
+                        --}}
+                        
+
+                        
+                        <div class="form-group">
                             <label for="avatar" class="col-md-4 control-label">Фотография</label>
                             <div class="col-md-6">
                                 <input id="avatar" type="file" class="form-control" name="avatar" value="{{$all->avatar}}"  autofocus>
@@ -41,6 +56,8 @@
                             <label for="password">Повторите пароль</label>
                             <input type="password" name="password_confirmation" id="password_confirmation" />
                         </div>
+                        
+
                         <button type="submit" class="btn btn-primary">Отправить</button>
                         {{ csrf_field() }}
                     </form>

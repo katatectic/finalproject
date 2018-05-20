@@ -43,10 +43,13 @@
                                 </tbody>
                             </table>
 
-							@if (Auth::user()->role == 1 || Auth::user()->id == $user->id)
+							@if (!Auth::guest())
+                            @if (Auth::user()->role == 1 or Auth::user()->role == 2)
                             <a href="{{route('profile.edit',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a>
                             <a href="{{route('profile.destroy',$user->id)}}" onclick="return confirm('Удалить профиль?')" class="more-link button">Удалить профиль</a>
 							@endif
+                            @endif
+                            
                         </div>
                         <div style="margin-top: 20px;">
                             <h3>Список событий автора</h3>

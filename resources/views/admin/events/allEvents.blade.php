@@ -12,7 +12,11 @@
     </style>
 </head>
 <p class="btn btn-primary mb1 bg-green">Всего событий: {{$eventsCount}} </p>
+
+{{--
 <a href="{{ route('event.create')}}" class="more-link button">Добавить событие</a>
+--}}
+
 <div>
     <table class="adminTable">
         <th>Руководитель</th>

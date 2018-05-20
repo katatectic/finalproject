@@ -9,6 +9,7 @@
         <th>Отчество</th>
         <th>Почта</th>
         <th>Телефон</th>
+        <th>Роль пользователя</th>
         <th>Дата регистрации</th>
         <th>Аватарка пользователя</th>
         </thead>
@@ -20,6 +21,7 @@
                 <td><div style="width:60px">{{$user->middle_name}}</div></td>
                 <td><div style="width:60px">{{$user->email}}</div></td>
                 <td><div style="width:60px">{{$user->phone}}</div></td>
+                <td><div style="width:60px">{{$user->role}}</div></td>
                 <td>{{$user->created_at}}</td>
                 <td class="avatar">
                     <div style="width:100px;height:120px">
