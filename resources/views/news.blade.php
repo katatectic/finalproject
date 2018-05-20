@@ -20,14 +20,14 @@
                 <div id="primary" class="content-area grid__col grid__col--2-of-3 grid__col--m-1-of-1">    
                 <main id="main" class="site-main" role="main">
                     <div class="article-wrapper layout-sleek"> 
-                        <article id="post-35" class="post-35 post type-post status-publish format-standard has-post-thumbnail hentry category-news tag-galleries tag-meetings tag-school">
+                        <article id="post-35" class="post-35 post type-post status-publish format-standard has-post-thumbnail hentry category-news tag-galleries tag-meetings tag-school" style="margin-top: 30px;">
                             <figure class="post-thumbnail">
                                 <a href="{{route('article',['id'=>$news->id])}}" title="{{ $news->title }}">
                                     <img width="1140" height="500"
-                                         src="{{asset('images/'.$news->photo)}}"
+                                         src="{{asset('images/news/'.$news->photo)}}"
                                          class="attachment-full size-full wp-post-image"
                                          alt=""
-                                         srcset="{{asset('images/'.$news->photo)}} 1140w, {{asset('images/'.$news->photo)}} 600w"
+                                         srcset="{{asset('images/news/'.$news->photo)}} 1140w, {{asset('images/news/'.$news->photo)}} 600w"
                                          sizes="(max-width: 1140px) 100vw, 1140px"/>
                                 </a>
                             </figure>

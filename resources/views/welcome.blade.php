@@ -96,10 +96,10 @@
                                                         <figure class="post-thumbnail news-list-item-featured-image">
                                                             <a href="{{route('article',['id'=>$article->id])}}">
                                                                 <img width="1140" height="500"
-                                                                     src="{{asset('images/'.$article->photo)}}"
+                                                                     src="{{asset('images/news/'.$article->photo)}}"
                                                                      class="attachment-full size-full wp-post-image"
                                                                      alt=""
-                                                                     srcset="{{asset('images/'.$article->photo)}} 1140w, {{asset('images/'.$article->photo)}} 600w"
+                                                                     srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w"
                                                                      sizes="(max-width: 1140px) 100vw, 1140px"/>
                                                             </a>
                                                         </figure>

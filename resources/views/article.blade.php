@@ -11,7 +11,7 @@
                 @if($article)
                 <article id="post-519" class="post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
                     <figure class="post-thumbnail">
-                        <img width="1140" height="500" src="{{asset('images/'.$article->photo)}}" class="attachment-full size-full wp-post-image" alt="" srcset="{{asset('images/'.$article->photo)}} 1140w, {{asset('images/'.$article->photo)}} 600w" sizes="(max-width: 1140px) 100vw, 1140px"/>
+                        <img width="1140" height="500" src="{{asset('images/news/'.$article->photo)}}" class="attachment-full size-full wp-post-image" alt="" srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w" sizes="(max-width: 1140px) 100vw, 1140px"/>
                     </figure>
                     <header class="entry-header">
                         <h1 class="entry-title">{{$article->title}}</h1>
