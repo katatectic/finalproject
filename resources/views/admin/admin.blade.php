@@ -5,6 +5,7 @@
         <div><a href="{{route('adminnews')}}">Новости</a></div>
         <div><a href="{{route('adminevents')}}">События</a></div>
         <div><a href="{{route('adminAlbums')}}">Альбомы</a></div>
+        <div><a href="{{route('admincomments')}}">Комментарии</a></div>
         @if (Auth::user()->role == 1)
         <div><a href="{{route('users')}}">Пользователи</a></div>
         <div><a href="{{route('adminfeedbacks')}}">Обратная связь</a></div>

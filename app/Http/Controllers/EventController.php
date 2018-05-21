@@ -9,7 +9,7 @@ use DateTime;
 
 class EventController extends Controller {
 
-    public $puginationEvents = 5;
+    public $puginationEvents = 1;
 
     public function index(Request $request) {
         $events = Event::orderBy('id', 'DESC')->paginate($this->puginationEvents);

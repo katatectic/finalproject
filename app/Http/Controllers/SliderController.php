@@ -23,10 +23,10 @@ class SliderController extends Controller {
                 'photo.max' => 'Максимальный размер изображения=2048',
                 'description.required' => 'Введите краткое описание']);
             $data = $request->all();
-            $create = Slider::create($data);
             if ($request->hasFile('photo')) {
                 $data['photo'] = $this->addSliderPhoto($request);
             };
+            $create = Slider::create($data);
             $id = $create->id;
             return redirect()->route('adminSliders');
         }
@@ -36,7 +36,7 @@ class SliderController extends Controller {
     public function addSliderPhoto($request) {
         $file = $request->file('photo');
         $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . '/images//sliders', $newfilename);
+        $file->move(public_path() . '/images/sliders', $newfilename);
         return $newfilename;
     }
 

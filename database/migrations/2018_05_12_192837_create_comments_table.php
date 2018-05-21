@@ -24,6 +24,7 @@ class CreateCommentsTable extends Migration
             $table->integer('report_id')->unsigned()->nullable();
             $table->foreign('report_id')->references('id')->on('reports');     
             $table->string('comment');
+            $table->tinyInteger('ispublished')->default(0);
             $table->timestamps();
         });
     }

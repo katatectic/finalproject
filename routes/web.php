@@ -28,7 +28,11 @@ Route::group(['middleware' => 'adminandchief'], function() {
     // Events
     Route::any('events', 'EventController@adminEvents')->name('adminevents');/*Список всех событий в админке*/
     Route::any('event/{id}/delete', 'EventController@destroy')->name('event.delete');/* Удаление события*/
-    Route::any('event/{id}/edit', 'EventController@edit')->name('event.edit');/* Редактирование события*/    
+    Route::any('event/{id}/edit', 'EventController@edit')->name('event.edit');/* Редактирование события*/ 
+    // Comments confirmation
+    Route::any('comments', 'CommentsController@adminComments')->name('admincomments');/*Список всех комментариев в админке*/
+    Route::any('comment.confirm/{id}', 'CommentsController@commentConfirm')->name('comment.confirm');/* Одобрить комментарий*/   
+    Route::any('comment/{id}/delete', 'CommentsController@deleteComment')->name('deletecomment');/* Удаление комментария*/
 });
 });
 
