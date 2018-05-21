@@ -34,6 +34,7 @@
                     <img src="{{asset('images/albums/'.$album->cover_image)}}" alt="" width="100">
                   </td>
                   <td>
+					<a href="{{route('album.show',['id'=>$album->id])}}" class="fa fa-eye"></a>
 					<a href="{{route('album.edit', ['id' => $album->id ] ) }}" class="fa fa-pencil"></a>
 					<a href="{{route('album.destroy',$album->id)}}" onclick="return confirm('Удалить альбом?')" class="fa fa-remove"></a>
 					</td>
