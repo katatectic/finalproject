@@ -20,7 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //коллекция роутов для главы (убираем пользователей)
 Route::group(['middleware' => 'adminandchief'], function() { 
 	Route::prefix('admin')->group(function () {
-    Route::get('/admin', function () {return view('admin/admin');})->name('admin');
+  Route::get('/admin','AdminController@index')->name('admin');
     // News
     Route::any('news', 'NewsController@adminNews')->name('adminnews');/* Список всех новостей в админке*/
     Route::any('article/{id}/edit', 'NewsController@editNews')->name('editnews');/* Редактирование новость*/

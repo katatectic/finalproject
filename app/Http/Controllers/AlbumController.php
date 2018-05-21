@@ -26,7 +26,7 @@ class AlbumController extends Controller {
     }
 
     public function create() {
-        return view('album.createalbum');
+        return view('admin.albums.create');
     }
 
     public function addPhoto($request) {
@@ -52,9 +52,9 @@ class AlbumController extends Controller {
             };
             $create = Album::create($data);
             $id = $create->id;
-            return redirect()->route('album.index');
+            return redirect()->route('adminAlbums');
         }
-        return view('album.createalbum');
+        return view('admin.albums.create');
     }
 
     public function destroy($id) {
@@ -66,7 +66,7 @@ class AlbumController extends Controller {
             unlink(public_path() . '/images/albums/' . $img);
         }
         $album->delete();
-        return redirect()->route('album.index');
+        return redirect()->route('adminAlbums');
     }
 
     public function edit($id, Request $request) {
