@@ -18,25 +18,24 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //коллекция роутов для главы (убираем пользователей)
-Route::group(['middleware' => 'adminandchief'], function() {    
-    Route::get('/admin', function () {
-        return view('admin/admin');
-    })->name('admin');
+Route::group(['middleware' => 'adminandchief'], function() { 
+	Route::prefix('admin')->group(function () {
+    Route::get('/admin', function () {return view('admin/admin');})->name('admin');
     // News
-    Route::any('adminnews', 'NewsController@adminNews')->name('adminnews');/* Список всех новостей в админке*/
-    Route::any('editnews/{id}', 'NewsController@editNews')->name('editnews');/* Редактирование новость*/
-    Route::any('deletenews/{id}', 'NewsController@deleteNews')->name('deletenews');/* Удаление новости*/
+    Route::any('news', 'NewsController@adminNews')->name('adminnews');/* Список всех новостей в админке*/
+    Route::any('article/{id}/edit', 'NewsController@editNews')->name('editnews');/* Редактирование новость*/
+    Route::any('article/{id}/delete', 'NewsController@deleteNews')->name('deletenews');/* Удаление новости*/
     // Events
-    Route::any('adminevents', 'EventController@adminEvents')->name('adminevents');/*Список всех событий в админке*/
+    Route::any('events', 'EventController@adminEvents')->name('adminevents');/*Список всех событий в админке*/
     Route::any('event/{id}/delete', 'EventController@destroy')->name('event.delete');/* Удаление события*/
     Route::any('event/{id}/edit', 'EventController@edit')->name('event.edit');/* Редактирование события*/    
+});
 });
 
 //коллекция роутов для админа
 Route::group(['middleware' => 'admin'], function() {
     // Users
     Route::any('users', 'UserController@adminUsers')->name('users'); //Список пользователей
-    
     Route::any('profile/{id}/delete', 'UserController@destroy')->name('profile.destroy'); //Удаление пользователя
     Route::any('profile/id{id}/edit', 'UserController@edit')->name('profile.edit');/* Редактирование пользователя*/
     //Feedbacks

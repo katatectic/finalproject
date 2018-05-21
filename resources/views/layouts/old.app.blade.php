@@ -4,32 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name='robots' content='noindex,follow' />
-
 <title>Родительский комитет ОШ №25</title>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/lightbox.css') }}">
 
 
-
+<meta name='robots' content='noindex,follow' />
 <link rel='dns-prefetch' href='//use.fontawesome.com' />
 <link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
 <link rel='dns-prefetch' href='//s.w.org' />
-<link rel='stylesheet'  href="{{ asset('css/theme.css') }}" type='text/css' media='all' />
-<link rel='stylesheet'  href="{{ asset('css/swiper.css') }}" type='text/css' media='all' />
-<link rel='stylesheet'  href="{{ asset('css/font-awecome.min.css') }}" type='text/css' media='all' />
+
+
+<link rel="alternate" type="application/rss+xml" href="http://buntington2.wpshow.me/feed/"/>
+<link rel="alternate" type="application/rss+xml" href="http://buntington2.wpshow.me/comments/feed/" />
 
 
 
-
-
-
-
-
-
-
-
-
-
+<link rel='stylesheet' id='contact-form-7-css'  href='http://buntington2.wpshow.me/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='sb_instagram_styles-css'  href='http://buntington2.wpshow.me/wp-content/plugins/instagram-feed/css/sb-instagram.min.css?ver=1.8.2' type='text/css' media='all' />
+<link rel='stylesheet' id='sb-font-awesome-css'  href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='siteorigin-panels-front-css'  href='http://buntington2.wpshow.me/wp-content/plugins/siteorigin-panels/css/front-flex.min.css?ver=2.6.4' type='text/css' media='all' />
+<link rel='stylesheet' id='buntington2-teaser-block-styles-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/inc/siteorigin/siteorigin-widgets/buntington2-teaser-block/css/style.css?ver=1.11.8' type='text/css' media='all' />
+<link rel='stylesheet' id='buntington2-social-media-styles-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/inc/siteorigin/siteorigin-widgets/buntington2-social-media/css/style.css?ver=1.11.8' type='text/css' media='all' />
+<link rel='stylesheet' id='featured-gallery-styles-css'  href='http://buntington2.wpshow.me/wp-content/plugins/doublef-galleries/siteorigin-widgets/doublef-featured-gallery/css/style.css?ver=1.11.8' type='text/css' media='all' />
+<link rel='stylesheet' id='courses-search-styles-css'  href='http://buntington2.wpshow.me/wp-content/plugins/doublef-courses/siteorigin-widgets/doublef-courses-search/css/style.css?ver=1.11.8' type='text/css' media='all' />
+<link rel='stylesheet' id='doublef-event-posts-styles-css'  href='http://buntington2.wpshow.me/wp-content/plugins/doublef-events/siteorigin-widgets/doublef-event-posts/css/style.css?ver=1.11.8' type='text/css' media='all' />
+<link rel='stylesheet' id='button-banner-styles-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/inc/siteorigin/siteorigin-widgets/buntington2-button-banner/css/style.css?ver=1.11.8' type='text/css' media='all' />
+<link rel='stylesheet' id='buntington2-slider-widget-styles-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/inc/siteorigin/siteorigin-widgets/buntington2-slider/css/style.css?ver=1.11.8' type='text/css' media='all' />
+<link rel='stylesheet' id='buntington2-news-list-widget-styles-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/inc/siteorigin/siteorigin-widgets/buntington2-news-list/css/style.css?ver=1.11.8' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-layout-css'  href='http://buntington2.wpshow.me/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-smallscreen-css'  href='http://buntington2.wpshow.me/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=3.3.5' type='text/css' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='woocommerce-general-css'  href='http://buntington2.wpshow.me/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=3.3.5' type='text/css' media='all' />
+<link rel='stylesheet' id='doublef-courses-styles-css'  href='http://buntington2.wpshow.me/wp-content/plugins/doublef-courses/assets/css/style.css?ver=1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='doublef-events-ct-cpt-styles-css'  href='http://buntington2.wpshow.me/wp-content/plugins/doublef-events/assets/css/style.css?ver=1.2' type='text/css' media='all' />
+<link rel='stylesheet' id='doublef-galleries-styles-css'  href='http://buntington2.wpshow.me/wp-content/plugins/doublef-galleries/assets/css/style.css?ver=1.4' type='text/css' media='all' />
+<link rel='stylesheet' id='fontawesome-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/fonts/font-awesome/css/font-awesome.min.css?ver=4.9.5' type='text/css' media='all' />
+<link rel='stylesheet' id='buntington2-toast-grid-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/css/grid.css?ver=28072017' type='text/css' media='all' />
+<link rel='stylesheet' id='remodal-css-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/js/remodal/remodal.css?ver=08082017' type='text/css' media='all' />
+<link rel='stylesheet' id='remodal-theme-css-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/js/remodal/remodal-default-theme.css?ver=08082017' type='text/css' media='all' />
+<link rel='stylesheet' id='swiper-css-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/js/swiper/css/swiper.min.css?ver=4.9.5' type='text/css' media='all' />
 <link rel='stylesheet' id='buntington2-style-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/style.css?ver=4.9.5' type='text/css' media='all' />
 <link rel='stylesheet' id='buntington2-wooc-css-css'  href='http://buntington2.wpshow.me/wp-content/themes/Buntington2/woocommerce/custom-css/wooc.css?ver=13092017' type='text/css' media='all' />
 <style id='kirki-styles-doublef_courses-inline-css' type='text/css'>
