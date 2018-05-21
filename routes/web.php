@@ -83,14 +83,19 @@ Route::any('profile/{id}/profileevents', 'UserController@profileEvents')->name('
 
 
 //Galery
-Route::get('/addimage/{id}','ImageController@getForm')->name('add_image');
-Route::post('/addimage','ImageController@imageAdd')->name('add_image_to_album');
-Route::get('/deleteimage/{id}','ImageController@deleteImage')->name('deleteImage');
-Route::any('albums','AlbumController@getlist')->name('getlist');
-Route::any('createalbum','AlbumController@getForm')->name('getform');
-Route::any('createalbum','AlbumController@albumCreate')->name('albumcreate');
-Route::any('album/{id}', 'AlbumController@getAlbum')->name('onealbum');
-Route::any('deletelbum/{id}', 'AlbumController@deleteAlbum')->name('deleteAlbum');
+//Album
+Route::get('adminalbums','AlbumController@adminAlbums')->name('adminAlbums');
+Route::any('albums','AlbumController@index')->name('album.index');
+Route::any('createalbum','AlbumController@create')->name('album.create');
+Route::any('createalbum','AlbumController@store')->name('album.create');
+Route::any('album/{id}', 'AlbumController@show')->name('album.show');
+Route::any('album/{id}/delete', 'AlbumController@destroy')->name('album.destroy');
+Route::any('album/{id}/edit', 'AlbumController@edit')->name('album.edit');
+
+//Image
+Route::post('addimage','ImageController@imageAdd')->name('add_image_to_album');
+Route::get('image/{id}/delete','ImageController@deleteImage')->name('deleteImage');
+Route::get('addimage/{id}','ImageController@getForm')->name('add_image');
 
 //Report
 Route::get('report', 'ReportController@getReport')->name('report');

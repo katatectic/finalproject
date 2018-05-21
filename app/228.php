@@ -5,7 +5,38 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 </head>
-
+ <div class='option'  align="center">
+        <form method="post" action="" id="updateClass" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <p><input type="hidden" class="id" value="" name="id"></p>
+            <label>Заголовок<input type="text" name="title_edit" class="form-control"></label>
+            <label>Дата новости<input type="date" name="news_date_edit" class="form-control"></label>           
+            <label>Текст новости<textarea class="form-control" rows='23' name="content_edit"></textarea></label>
+            <label>Изображение<input type="file" name="photo_edit" class="form-control" style="display: none;"></label>
+            <input type="submit"  value="Пересохранить" class="btn btn-primary">
+        </form>
+        <p><input type="button" class="subm no btn btn-primary" value="Отмена"></p>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.no').click(function () {
+            $('.option').fadeOut('slow');
+        });
+        $('.showForm').click(function (e) {
+            $('.option').fadeIn('slow');
+            $('.option').css({
+                'top': e.pageY,
+                'left': e.pageX
+            });
+            $('input.id').val($(this).attr('id'));
+            $('input[name="title_edit"]').val($(this).children('td.title').text());
+            $('input[name="news_date_edit"]').val($(this).children('td.date').text());
+            $('textarea[name="content_edit"]').val($(this).children('td.content').text());
+            $('input[name="photo_edit"]').val($(this).children('td.photo').text());
+        });
+    });
+</script>
 
                 @foreach($event->comments as $comment)
                 <div id="comments" class="comments-area">

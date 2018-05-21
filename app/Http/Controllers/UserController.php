@@ -15,9 +15,10 @@ class UserController extends Controller {
     public function __construct() {
         $this->middleware('auth');
     }
+	public $puginationUsers = 2;
 
     public function adminUsers() {
-        $users = User::get();
+        $users = User::orderBy('id', 'DESC')->paginate($this->puginationUsers);
         $usersCount = User::count();
         return view('admin.users.adminUsers', ['users' => $users, 'usersCount' => $usersCount]);
     }

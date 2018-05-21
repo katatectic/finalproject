@@ -30,7 +30,7 @@ class ImageController extends Controller {
             };
             $create = Image::create($data);
             $id = $create->id;
-            return redirect()->route('getlist');
+            return redirect()->route('album.index');
         }
         return view('albums.addimage');
     }
@@ -44,7 +44,7 @@ class ImageController extends Controller {
 			  unlink(public_path() . '/images/albums/photos/' . $img);
 		}	
         $photo->delete();
-        return redirect()->route('getlist');
+        return redirect()->route('album.index');
     }
 
     public function image($request) {

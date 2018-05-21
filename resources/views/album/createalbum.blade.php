@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Добавить альбом</div><br/><br/>
                 <div class="panel-body">
-                    <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('albumcreate')}}">
+                    <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('album.create')}}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Название</label>

@@ -228,10 +228,10 @@
                                                  data-index="2">
                                                 @if($albums)
                                                 <div class="so-widget-doublef-featured-gallery so-widget-doublef-featured-gallery-base"><br/><br/>
-                                                    <a href="{{route('getlist')}}"<h5 class="doublef-gallery-photos-num"><h2 class="widget-title">Избранная галлерея</h2></a>
+                                                    <a href="{{route('album.index')}}"<h5 class="doublef-gallery-photos-num"><h2 class="widget-title">Избранная галлерея</h2></a>
                                                     <div class="doublef-gallery-widget-wrap">
                                                         <figure class="post-thumbnail">
-                                                            <a href="{{route('getlist')}}"
+                                                            <a href="{{route('album.index')}}"
                                                                title="School Photo Shots">
                                                                 <img width="1140" height="500"
                                                                      src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg"
@@ -243,7 +243,7 @@
                                                         <div class="doublef-gallery-title-wrap">
                                                             <h2 class="doublef-gallery-title">
                                                             </h2>
-                                                            <a href="{{route('getlist')}}"<h5 class="doublef-gallery-photos-num">11 фото</h5></a>
+                                                            <a href="{{route('album.index')}}"<h5 class="doublef-gallery-photos-num">11 фото</h5></a>
                                                         </div>
                                                     </div>
                                                 </div>

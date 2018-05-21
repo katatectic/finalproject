@@ -8,17 +8,24 @@ use App\Image;
 
 class AlbumController extends Controller {
 
-    public function getList() {
+    public function index() {
         $albums = Album::with('Photos')->get();
         return view('album.index', compact('albums'));
     }
 
-    public function getAlbum($id) {
+    public function show($id) {
         $album = Album::with('Photos')->find($id);
         return view('album.album', compact('album'));
     }
 
-    public function getForm() {
+    public function adminAlbums() {
+        $albumsCount = Album::count();
+        $albums = Album::with('Photos')->orderBy('id', 'DESC')->paginate(2);
+        ;
+        return view('admin.albums.albums', compact('albums', 'albumsCount'));
+    }
+
+    public function create() {
         return view('album.createalbum');
     }
 
@@ -29,7 +36,7 @@ class AlbumController extends Controller {
         return $newfilename;
     }
 
-    public function albumCreate(Request $request) {
+    public function store(Request $request) {
         if ($request->method() == 'POST') {
             $this->validate($request, [
                 'name' => 'required',
@@ -45,21 +52,44 @@ class AlbumController extends Controller {
             };
             $create = Album::create($data);
             $id = $create->id;
-            return redirect()->route('getlist');
+            return redirect()->route('album.index');
         }
         return view('album.createalbum');
     }
 
-    public function deleteAlbum($id) {
+    public function destroy($id) {
         if (!is_numeric($id))
             return false;
         $album = Album::find($id);
         $img = $album->cover_image;
-		if(is_file($img)) {
-			unlink(public_path() . '/images/albums/' . $img);
-		}	
+        if (is_file($img)) {
+            unlink(public_path() . '/images/albums/' . $img);
+        }
         $album->delete();
-        return redirect()->route('getlist');
+        return redirect()->route('album.index');
+    }
+
+    public function edit($id, Request $request) {
+        if ($request->method() == "POST") {
+            $this->validate($request, [
+                'name' => 'required',
+                'description' => 'required',
+                'cover_image' => 'required|image|max:2048',], [
+                '*.required' => 'Поле не должно быть пустым',
+                'cover_image.image' => 'Загруженный файл должен быть изображением',
+                'cover_image' => 'Максимальный размер изображения=2048'
+            ]);
+            $data = $request->all();
+            if ($request->hasFile('cover_image')) {
+                $data['cover_image'] = $this->addPhoto($request);
+            };
+            $editOne = Album::find($id);
+            $editOne->fill($data);
+            $editOne->save();
+            return redirect()->route('adminAlbums');
+        }
+        $album = Album::find($id);
+        return view('admin.albums.edit', compact('album'));
     }
 
 }

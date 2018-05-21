@@ -1,16 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <style>
-        .option {
-            display: none;
-        }
-        .showForm {
-            cursor: pointer;
-        }
-    </style>
-</head>
+
 <p class="btn btn-primary mb1 bg-green">Всего событий: {{$eventsCount}} </p>
 <a href="{{ route('event.create')}}" class="more-link button">Добавить событие</a>
 <div>
