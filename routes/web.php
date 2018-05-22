@@ -63,7 +63,7 @@ Route::post('addNews', 'NewsController@store')->name('addNews');
 Route::get('article/{id}','NewsController@article')->name('article');/* Показ одной новости*/
 
 // Search
-Route::get('/search/results', 'SearchController@search')->name('search');
+Route::get('/search/results', 'IndexController@search')->name('search');
 
 //Feedbacks
 Route::any('feedback', 'FeedbacksController@index')->name('feedback');

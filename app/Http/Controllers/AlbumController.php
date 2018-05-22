@@ -20,7 +20,7 @@ class AlbumController extends Controller {
 
     public function adminAlbums() {
         $albumsCount = Album::count();
-        $albums = Album::with('Photos')->orderBy('id', 'DESC')->paginate(2);
+        $albums = Album::with('Photos')->orderBy('id', 'DESC')->paginate(10);
         ;
         return view('admin.albums.albums', compact('albums', 'albumsCount'));
     }

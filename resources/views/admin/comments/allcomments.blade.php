@@ -74,8 +74,7 @@
                             @else
                             <td class="date">---</td>
                             @endif
-                            <td class="content"><div style="max-height:120px;width:100px;overflow-x:hidden">{{$comment->comment}}</div></td>
-							<td><a href="{{route('comment.confirm', ['id'=>$comment->id])}}" class="btn btn-primary mb1 bg-orange">Одобрить комментарий</a></td>
+                            <td class="content"><div style="max-height:120px;width:100px;overflow-x:hidden">{{$comment->comment}}
                             <td><a href="{{route('deletecomment',$comment->id)}}" onclick="return confirm('Удалить комментарий?')" class="btn btn-primary mb1 bg-orange">Удалить комментарий</a></td>   
                         </tr>
                         @endif
