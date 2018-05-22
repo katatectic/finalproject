@@ -22,7 +22,6 @@
                             <th>Время проведения</th>
                             <th>Адрес</th>
                             <th>Краткое описание</th>
-                            <th>Полное описание</th>
                             <th>Картинка</th>
                         </tr>
                     </thead>
@@ -34,8 +33,7 @@
                             <td>{{$event->event_date}}</td>
                             <td>{{$event->event_hours}}</td>
                             <td>{{$event->address}}</td>
-                            <td>{{$event->description}}</td>
-                            <td>{{$event->content}}</td>
+                            <td>{{str_limit($event->description,20)}}</td>
                             <td>
                                 <div class="image-lightbox">
                                     <a href="{{asset('images/events/'.$event->photo)}}" data-lightbox="{{asset('images/events/'.$event->photo)}}" >

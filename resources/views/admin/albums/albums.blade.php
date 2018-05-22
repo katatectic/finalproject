@@ -25,7 +25,7 @@
                         @foreach($albums as $album)
                         <tr>
                             <td>{{$album->name}}</td>
-                            <td>{{$album->description}}</td>
+                            <td>{{str_limit($album->description,1)}}</td>
                             <td>
                                 <div class="image-lightbox">
                                     <a href="{{asset('images/albums/'.$album->cover_image)}}" data-lightbox="{{asset('images/albums/'.$album->cover_image)}}" title="{{ $album->name }}">

@@ -40,7 +40,7 @@
                 </article>
                 @endif
                 @foreach($event->comments as $comment)
-                @if ($comment->isPublished == 1)
+                @if ($comment->ispublished == 1)
                 <div id="comments" class="comments-area">
                     <div class="comment_list comment-list">
                         <div class="comment byuser comment-author-adminschool bypostauthor even thread-even depth-1" id="comment-7">

@@ -9,13 +9,10 @@ use DateTime;
 
 class NewsController extends Controller {
 
-    public $puginationNews = 10; //количество новостей на странице новостей
+    public $puginationNews = 5;
 
-    public function newsPage(Request $request) {
+    public function index(Request $request) {
         $all = Article::orderBy('id', 'DESC')->paginate($this->puginationNews);
-        if (request()->ajax()) {
-            return view('news', compact('all'));
-        }
         return view('news', compact('all'));
     }
 
@@ -25,16 +22,16 @@ class NewsController extends Controller {
     }
 
     public function adminNews() {
-        $all = Article::orderBy('id', 'DESC')->paginate(3);
+        $all = Article::orderBy('id', 'DESC')->paginate(10);
         $newsCount = Article::count();
-        return view('admin.news.allNews', compact('all', 'newsCount'));
+        return view('admin.news.index', compact('all', 'newsCount'));
     }
 
-    public function newsView() {
-        return view('admin.news.newsform');
+    public function create() {
+        return view('admin.news.create');
     }
 
-    public function addNews(Request $request) {
+    public function store(Request $request) {
         if ($request->method() == 'POST') {
             $this->validate($request, [
                 'title' => 'required',
@@ -54,9 +51,9 @@ class NewsController extends Controller {
             };
             $create = Article::create($data);
             $id = $create->id;
-            return redirect()->route('main');
+            return redirect()->route('adminnews');
         }
-        return view('admin.news.newsform');
+        return view('admin.news.create');
     }
 
     public function addPhoto($request) {
@@ -65,19 +62,20 @@ class NewsController extends Controller {
         $file->move(public_path() . '/images/news', $newfilename);
         return $newfilename;
     }
-    public function deleteNews($id) {
+
+    public function destroy($id) {
         if (!is_numeric($id))
             return false;
         $article = Article::find($id);
         $img = $article->photo;
-		if(is_file($img)) {
-			 unlink(public_path() . '/images/news/' . $img);
-		}	
+        if (is_file($img)) {
+            unlink(public_path() . '/images/news/' . $img);
+        }
         $article->delete();
         return redirect()->route('adminnews');
     }
 
-    public function editNews($id, Request $request) {
+    public function edit($id, Request $request) {
         if ($request->method() == "POST") {
             $this->validate($request, [
                 'title' => 'required',
@@ -100,7 +98,7 @@ class NewsController extends Controller {
             return redirect()->route('adminnews');
         }
         $all = Article::find($id);
-        return view('admin.news.editNews', ['all' => $all]);
+        return view('admin.news.edit', ['all' => $all]);
     }
 
 }

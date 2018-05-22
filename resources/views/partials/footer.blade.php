@@ -22,9 +22,6 @@
                                                 <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
                                                     <a title="" href="{{route('addFeedback')}}">Обратная связь</a>
                                                 </li>
-												<li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
-                                                    <a href="{{ route('event.create') }}">Добавить событие</a>
-                                                </li><!--Просто добавление события админом. Потом всё настроится нормально-->
                                             </ul>
                                         </div>
                                     </div>
@@ -81,30 +78,5 @@
                 </div>                                
             </div>        
         </div>
-    </footer><!-- #colophon -->
-
-    <!-- Нужен ли второй футер??? Вряд ли!
-
-
-    <footer id="post-colophon" role="contentinfo">                
-        <div class="site-copy-wrap-elements wrappr invert">    
-            <div class="site-info">                                
-                    <img src="http://buntington2.wpshow.me/wp-content/uploads/2018/02/logo-footer-small.png" class="site-footer-copyright-img" alt="" />
-                    <nav id="footer-navigation" class="footer-nav" role="navigation">
-                        <ul id="secondary-menu" class="menu">
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-307">
-                                <a href="http://buntington2.wpshow.me/about-us/">About Us</a>
-                            </li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-310">
-                                <a href="http://buntington2.wpshow.me/full-width-page/">Full Width Page</a>
-                            </li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312">
-                                <a href="http://buntington2.wpshow.me/text-formatting/">Text formatting</a>
-                            </li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
-                                <a href="http://buntington2.wpshow.me/contact-us/">Contact Us</a>
-                            </li>
-                        </ul>                        
-                    </nav><!-- #footer-navigation -->                
-                    <div class="site-footer-copyright">This is my copyright text 2099. I can use HTML tags to format the text but only tags supported by wp_kses_post.</div>
-    
+		<div class="site-footer-copyright">Что-то там про копирайт</div>
+    </footer>    

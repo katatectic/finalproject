@@ -53,31 +53,5 @@
         {{ $all->links() }}
     </section>
     @endif
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $('body').on('click', '.pagination a', function (e) {
-                e.preventDefault();
-                $('#load a').css('color', '#dfecf6');
-                $('#load').append('<img style="position: absolute; left: 0; top: 0; z-index: 100000;" src="/images/loading.gif" />');
-                var url = $(this).attr('href');
-                getEvents(url);
-                window.history.pushState("", "", url);
-            });
-
-            function getNews(url) {
-                $.ajax({
-                    url: url
-                }).done(function (data) {
-                    $('.news').html(data);
-                }).fail(function () {
-                    alert('News could not be loaded.');
-                });
-            }
-        });
-    </script>
-
 </div>
-
 @endsection

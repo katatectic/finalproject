@@ -22,11 +22,11 @@
                     <tbody>
                         @foreach ($events as $event)
                         <tr>
-                            <td>{{ $event->title }}</td>
-                            <td>{{ $event->address }}</td>
-                            <td>{{ $event->event_hours }}</td>
-                            <td><div style="max-height:120px;overflow-x:hidden">{{$event->description}}</div></td>
-                            <td><div style="max-height:120px;overflow-x:hidden">{{$event->content}}</div></td>
+                            <td><a href="{{route('event.show', $event->id) }}">{{ $event->title }}</a></td>
+                            <td><a href="{{route('event.show', $event->id) }}">{{ $event->address }}</a></td>
+                            <td><a href="{{route('event.show', $event->id) }}">{{ $event->event_hours }}</a></td>
+                            <td><a href="{{route('event.show', $event->id) }}">{{str_limit($event->description,20)}}</a></td>
+                            <td><a href="{{route('event.show', $event->id) }}">{{str_limit($event->content,20)}}</a></td>
                             <td>
                                 <a href="{{route('event.show', $event->id) }}" class="btn btn-info btn-xs"><i class="more-link button">Просмотр</i></a> 
                             </td>
@@ -50,11 +50,9 @@
                     <tbody>
                         @foreach ($news as $article)
                         <tr>
-                            <td>{{ $article->title }}</td>
-                            <td><div style="max-height:120px;overflow-x:hidden">{{$event->content}}</div></td>
-                            <td>
-                                <a href="{{route('article', $article->id) }}" class="btn btn-info btn-xs"><i class="more-link button">Просмотр</i></a> 
-                            </td>
+                            <td><a href="{{route('article',['id'=>$article->id])}}">{{ $article->title }}</a></td>
+                            <td><a href="{{route('article', ['id'=>$article->id])}}">{{str_limit($article->content,20)}}</a></td>
+                            <td><a href="{{route('article', ['id'=>$article->id])}}" class="btn btn-info btn-xs"><i class="more-link button">Просмотр</i></a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -64,6 +62,5 @@
             </div>
         </div>
     </div>
-</div>@endsection  
-</body>
-</html>
+</div>
+@endsection  
