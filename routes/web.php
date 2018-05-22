@@ -23,8 +23,8 @@ Route::group(['middleware' => 'adminandchief'], function() {
   Route::get('/admin','AdminController@index')->name('admin');
     // News
     Route::any('news', 'NewsController@adminNews')->name('adminnews');/* Список всех новостей в админке*/
-    Route::any('article/{id}/edit', 'NewsController@editNews')->name('editnews');/* Редактирование новость*/
-    Route::any('article/{id}/delete', 'NewsController@deleteNews')->name('deletenews');/* Удаление новости*/
+    Route::any('article/{id}/edit', 'NewsController@edit')->name('editnews');/* Редактирование новость*/
+    Route::any('article/{id}/delete', 'NewsController@destroy')->name('deletenews');/* Удаление новости*/
     // Events
     Route::any('events', 'EventController@adminEvents')->name('adminevents');/*Список всех событий в админке*/
     Route::any('event/{id}/delete', 'EventController@destroy')->name('event.delete');/* Удаление события*/
@@ -57,9 +57,9 @@ Route::group(['middleware' => 'admin'], function() {
 
 
 // News
-Route::any('news', 'NewsController@newsPage')->name('news');
-Route::get('newsview', 'NewsController@newsView')->name('newsview');
-Route::post('addNews', 'NewsController@addNews')->name('addNews');
+Route::any('news', 'NewsController@index')->name('news');
+Route::any('newscreate', 'NewsController@create')->name('newsview');
+Route::post('addNews', 'NewsController@store')->name('addNews');
 Route::get('article/{id}','NewsController@article')->name('article');/* Показ одной новости*/
 
 // Search

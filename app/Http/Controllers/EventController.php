@@ -9,13 +9,10 @@ use DateTime;
 
 class EventController extends Controller {
 
-    public $puginationEvents = 1;
+    public $puginationEvents = 5;
 
     public function index(Request $request) {
         $events = Event::orderBy('id', 'DESC')->paginate($this->puginationEvents);
-        if (request()->ajax()) {
-            return view('events', compact('events'));
-        }
         return view('events', compact('events'));
     }
 
@@ -25,13 +22,13 @@ class EventController extends Controller {
     }
 
     public function adminEvents() {
-        $events = Event::orderBy('id', 'DESC')->paginate(3);
+        $events = Event::orderBy('id', 'DESC')->paginate(10);
         $eventsCount = Event::count();
-        return view('admin.events.allEvents', compact('events', 'eventsCount'));
+        return view('admin.events.index', compact('events', 'eventsCount'));
     }
 
     public function create() {
-        return view('admin.events.addEvent');
+        return view('admin.events.create');
     }
 
     public function store(Request $request) {
@@ -58,7 +55,7 @@ class EventController extends Controller {
             $id = $create->id;
             return redirect()->route('adminevents');
         }
-        return view('admin.events.addEvent');
+        return view('admin.events.create');
     }
 
     public function addPhoto($request) {
@@ -94,7 +91,7 @@ class EventController extends Controller {
             return redirect()->route('adminevents');
         }
         $event = Event::find($id);
-        return view('admin.events.editEvent', compact('event'));
+        return view('admin.events.edit', compact('event'));
     }
 
     public function destroy($id) {

@@ -22,7 +22,7 @@
                         @foreach($sliders as $slider)
                         <tr>
                             <td>{{$slider->title}}</td>
-                            <td>{{$slider->description}}</td>
+                            <td>{{str_limit($slider->description,20)}}</td>
                             <td>
                                 <div class="image-lightbox">
                                     <a href="{{asset('images/sliders/'.$slider->photo)}}" data-lightbox="{{asset('images/sliders/'.$slider->photo)}}" title="{{ $slider->title }}">
