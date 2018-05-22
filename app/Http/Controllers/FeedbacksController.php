@@ -29,7 +29,7 @@ class FeedbacksController extends Controller {
     }
 
     public function adminFeedbacks() {
-        $feedbacks = Feedback::orderBy('id', 'DESC')->paginate(2);
+        $feedbacks = Feedback::orderBy('id', 'DESC')->paginate(10);
         $feedbacksCount = Feedback::count();
         return view('admin.feedbacks.adminFeedbacks', compact('feedbacks', 'feedbacksCount'));
     }

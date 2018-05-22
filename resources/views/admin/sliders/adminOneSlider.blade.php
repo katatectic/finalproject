@@ -1,23 +1,32 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-<div class="content">
-    <div class="row" style="margin-left:50px">
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Слайдер
+        </h1>
+    </section>
+    <section class="content">
         @if($slider)
-        <div class="col-lg-8 col-md-8 col-sm-8">
-            <div class="left_content">
-				<div class="image-lightbox">
-                        <a href="{{asset('images/sliders/'.$slider->photo)}}" data-lightbox="{{asset('images/sliders/'.$slider->photo)}}" title="{{ $slider->title }}">
-                            <img width="500" height="500" src="{{asset('images/sliders/'.$slider->photo)}}" class="attachment-full size-full wp-post-image" alt="{{ $slider->title }}"/>
-                        </a>
+        <div class="box">
+            <div class="box-body">
+                <div class="image-lightbox">
+                    <a href="{{asset('images/sliders/'.$slider->photo)}}" data-lightbox="{{asset('images/sliders/'.$slider->photo)}}" title="{{ $slider->title }}">
+                        <img width="500" height="500" src="{{asset('images/sliders/'.$slider->photo)}}" class="attachment-full size-full wp-post-image" alt="{{ $slider->title }}"/>
+                    </a>
+                </div>
+                <div class="col-md-12">
+                    <h1 class="entry-title">Название: {{$slider->title}}</h1>
+                    <h2>Краткое описание:</h2>
+                    <p>{{ $slider->description}}</p>
+                    <div class="box-footer">
+                        <button class="btn btn-success pull-left bg-orange" onclick="window.history.go(-1); return false;">Назад</button>
+                        <a class="btn btn-success pull-right bg-orange" href="{{route('slider.destroy',$slider->id)}}" onclick="return confirm('Удалить слайдер?')">Удалить слайдер</a>
                     </div>
-                <header class="entry-header">
-                    <h1 class="entry-title">{{$slider->title}}</h1>
-                    <p>{{$slider->description}}</p>
+                </div>
             </div>
-            <a href="{{ route('slider.edit',['id'=>$slider->id]) }}" class="btn btn-success pull-left">Редактировать слайдер</a>
-            <a href="{{route('slider.destroy',$slider->id)}}" onclick="return confirm('Удалить слайдер?')" class="btn btn-success pull-right" style="float:right">Удалить слайдер</a>
-			  </div>
-            @endif
-      </div>
-	  </div>
-        @endsection    
+        </div>
+        @endif
+    </section>
+</div>
+@endsection    

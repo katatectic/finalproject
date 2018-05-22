@@ -27,7 +27,11 @@
                             <td>{{$album->name}}</td>
                             <td>{{$album->description}}</td>
                             <td>
-                                <img src="{{asset('images/albums/'.$album->cover_image)}}" alt="" width="100">
+                                <div class="image-lightbox">
+                                    <a href="{{asset('images/albums/'.$album->cover_image)}}" data-lightbox="{{asset('images/albums/'.$album->cover_image)}}" title="{{ $album->name }}">
+                                        <img width="100" src="{{asset('images/albums/'.$album->cover_image)}}" class="attachment-full size-full wp-post-image" alt="{{ $album->name }}"/>
+                                    </a>
+                                </div>
                             </td>
                             <td>
                                 <a href="{{route('album.show',['id'=>$album->id])}}" class="fa fa-eye"></a>

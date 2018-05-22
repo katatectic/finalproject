@@ -1,44 +1,60 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-
-<p class="btn btn-primary mb1 bg-green">Всего событий: {{$eventsCount}} </p>
-<a href="{{ route('event.create')}}" class="more-link button">Добавить событие</a>
-<div>
-    <table class="adminTable">
-        <th>Руководитель</th>
-        <th>Название события</th>
-        <th>Дата проведения</th>
-        <th>Время проведения</th>
-        <th>Адрес</th>
-        <th>Краткое описание</th>
-        <th>Полное описание</th>
-        <th>Картинка</th>
-        @foreach($events as $event)
-        <tr class="showForm" id="{{$event->id}}">
-            <td class="authod_id">{{$event->user->name}}</td>
-            <td class="title"><div style="max-height:120px;width:50px;overflow-x:hidden">{{$event->title}}</div></td>
-            <td class="event_date">{{$event->event_date}}</td>
-            <td class="event_hours">{{$event->event_hours}}</td>
-            <td class="address">{{$event->address}}</td>
-            <td class="description"><div style="max-height:120px;width:100px;overflow-x:hidden">{{$event->description}}</div></td>
-            <td class="content"><div style="max-height:120px;width:100px;overflow-x:hidden">{{$event->content}}</div></td>
-            <td class="photo">
-                <div style="width:100px;height:120px">
-                    @empty(!$event->photo)
-                    <img class="mw-100" style="width:100%;height:100%" src="{{asset('images/events/'.$event->photo)}}">
-                    @else
-                    Загрузите изображение
-                    @endempty
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Пользователи</h1>
+    </section>
+    <section class="content">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Всего событий: {{$eventsCount}}</h3>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <a href="{{ route('event.create')}}" class="btn btn-primary mb1 bg-orange">Добавить событие</a>
                 </div>
-            </td>
-            <td><a href="{{route('event.show',['id'=>$event->id])}}" class="more-link button">Просмотр события</a></td>
-            <td><a href="{{route('event.edit',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a></td>
-            <td><a href="{{route('event.delete',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button">Удалить событие</a></td>
-        </tr>
-        @endforeach
-    </table>
-    {{$events->links()}}
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Руководитель</th>
+                            <th>Название события</th>
+                            <th>Дата проведения</th>
+                            <th>Время проведения</th>
+                            <th>Адрес</th>
+                            <th>Краткое описание</th>
+                            <th>Полное описание</th>
+                            <th>Картинка</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($events as $event)
+                        <tr>
+                            <td><a href="{{route('profile',['id'=>$event->user->id])}}">{{$event->user->name}}</a></td>
+                            <td>{{$event->title}}</td>
+                            <td>{{$event->event_date}}</td>
+                            <td>{{$event->event_hours}}</td>
+                            <td>{{$event->address}}</td>
+                            <td>{{$event->description}}</td>
+                            <td>{{$event->content}}</td>
+                            <td>
+                                <div class="image-lightbox">
+                                    <a href="{{asset('images/events/'.$event->photo)}}" data-lightbox="{{asset('images/events/'.$event->photo)}}" >
+                                        <img width="100" src="{{asset('images/events/'.$event->photo)}}" class="attachment-full size-full wp-post-image"/>
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="{{route('event.show',['id'=>$event->id])}}" class="fa fa-eye"></a>
+                                <a href="{{route('event.edit',['id'=>$event->id])}}" class="fa fa-pencil"></a>
+                                <a href="{{route('event.delete',$event->id)}}" onclick="return confirm('Удалить событие?')" class="fa fa-remove"></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                        </tfoot>
+                </table>
+            </div>
+            {{$events->links()}}
+        </div>
+    </section>
 </div>
-</div>@endsection  
-</body>
-</html>
+<@endsection  

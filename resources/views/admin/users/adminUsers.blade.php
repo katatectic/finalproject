@@ -34,7 +34,11 @@
                             <td>{{$user->role}}</td>
                             <td>{{$user->created_at}}</td>
                             <td>
-                                <img src="{{asset('images/users/'.$user->avatar)}}" alt="" width="100">
+                                <div class="image-lightbox">
+                                    <a href="{{asset('images/users/'.$user->avatar)}}" data-lightbox="{{asset('images/users/'.$user->avatar)}}" >
+                                        <img width="100" src="{{asset('images/users/'.$user->avatar)}}" class="attachment-full size-full wp-post-image"/>
+                                    </a>
+                                </div>
                             </td>
                             <td>
                                 <a href="{{ route('profile',['id'=>$user->id]) }}" class="fa fa-eye"></a>
@@ -50,18 +54,4 @@
         </div>
     </section>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @endsection  

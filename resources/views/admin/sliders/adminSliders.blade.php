@@ -24,7 +24,12 @@
                             <td>{{$slider->title}}</td>
                             <td>{{$slider->description}}</td>
                             <td>
-                                <img src="{{asset('images/sliders/'.$slider->photo)}}" alt="" width="100">
+                                <div class="image-lightbox">
+                                    <a href="{{asset('images/sliders/'.$slider->photo)}}" data-lightbox="{{asset('images/sliders/'.$slider->photo)}}" title="{{ $slider->title }}">
+                                        <img width="100" src="{{asset('images/sliders/'.$slider->photo)}}" class="attachment-full size-full wp-post-image" alt="{{ $slider->title }}"/>
+                                    </a>
+                                </div>
+
                             </td>
                             <td>
                                 <a href="{{ route('slider.show',['id'=>$slider->id]) }}" class="fa fa-eye"></a>

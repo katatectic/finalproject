@@ -56,7 +56,7 @@ class EventController extends Controller {
             };
             $create = Event::create($data);
             $id = $create->id;
-            return redirect()->route('main');
+            return redirect()->route('adminevents');
         }
         return view('admin.events.addEvent');
     }

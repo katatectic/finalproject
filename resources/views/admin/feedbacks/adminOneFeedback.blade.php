@@ -1,24 +1,34 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-<div class="content">
-    <div class="row">
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Просмотр заявки
+        </h1>
+    </section>
+    <section class="content">
         @if($feedback)
-        <div class="col-lg-8 col-md-8 col-sm-8">
-            <div class="left_content">
-                <div class="single_page">
-                    <div class="single_page_content"> 
+        <div class="box">
+            <div class="box-body">
+                <div class="col-md-6">
+                    <div class="form-group">
                         <h2>Имя отправителя: {{ $feedback->name}}</h2>
+                    </div>
+                    <div class="form-group">
                         <h2>Почта отправителя: {{ $feedback->email}}</h2>
-                        <h2>Сообщение</h2>
-                        </p>{{ $feedback->message}}</p>
-                        <a href="{{route('deletefeedback',$feedback->id)}}" class="more-link button">Удалить заявку</a>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <h2>Сообщение</h2>
+                    </p>{{ $feedback->message}}</p>
+                    <div class="box-footer">
+                        <button class="btn btn-success pull-left bg-orange" onclick="window.history.go(-1); return false;">Назад</button>
+                        <a class="btn btn-success pull-right bg-orange" href="{{route('deletefeedback',$feedback->id)}}" onclick="return confirm('Удалить заявку?')">Удалить заявку</a>
                     </div>
                 </div>
             </div>
         </div>
         @endif
-    </div>
+    </section>
 </div>
 @endsection    
-</body>
-</html>
