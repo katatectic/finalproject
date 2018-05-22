@@ -21,6 +21,7 @@
                             <th>Роль пользователя</th>
                             <th>Дата регистрации</th>
                             <th>Аватарка пользователя</th>
+                            <th>Классы</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +40,19 @@
                                         <img width="100" src="{{asset('images/users/'.$user->avatar)}}" class="attachment-full size-full wp-post-image"/>
                                     </a>
                                 </div>
+                            </td>
+                            <td>
+                                @foreach( $user->studentsClasses as $class)
+                                    @if(!$loop->first),  @endif
+                                    @if (date('Y') - $class->start_year + $transition < 4)
+                                        {{date('Y') - $class->start_year + $transition}}
+                                    @elseif (date('Y') <= $class->year_of_issue)
+                                        {{date('Y') - $class->start_year + $transition + 1 - $class->fourth_class}}
+                                    @else
+                                         (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
+                                    @endif
+                                    <span>{{$class->letter_class}}</span>
+                                @endforeach
                             </td>
                             <td>
                                 <a href="{{ route('profile',['id'=>$user->id]) }}" class="fa fa-eye"></a>

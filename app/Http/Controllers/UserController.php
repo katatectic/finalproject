@@ -7,8 +7,10 @@ use App\Event;
 use App\User;
 use App\Comment;
 use App\Article;
+use App\StudentClass;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller {
 
@@ -18,9 +20,9 @@ class UserController extends Controller {
 	public $puginationUsers = 9;
 
     public function adminUsers() {
-        $users = User::orderBy('id', 'DESC')->paginate($this->puginationUsers);
+        $users = User::orderBy('id', 'DESC')->with('studentsClasses')->paginate($this->puginationUsers);
         $usersCount = User::count();
-        return view('admin.users.adminUsers', ['users' => $users, 'usersCount' => $usersCount]);
+        return view('admin.users.adminUsers', ['users' => $users, 'usersCount' => $usersCount, 'transition' => $this->transition()]);
     }
 
     public function profile($id) {
