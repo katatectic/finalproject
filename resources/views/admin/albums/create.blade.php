@@ -1,41 +1,42 @@
 @extends('layouts.admin')
 @section('content')
-<div class="container">
-    <div class="row"><br/></br/>
-        <div class="col-md-8 col-md-offset-2" style="margin-left: 200px;">
-            <div class="panel panel-default">
-              <h3 class="box-title" style="text-align:center">Добавляем альбом</h3><br/>
-                <div class="panel-body">
-                    <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('album.create')}}">
-                        {{ csrf_field() }}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Добавить альбом
+        </h1>
+    </section>
+    <section class="content">
+        <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('album.create')}}" >
+            <div class="box">
+                <div class="box-body">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Название</label>
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" placeholder="Введите название альбома" name="name" value="{{ old('name') }}" autofocus>
-                                <span style="color:red">{{ $errors->first('name') }}</span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="description" class="col-md-4 control-label">Краткое описание</label>
-                            <div class="col-md-6">
-                                <textarea class="form-control" id="description" rows='23' name="description" placeholder="Введите краткое описание альбома" autofocus>{{ old('description') }}</textarea>
-                                <span style="color:red">{{ $errors->first('description') }}</span>
-                            </div>
+                            <label>Название</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Название альбома" name="name" value="{{ old('name') }}">
+                            <span style="color:red">{{ $errors->first('name') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="cover_image" class="col-md-4 control-label">Изображение</label>
-                            <div class="col-md-6">
-                                <input type="file" name="cover_image" autofocus>
-                                <span style="color:red">{{ $errors->first('cover_image') }}</span>
-                            </div><br/>
+                            <label for="exampleInputFile">Изображение</label>
+                            <input type="file" name="cover_image" id="exampleInputFile">
+                            <span style="color:red">{{ $errors->first('cover_image') }}</span>
                         </div>
-                        <div class="form-group" style="text-align: center">
-                            <input name="submit" type="submit" id="submit" class="submit" value="Создать альбом"/>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Краткое описание</label>
+                            <textarea name="description" placeholder="Краткое описание" id="" cols="30" rows="10" class="form-control">{{ old('description') }}</textarea>
+                            <span style="color:red">{{ $errors->first('description') }}</span>
                         </div>
-                    </form>
+                        <div class="box-footer">
+                            <button class="btn btn-success pull-left bg-orange"onclick="window.history.go(-1); return false;">Назад</button>
+                            <button class="btn btn-success pull-right bg-orange">Добавить альбом</button>
+                        </div>
+                    </div>
+                    {{ csrf_field() }}
                 </div>
             </div>
-        </div>
-    </div>
+        </form>
+    </section>
 </div>
 @endsection

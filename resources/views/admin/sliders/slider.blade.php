@@ -1,42 +1,42 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-<div class="content">
-    <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8">
-            <div class="left_content">
-                <div class="contact_area">
-                    <div >
-                        <form enctype="multipart/form-data" action="{{route('slider.store')}}" class="contact_form" method="POST" >
-                            <div class="form-group">
-                                <label for="title" class="col-md-4 control-label">Название</label>
-                                <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control" placeholder="Название слайдера" name="title" value="{{ old('title') }}"  autofocus>
-                                    <span style="color:red">{{ $errors->first('title') }}</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="photo" class="col-md-4 control-label">Фотография</label>
-                                <div class="col-md-6">
-                                    <input id="photo" type="file" class="form-control" name="photo" value="{{ old('photo') }}"  autofocus>
-                                    <span style="color:red">{{ $errors->first('photo') }}</span>
-                                </div>
-                            </div>  
-                            <div class="form-group">
-                                <label for="description" class="col-md-4 control-label">Краткое описание</label>
-                                <div class="col-md-6">
-                                    <textarea class="form-control" id="description" rows='23' name="description" placeholder="Краткое описание" autofocus>{{ old('description') }}</textarea>
-                                    <span style="color:red">{{ $errors->first('description') }}</span>
-                                </div>
-                            </div>
-                            <input type="submit" value="Добавить слайдер">
-                            {{ csrf_field() }}
-                        </form>
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Добавить слайдер
+        </h1>
+    </section>
+    <section class="content">
+        <form enctype="multipart/form-data" action="{{route('slider.store')}}" class="contact_form" method="POST" >
+            <div class="box">
+                <div class="box-body">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Название</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Название слайдера" name="title" value="{{ old('title') }}">
+                            <span style="color:red">{{ $errors->first('title') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Изображение</label>
+                            <input type="file" name="photo" id="exampleInputFile">
+                            <span style="color:red">{{ $errors->first('photo') }}</span>
+                        </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Краткое описание</label>
+                            <textarea name="description" placeholder="Краткое описание" id="" cols="30" rows="10" class="form-control">{{ old('description') }}</textarea>
+                            <span style="color:red">{{ $errors->first('description') }}</span>
+                        </div>
+                        <div class="box-footer">
+                            <button class="btn btn-success pull-left bg-orange"onclick="window.history.go(-1); return false;">Назад</button>
+                            <button class="btn btn-success pull-right bg-orange">Добавить слайдер</button>
+                        </div>
+                    </div>
+                    {{ csrf_field() }}
                 </div>
             </div>
-        </div>
-    </div>
+        </form>
+    </section>
 </div>
 @endsection
-</body>
-</html>

@@ -1,32 +1,42 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2" style="margin-left: 200px;">
-            <div class="panel panel-default">
-                <div class="form">
-                    <form method="POST" action="{{route('slider.edit', ['id' => $slider->id ] ) }}" enctype="multipart/form-data">
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Редактировать слайдер
+        </h1>
+    </section>
+    <section class="content">
+        <form enctype="multipart/form-data" action="{{route('slider.edit', ['id' => $slider->id ] ) }}" class="contact_form" method="POST" >
+            <div class="box">
+                <div class="box-body">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label for="title">Название</label>
-                            <input type="text" class="form-control" id="title" name="title" value="{{$slider->title}}"> <span style="color:red">{{ $errors->first('title') }}</span>
+                            <label>Название</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Название слайдера" name="title" value="{{$slider->title}}">
+                            <span style="color:red">{{ $errors->first('title') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="description">Краткое описание</label>
-                            <textarea class="form-control" name="description">{{$slider->description}}</textarea> <span style="color:red">{{ $errors->first('description') }}</span>
+                            <label for="exampleInputFile">Изображение</label>
+                            <input type="file" name="photo" id="exampleInputFile">
+                            <span style="color:red">{{ $errors->first('photo') }}</span>
                         </div>
+                    </div>
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <label for="photo" class="col-md-4 control-label">Изображение</label>
-                            <div class="col-md-6">
-                                <input id="photo" type="file" class="form-control" name="photo"autofocus>
-                                <span style="color:red">{{ $errors->first('photo') }}</span>
-                            </div><br/>
+                            <label>Полный текст</label>
+                            <textarea name="description" placeholder="Краткое описание" cols="30" rows="10" class="form-control">{{$slider->description}}</textarea>
+                            <span style="color:red">{{ $errors->first('description') }}</span>
                         </div>
-                        <button type="submit" class="btn btn-primary">Отправить</button>
-                        {{ csrf_field() }}
-                    </form>
+                        <div class="box-footer">
+                            <button class="btn btn-success pull-left bg-orange" onclick="window.history.go(-1); return false;">Назад</button>
+                            <button class="btn btn-success pull-right bg-orange">Сохранить</button>
+                        </div>
+                    </div>
+                    {{ csrf_field() }}
                 </div>
             </div>
-        </div>
-    </div>
-</div> 
+        </form>
+    </section>
+</div>
 @endsection
