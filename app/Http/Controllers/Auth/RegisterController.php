@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\StudentClass;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UsersStudentClassController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends UsersStudentClassController {
+class RegisterController extends Controller {
     /*
       |--------------------------------------------------------------------------
       | Register Controller
@@ -94,7 +95,7 @@ use RegistersUsers;
                     'avatar' => $newfilename,
                     'password' => bcrypt($data['password']),
         ]);
-        $this->storeUSC($newUser->id, $request->studentsClasses);
+        User::find($newUser->id)->studentsClasses()->attach($request->studentsClasses);
         return $newUser;
     }
 

@@ -13,13 +13,14 @@ class CreateUserStudentClassTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_studentClass', function (Blueprint $table)
+        Schema::create('student_class_user', function (Blueprint $table)
         {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->default(1);
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('studentClass_id')->unsigned()->default(1);
-            $table->foreign('studentClass_id')->references('id')->on('studentClass');
+            $table->integer('student_class_id')->unsigned()->default(1);
+            $table->foreign('student_class_id')->references('id')->on('students_classes');
+            $table->timestamps();
         });
     }
 

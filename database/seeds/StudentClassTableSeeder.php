@@ -23,6 +23,6 @@ class StudentClassTableSeeder extends Seeder
                 ];
             }
         }
-        DB::table('studentClass')->insert($data);
+        DB::table('students_classes')->insert($data);
     }
 }

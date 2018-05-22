@@ -13,7 +13,7 @@ class CreateStudentClassTable extends Migration
      */
     public function up()
     {
-        Schema::create('studentClass', function (Blueprint $table)
+        Schema::create('students_classes', function (Blueprint $table)
         {
             $table->increments('id');
             $table->string('letter_class', 2)->comment('литера класса');
@@ -31,6 +31,6 @@ class CreateStudentClassTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('studentClass');
+        Schema::dropIfExists('students_classes');
     }
 }

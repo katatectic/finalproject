@@ -22,8 +22,12 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany('App\Comment'); // один пользователь много комментариев
-    }    
+    }
 
+    public function studentsClasses()
+    {
+        return $this->belongsToMany('App\StudentClass'); // один пользователь много классов
+    }
     /**
      * The attributes that are mass assignable.
      *
