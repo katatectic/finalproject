@@ -30,7 +30,7 @@
                     </thead>
                     <tbody>
                         @foreach($feedbacks as $feedback)
-                        <tr>
+                        <tr class="{{$feedback->status}}">
                             <td>{{$feedback->name}}</td>
                             <td>{{$feedback->email}}</td>
                             <td>{{$feedback->message}}</td>

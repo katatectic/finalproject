@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Feedback;
+use Mail;
 
 class FeedbacksController extends Controller {
 
@@ -23,6 +24,7 @@ class FeedbacksController extends Controller {
             $data = $request->all();
             $create = Feedback::create($data);
             $id = $create->id;
+			
             return view('feedback.addFeedback');
         }
         return view('feedback.feedback');
