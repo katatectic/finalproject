@@ -64,7 +64,7 @@ Route::get('article/{id}','NewsController@article')->name('article');/* Пока
 
 // Search
 Route::get('/search/results', 'IndexController@search')->name('search');
-
+Route::get('/adminsearch/results', 'AdminController@search')->name('admin.search');
 //Feedbacks
 Route::any('feedback', 'FeedbacksController@index')->name('feedback');
 Route::any('feedback', 'FeedbacksController@addFeedback')->name('addFeedback');
