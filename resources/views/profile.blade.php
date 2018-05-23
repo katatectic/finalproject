@@ -9,7 +9,7 @@
                     <div class="panel-heading">
                         <header class="panel-title">
                             <div class="text-center">
-                                <p>Пользователь сайта</p>
+                                <p>{{$roleNames[$user->role]}}</p>
                             </div>
                         </header>
                     </div>

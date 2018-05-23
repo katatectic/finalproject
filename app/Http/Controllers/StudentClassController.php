@@ -16,11 +16,9 @@ class StudentClassController extends Controller
     public function index(Request $request)
     {
         $studentClasses = StudentClass::paginate(10);
-        //$usersStudentClasses = UserStudentClass::all()->groupBy('studentClass_id');
-        $transition = ceil((strtotime('now') - strtotime(date('Y',strtotime('now')).'-08-01'))/(60*60*24*365));
         $thisYear = date('Y', time());
-        return view('admin.studentClass.index', ['studentsClasses'=>$studentClasses, 'transition'=>$transition,
-            'thisYear'=>$thisYear
+        return view('admin.studentClass.index', ['studentsClasses' => $studentClasses, 'transition' => $this->transition(),
+            'thisYear' => $thisYear
         ]);
     }
     /**
@@ -95,7 +93,7 @@ class StudentClassController extends Controller
     public function destroy($id)
     {
         if (!is_numeric($id)) return false;
-        UserStudentClass::where('studentClass_id', $id)->delete();
+        StudentClass::find($id)->user()->detach();
         StudentClass::destroy($id);
         return redirect()->back();
     }

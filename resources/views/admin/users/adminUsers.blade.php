@@ -32,7 +32,7 @@
                             <td>{{$user->middle_name}}</td>
                             <td>{{$user->email}}</td>
                             <td>{{$user->phone}}</td>
-                            <td>{{$user->role}}</td>
+                            <td>{{$roleNames[$user->role]}}</td>
                             <td>{{$user->created_at}}</td>
                             <td>
                                 <div class="image-lightbox">

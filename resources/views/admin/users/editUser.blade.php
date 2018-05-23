@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label for="role">Роль пользователя</label>
                             {{--<input type="text" class="form-control" id="role" name="role" value="{{$all->role}}">--}}
-                            <select name="role" >
+                            <select name="role">
                                 @foreach($roleNames as $key => $roleName)
                                     <option value="{{$key}}" @if($key == $all->role) selected @endif>{{$roleName}}</option>
                                 @endforeach

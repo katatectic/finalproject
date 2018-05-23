@@ -22,14 +22,16 @@ class UserController extends Controller {
     public function adminUsers() {
         $users = User::orderBy('id', 'DESC')->with('studentsClasses')->paginate($this->puginationUsers);
         $usersCount = User::count();
-        return view('admin.users.adminUsers', ['users' => $users, 'usersCount' => $usersCount, 'transition' => $this->transition()]);
+        return view('admin.users.adminUsers', ['users' => $users, 'usersCount' => $usersCount,
+            'transition' => $this->transition(), 'roleNames' => $this->roleNames]);
     }
 
     public function profile($id) {
         $user = User::with('studentsClasses')->find($id);
         $eventCount = Event::where("user_id", "=", $user->id)->count();
         $newsCount = Article::where("user_id", "=", $user->id)->count();
-        return view('profile', compact('user', 'eventCount', 'newsCount'), ['transition' => $this->transition()]);
+        return view('profile', compact('user', 'eventCount', 'newsCount'),
+            ['transition' => $this->transition(), 'roleNames' => $this->roleNames]);
     }
 
     /* public function profileEvents($id) {

@@ -80,7 +80,7 @@ use RegistersUsers;
     protected function create(array $data) {
         $request = request();
         if ($request->avatar == '') {
-            $newfilename = 'storage/app/avatars/default_avatar.jpg';
+            $newfilename = 'default_avatar.jpg';
         } else {
             $profileImage = $request->file('avatar');
             $newfilename = rand(0, 100) . "." . $profileImage->getClientOriginalExtension();

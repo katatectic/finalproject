@@ -14,7 +14,7 @@
     </style>
 </head>
 
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
 Классы
