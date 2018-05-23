@@ -13,6 +13,9 @@
 	<div id="mobile-nav-container"></div><!-- Small devices menu -->
 </div><!-- #cinemahead -->
 <div id="content" class="site-content wrappr">
+	<div class="bread">
+        <a href="{{route('home')}}">Главная</a> / О нас
+    </div>
 	<div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
 	<div class="grid"><!-- toast grid declaration -->
 		<div id="primary" class="content-area grid__col grid__col--3-of-3">

@@ -12,6 +12,9 @@
     <div id="mobile-nav-container"></div><!-- Small devices menu -->    
 </div><!-- #cinemahead -->
 <div id="content" class="site-content wrappr">
+    <div class="bread">
+        <a href="{{route('home')}}">Главная</a> / Новости
+    </div>
     @if (count($all) > 0)   
     <section class="news">
             @foreach($all as $news)

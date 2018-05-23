@@ -14,6 +14,9 @@
     <div id="mobile-nav-container"></div><!-- Small devices menu -->
 </div>
 <div id="content" class="site-content wrappr">
+    <div class="bread">
+        <a href="{{route('home')}}">Главная</a> / События
+    </div>
     @if (count($events) > 0)
     <section class="events">
         @foreach($events as $event)

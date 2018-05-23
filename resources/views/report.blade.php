@@ -12,7 +12,9 @@
     <div id="mobile-nav-container"></div><!-- Small devices menu -->    
 </div><!-- #cinemahead -->
 <div id="content" class="site-content wrappr">
-    
+    <div class="bread">
+        <a href="{{route('home')}}">Главная</a> / Отчеты
+    </div>
     <section class="report">
             <div>
                 <table>
