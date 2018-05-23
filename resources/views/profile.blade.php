@@ -29,25 +29,43 @@
                                     <tr><td class="active">Отчество:</td><td>{{$user->middle_name}}</td></tr>
                                     <tr><td class="active">Почта:</td><td>{{$user->email}}</td></tr>
                                     <tr><td class="active">Телефон:</td><td>{{$user->phone}}</td></tr>
+                                    <tr>
+                                        <td class="active">Комитеты:</td>
+                                        <td>
+                                            @foreach( $user->studentsClasses as $class)
+                                                @if(!$loop->first),  @endif
+                                                @if (date('Y') - $class->start_year + $transition < 4)
+                                                    {{date('Y') - $class->start_year + $transition}}
+                                                @elseif (date('Y') <= $class->year_of_issue)
+                                                    {{date('Y') - $class->start_year + $transition + 1 - $class->fourth_class}}
+                                                @else
+                                                     (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
+                                                @endif
+                                                <span>{{$class->letter_class}}</span>
+                                            @endforeach
+                                        </td>
+                                    </tr>
                                     <tr><td class="active">Дата регистрации</td><td>{{$user->created_at}}</td></tr>
 									<tr><td class="active">Всего объявлений</td>
 									@if (!empty($eventCount) )
-									<td>{{$eventCount}}</td></tr>
-									@else <td>0</td>
+									    <td>{{$eventCount}}</td></tr>
+									@else
+                                        <td>0</td>
 									@endif
 									<tr><td class="active">Всего новостей</td>
 									@if (!empty($newsCount) )
-									<td>{{$newsCount}}</td></tr>
-									@else <td>0</td>
+									    <td>{{$newsCount}}</td></tr>
+									@else
+                                        <td>0</td>
 									@endif
                                 </tbody>
                             </table>
 
 							@if (!Auth::guest())
-                            @if (Auth::user()->role == 1 or Auth::user()->role == 2)
-                            <a href="{{route('profile.edit',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a>
-                            <a href="{{route('profile.destroy',$user->id)}}" onclick="return confirm('Удалить профиль?')" class="more-link button">Удалить профиль</a>
-							@endif
+                                @if (Auth::user()->role == 1 or Auth::user()->role == 2)
+                                    <a href="{{route('profile.edit',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a>
+                                    <a href="{{route('profile.destroy',$user->id)}}" onclick="return confirm('Удалить профиль?')" class="more-link button">Удалить профиль</a>
+                                @endif
                             @endif
                             
                         </div>
@@ -77,6 +95,7 @@
                                                     </h2>
                                                 </header><!-- .entry-header -->
                                             </div><!-- .post-text-block -->
+                                        </article>
                                     </main><!-- #main -->
                                 </div><!-- #primary -->
                             </div>
@@ -107,6 +126,7 @@
                                                     </h2>
                                                 </header><!-- .entry-header -->
                                             </div><!-- .post-text-block -->
+                                        </article>
                                     </main><!-- #main -->
                                 </div><!-- #primary -->
                             </div>
@@ -119,4 +139,5 @@
             @endif
         </div>
     </section>
+</div>
 @endsection
