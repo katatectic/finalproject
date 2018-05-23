@@ -7,7 +7,7 @@
         </h1>
     </section>
     <section class="content">
-        <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('sendmail')}}" >
+        <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('sendMail')}}" >
             <div class="box">
                 <div class="box-body">
                         <div class="form-group">
@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Сообщение</label>
-                            <textarea name="message" placeholder="Сообщение" id="" cols="30" rows="10" class="form-control">{{ old('message') }}</textarea>
+                            <textarea name="message" placeholder="Сообщение" cols="30" rows="10" class="form-control">{{ old('message') }}</textarea>
                             <span style="color:red">{{ $errors->first('message') }}</span>
                         </div>
                         <div class="box-footer">

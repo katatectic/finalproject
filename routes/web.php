@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', 'IndexController@getMain')->name('main');
 
 Auth::routes();
@@ -33,8 +34,8 @@ Route::group(['middleware' => 'adminandchief'], function() {
     Route::any('comments', 'CommentsController@adminComments')->name('admincomments');/*Список всех комментариев в админке*/
     Route::any('comment.confirm/{id}', 'CommentsController@commentConfirm')->name('comment.confirm');/* Одобрить комментарий*/   
     Route::any('comment/{id}/delete', 'CommentsController@deleteComment')->name('deletecomment');/* Удаление комментария*/
-	Route::any('mail', 'AdminController@getMailForm')->name('mail');
-	Route::any('send', 'AdminController@sendMail')->name('sendmail');
+	Route::any('send', 'AdminController@sendMail')->name('sendMail');
+	Route::any('mail', 'AdminController@mailForm')->name('mail');
 });
 });
 
