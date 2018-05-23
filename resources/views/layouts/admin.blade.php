@@ -55,6 +55,7 @@
                         <li><a href="{{route('adminAlbums')}}"><i class="fa fa-list-ul"></i> <span>Альбомы</span></a></li>
                         <li><a href="{{route('admincomments')}}"><i class="fa fa-commenting"></i> <span>Комментарии</span></a></li>
                         @if (Auth::user()->role == 1)
+                        <li><a href="{{route('studentsClasses')}}"><i class="fa fa-sticky-note-o"></i> <span>Классы</span></a></li>
                         <li><a href="{{route('users')}}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
                         <li><a href="{{route('adminfeedbacks')}}"><i class="fa fa-sticky-note-o"></i> <span>Обратная связь</span></a></li>
                         <li><a href="{{route('adminSliders')}}"><i class="fa fa-sticky-note-o"></i> <span>Слайдеры</span></a></li>

@@ -11,6 +11,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public $roleNames = [1 => 'Администратор', 'Глава комитета', 'Участник комитета', 'Зарегестрированный пользователь'];
+
     public function transition()
     {
         $transition = ceil((strtotime('now') - strtotime(date('Y',strtotime('now')).'-08-01'))/(60*60*24*365));

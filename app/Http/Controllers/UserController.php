@@ -54,7 +54,7 @@ class UserController extends Controller {
                 'phone' => 'required|numeric|digits_between:10,10',
                 'email' => 'required|email|max:30|unique:users,email,' . $request->id . ',id',
                 'password' => 'required|min:6|confirmed',
-                'avatar' => 'required|image|max:2048'
+                'avatar' => 'image|max:2048'
                     ], [
                 '*.required' => 'Поле не должно быть пустым',
                 '*.max' => 'Максимум 30 символов',
@@ -66,7 +66,7 @@ class UserController extends Controller {
                 'avatar.max' => 'Максимальный размер картинки=2048',
                 'email.unique' => 'Данная почта зарегестрирована на другого пользователя',
                 'password.min' => 'Пароль должен состоять минимум из 6 символов',
-                'password.confirmed' => 'Правильно подтвердите пароль'
+                'password.confirmed' => 'Пароли не совпадают'
             ]);
             $data = $request->all();
             $data['avatar'] = $this->addAvatar($request);
@@ -77,7 +77,7 @@ class UserController extends Controller {
             return redirect()->route('users');
         }
         $all = User::find($id);
-        return view('admin.users.editUser', ['all' => $all]);
+        return view('admin.users.editUser', ['all' => $all, 'roleNames' => $this->roleNames]);
     }
 
     public function addAvatar($request) {
