@@ -59,6 +59,7 @@
                         <li><a href="{{route('adminfeedbacks')}}"><i class="fa fa-sticky-note-o"></i> <span>Обратная связь</span></a></li>
                         <li><a href="{{route('adminSliders')}}"><i class="fa fa-sticky-note-o"></i> <span>Слайдеры</span></a></li>
                         <li><a href="#"><i class="fa fa-sticky-note-o"></i> <span>Отчёты</span></a></li>
+						<li><a href="{{route('mail')}}"><i class="fa fa-sticky-note-o"></i> <span>Отправка почты</span></a></li>
                         @endif
                     </ul>
                 </section>

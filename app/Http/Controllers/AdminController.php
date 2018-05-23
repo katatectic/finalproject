@@ -9,6 +9,7 @@ use App\User;
 use App\Slider;
 use App\Image;
 use App\Album;
+use Mail;
 
 class AdminController extends Controller {
 
@@ -37,5 +38,4 @@ class AdminController extends Controller {
 				->paginate(10);
         return view('admin.search', compact('events', 'news','users'));
     }
-
 }

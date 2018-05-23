@@ -33,8 +33,13 @@ Route::group(['middleware' => 'adminandchief'], function() {
     Route::any('comments', 'CommentsController@adminComments')->name('admincomments');/*Список всех комментариев в админке*/
     Route::any('comment.confirm/{id}', 'CommentsController@commentConfirm')->name('comment.confirm');/* Одобрить комментарий*/   
     Route::any('comment/{id}/delete', 'CommentsController@deleteComment')->name('deletecomment');/* Удаление комментария*/
+	Route::any('mail', 'AdminController@getMailForm')->name('mail');
+	Route::any('send', 'AdminController@sendMail')->name('sendmail');
 });
 });
+
+
+
 
 //коллекция роутов для админа
 Route::group(['middleware' => 'admin'], function() {
@@ -54,6 +59,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::any('slider/{id}/delete', 'SliderController@destroy')->name('slider.destroy');
     Route::any('adminsliders', 'SliderController@adminSliders')->name('adminSliders');
 });
+
+
 
 
 // News

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Feedback;
 use Mail;
+use Session;
 
 class FeedbacksController extends Controller {
 
@@ -23,10 +24,15 @@ class FeedbacksController extends Controller {
                 'message.required' => 'Введите сообщение',]);
             $data = $request->all();
             $create = Feedback::create($data);
-            $id = $create->id;
-			
+            Mail::send('feedback.email', ['request' => $request], function($message) use($request) {
+                $message->from([$request->email]);
+                $message->to('devilchonok@gmail.com');
+                $message->subject('Сообщение пользователя' . ' ' . $request->name . ' ' . 'об ошибке');
+            });
+
             return view('feedback.addFeedback');
         }
+        Session::flash('message', 'This is a message!');
         return view('feedback.feedback');
     }
 

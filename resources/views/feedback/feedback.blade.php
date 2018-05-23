@@ -5,8 +5,7 @@
         <div class="col-lg-8 col-md-8 col-sm-8">
             <div class="left_content">
                 <div class="contact_area">
-                    <h2>Свяжитесь с нами</h2>
-                    <p>Свяжитесь с нами, и мы решим вашу проблему</p>
+                    <h2>Свяжитесь с нами и мы решим вашу проблему</h2>
                     <div >
                         <form action="{{route('addFeedback')}}" class="contact_form" method="POST" style="margin: 0 auto">
                             <div class="form-group">
@@ -24,7 +23,7 @@
                                 </div>
                             </div>    
                             <div class="form-group">
-                                <label for="message" class="col-md-4 control-label">Краткое описание события</label>
+                                <label for="message" class="col-md-4 control-label">Описание проблемы</label>
                                 <div class="col-md-6">
                                     <textarea class="form-control" id="message" rows='23' name="message" placeholder="Опишите вашу проблему" autofocus>{{ old('message') }}</textarea>
                                     <span style="color:red">{{ $errors->first('message') }}</span>
