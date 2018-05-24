@@ -33,9 +33,6 @@
         </style>
     </head>
 <div class="container">
-    @for ($i = 0; $i < 20; $i++)
-        @if ($all->studentsClasses->contains('pivot.student_class_id', $i)) <p>{{$i}}</p> @endif
-    @endfor
     <div class="row">
         <div class="col-md-8 col-md-offset-2" style="margin-left: 200px;">
             <div class="panel panel-default">
