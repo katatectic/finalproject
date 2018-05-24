@@ -1,6 +1,41 @@
 @extends('layouts.app')
 @section('content')
+    <head>
+        <style>
+            .accordion {
+                background-color: #eee;
+                color: #444;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+                transition: 0.4s;
+                margin: 20px 0;
+                max-width: 400px;
+            }
+            .studentClasses {
+                margin: 20px 0;
+                max-width: 400px;
+            }
+            .active, .accordion:hover {
+                background-color: #ccc;
+            }
+
+            .clasesSelect {
+                padding: 0 18px;
+                display: none;
+                background-color: white;
+                overflow: hidden;
+            }
+        </style>
+    </head>
 <div class="container">
+    @for ($i = 0; $i < 20; $i++)
+        @if ($all->studentsClasses->contains('pivot.student_class_id', $i)) <p>{{$i}}</p> @endif
+    @endfor
     <div class="row">
         <div class="col-md-8 col-md-offset-2" style="margin-left: 200px;">
             <div class="panel panel-default">
@@ -36,7 +71,25 @@
                             </select>
                             {{--<span style="color:red">{{ $errors->first('phone') }}</span>--}}
                         </div>
-
+                        <div class="form-group">
+                            <p class="accordion">Подкомитеты (Классы)</p>
+                            <div class="clasesSelect">
+                                <select name="studentsClasses[]" multiple style="height:200px">
+                                    @foreach($studentsClasses as $class)
+                                        <option value="{{$class->id}}" @if($all->studentsClasses->contains('pivot.student_class_id', $class->id)) selected @endif>
+                                            @if (date('Y') - $class->start_year + $transition < 4)
+                                                {{date('Y') - $class->start_year + $transition}}
+                                            @elseif (date('Y') <= $class->year_of_issue)
+                                                {{date('Y') - $class->start_year + $transition + 1 - $class->fourth_class}}
+                                            @else
+                                            (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
+                                            @endif
+                                            <span>{{$class->letter_class}}</span>
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
                         {{--
                         <input type="hidden" name="avatar" value="{{$all->avatar}}">
@@ -71,4 +124,20 @@
         </div>
     </div>
 </div> <!-- /container -->
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
 @endsection

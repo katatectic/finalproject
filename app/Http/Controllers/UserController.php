@@ -54,8 +54,10 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $all = User::find($id);
-        return view('admin.users.editUser', ['all' => $all, 'roleNames' => $this->roleNames]);
+        $all = User::with('studentsClasses')->find($id);
+        $StudentClass = StudentClass::get();
+        return view('admin.users.editUser', ['all' => $all, 'roleNames' => $this->roleNames,
+            'studentsClasses' => $StudentClass, 'transition' => $this->transition()]);
     }
 
     public function update($id, Request $request)
@@ -87,8 +89,7 @@ class UserController extends Controller
         }
         $data['password'] = bcrypt('password');
         User::find($id)->update(array_filter($data));
-//            $editOne->fill($data);
-//            $editOne->save();
+        User::find($id)->studentsClasses()->sync($request->studentsClasses, false);
         return redirect()->route('users');
     }
 
