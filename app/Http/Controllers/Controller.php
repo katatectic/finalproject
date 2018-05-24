@@ -13,6 +13,8 @@ class Controller extends BaseController
 
     public $roleNames = [1 => 'Администратор', 'Глава комитета', 'Участник комитета', 'Зарегестрированный пользователь'];
 
+    public $defaultAvatar = 'default_avatar.jpg';
+
     public function transition()
     {
         $transition = ceil((strtotime('now') - strtotime(date('Y',strtotime('now')).'-08-01'))/(60*60*24*365));

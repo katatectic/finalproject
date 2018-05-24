@@ -5,7 +5,7 @@
         <div class="col-md-8 col-md-offset-2" style="margin-left: 200px;">
             <div class="panel panel-default">
                 <div class="form">
-                    <form method="POST" action="{{route('profile.edit', ['id' => $all->id ] ) }}" enctype="multipart/form-data">
+                    <form method="post" action="{{route('profile.update', ['id' => $all->id ] ) }}" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Имя пользователя</label>
                             <input type="text" class="form-control" id="name" name="name" value="{{$all->name}}"> <span style="color:red">{{ $errors->first('name') }}</span>
@@ -63,7 +63,7 @@
                         </div>
                         
 
-                        <button type="submit" class="btn btn-primary">Отправить</button>
+                        <input type="submit" class="btn btn-primary" value="Сохранить изминения">
                         {{ csrf_field() }}
                     </form>
                 </div>

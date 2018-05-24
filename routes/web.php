@@ -47,7 +47,8 @@ Route::group(['middleware' => 'admin'], function() {
     // Users
     Route::any('users', 'UserController@adminUsers')->name('users'); //Список пользователей
     Route::any('profile/{id}/delete', 'UserController@destroy')->name('profile.destroy'); //Удаление пользователя
-    Route::any('profile/id{id}/edit', 'UserController@edit')->name('profile.edit');/* Редактирование пользователя*/
+    Route::get('profile/id{id}/edit', 'UserController@edit')->name('profile.edit');/* Форма редактирования пользователя*/
+    Route::post('profile/update/{id}', 'UserController@update')->name('profile.update');/* Изминение пользователя*/
     //Feedbacks
     Route::any('adminfeedbacks', 'FeedbacksController@adminFeedbacks')->name('adminfeedbacks'); //Список заявок
     Route::any('adminonefeedback/{id}', 'FeedbacksController@adminFeedbacksShowOne')->name('adminonefeedback');
