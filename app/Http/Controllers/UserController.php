@@ -89,7 +89,7 @@ class UserController extends Controller
         }
         $data['password'] = bcrypt('password');
         User::find($id)->update(array_filter($data));
-        User::find($id)->studentsClasses()->sync($request->studentsClasses, false);
+        User::find($id)->studentsClasses()->sync($request->studentsClasses);
         return redirect()->route('users');
     }
 
