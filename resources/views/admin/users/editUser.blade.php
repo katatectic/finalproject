@@ -116,7 +116,7 @@
                         </div>
                         
 
-                        <input type="submit" class="btn btn-primary" value="Сохранить изминения">
+                        <input type="submit" class="btn btn-primary" value="Сохранить изменения">
                         {{ csrf_field() }}
                     </form>
                 </div>
