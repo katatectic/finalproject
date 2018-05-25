@@ -97,8 +97,8 @@
                                 <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('contacts')}}">Контакты</a></li>
                                 --}}
                                 @if (Auth::user()->role == 2 || Auth::user()->role == 3)
-                                <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('event.create')}}">Добавить событие</a></li>       
-                                <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309"><a href="{{ route('newsview') }}">Добавить новость</a></li>
+                                <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('user.event.create')}}">Добавить событие</a></li>       
+                                <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309"><a href="{{ route('user.news.create') }}">Добавить новость</a></li>
                                 <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309"><a href="{{ route('reportform') }}">Сделать отчет</a></li>
                                 @endif
                                 @endif

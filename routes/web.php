@@ -70,6 +70,7 @@ Route::any('news', 'NewsController@index')->name('news');
 Route::any('newscreate', 'NewsController@create')->name('newsview');
 Route::post('addNews', 'NewsController@store')->name('addNews');
 Route::get('article/{id}','NewsController@article')->name('article');/* Показ одной новости*/
+Route::get('usernewscreate', 'NewsController@userNewsCreate')->name('user.news.create'); /*переход на добавление новости пользователем с ролью 3*/
 
 // Search
 Route::get('/search/results', 'IndexController@search')->name('search');
@@ -82,6 +83,7 @@ Route::any('feedback', 'FeedbacksController@addFeedback')->name('addFeedback');
 Route::any('events', 'EventController@index')->name('event.index');//Вьюха всех событий
 Route::get('event/{id}','EventController@show')->name('event.show');/* Показ одного события*/
 Route::get('eventcreate', 'EventController@create')->name('event.create');/* Вьюха добавления события*/
+Route::get('usereventcreate', 'EventController@userEventCreate')->name('user.event.create'); /*переход на добавление события пользователем с ролью 3*/
 Route::post('eventstore', 'EventController@store')->name('event.store'); /* Само добавления события*/
 
 

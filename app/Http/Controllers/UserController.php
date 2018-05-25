@@ -87,7 +87,7 @@ class UserController extends Controller
         if (isset($request->avatar)) {
             $data['avatar'] = $this->addAvatar($request);
         }
-        $data['password'] = bcrypt('password');
+        //$data['password'] = bcrypt('password');
         User::find($id)->update(array_filter($data));
         User::find($id)->studentsClasses()->sync($request->studentsClasses);
         return redirect()->route('users');

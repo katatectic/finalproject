@@ -31,6 +31,10 @@ class NewsController extends Controller {
         return view('admin.news.create');
     }
 
+    public function userNewsCreate() {
+        return view('user.useraddnews');
+    }
+
     public function store(Request $request) {
         if ($request->method() == 'POST') {
             $this->validate($request, [

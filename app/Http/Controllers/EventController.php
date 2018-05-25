@@ -31,6 +31,10 @@ class EventController extends Controller {
         return view('admin.events.create');
     }
 
+    public function userEventCreate() {
+        return view('user.useraddevent');
+    }
+
     public function store(Request $request) {
         if ($request->method() == 'POST') {
             $this->validate($request, [
