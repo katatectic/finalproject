@@ -47,6 +47,7 @@ class UserController extends Controller
     {
         if (!is_numeric($id))
             return view('404');
+        User::find($id)->studentsClasses()->detach();
         $all = User::find($id);
         $all->delete();
         return redirect()->route('users');
