@@ -74,7 +74,7 @@
                             <td>{{$class->created_at}}</td>
                         </tr>
                         @endforeach
-                        </tfoot>
+                    </tbody>
                 </table>		  
             </div><br/>
             <div>
@@ -118,7 +118,7 @@
                                 <input type="button" id="annulment" value="Не удалять" class="btn btn-success pull-right bg-orange">
                             </div>
                         </div>
-
+                    </div>
                 </section>
             </div>
         </div>
@@ -143,7 +143,8 @@ $(document).ready(function () {
         $('.option input[name="start_year"]').val($(this).children('td.start_year').text());
         $('.option input[name="year_of_issue"]').val($(this).children('td.year_of_issue').text());
         $('.option input#class_4_' + $(this).children('td.fourth_class').attr('value')).prop("checked", true);
-        $('#confirmForm').attr('action', window.location.href.slice(0, window.location.href.indexOf('\?')) + '/delete/' + $(this).attr('id'));
+        $('#confirmForm').attr('action', window.location.pathname + '/delete/' + $(this).attr('id'));
+
     });
     $('input#delete').click(function () {
         $('#delete').fadeOut(10);
