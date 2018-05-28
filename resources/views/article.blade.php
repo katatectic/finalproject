@@ -19,13 +19,13 @@
                         <img width="1140" height="500" src="{{asset('images/news/'.$article->photo)}}" class="attachment-full size-full wp-post-image" alt="" srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w" sizes="(max-width: 1140px) 100vw, 1140px"/>
                     </figure>
                     <header class="entry-header">
-                        <h1 class="entry-title">{{$article->title}}</h1>
+                        <h3 class="entry-title">{{$article->title}}</h3>
                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <div class="addthis_inline_share_toolbox"></div>
-                        <h3 class="doublef-event-item-date">
-                            Кто создал <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}</a>
-                        </h3>
-                        <h3 class="doublef-event-item-date">{{$article->date}}</h3>
+                        <h5 class="doublef-event-item-date">
+                            Добавил: <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}</a>
+                        </h5>
+                        <h5 class="doublef-event-item-date">{{$article->date}}</h5>
                     </header><!-- .entry-header -->
                     <div class="entry-content">
                         <p>{{$article->content}}</p>

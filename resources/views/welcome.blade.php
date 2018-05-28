@@ -104,19 +104,19 @@
                                                             </a>
                                                         </figure>
                                                         <div class="news-list-item-elements ">
-                                                            <h2 class="entry-title news-list-item-title">
+                                                            <h5>
                                                                 <a href="{{route('article', ['id'=>$article->id])}}"
                                                                    rel="bookmark">{{$article->title}}</a>
-                                                            </h2>
-                                                            <h3 class="doublef-event-item-date">
-                                                                Кто создал
-                                                                <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}}
+                                                            </h5>
+                                                            <h6 class="doublef-event-item-date">
+                                                                Добавил: 
+                                                                <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}
                                                                 </a>
-                                                            </h3>
+                                                            </h6>
                                                             <div class="entry-meta">
                                                                 <ul class="post-meta-wrapper ul-horizontal-list">
                                                                     <li class="post-meta-date">
-                                                                        <time class="entry-date published">Новость создана {{$article->created_at->format('d.m.Y в H.m')}}</time> 
+                                                                        <time class="entry-date published">{{$article->created_at->format('d.m.Y')}}</time> 
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -155,13 +155,17 @@
                                                     </figure>
                                                     <div class="doublef-events-content-wrap">
                                                         <header class="entry-header">
-                                                            <h2 class="entry-title">
+                                                            <h5 class="entry-title">
                                                                 <a href="{{ route('event.show',['id'=>$event->id]) }}">{{$event->title}}</a>
-                                                            </h2>
-                                                            <p class="doublef-event-item-date"><a href="{{route('profile',['id'=>$event->user->id])}}">Кто создал {{$event->user->name}} {{$event->user->surname}}</a></p>
+                                                            </h5>
+                                                            <h6 class="doublef-event-item-date">
+                                                                Автор: 
+                                                                <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}}
+                                                                </a>
+                                                            </h6>
                                                             <p class="doublef-event-item-date">Дата {{$event->event_date}}</p>
                                                             <p class="doublef-event-item-time">Время {{$event->event_hours}}</p>
-                                                            <div class="doublef-event-address">Адрес {{$event->address}}
+                                                            <div class="doublef-event-address">Адрес: {{$event->address}}
                                                                 <a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>
                                                             </div><!-- .doublef-event-address -->
                                                         </header><!-- .entry-header -->

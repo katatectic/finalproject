@@ -113,12 +113,17 @@ Route::get('image/{id}/delete','ImageController@deleteImage')->name('deleteImage
 Route::get('addimage/{id}','ImageController@getForm')->name('add_image');
 
 //Report
-Route::get('report', 'ReportController@getReport')->name('report');
-Route::any('reportform', 'ReportController@reportForm')->name('reportform');
+Route::get('reports', 'ReportController@getReports')->name('reports');
+Route::get('report/{id}','ReportController@getReport')->name('report.show');/* Показ одного отчета*/
+Route::get('userreportscreate', 'ReportController@userReportsCreate')->name('user.reports.create'); /*переход на добавление новости пользователем с ролью 3*/
+Route::post('addreport', 'ReportController@store')->name('addreport');
+
+
+/*Route::any('reportform', 'ReportController@reportForm')->name('reportform');
 Route::any('makereport', 'ReportController@makeReport')->name('makereport');
 Route::get('delete/{id}', 'ReportController@deleteLineReport')->name('delete');
 Route::any('updateform/{id}', 'ReportController@updateForm')->name('updateform');
-Route::any('update/{id}', 'ReportController@updateLineReport')->name('update');
+Route::any('update/{id}', 'ReportController@updateLineReport')->name('update');*/
  
 
 /* пока такой роут, здесь никакой логики не задейстовано.

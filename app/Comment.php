@@ -12,15 +12,19 @@ class Comment extends Model
 	
     public function article()
     {
-        return $this->belongsTo('App\Article'); // одна статья много комментариев
+        return $this->belongsTo('App\Article'); // один комментарий принадлежит одной статье
     }
 	public function event()
     {
-        return $this->belongsTo('App\Event'); // одно событие много комментариев
+        return $this->belongsTo('App\Event'); // один комментарий принадлежит одному событию
     }
     public function user()
     {
-        return $this->belongsTo('App\User'); // одна статья от одного автора
+        return $this->belongsTo('App\User'); // один комментарий принадлежит одному пользователю
+    }
+    public function report()
+    {
+        return $this->belongsTo('App\Report'); // один комментарий принадлежит одному отчету
     }
 
 }

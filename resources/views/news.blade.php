@@ -35,11 +35,11 @@
                                 </a>
                             </figure>
                             <header class="entry-header">            
-                                <h2 class="entry-title">
-                                    <a href="{{route('article',['id'=>$news->id])}}" rel="bookmark">{{$news->title}}</a></h2>
-                                <h3 class="doublef-event-item-date">Кто создал <a href="{{route('profile',['id'=>$news->user->id])}}">{{$news->user->name}} {{$news->user->surname}}</a>
-                                </h3>
-                                <h3 class="doublef-event-item-date">{{$news->date}} </h3>
+                                <h3 class="entry-title">
+                                    <a href="{{route('article',['id'=>$news->id])}}" rel="bookmark">{{$news->title}}</a></h3>
+                                <h5 class="doublef-event-item-date">Добавил: <a href="{{route('profile',['id'=>$news->user->id])}}">{{$news->user->name}} {{$news->user->surname}}</a>
+                                </h5>
+                                <h5 class="doublef-event-item-date">{{$news->date}}</h5>
                             </header><!-- .entry-header -->        
                             <div class="entry-content">            
                                 <p>{{$news->content}}

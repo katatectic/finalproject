@@ -21,14 +21,14 @@
                         </a>
                     </div>
                     <header class="entry-header">
-                        <h1 class="entry-title">{{$event->title}}</h1>
+                        <h3 class="entry-title">{{$event->title}}</h3>
                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <div class="addthis_inline_share_toolbox"></div>
-                        <h3 class="doublef-event-item-date">Кто создал 
-                            <a href="{{route('profile',['id'=>$event->user->id])}}">{{$event->user->name}}</a>
-                        </h3>
-                        <h3 class="doublef-event-item-date">Дата проведения {{$event->event_date}}</h3>
-                        <h3 class="doublef-event-item-time">Время проведения {{$event->event_hours}}</h3>
+                        <h5 class="doublef-event-item-date">Добавил: 
+                            <a href="{{route('profile',['id'=>$event->user->id])}}">{{$event->user->name}} {{$event->user->surname}}</a>
+                        </h5>
+                        <h5 class="doublef-event-item-date">Дата проведения {{$event->event_date}}</h5>
+                        <h5 class="doublef-event-item-time">Время проведения {{$event->event_hours}}</h5>
                         <div class="doublef-event-address">Место проведения - {{$event->address}}</div>
                     </header>
                     <div class="entry-content">
