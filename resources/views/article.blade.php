@@ -41,38 +41,74 @@
                 </article>
                 @endif<!-- #post-519 -->
                 @foreach($article->comments as $comment)
-                @if ($comment->ispublished == 1)
-                <div id="comments" class="comments-area">
-                    <div class="comment_list comment-list">
-                        <div class="comment byuser comment-author-adminschool bypostauthor even thread-even depth-1" id="comment-7">
-                            <div class="avatar clear">
-                                <div class="avatar-image pull-left">
-                                    <img alt=''
-                                         src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
-                                         srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
-                                         class='avatar avatar-50 photo' height='50' width='50'/>
-                                </div>
-                                <div class="avatar-body pull-left">
-                                    <h6 class="avatar-name">
-                                        <a href="{{route('profile',['id'=>$comment->user->id])}}">{{$comment->user->name}} {{$comment->user->surname}}<a/>
-                                    </h6>
-                                    <p class="avatar-time">Дата публикации: {{$comment->created_at->format('d.m.Y в H.m')}}
+                    @if(Auth::user())
+                        @if ($comment->ispublished == 0 AND Auth::user()->id == $comment->user->id)
+                        <div id="comments" class="comments-area">
+                            <div class="comment_list comment-list">
+                                <div class="comment byuser comment-author-adminschool bypostauthor even thread-even depth-1" id="comment-7">
+                                    <h4>Неопубликованный</h4>
+                                    <div class="avatar clear">
+                                        <div class="avatar-image pull-left">
+                                            <img alt=''
+                                                 src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
+                                                 srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
+                                                 class='avatar avatar-50 photo' height='50' width='50'/>
+                                        </div>
+                                        <div class="avatar-body pull-left">
+                                            <h6 class="avatar-name">
+                                                <a href="{{route('profile',['id'=>$comment->user->id])}}">{{$comment->user->name}} {{$comment->user->surname}}</a>
+                                            </h6>
+                                            <p class="avatar-time">Дата публикации: {{$comment->created_at->format('d.m.Y в H.m')}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="copy clear">
+                                        <p>{{$comment->comment}}</p>
+                                    </div>
+                                    @if(Auth::user())
+                                    @if (Auth::user()->role == 1 || Auth::user()->id == $comment->user->id)
+                                    <p>
+                                        <a style="float:right" onclick="return confirm('Удалить комментарий?')" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
                                     </p>
+                                    @endif
+                                    @endif
+                                </div><!-- #comment-## -->
+                            </div>
+                        </div><!-- .comment-list -->
+                        @endif
+                    @endif
+                    @if ($comment->ispublished == 1)
+                    <div id="comments" class="comments-area">
+                        <div class="comment_list comment-list">
+                            <div class="comment byuser comment-author-adminschool bypostauthor even thread-even depth-1" id="comment-7">
+                                <div class="avatar clear">
+                                    <div class="avatar-image pull-left">
+                                        <img alt=''
+                                             src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
+                                             srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
+                                             class='avatar avatar-50 photo' height='50' width='50'/>
+                                    </div>
+                                    <div class="avatar-body pull-left">
+                                        <h6 class="avatar-name">
+                                            <a href="{{route('profile',['id'=>$comment->user->id])}}">{{$comment->user->name}} {{$comment->user->surname}}<a/>
+                                        </h6>
+                                        <p class="avatar-time">Дата публикации: {{$comment->created_at->format('d.m.Y в H.m')}}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="copy clear">
-                                <p>{{$comment->comment}}</p>
-                            </div>
-                            @if(Auth::user())
-                            @if (Auth::user()->role == 1 || Auth::user()->id == $comment->user->id)
-                            <p>
-                                <a style="float:right" onclick="return confirm('Удалить комментарий?')" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
-                            </p>
-                            @endif
-                            @endif
-                        </div><!-- #comment-## -->
-                    </div><!-- .comment-list -->
-                @endif
+                                <div class="copy clear">
+                                    <p>{{$comment->comment}}</p>
+                                </div>
+                                @if(Auth::user())
+                                @if (Auth::user()->role == 1 || Auth::user()->id == $comment->user->id)
+                                <p>
+                                    <a style="float:right" onclick="return confirm('Удалить комментарий?')" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
+                                </p>
+                                @endif
+                                @endif
+                            </div><!-- #comment-## -->
+                        </div><!-- .comment-list -->
+                    @endif
                 @endforeach
                 @if (!Auth::guest())
                 <div id="respond" class="comment-respond">
