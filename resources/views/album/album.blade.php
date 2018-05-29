@@ -1,11 +1,10 @@
 @extends('layouts.app')
 @section('content')
-
 @if($album)
 <div>
     <div class="starter-template">
         <div class="media">    
-            <div class="media-body"> 
+            <div class="media-body" style="margin-left:50px"> 
                 <div class="image-lightbox">
                     <a href="{{asset('images/albums/'.$album->cover_image)}}" data-lightbox="{{asset('images/albums/'.$album->cover_image)}}" title="{{ $album->name }}">
                         <img width="500" height="500" src="{{asset('images/albums/'.$album->cover_image)}}" class="attachment-full size-full wp-post-image" alt="{{$album->name}}"/>
@@ -20,20 +19,19 @@
             </div>
         </div>
     </div><br/>
-    <div class="row">
+    <div class="gallery">
         @foreach($album->Photos as $photo)
-        <div class="col-lg-3">
+        <figure>
             <div class="image-lightbox">
                 <a href="{{asset('images/albums/photos/'.$photo->image)}}" data-lightbox="roadtrip" title="{{ $photo->description }}">
-                    <img width="250" height="250" src="{{asset('images/albums/photos/'.$photo->image)}}" class="attachment-full size-full wp-post-image" alt="{{$photo->name}}"/>
+                    <img src="{{asset('images/albums/photos/'.$photo->image)}}"alt="{{$photo->name}}"/>
                 </a>
-            </div>
-            <div class="caption">
-                <a href="{{route('deleteImage',$photo->id)}}" onclick="return confirm('Удалить изображение?')"><button type="button" class="btnbtn-danger btn-small">Удалить изображение</button></a>
-            </div>
-        </div>
+            </div><br/>   
+            <a href="{{route('deleteImage',$photo->id)}}" onclick="return confirm('Удалить изображение?')" class="more-link button" style="margin:0 auto">Удалить изображение</a>
+        </figure>
         @endforeach
     </div>
+</div>
 </div>
 @endif
 @endsection
