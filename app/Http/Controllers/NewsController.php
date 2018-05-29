@@ -9,7 +9,7 @@ use DateTime;
 
 class NewsController extends Controller {
 
-    public $puginationNews = 15;
+    public $puginationNews = 5;
 
     public function index(Request $request) {
         $all = Article::orderBy('id', 'DESC')->paginate($this->puginationNews);

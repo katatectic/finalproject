@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
 <div id="cinemahead">
     <div id="mobile-nav-container"></div><!-- Small devices menu -->
 </div><!-- #cinemahead -->
@@ -38,7 +37,6 @@
                                                     </div>
                                                     @endforeach
                                                 </div>
-                                                <!-- navigation buttons -->
                                                 <div class="button-prev" style="color: #ffffff;"><i
                                                         class="fa fa-chevron-left"></i></div>
                                                 <div class="button-next" style="color: #ffffff;"><i
@@ -98,7 +96,7 @@
                                                                 <img width="1140" height="500"
                                                                      src="{{asset('images/news/'.$article->photo)}}"
                                                                      class="attachment-full size-full wp-post-image"
-                                                                     alt=""
+                                                                     alt="{{$article->title}}" title="{{$article->title}}"
                                                                      srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w"
                                                                      sizes="(max-width: 1140px) 100vw, 1140px"/>
                                                             </a>
@@ -120,11 +118,10 @@
                                                                     </li>
                                                                 </ul>
                                                             </div>
-                                                        </div><!-- .news-list-item-elements -->
-                                                    </div><!-- .news-list-item -->
+                                                        </div>
+                                                    </div>
                                                     @endforeach
-                                                    {{$news->links()}}
-                                                </div><!-- .news-list-widget-wrap-->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -148,7 +145,7 @@
                                                             <img width="1140" height="500"
                                                                  src="{{asset('images/events/'.$event->photo)}}"
                                                                  class="attachment-full size-full wp-post-image"
-                                                                 alt=""
+                                                                 alt="{{$event->title}}" title="{{$event->title}}"
                                                                  srcset="{{asset('images/events/'.$event->photo)}} 1140w, {{asset('images/events/'.$event->photo)}} 600w"
                                                                  sizes="(max-width: 1140px) 100vw, 1140px"/>
                                                         </a>
@@ -167,13 +164,12 @@
                                                             <p class="doublef-event-item-time">Время {{$event->event_hours}}</p>
                                                             <div class="doublef-event-address">Адрес: {{$event->address}}
                                                                 <a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>
-                                                            </div><!-- .doublef-event-address -->
-                                                        </header><!-- .entry-header -->
-                                                    </div><!-- custom/inline style wrapper -->
+                                                            </div>
+                                                        </header>
+                                                    </div>
                                                 </article>
                                                 @endforeach
-                                                {{$events->links()}}<!-- #post-519 -->
-                                            </div><!-- .doublef-event-posts-* -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -236,7 +232,7 @@
                                                     <div class="doublef-gallery-widget-wrap">
                                                         <figure class="post-thumbnail">
                                                             <a href="{{route('album.index')}}"
-                                                               title="School Photo Shots">
+                                                               title="Галерея">
                                                                 <img width="1140" height="500"
                                                                      src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg"
                                                                      class="attachment-full size-full wp-post-image" alt=""
@@ -247,7 +243,6 @@
                                                         <div class="doublef-gallery-title-wrap">
                                                             <h2 class="doublef-gallery-title">
                                                             </h2>
-                                                            <a href="{{route('album.index')}}"<h5 class="doublef-gallery-photos-num">11 фото</h5></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -259,8 +254,8 @@
                             </div>
                         </div>
                     </div>
-            </main><!-- #main -->
-        </div><!-- #primary -->
-    </div><!-- .grid-->
-</div><!-- #content -->
+            </main>
+        </div>
+    </div>
+</div>
 @endsection

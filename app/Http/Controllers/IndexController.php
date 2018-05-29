@@ -12,12 +12,12 @@ use App\Album;
 
 class IndexController extends Controller {
 
-    public $puginNewsMain = 5; //количество новостей на главной
-    public $puginEventsMain = 3; //количество событий на главной
+    public $newsMain = 7; //количество новостей на главной
+    public $eventsMain = 2; //количество событий на главной
 
     public function getMain() {
-        $news = Article::orderby('id', 'desc')->paginate($this->puginNewsMain);
-        $events = Event::orderby('id', 'desc')->paginate($this->puginEventsMain);
+        $news = Article::orderby('id', 'desc')->take($this->newsMain)->get();
+        $events = Event::orderby('id', 'desc')->take($this->eventsMain)->get();
         $sliders = Slider::get();
         $albums = Album::with('Photos')->get();
         return view('welcome', compact('news', 'events', 'sliders', 'albums'));
