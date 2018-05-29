@@ -106,6 +106,7 @@ class EventController extends Controller {
         if (is_file($img)) {
             unlink(public_path() . '/images/events/' . $img);
         }
+		Event::find($id)->comments()->forceDelete();
         $event->delete();
         return redirect()->route('adminevents');
     }

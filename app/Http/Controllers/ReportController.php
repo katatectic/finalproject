@@ -59,6 +59,7 @@ class ReportController extends Controller {
 
     public function destroy($id) {
         $report = Report::find($id);
+		Report::find($id)->comments()->forceDelete();
         $report->delete($id);
         return redirect()->route('main');
     }
