@@ -13,6 +13,11 @@ class StudentClass extends Model
     protected $table = 'students_classes';
 
     public function user() {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User'); // много комитетов много пользователей
+    }
+
+    public function news()
+    {
+        return $this->hasMany('App\Article'); // один комитет много статей
     }
 }

@@ -26,8 +26,7 @@ class UserController extends Controller
     {
         $users = User::orderBy('id', 'DESC')->with('studentsClasses')->paginate($this->puginationUsers);
         $usersCount = User::count();
-        return view('admin.users.adminUsers', ['users' => $users, 'usersCount' => $usersCount,
-            'transition' => $this->transition(), 'roleNames' => $this->roleNames]);
+        return view('admin.users.adminUsers', ['users' => $users, 'usersCount' => $usersCount]);
     }
 
     public function profile($id)
@@ -35,8 +34,7 @@ class UserController extends Controller
         $user = User::with('studentsClasses')->find($id);
         $eventCount = Event::where("user_id", "=", $user->id)->count();
         $newsCount = Article::where("user_id", "=", $user->id)->count();
-        return view('profile', compact('user', 'eventCount', 'newsCount'),
-            ['transition' => $this->transition(), 'roleNames' => $this->roleNames]);
+        return view('profile', compact('user', 'eventCount', 'newsCount'));
     }
 
     /* public function profileEvents($id) {
@@ -58,8 +56,7 @@ class UserController extends Controller
     {
         $all = User::with('studentsClasses')->find($id);
         $StudentClass = StudentClass::get();
-        return view('admin.users.editUser', ['all' => $all, 'roleNames' => $this->roleNames,
-            'studentsClasses' => $StudentClass, 'transition' => $this->transition()]);
+        return view('admin.users.editUser', ['all' => $all, 'studentsClasses' => $StudentClass]);
     }
 
     public function update($id, Request $request)

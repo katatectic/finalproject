@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\StudentClass;
-use App\UserStudentClass;
 
 class StudentClassController extends Controller
 {
@@ -17,9 +16,7 @@ class StudentClassController extends Controller
     {
         $studentClasses = StudentClass::paginate(10);
         $thisYear = date('Y', time());
-        return view('admin.studentClass.index', ['studentsClasses' => $studentClasses, 'transition' => $this->transition(),
-            'thisYear' => $thisYear
-        ]);
+        return view('admin.studentClass.index', ['studentsClasses' => $studentClasses]);
     }
     /**
      * Store a newly created resource in storage.

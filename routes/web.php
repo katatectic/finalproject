@@ -173,3 +173,8 @@ Route::get('/admin/students-classes/delete/{id}', 'StudentClassController@destro
 
 //ajax
 Route::get('/ajax', 'Ajax\StudentClassController@getClasses')->name('getStudentClasses');
+
+
+//Committees
+Route::get('/committees', 'CommitteesController@index')->name('allCommittees');
+Route::get('/committees/committee/{id}', 'CommitteesController@show')->name('oneCommittee');
