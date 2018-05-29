@@ -75,6 +75,7 @@ class NewsController extends Controller {
         if (is_file($img)) {
             unlink(public_path() . '/images/news/' . $img);
         }
+        Article::find($id)->comments()->forceDelete();
         $article->delete();
         return redirect()->route('adminnews');
     }
