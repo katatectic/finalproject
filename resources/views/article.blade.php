@@ -39,7 +39,17 @@
                     @endif
                     
                 </article>
-                @endif<!-- #post-519 -->
+                @endif
+				<div class="col-md-3 blog-right">
+                    <div class="categories">
+                        <h3>Последние новости</h3>
+                        <ul>
+                            @foreach($lastNews as $news)
+                        <li><a href="{{ route('article', ['id' => $news->id]) }}">{{ $news->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
                 @foreach($article->comments as $comment)
                     @if(Auth::user())
                         @if ($comment->ispublished == 0 AND Auth::user()->id == $comment->user->id)

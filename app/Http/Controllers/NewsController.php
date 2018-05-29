@@ -18,7 +18,8 @@ class NewsController extends Controller {
 
     public function article($id) {
         $article = Article::select()->where('id', $id)->first();
-        return view('article', compact('article'));
+		$lastNews=Article::orderBy('id', 'desc')->take(5)->get();
+        return view('article', compact('article','lastNews'));
     }
 
     public function adminNews() {
