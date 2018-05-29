@@ -53,7 +53,7 @@ class ReportController extends Controller {
             };
             $create = Report::create($data);
             $id = $create->id;
-            return redirect()->route('home');
+            return redirect()->route('adminReports');
         }
         return view('home');
     }
@@ -61,8 +61,12 @@ class ReportController extends Controller {
     public function destroy($id) {
         $report = Report::find($id);
 		Report::find($id)->comments()->forceDelete();
+		$img = $report->pay_check;
+        if (is_file(public_path() . '/images/reports/' . $img)) {
+            unlink(public_path() . '/images/reports/' . $img);
+        }
         $report->delete($id);
-        return redirect()->route('main');
+        return redirect()->route('adminReports');
     }
 
     public function edit($id, Request $request) {

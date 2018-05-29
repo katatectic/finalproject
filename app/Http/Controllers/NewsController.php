@@ -73,7 +73,7 @@ class NewsController extends Controller {
             return false;
         $article = Article::find($id);
         $img = $article->photo;
-        if (is_file($img)) {
+        if (is_file(public_path() . '/images/news/' . $img)) {
             unlink(public_path() . '/images/news/' . $img);
         }
         Article::find($id)->comments()->forceDelete();
@@ -92,6 +92,11 @@ class NewsController extends Controller {
                 'photo.image' => 'Загруженный файл должен быть изображением',
                 'photo.max' => 'Максимальный размер изображения=2048'
             ]);
+			$editOne = Article::find($id);
+			$img = $editOne->photo;
+			if (is_file(public_path() . '/images/news/' . $img)) {
+				unlink(public_path() . '/images/news/' . $img);
+			}
             $data = $request->all();
             $date = new DateTime();
             $data['date'] = $date->format('Y-m-d');
@@ -104,7 +109,7 @@ class NewsController extends Controller {
             return redirect()->route('adminnews');
         }
         $all = Article::find($id);
-        return view('admin.news.edit', ['all' => $all]);
+        return view('admin.news.edit',compact('all'));
     }
 
 }

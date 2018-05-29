@@ -21,12 +21,14 @@ class AlbumController extends Controller {
     public function adminAlbums() {
         $albumsCount = Album::count();
         $albums = Album::with('Photos')->orderBy('id', 'DESC')->paginate(10);
-        ;
         return view('admin.albums.albums', compact('albums', 'albumsCount'));
     }
 
     public function create() {
         return view('admin.albums.create');
+    }
+	public function userCreate() {
+        return view('album.create');
     }
 
     public function addPhoto($request) {
@@ -60,11 +62,17 @@ class AlbumController extends Controller {
     public function destroy($id) {
         if (!is_numeric($id))
             return false;
-        $album = Album::find($id);
+        $album = Album::with('Photos')->find($id);
         $img = $album->cover_image;
-        if (is_file($img)) {
+        if (is_file(public_path() . '/images/albums/' . $img)) {
             unlink(public_path() . '/images/albums/' . $img);
         }
+		$images= $album->Photos;
+		foreach($images as $image){
+			if (is_file(public_path() . '/images/albums/photos/' . $image->image)) {
+				unlink(public_path() . '/images/albums/photos/' . $image->image);
+			}
+		}
         $album->delete();
         return redirect()->route('adminAlbums');
     }
@@ -79,11 +87,15 @@ class AlbumController extends Controller {
                 'cover_image.image' => 'Загруженный файл должен быть изображением',
                 'cover_image' => 'Максимальный размер изображения=2048'
             ]);
+			$editOne = Album::find($id);
+			$img = $editOne->cover_image;
+			if (is_file(public_path() . '/images/albums/' . $img)) {
+				unlink(public_path() . '/images/albums/' . $img);
+			}
             $data = $request->all();
             if ($request->hasFile('cover_image')) {
                 $data['cover_image'] = $this->addPhoto($request);
             };
-            $editOne = Album::find($id);
             $editOne->fill($data);
             $editOne->save();
             return redirect()->route('adminAlbums');

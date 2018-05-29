@@ -48,6 +48,10 @@ class UserController extends Controller
             return view('404');
         User::find($id)->studentsClasses()->detach();
         $all = User::find($id);
+		$img = $all->avatar;
+        if (is_file(public_path() . '/images/users/' . $img)) {
+            unlink(public_path() . '/images/users/' . $img);
+        }
         $all->delete();
         return redirect()->route('users');
     }

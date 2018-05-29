@@ -13,9 +13,7 @@
 
 
 Route::get('/', 'IndexController@getMain')->name('main');
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 //коллекция роутов для главы (убираем пользователей)
@@ -39,9 +37,6 @@ Route::group(['middleware' => 'adminandchief'], function() {
 });
 });
 
-
-
-
 //коллекция роутов для админа
 Route::group(['middleware' => 'admin'], function() {
 	Route::prefix('admin')->group(function () {
@@ -51,8 +46,8 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('profile/id{id}/edit', 'UserController@edit')->name('profile.edit');/* Форма редактирования пользователя*/
     Route::post('profile/update/{id}', 'UserController@update')->name('profile.update');/* Изминение пользователя*/
     //Feedbacks
-    Route::any('adminfeedbacks', 'FeedbacksController@adminFeedbacks')->name('admin.feedback.index'); //Список заявок
-    Route::any('adminonefeedback/{id}', 'FeedbacksController@show')->name('feedback.show');
+    Route::any('feedbacks', 'FeedbacksController@adminFeedbacks')->name('admin.feedback.index'); //Список заявок
+    Route::any('feedback/{id}', 'FeedbacksController@show')->name('feedback.show');
     Route::any('feedback/{id}/delete', 'FeedbacksController@destroy')->name('feedback.destroy');
 	Route::any('feedback/{id}/reply', 'FeedbacksController@reply')->name('feedback.reply');
     //Sliders
@@ -68,19 +63,23 @@ Route::group(['middleware' => 'admin'], function() {
 	Route::post('reportcreate', 'ReportController@store')->name('admin.report.store');
 	Route::any('report/{id}/delete', 'ReportController@destroy')->name('admin.report.destroy');
 	Route::any('report/{id}/edit', 'ReportController@edit')->name('admin.report.edit');
-
+	//News
+	Route::any('newscreate', 'NewsController@create')->name('newsview');
+	Route::get('eventcreate', 'EventController@create')->name('event.create');
+	//Albums
+	Route::get('albums','AlbumController@adminAlbums')->name('adminAlbums');
+	Route::any('createalbum','AlbumController@create')->name('album.create');
+	Route::any('createalbum','AlbumController@store')->name('album.create');
+	Route::any('album/{id}/delete', 'AlbumController@destroy')->name('album.destroy');
+	Route::any('album/{id}/edit', 'AlbumController@edit')->name('album.edit');
 });
 });
-
-
-
 
 // News
 Route::any('news', 'NewsController@index')->name('news');
-Route::any('newscreate', 'NewsController@create')->name('newsview');
-Route::post('addNews', 'NewsController@store')->name('addNews');
 Route::get('article/{id}','NewsController@article')->name('article');/* Показ одной новости*/
-Route::get('usernewscreate', 'NewsController@userNewsCreate')->name('user.news.create'); /*переход на добавление новости пользователем с ролью 3*/
+Route::get('usernewscreate', 'NewsController@userNewsCreate')->name('user.news.create');/*переход на добавление новости пользователем с ролью 3*/
+Route::post('addNews', 'NewsController@store')->name('addNews');
 
 // Search
 Route::get('/search/results', 'IndexController@search')->name('search');
@@ -88,11 +87,9 @@ Route::get('/adminsearch/results', 'AdminController@search')->name('admin.search
 //Feedbacks
 Route::any('feedback', 'FeedbacksController@index')->name('feedback');
 Route::any('feedback', 'FeedbacksController@addFeedback')->name('addFeedback');
-
 //Events
 Route::any('events', 'EventController@index')->name('event.index');//Вьюха всех событий
-Route::get('event/{id}','EventController@show')->name('event.show');/* Показ одного события*/
-Route::get('eventcreate', 'EventController@create')->name('event.create');/* Вьюха добавления события*/
+Route::get('event/{id}','EventController@show')->name('event.show');/* Показ одного события*//* Вьюха добавления события*/
 Route::get('usereventcreate', 'EventController@userEventCreate')->name('user.event.create'); /*переход на добавление события пользователем с ролью 3*/
 Route::post('eventstore', 'EventController@store')->name('event.store'); /* Само добавления события*/
 
@@ -102,20 +99,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::any('profile/id{id}', 'UserController@profile')->name('profile'); //Просмотр профиля пользователя с админки
 });
 
-
 //Profiles
 Route::any('profile/{id}/profileevents', 'UserController@profileEvents')->name('profileevents');/*пока не работает*/
 
 
 //Galery
 //Album
-Route::get('adminalbums','AlbumController@adminAlbums')->name('adminAlbums');
 Route::any('albums','AlbumController@index')->name('album.index');
-Route::any('createalbum','AlbumController@create')->name('album.create');
-Route::any('createalbum','AlbumController@store')->name('album.create');
-Route::any('album/{id}', 'AlbumController@show')->name('album.show');
-Route::any('album/{id}/delete', 'AlbumController@destroy')->name('album.destroy');
-Route::any('album/{id}/edit', 'AlbumController@edit')->name('album.edit');
+Route::get('album/{id}', 'AlbumController@show')->name('album.show');
+Route::get('useralbumscreate', 'AlbumController@userCreate')->name('album.user.create');
 
 //Image
 Route::post('addimage','ImageController@imageAdd')->name('add_image_to_album');

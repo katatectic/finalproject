@@ -15,6 +15,7 @@
         <link rel='stylesheet'  href="{{ asset('css/font-awecome.min.css') }}" type='text/css' media='all' />
         <link rel='stylesheet'  href="{{ asset('css/style.css') }}" type='text/css' media='all' />
         <link rel='stylesheet' href="{{asset ('css/kirki-styles-buntington2-inline-css.css') }}" type='text/css' media='all'>
+		<link rel='stylesheet' href="{{asset ('css/gallery.css') }}" type='text/css' media='all'>
         <script src="{{ asset('js/jquery.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
         <script src="{{ asset('js/jquery.min.js') }}"></script>

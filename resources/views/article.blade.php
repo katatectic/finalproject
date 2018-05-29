@@ -15,12 +15,13 @@
             <main id="main" class="site-main" role="main">
                 @if($article)
                 <article id="post-519" class="post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
-                    <figure class="post-thumbnail">
-                        <img width="1140" height="500" src="{{asset('images/news/'.$article->photo)}}" class="attachment-full size-full wp-post-image" alt="" srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w" sizes="(max-width: 1140px) 100vw, 1140px"/>
-                    </figure>
+					<div class="image-lightbox">
+                        <a href="{{asset('images/news/'.$article->photo)}}" data-lightbox="{{asset('images/news/'.$article->photo)}}" title="{{ $article->title }}">
+                            <img width="500" height="500" src="{{asset('images/news/'.$article->photo)}}" class="attachment-full size-full wp-post-image" alt=""/>
+                        </a>
+                    </div>
                     <header class="entry-header">
                         <h3 class="entry-title">{{$article->title}}</h3>
-                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <div class="addthis_inline_share_toolbox"></div>
                         <h5 class="doublef-event-item-date">
                             Добавил: <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}</a>
@@ -37,8 +38,7 @@
                     @endif
                     @endif                   
                 </article>
-                @endif
-				<div class="col-md-6 blog-right">
+					<div class="col-md-6 blog-right">
                     <div>
                         <h3>Последние новости</h3>
                         <ul>
@@ -48,6 +48,7 @@
                         </ul>
                     </div>
                 </div>
+                @endif
                 @foreach($article->comments as $comment)
                     @if(Auth::user())
                         @if ($comment->ispublished == 0 AND Auth::user()->id == $comment->user->id)
@@ -138,13 +139,12 @@
                         </p>
                         {{ csrf_field() }}
                     </form>
-                </div><!-- #respond -->
+                </div>
                 @endif                      
-                </div><!-- #comments -->
-            </main><!-- #main -->        
-        </div><!-- #primary -->                
+                </div>
+            </main>      
+        </div>              
     </div>
     </script>
-    <!-- .grid-->
-</div><!-- #content -->
+</div>
 @endsection
