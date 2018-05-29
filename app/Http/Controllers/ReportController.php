@@ -93,6 +93,4 @@ class ReportController extends Controller {
         $file->move(public_path() . '/images/reports', $newfilename);
         return $newfilename;
     }
-
-    /* Ниже старые роуты, их надо убрать потом */
 }
