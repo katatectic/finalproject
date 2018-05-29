@@ -54,7 +54,7 @@ class AlbumController extends Controller {
             };
             $create = Album::create($data);
             $id = $create->id;
-            return redirect()->route('album.index');
+            return redirect()->route('adminAlbums');
         }
         return view('admin.albums.create');
     }
