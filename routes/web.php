@@ -44,6 +44,7 @@ Route::group(['middleware' => 'adminandchief'], function() {
 
 //коллекция роутов для админа
 Route::group(['middleware' => 'admin'], function() {
+	Route::prefix('admin')->group(function () {
     // Users
     Route::any('users', 'UserController@adminUsers')->name('users'); //Список пользователей
     Route::any('profile/{id}/delete', 'UserController@destroy')->name('profile.destroy'); //Удаление пользователя
@@ -59,7 +60,19 @@ Route::group(['middleware' => 'admin'], function() {
     Route::any('slider/{id}', 'SliderController@show')->name('slider.show');
     Route::any('slider/{id}/edit', 'SliderController@edit')->name('slider.edit');
     Route::any('slider/{id}/delete', 'SliderController@destroy')->name('slider.destroy');
-    Route::any('adminsliders', 'SliderController@adminSliders')->name('adminSliders');
+    Route::any('sliders', 'SliderController@adminSliders')->name('adminSliders');
+	Route::any('reports', 'ReportController@adminIndex')->name('adminReports');
+	Route::get('reportcreate', 'ReportController@create')->name('admin.report.create');
+	Route::post('reportcreate', 'ReportController@store')->name('admin.report.store');
+	Route::any('report/{id}/delete', 'ReportController@destroy')->name('admin.report.destroy');
+	
+	/*Route::any('reportform', 'ReportController@reportForm')->name('reportform');
+Route::any('makereport', 'ReportController@makeReport')->name('makereport');
+Route::get('delete/{id}', 'ReportController@deleteLineReport')->name('delete');
+Route::any('updateform/{id}', 'ReportController@updateForm')->name('updateform');
+Route::any('update/{id}', 'ReportController@updateLineReport')->name('update');*/
+
+});
 });
 
 
@@ -113,18 +126,12 @@ Route::get('image/{id}/delete','ImageController@deleteImage')->name('deleteImage
 Route::get('addimage/{id}','ImageController@getForm')->name('add_image');
 
 //Report
-Route::get('reports', 'ReportController@getReports')->name('reports');
-Route::get('report/{id}','ReportController@getReport')->name('report.show');/* Показ одного отчета*/
-Route::get('userreportscreate', 'ReportController@userReportsCreate')->name('user.reports.create'); /*переход на добавление новости пользователем с ролью 3*/
+Route::get('reports', 'ReportController@index')->name('reports');
+Route::get('report/{id}','ReportController@show')->name('report.show');/* Показ одного отчета*/
+Route::get('createreport', 'ReportController@userReportCreate')->name('user.reports.create'); /*переход на добавление новости пользователем с ролью 3*/
 Route::post('addreport', 'ReportController@store')->name('addreport');
 
 
-/*Route::any('reportform', 'ReportController@reportForm')->name('reportform');
-Route::any('makereport', 'ReportController@makeReport')->name('makereport');
-Route::get('delete/{id}', 'ReportController@deleteLineReport')->name('delete');
-Route::any('updateform/{id}', 'ReportController@updateForm')->name('updateform');
-Route::any('update/{id}', 'ReportController@updateLineReport')->name('update');*/
- 
 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут подтягивает перечень комитетов школы из базы*/

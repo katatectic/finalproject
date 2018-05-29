@@ -10,22 +10,34 @@ use DateTime;
 class ReportController extends Controller
 {
     public $puginationReports = 5;
+	public $adminPuginationReports = 10;
 
-    public function getReports()
+    public function index()
     {
         $reports = Report::orderBy('id', 'DESC')->paginate($this->puginationReports);
-        return view('reports', ['reports'=>$reports]);
+        return view('reports', compact('reports'));
     }
-
-    public function getReport($id) {
+		public function adminIndex()
+    {
+        $reports = Report::orderBy('id', 'DESC')->paginate($this->adminPuginationReports);
+		$reportsCount = Report::count();
+        return view('admin.reports.index', compact('reports','reportsCount'));
+    }
+    public function show($id) {
         $report = Report::select()->where('id', $id)->first();
         return view('report', compact('report'));
     }
 
-    public function userReportsCreate() {
+    public function userReportCreate() {
         return view('user.useraddreport');
     }
-    
+	
+    public function create()
+    {
+        $reports = Report::all();
+        return view('admin.reports.create', compact('reports'));
+    }
+	
     public function store(Request $request) {
         if ($request->method() == 'POST') {
             $this->validate($request, [
@@ -40,11 +52,17 @@ class ReportController extends Controller
                 $data['pay_check'] = $this->addPayCheck($request);
             };
             $create = Report::create($data);
-            $id = $create->id;
             return redirect()->route('home');
         }
         return view('home');
     }
+	public function destroy($id)
+    {         
+        $report =Report::find($id);
+        $report->delete($id);
+        return redirect()->route('main');
+    }
+	
 
     public function addPayCheck($request) {
         $file = $request->file('pay_check');
@@ -52,41 +70,8 @@ class ReportController extends Controller
         $file->move(public_path() . '/images/reports', $newfilename);
         return $newfilename;
     }
-
     /*Ниже старые роуты, их надо убрать потом*/
-
-
-    public function reportForm()
-    {
-        $all = Report::all();
-        return view('admin.report.reportform', ['all'=>$all]);
-    }
     
-    public function makeReport(Request $request)
-    {
-         if ($request->method() == 'POST') {
-            $this->validate($request, [
-                'name_charge' => 'required',
-                'date' => 'required',
-                'value' => 'required',], [
-                '*.required' => 'Поле не должно быть пустым'                
-            ]);
-            $data = $request->all();
-            $date = new DateTime();
-            $data['date'] = $date->format('Y-m-d');            
-            $create = Report::create($data);
-            $id = $create->id;
-            return redirect()->route('reportform');
-        }
-        
-    }
-    
-    public function deleteLineReport($id)
-    {         
-        $report =Report::find($id);
-        $report->delete($id);
-        return redirect('reportform');
-    }
     
     public function updateForm($id){
     	$report =Report::find($id);

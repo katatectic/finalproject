@@ -34,8 +34,8 @@
                     {{--
                     @if (!Auth::guest())
                     @if (Auth::user()->role == 1 or Auth::user()->role == 2)
-                    <a href="{{ route('report.edit',['id'=>$report->id]) }}" class="more-link button">Редактировать новость</a>
-                    <a href="{{route('deletenews',$article->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button">Удалить новость</a><!-- .entry-content -->
+                    <a href="{{ route('report.edit',['id'=>$report->id]) }}" class="more-link button">Редактировать отчёт</a>
+                    <a href="{{route('deletenews',$article->id)}}" onclick="return confirm('Удалить отчёт?')" class="more-link button">Удалить новость</a><!-- .entry-content -->
                     @endif
                     @endif
                     --}}
