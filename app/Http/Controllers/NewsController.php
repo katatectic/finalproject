@@ -73,7 +73,7 @@ class NewsController extends Controller {
             return false;
         $article = Article::find($id);
         $img = $article->photo;
-        if (is_file($img)) {
+        if (is_file(public_path() . '/images/news/' . $img)) {
             unlink(public_path() . '/images/news/' . $img);
         }
         Article::find($id)->comments()->forceDelete();

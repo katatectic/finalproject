@@ -104,7 +104,7 @@ class EventController extends Controller {
             return false;
         $event = Event::find($id);
         $img = $event->photo;
-        if (is_file($img)) {
+        if (file_exists(public_path() . '/images/events/' . $img)) {
             unlink(public_path() . '/images/events/' . $img);
         }
 		Event::find($id)->comments()->forceDelete();

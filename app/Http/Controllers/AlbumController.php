@@ -64,7 +64,7 @@ class AlbumController extends Controller {
             return false;
         $album = Album::find($id);
         $img = $album->cover_image;
-        if (is_file($img)) {
+        if (is_file(public_path() . '/images/albums/' . $img)) {
             unlink(public_path() . '/images/albums/' . $img);
         }
         $album->delete();
