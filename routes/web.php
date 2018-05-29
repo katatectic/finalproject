@@ -65,12 +65,7 @@ Route::group(['middleware' => 'admin'], function() {
 	Route::get('reportcreate', 'ReportController@create')->name('admin.report.create');
 	Route::post('reportcreate', 'ReportController@store')->name('admin.report.store');
 	Route::any('report/{id}/delete', 'ReportController@destroy')->name('admin.report.destroy');
-	
-	/*Route::any('reportform', 'ReportController@reportForm')->name('reportform');
-Route::any('makereport', 'ReportController@makeReport')->name('makereport');
-Route::get('delete/{id}', 'ReportController@deleteLineReport')->name('delete');
-Route::any('updateform/{id}', 'ReportController@updateForm')->name('updateform');
-Route::any('update/{id}', 'ReportController@updateLineReport')->name('update');*/
+	Route::any('report/{id}/edit', 'ReportController@edit')->name('admin.report.edit');
 
 });
 });
