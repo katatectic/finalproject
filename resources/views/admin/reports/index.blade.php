@@ -26,7 +26,7 @@
                     <tbody>
                         @foreach($reports as $report)
                         <tr>
-                            <td>1</td>
+                            <td>{{$report->id}}</td>
                             <td><a href="{{route('profile',['id'=>$report->user->id])}}">{{$report->user->name}}</a></td>
                             <td>{{$report->date}}</td>
                             <td>{{str_limit($report->content,25)}}</td>    
