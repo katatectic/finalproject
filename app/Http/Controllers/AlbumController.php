@@ -62,11 +62,17 @@ class AlbumController extends Controller {
     public function destroy($id) {
         if (!is_numeric($id))
             return false;
-        $album = Album::find($id);
+        $album = Album::with('Photos')->find($id);
         $img = $album->cover_image;
         if (is_file(public_path() . '/images/albums/' . $img)) {
             unlink(public_path() . '/images/albums/' . $img);
         }
+		$images= $album->Photos();
+		foreach($images as $image){
+			if (is_file(public_path() . '/images/albums/photos/' . $image)) {
+				unlink(public_path() . '/images/albums/photos/' . $image);
+			}
+		}
         $album->delete();
         return redirect()->route('adminAlbums');
     }

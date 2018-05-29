@@ -40,7 +40,7 @@ class ImageController extends Controller {
             return false;
         $photo = Image::find($id);
         $img = $photo->image;
-		if(is_file($img)) {
+		if(is_file(public_path() . '/images/albums/photos/' . $img)) {
 			  unlink(public_path() . '/images/albums/photos/' . $img);
 		}	
         $photo->delete();
