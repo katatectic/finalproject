@@ -18,7 +18,8 @@ class EventController extends Controller {
 
     public function show($id) {
         $event = Event::select()->where('id', $id)->first();
-        return view('event', compact('event'));
+		$lastEvents=Event::orderBy('id', 'desc')->take(5)->get();
+        return view('event', compact('event','lastEvents'));
     }
 
     public function adminEvents() {

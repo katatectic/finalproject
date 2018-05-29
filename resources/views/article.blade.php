@@ -30,18 +30,16 @@
                     <div class="entry-content">
                         <p>{{$article->content}}</p>
                     </div>
-
                     @if (!Auth::guest())
                     @if (Auth::user()->role == 1 or Auth::user()->role == 2)
                     <a href="{{ route('editnews',['id'=>$article->id]) }}" class="more-link button">Редактировать новость</a>
                     <a href="{{route('deletenews',$article->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button">Удалить новость</a><!-- .entry-content -->
                     @endif
-                    @endif
-                    
+                    @endif                   
                 </article>
                 @endif
-				<div class="col-md-3 blog-right">
-                    <div class="categories">
+				<div class="col-md-6 blog-right">
+                    <div>
                         <h3>Последние новости</h3>
                         <ul>
                             @foreach($lastNews as $news)

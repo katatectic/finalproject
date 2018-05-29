@@ -34,16 +34,24 @@
                     <div class="entry-content">
                         <p>{{$event->content}}</p>
                     </div>
-
                     @if (!Auth::guest())
                     @if (Auth::user()->role == 1 or Auth::user()->role == 2)
                     <a href="{{ route('event.edit',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a>
                     <a href="{{route('event.delete',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button">Удалить событие</a><!-- .entry-content -->
                     @endif
                     @endif
-
                 </article>
                 @endif
+				<div class="col-md-6 blog-right">
+                    <div>
+                        <h3>Последние события</h3>
+                        <ul>
+                            @foreach($lastEvents as $events)
+                        <li><a href="{{ route('event.show', ['id' => $events->id]) }}">{{ $events->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
                 @foreach($event->comments as $comment)
                     @if(Auth::user())
                         @if ($comment->ispublished == 0 AND Auth::user()->id == $comment->user->id)

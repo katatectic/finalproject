@@ -38,6 +38,16 @@
                     @endif
                 </article>
                 @endif
+				<div class="col-md-6 blog-right">
+                    <div>
+                        <h3>Последние отчёты</h3>
+                        <ul>
+                            @foreach($lastReports as $reports)
+                        <li><a href="{{ route('report.show', ['id' => $reports->id]) }}">Протокол № {{ $reports->id }} от {{ $reports->date }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
                 @foreach($report->comments as $comment)
                 @if(Auth::user())
                 @if ($report->ispublished == 0 AND Auth::user()->id == $comment->user->id)
