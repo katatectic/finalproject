@@ -67,10 +67,10 @@ class AlbumController extends Controller {
         if (is_file(public_path() . '/images/albums/' . $img)) {
             unlink(public_path() . '/images/albums/' . $img);
         }
-		$images= $album->Photos();
+		$images= $album->Photos;
 		foreach($images as $image){
-			if (is_file(public_path() . '/images/albums/photos/' . $image)) {
-				unlink(public_path() . '/images/albums/photos/' . $image);
+			if (is_file(public_path() . '/images/albums/photos/' . $image->image)) {
+				unlink(public_path() . '/images/albums/photos/' . $image->image);
 			}
 		}
         $album->delete();
@@ -87,11 +87,15 @@ class AlbumController extends Controller {
                 'cover_image.image' => 'Загруженный файл должен быть изображением',
                 'cover_image' => 'Максимальный размер изображения=2048'
             ]);
+			$editOne = Album::find($id);
+			$img = $editOne->cover_image;
+			if (is_file(public_path() . '/images/albums/' . $img)) {
+				unlink(public_path() . '/images/albums/' . $img);
+			}
             $data = $request->all();
             if ($request->hasFile('cover_image')) {
                 $data['cover_image'] = $this->addPhoto($request);
             };
-            $editOne = Album::find($id);
             $editOne->fill($data);
             $editOne->save();
             return redirect()->route('adminAlbums');

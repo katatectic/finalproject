@@ -84,13 +84,17 @@ class EventController extends Controller {
                 'photo.image' => 'Загруженный файл должен быть изображением',
                 'photo.max' => 'Максимальный размер изображения=2048'
             ]);
+			$editOne = Event::find($id);
+			$img = $editOne->photo;
+			if (is_file(public_path() . '/images/events/' . $img)) {
+				unlink(public_path() . '/images/events/' . $img);
+			}
             $data = $request->all();
             $date = new DateTime();
             $data['event_date'] = $date->format('Y-m-d');
             if ($request->hasFile('photo')) {
                 $data['photo'] = $this->addPhoto($request);
             };
-            $editOne = Event::find($id);
             $editOne->fill($data);
             $editOne->save();
             return redirect()->route('adminevents');
