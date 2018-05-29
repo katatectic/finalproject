@@ -36,13 +36,14 @@
                             <td>{{$feedback->message}}</td>
                             <td>{{$feedback->created_at}}</td>
                             @if($feedback->status==1)
-                                <td>Не просмотрено</td>
+                            <td>Не просмотрено</td>
                             @else	 
-                                <td>Просмотрено</td>
+                            <td>Просмотрено</td>
                             @endif
                             <td>
-                                <a href="{{ route('adminonefeedback',['id'=>$feedback->id]) }}" class="fa fa-eye"></a>
-                                <a href="{{route('deletefeedback',$feedback->id)}}" onclick="return confirm('Удалить заявку?')" class="fa fa-remove"></a>
+                                <a href="{{ route('feedback.show',['id'=>$feedback->id]) }}" class="fa fa-eye"></a>
+                                <a href="{{ route('feedback.reply',['id'=>$feedback->id]) }}" class="fa fa-reply"></a>
+                                <a href="{{route('feedback.destroy',$feedback->id)}}" onclick="return confirm('Удалить заявку?')" class="fa fa-remove"></a>
                             </td>
                         </tr>
                         @endforeach

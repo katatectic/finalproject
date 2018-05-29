@@ -23,7 +23,8 @@
                     </p>{{ $feedback->message}}</p>
                     <div class="box-footer">
                         <button class="btn btn-success pull-left bg-orange" onclick="window.history.go(-1); return false;">Назад</button>
-                        <a class="btn btn-success pull-right bg-orange" href="{{route('deletefeedback',$feedback->id)}}" onclick="return confirm('Удалить заявку?')">Удалить заявку</a>
+                        <a class="btn btn-success bg-orange" href="{{ route('feedback.reply',['id'=>$feedback->id]) }}">Ответить на заявку</a>
+                        <a class="btn btn-success pull-right bg-orange" href="{{ route('feedback.reply',['id'=>$feedback->id]) }}" onclick="return confirm('Удалить заявку?')">Удалить заявку</a>
                     </div>
                 </div>
             </div>

@@ -57,7 +57,7 @@
                         @if (Auth::user()->role == 1)
                         <li><a href="{{route('studentsClasses')}}"><i class="fa fa-sticky-note-o"></i> <span>Классы</span></a></li>
                         <li><a href="{{route('users')}}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
-                        <li><a href="{{route('adminfeedbacks')}}"><i class="fa fa-sticky-note-o"></i> <span>Обратная связь</span></a></li>
+                        <li><a href="{{route('admin.feedback.index')}}"><i class="fa fa-sticky-note-o"></i> <span>Обратная связь</span></a></li>
                         <li><a href="{{route('adminSliders')}}"><i class="fa fa-sticky-note-o"></i> <span>Слайдеры</span></a></li>
                         <li><a href="{{route('adminReports')}}"><i class="fa fa-sticky-note-o"></i> <span>Отчёты</span></a></li>
 						<li><a href="{{route('mail')}}"><i class="fa fa-sticky-note-o"></i> <span>Отправка почты</span></a></li>

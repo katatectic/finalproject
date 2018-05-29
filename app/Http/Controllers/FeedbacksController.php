@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Feedback;
 use Mail;
-use Session;
+use App\Mail\MailClass;
 
 class FeedbacksController extends Controller {
 
@@ -32,29 +32,40 @@ class FeedbacksController extends Controller {
 
             return view('feedback.addFeedback');
         }
-        Session::flash('message', 'This is a message!');
         return view('feedback.feedback');
     }
 
     public function adminFeedbacks() {
         $feedbacks = Feedback::orderBy('id', 'DESC')->paginate(10);
         $feedbacksCount = Feedback::count();
-        return view('admin.feedbacks.adminFeedbacks', compact('feedbacks', 'feedbacksCount'));
+        return view('admin.feedbacks.index', compact('feedbacks', 'feedbacksCount'));
     }
 
-    public function adminFeedbacksShowOne($id) {
+    public function show($id) {
         $feedback = Feedback::select()->where('id', $id)->first();
         $feedback->status = '2';
         $feedback->save();
-        return view('admin.feedbacks.adminOneFeedback', compact('feedback'));
+        return view('admin.feedbacks.show', compact('feedback'));
     }
 
-    public function deleteFeedback($id) {
+    public function destroy($id) {
         if (!is_numeric($id))
             return false;
         $feedback = Feedback::find($id);
         $feedback->delete();
-        return redirect()->route('adminfeedbacks');
+        return redirect()->route('admin.feedback.index');
+    }
+	
+	public function reply($id, Request $request) {
+        if ($request->method() == "POST"){
+			$name = $request->name;
+			$email = $request->email;
+			$msg = $request->message;
+			Mail::to($email)->send(new MailClass($name, $email, $msg));
+			return redirect()->route('admin.feedback.index');
+        }
+        $feedback = Feedback::find($id);
+        return view('admin.feedbacks.reply', compact('feedback'));
     }
 
 }

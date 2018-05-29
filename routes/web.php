@@ -51,9 +51,10 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('profile/id{id}/edit', 'UserController@edit')->name('profile.edit');/* Форма редактирования пользователя*/
     Route::post('profile/update/{id}', 'UserController@update')->name('profile.update');/* Изминение пользователя*/
     //Feedbacks
-    Route::any('adminfeedbacks', 'FeedbacksController@adminFeedbacks')->name('adminfeedbacks'); //Список заявок
-    Route::any('adminonefeedback/{id}', 'FeedbacksController@adminFeedbacksShowOne')->name('adminonefeedback');
-    Route::any('feedback/{id}/delete', 'FeedbacksController@deleteFeedback')->name('deletefeedback');
+    Route::any('adminfeedbacks', 'FeedbacksController@adminFeedbacks')->name('admin.feedback.index'); //Список заявок
+    Route::any('adminonefeedback/{id}', 'FeedbacksController@show')->name('feedback.show');
+    Route::any('feedback/{id}/delete', 'FeedbacksController@destroy')->name('feedback.destroy');
+	Route::any('feedback/{id}/reply', 'FeedbacksController@reply')->name('feedback.reply');
     //Sliders
     Route::any('slidercreate', 'SliderController@create')->name('slider.create');
     Route::any('sliderstore', 'SliderController@store')->name('slider.store');
@@ -61,6 +62,7 @@ Route::group(['middleware' => 'admin'], function() {
     Route::any('slider/{id}/edit', 'SliderController@edit')->name('slider.edit');
     Route::any('slider/{id}/delete', 'SliderController@destroy')->name('slider.destroy');
     Route::any('sliders', 'SliderController@adminSliders')->name('adminSliders');
+	//Reports
 	Route::any('reports', 'ReportController@adminIndex')->name('adminReports');
 	Route::get('reportcreate', 'ReportController@create')->name('admin.report.create');
 	Route::post('reportcreate', 'ReportController@store')->name('admin.report.store');
