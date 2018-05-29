@@ -21,12 +21,14 @@ class AlbumController extends Controller {
     public function adminAlbums() {
         $albumsCount = Album::count();
         $albums = Album::with('Photos')->orderBy('id', 'DESC')->paginate(10);
-        ;
         return view('admin.albums.albums', compact('albums', 'albumsCount'));
     }
 
     public function create() {
         return view('admin.albums.create');
+    }
+	public function userCreate() {
+        return view('album.create');
     }
 
     public function addPhoto($request) {
@@ -52,7 +54,7 @@ class AlbumController extends Controller {
             };
             $create = Album::create($data);
             $id = $create->id;
-            return redirect()->route('adminAlbums');
+            return redirect()->route('album.index');
         }
         return view('admin.albums.create');
     }

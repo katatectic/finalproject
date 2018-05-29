@@ -6,8 +6,13 @@
 <div id="content" class="site-content wrappr">
     <div class="navbar navbar-inverse navbar-fixed-top">
         @if(Auth::user())
-        @if(Auth::user()->role==1 or Auth::user()->role==2 or Auth::user()->role==3)
-        <a href="{{ route('album.create')}}" class="more-link button">Создать новый альбом</a>
+        @if(Auth::user()->role==1 or Auth::user()->role==2)
+        <a href="{{ route('album.create')}}" class="more-link button" style="margin:0 auto">Создать новый альбом</a>
+        @endif
+        @endif
+        @if(Auth::user())
+        @if(Auth::user()->role==3)
+        <a href="{{ route('album.user.create')}}" class="more-link button" style="margin:0 auto">Создать новый альбом</a>
         @endif
         @endif
     </div><br/>
