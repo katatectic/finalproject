@@ -65,6 +65,7 @@ class ReportController extends Controller {
         if (is_file(public_path() . '/images/reports/' . $img)) {
             unlink(public_path() . '/images/reports/' . $img);
         }
+        Report::find($id)->comments()->forceDelete();
         $report->delete($id);
         return redirect()->route('adminReports');
     }

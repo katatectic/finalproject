@@ -160,7 +160,7 @@
                                                             </h5>
                                                             <h6 class="doublef-event-item-date">
                                                                 Автор: 
-                                                                <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}}
+                                                                <a href="{{route('profile',['id'=>$article->user->id])}}">{{$event->user->name}}
                                                                 </a>
                                                             </h6>
                                                             <p class="doublef-event-item-date">Дата {{$event->event_date}}</p>
