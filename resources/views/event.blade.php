@@ -8,7 +8,7 @@
 </div><!-- #cinemahead -->
 <div id="content" class="site-content wrappr">
     <div class="bread">
-        <a href="{{route('home')}}">Главная</a> / 
+        <a href="{{route('main')}}">Главная</a> / 
         <a href="{{route('event.index')}}">События</a> /
         {{$event->title}}
     </div>

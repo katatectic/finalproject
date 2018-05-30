@@ -16,7 +16,7 @@
 </div><!-- #cinemahead -->
 <div id="content" class="site-content wrappr">
     <div class="bread">
-        <a href="{{route('home')}}">Главная</a> / Новости
+        <a href="{{route('main')}}">Главная</a> / Новости
     </div>
     @if (count($all) > 0)   
     <section class="news">

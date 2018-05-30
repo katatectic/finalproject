@@ -18,7 +18,7 @@
 </div>
 <div id="content" class="site-content wrappr">
     <div class="bread">
-        <a href="{{route('home')}}">Главная</a> / Отчеты
+        <a href="{{route('main')}}">Главная</a> / Отчеты
     </div>
     @if (count($reports) > 0)
     <section class="events">

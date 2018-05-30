@@ -8,7 +8,7 @@
 </div>
 <div id="content" class="site-content wrappr">
     <div class="bread">
-        <a href="{{route('home')}}">Главная</a> / 
+        <a href="{{route('main')}}">Главная</a> / 
         <a href="{{route('reports')}}">Отчеты</a> /
         Протокол № {{ $report->id }} от {{ $report->date }}
     </div>
