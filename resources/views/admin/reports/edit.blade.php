@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+	Редактировать отчёт № {{$report->id}}
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">

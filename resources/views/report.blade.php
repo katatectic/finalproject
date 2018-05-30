@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Протокол № {{ $report->id }} от {{ $report->date }}
+@endsection
 @section('content')
 <div id="cinemahead">
     <div id="mobile-nav-container"></div>

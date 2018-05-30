@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+	{{$album->name}}
+@endsection
 @section('content')
 @if($album)
 <div>

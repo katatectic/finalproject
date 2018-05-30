@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+	Отчёты
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -44,7 +47,6 @@
                             </td>
                         </tr>
                         @endforeach
-                        </tfoot>
                 </table>
             </div>
             {{$reports->links()}}

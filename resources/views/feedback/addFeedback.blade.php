@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+	Обратная связь
+@endsection
 @section('content')
 <div class="content">
     <div class="row">

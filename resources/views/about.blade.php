@@ -1,23 +1,25 @@
 @extends('layouts.app')
+@section('title')
+	О нас
+@endsection
 @section('content')
-
 <div id="cinemahead">
 	<div class="buntington2-cinema-bg">
 		<div class="element-gradient buntington2-cinema buntington2-cinema-page invert" data-url="http://buntington2.wpshow.me/wp-content/uploads/2014/06/9735272889_e6fe99fd24_b.jpg" style="background-position: center center; padding-top: 350px; padding-bottom: 40px;">
 			<div class="wrappr text-left">
 				<h1 class="h-gigant">Страница комитета ОШ №25</h1>
 				<p>Повседневная практика показывает, что постоянное информационно-пропагандистское обеспечение нашей деятельности способствует подготовки и реализации форм развития.</p>
-			</div><!-- .wrappr -->
-		</div><!-- .buntington2-cinema -->
-	</div><!-- .buntington2-cinema-bg -->
-	<div id="mobile-nav-container"></div><!-- Small devices menu -->
-</div><!-- #cinemahead -->
+			</div>
+		</div>
+	</div>
+	<div id="mobile-nav-container"></div>
+</div>
 <div id="content" class="site-content wrappr">
 	<div class="bread">
         <a href="{{route('home')}}">Главная</a> / О нас
     </div>
-	<div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-	<div class="grid"><!-- toast grid declaration -->
+	<div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+	<div class="grid">
 		<div id="primary" class="content-area grid__col grid__col--3-of-3">
 			<main id="main" class="site-main" role="main">
 				<article id="post-18" class="post-18 page type-page status-publish has-post-thumbnail hentry">
@@ -38,11 +40,10 @@
 								<a href="{{route('committee')}}">7-В класс</a>
 							</li>
 						</ul>
-					</div><!-- .entry-content -->
-				</article><!-- #post-18 -->
-			</main><!-- #main -->
-		</div><!-- #primary -->
-	</div><!-- .grid-->
-</div><!-- #content -->
-
+					</div>
+				</article>
+			</main>
+		</div>
+	</div>
+</div>
 @endsection

@@ -1,7 +1,10 @@
 @extends('layouts.app')
+@section('title')
+	Галерея
+@endsection
 @section('content')
 <div id="cinemahead">
-    <div id="mobile-nav-container"></div><!-- Small devices menu -->
+    <div id="mobile-nav-container"></div>
 </div>
 <div id="content" class="site-content wrappr">
     <div class="navbar navbar-inverse navbar-fixed-top">

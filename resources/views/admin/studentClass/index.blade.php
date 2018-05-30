@@ -13,8 +13,10 @@
         #confirmation {display:flex;justify-content: center;}
     </style>
 </head>
-
 @extends('layouts.admin')
+@section('title')
+	Классы
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">

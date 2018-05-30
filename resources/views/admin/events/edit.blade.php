@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+	Редактировать событие {{$event->title}}
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">

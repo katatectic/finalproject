@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    {{$event->title}}
+@endsection
 @section('content')
 <div id="cinemahead">
     <div id="mobile-nav-container"></div><!-- Small devices menu -->

@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+	Редактировать пользователя {{$all->name}} {{$all->surname}}
+@endsection
 @section('content')
     <head>
         <style>
@@ -87,15 +90,11 @@
                                 </select>
                             </div>
                         </div>
-
                         {{--
                         <input type="hidden" name="avatar" value="{{$all->avatar}}">
                         <input type="hidden" name="password" value="{{$all->password}}">
                         <input type="hidden" name="password_confirmation" value="{{$all->password_confirmation}}">
                         --}}
-                        
-
-                        
                         <div class="form-group">
                             <label for="avatar" class="col-md-4 control-label">Фотография</label>
                             <div class="col-md-6">
@@ -111,8 +110,6 @@
                             <label for="password">Повторите пароль</label>
                             <input type="password" name="password_confirmation" id="password_confirmation" />
                         </div>
-                        
-
                         <input type="submit" class="btn btn-primary" value="Сохранить изменения">
                         {{ csrf_field() }}
                     </form>

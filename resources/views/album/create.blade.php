@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+	Добавление альбома
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">

@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Профиль пользователя
+@endsection
 @section('content')
 <div class="content">
     <section id="contentSection">

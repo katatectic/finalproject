@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name='robots' content='noindex,follow' />
-        <title>Родительский комитет ОШ №25</title>
+        <title>@yield('title')</title>
         <link rel="profile" href="http://gmpg.org/xfn/11">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/lightbox.css') }}">
         <link rel='dns-prefetch' href='//use.fontawesome.com' />
@@ -16,7 +16,7 @@
         <link rel='stylesheet'  href="{{ asset('css/style.css') }}" type='text/css' media='all' />
         <link rel='stylesheet' href="{{asset ('css/kirki-styles-buntington2-inline-css.css') }}" type='text/css' media='all'>
 		<link rel='stylesheet' href="{{asset ('css/gallery.css') }}" type='text/css' media='all'>
-       
+		<link rel="shortcut icon" href="{{ asset('images/favicon/favicon.ico')}}">
     </head>
     <body class="home page-template page-template-template-page-builder page-template-template-page-builder-php page page-id-425 siteorigin-panels siteorigin-panels-before-js siteorigin-panels-home">
         <a class="skip-link screen-reader-text" href="#content">Skip to content</a>    

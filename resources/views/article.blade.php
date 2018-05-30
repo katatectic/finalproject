@@ -1,16 +1,19 @@
 @extends('layouts.app')
+@section('title')
+	{{$article->title}}
+@endsection
 @section('content')
 <div id="cinemahead">
-    <div id="mobile-nav-container"></div><!-- Small devices menu -->
-</div><!-- #cinemahead -->
+    <div id="mobile-nav-container"></div>
+</div>
 <div id="content" class="site-content wrappr">
     <div class="bread">
         <a href="{{route('home')}}">Главная</a> / 
         <a href="{{route('news')}}">Новости</a> /
         {{$article->title}}
     </div>
-    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-    <div class="grid"><!-- toast grid declaration -->
+    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+    <div class="grid">
         <div id="primary" class="content-area grid__col grid__col--3-of-3">
             <main id="main" class="site-main" role="main">
                 @if($article)
@@ -27,14 +30,14 @@
                             Добавил: <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}</a>
                         </h5>
                         <h5 class="doublef-event-item-date">{{$article->date}}</h5>
-                    </header><!-- .entry-header -->
+                    </header>
                     <div class="entry-content">
                         <p>{{$article->content}}</p>
                     </div>
                     @if (!Auth::guest())
                     @if (Auth::user()->role == 1 or Auth::user()->role == 2)
                     <a href="{{ route('editnews',['id'=>$article->id]) }}" class="more-link button">Редактировать новость</a>
-                    <a href="{{route('deletenews',$article->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button">Удалить новость</a><!-- .entry-content -->
+                    <a href="{{route('deletenews',$article->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button">Удалить новость</a>
                     @endif
                     @endif                   
                 </article>
@@ -81,9 +84,9 @@
                                     </p>
                                     @endif
                                     @endif
-                                </div><!-- #comment-## -->
+                                </div>
                             </div>
-                        </div><!-- .comment-list -->
+                        </div>
                         @endif
                     @endif
                     @if ($comment->ispublished == 1)
@@ -115,8 +118,8 @@
                                 </p>
                                 @endif
                                 @endif
-                            </div><!-- #comment-## -->
-                        </div><!-- .comment-list -->
+                            </div>
+                        </div>
                     @endif
                 @endforeach
                 @if (!Auth::guest())

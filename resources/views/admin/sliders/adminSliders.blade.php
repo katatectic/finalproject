@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+	Слайдеры
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -29,7 +32,6 @@
                                         <img width="100" src="{{asset('images/sliders/'.$slider->photo)}}" class="attachment-full size-full wp-post-image" alt="{{ $slider->title }}"/>
                                     </a>
                                 </div>
-
                             </td>
                             <td>
                                 <a href="{{ route('slider.show',['id'=>$slider->id]) }}" class="fa fa-eye"></a>

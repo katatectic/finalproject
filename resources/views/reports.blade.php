@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Отчёты
+@endsection
 @section('content')
 <div id="cinemahead">
     <div class="buntington2-cinema-bg">

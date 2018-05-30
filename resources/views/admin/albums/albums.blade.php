@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+	Список альбомов
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
