@@ -21,7 +21,7 @@ class StudentClass extends Model
         return $this->hasMany('App\Article'); // один комитет много статей
     }
 
-    public function events()
+    public function event()
     {
         return $this->hasMany('App\Event'); // один комитет много событий
     }

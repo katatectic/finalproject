@@ -19,7 +19,7 @@ class CommitteesController extends Controller
      */
     public function about()
     {
-        $committees = StudentClass::withCount('user')->get();
+        $committees = StudentClass::has('user')->withCount('user')->get();
         return view('about', ['committees' => $committees]);
     }
     /**
@@ -31,7 +31,7 @@ class CommitteesController extends Controller
     {
         $userId = Auth::id();
         $user = User::with('studentsClasses')->find($userId);
-        $committees = StudentClass::withCount('user')->get();
+        $committees = StudentClass::has('user')->withCount('user')->get();
         return view('committees.committees', ['committees' => $committees, 'user' => $user]);
     }
 
@@ -43,7 +43,7 @@ class CommitteesController extends Controller
      */
     public function show($id)
     {
-        $committee = StudentClass::with('user', 'news', 'events')->find($id);
+        $committee = StudentClass::with('user', 'news', 'event')->find($id);
         return view('committees.committee', ['committee' => $committee]);
 
     }

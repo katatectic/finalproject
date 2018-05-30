@@ -11,14 +11,16 @@
             <main id="main" class="site-main" role="main">
                 <article id="post-425" class="post-425 page type-page status-publish hentry">
                     <div id="pl-425" class="panel-layout">
-                        <h1>Комитет @if (date('Y') - $committee->start_year + $transition < 4)
+                        <h1>
+                            Комитет @if (date('Y') - $committee->start_year + $transition < 4)
                                 {{date('Y') - $committee->start_year + $transition}}
                             @elseif (date('Y') <= $committee->year_of_issue)
                                 {{date('Y') - $committee->start_year + $transition + 1 - $committee->fourth_class}}
                             @else
                                  (Выпустился) {{$committee->year_of_issue - $committee->start_year - $committee->fourth_class}}
                             @endif
-                            - {{$committee->letter_class}} класса</h1>
+                            - {{$committee->letter_class}} класса
+                        </h1>
                         <div id="pg-425-1" class="panel-grid panel-no-style">
                             <div id="pgc-425-1-0" class="panel-grid-cell">
                                 <div class="panel-cell-style panel-cell-style-for-425-1-0">
@@ -68,53 +70,52 @@
                                 </div>
                             </div>
                             <!-- Закончился левый сайдбар с новостями + галерея внизу -->
-                            {{--<div id="pgc-425-1-1" class="panel-grid-cell">--}}
-                                {{--<div class="panel-cell-style panel-cell-style-for-425-1-1">--}}
-                                    {{--<div id="panel-425-1-1-0"--}}
-                                         {{--class="so-panel widget widget_doublef-event-posts-widget panel-first-child panel-last-child"--}}
-                                         {{--data-index="3">--}}
-                                        {{--<div class="so-widget-doublef-event-posts-widget so-widget-doublef-event-posts-widget-base">--}}
-                                            {{--<h2 class="widget-title">Будущие мероприятия</h2>--}}
-                                            {{--<div class="doublef-event-posts-layout_2">--}}
-                                                {{--@foreach($events as $event)--}}
-                                                {{--<article id="post-519"--}}
-                                                         {{--class="layout_2 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">--}}
-                                                    {{--<figure class="post-thumbnail">--}}
-                                                        {{--<a href="{{ route('event.show',['id'=>$event->id]) }}"--}}
-                                                           {{--title="Newcomers welcome party">--}}
-                                                            {{--<img width="1140" height="500"--}}
-                                                                 {{--src="{{asset('images/events/'.$event->photo)}}"--}}
-                                                                 {{--class="attachment-full size-full wp-post-image"--}}
-                                                                 {{--alt=""--}}
-                                                                 {{--srcset="{{asset('images/events/'.$event->photo)}} 1140w, {{asset('images/events/'.$event->photo)}} 600w"--}}
-                                                                 {{--sizes="(max-width: 1140px) 100vw, 1140px"/>--}}
-                                                        {{--</a>--}}
-                                                    {{--</figure>--}}
-                                                    {{--<div class="doublef-events-content-wrap">--}}
-                                                        {{--<header class="entry-header">--}}
-                                                            {{--<h5 class="entry-title">--}}
-                                                                {{--<a href="{{ route('event.show',['id'=>$event->id]) }}">{{$event->title}}</a>--}}
-                                                            {{--</h5>--}}
-                                                            {{--<h6 class="doublef-event-item-date">--}}
-                                                                {{--Автор: --}}
-                                                                {{--<a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}}--}}
-                                                                {{--</a>--}}
-                                                            {{--</h6>--}}
-                                                            {{--<p class="doublef-event-item-date">Дата {{$event->event_date}}</p>--}}
-                                                            {{--<p class="doublef-event-item-time">Время {{$event->event_hours}}</p>--}}
-                                                            {{--<div class="doublef-event-address">Адрес: {{$event->address}}--}}
-                                                                {{--<a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>--}}
-                                                            {{--</div><!-- .doublef-event-address -->--}}
-                                                        {{--</header><!-- .entry-header -->--}}
-                                                    {{--</div><!-- custom/inline style wrapper -->--}}
-                                                {{--</article>--}}
-                                                {{--@endforeach--}}
-                                                {{--{{$events->links()}}<!-- #post-519 -->--}}
-                                            {{--</div><!-- .doublef-event-posts-* -->--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                            <div id="pgc-425-1-1" class="panel-grid-cell">
+                                <div class="panel-cell-style panel-cell-style-for-425-1-1">
+                                    <div id="panel-425-1-1-0"
+                                         class="so-panel widget widget_doublef-event-posts-widget panel-first-child panel-last-child"
+                                         data-index="3">
+                                        <div class="so-widget-doublef-event-posts-widget so-widget-doublef-event-posts-widget-base">
+                                            <h2 class="widget-title">Будущие мероприятия</h2>
+                                            <div class="doublef-event-posts-layout_2">
+                                                @foreach($committee->event->take(-3) as $event)
+                                                <article id="post-519"
+                                                         class="layout_2 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
+                                                    <figure class="post-thumbnail">
+                                                        <a href="{{ route('event.show',['id'=>$event->id]) }}"
+                                                           title="Newcomers welcome party">
+                                                            <img width="1140" height="500"
+                                                                 src="{{asset('images/events/'.$event->photo)}}"
+                                                                 class="attachment-full size-full wp-post-image"
+                                                                 alt=""
+                                                                 srcset="{{asset('images/events/'.$event->photo)}} 1140w, {{asset('images/events/'.$event->photo)}} 600w"
+                                                                 sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                        </a>
+                                                    </figure>
+                                                    <div class="doublef-events-content-wrap">
+                                                        <header class="entry-header">
+                                                            <h5 class="entry-title">
+                                                                <a href="{{ route('event.show',['id'=>$event->id]) }}">{{$event->title}}</a>
+                                                            </h5>
+                                                            <h6 class="doublef-event-item-date">
+                                                                Автор:
+                                                                <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}}
+                                                                </a>
+                                                            </h6>
+                                                            <p class="doublef-event-item-date">Дата {{$event->event_date}}</p>
+                                                            <p class="doublef-event-item-time">Время {{$event->event_hours}}</p>
+                                                            <div class="doublef-event-address">Адрес: {{$event->address}}
+                                                                <a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>
+                                                            </div><!-- .doublef-event-address -->
+                                                        </header><!-- .entry-header -->
+                                                    </div><!-- custom/inline style wrapper -->
+                                                </article>
+                                                @endforeach
+                                            </div><!-- .doublef-event-posts-* -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Закончился блок в середине -->
                             <div id="pgc-425-1-2" class="panel-grid-cell">
                                 <div class="panel-cell-style panel-cell-style-for-425-1-2">
