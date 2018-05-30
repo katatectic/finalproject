@@ -34,6 +34,12 @@ Route::group(['middleware' => 'adminandchief'], function() {
     Route::any('comment/{id}/delete', 'CommentsController@deleteComment')->name('deletecomment');/* Удаление комментария*/
 	Route::any('send', 'AdminController@sendMail')->name('sendMail');
 	Route::any('mail', 'AdminController@mailForm')->name('mail');
+    //Albums
+    Route::get('albums','AlbumController@adminAlbums')->name('adminAlbums');
+    Route::any('createalbum','AlbumController@create')->name('album.create');
+    Route::any('createalbum','AlbumController@store')->name('album.create');
+    Route::any('album/{id}/delete', 'AlbumController@destroy')->name('album.destroy');
+    Route::any('album/{id}/edit', 'AlbumController@edit')->name('album.edit');
 });
 });
 
@@ -65,13 +71,7 @@ Route::group(['middleware' => 'admin'], function() {
 	Route::any('report/{id}/edit', 'ReportController@edit')->name('admin.report.edit');
 	//News
 	Route::any('newscreate', 'NewsController@create')->name('newsview');
-	Route::get('eventcreate', 'EventController@create')->name('event.create');
-	//Albums
-	Route::get('albums','AlbumController@adminAlbums')->name('adminAlbums');
-	Route::any('createalbum','AlbumController@create')->name('album.create');
-	Route::any('createalbum','AlbumController@store')->name('album.create');
-	Route::any('album/{id}/delete', 'AlbumController@destroy')->name('album.destroy');
-	Route::any('album/{id}/edit', 'AlbumController@edit')->name('album.edit');
+	Route::get('eventcreate', 'EventController@create')->name('event.create');	
 });
 });
 
