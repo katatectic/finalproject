@@ -28,8 +28,7 @@ img {
           filter: blur(10px);
 }
 .gallery figure {
-  -ms-flex-preferred-size: 33.333%;
-      flex-basis: 33.333%;
+  
   padding: 10px;
   overflow: hidden;
   border-radius: 10px;

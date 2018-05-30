@@ -13,10 +13,10 @@
                                                         <ul id="menu-functional" class="menu">
                                                             @if (Auth::guest())
                                                             <li id="menu-item-1121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1121">
-                                                                <a href="{{ route('login') }}">Войти</a>
+                                                                <a href="{{ route('login') }}">Вход</a>
                                                             </li>
                                                             <li id="menu-item-1121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1121">
-                                                                <a href="{{ route('register') }}">Зарегистрироваться</a>
+                                                                <a href="{{ route('register') }}">Регистрация</a>
                                                             </li>
                                                             @else
                                                             <li id="menu-item-1121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1121">

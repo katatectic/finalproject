@@ -194,7 +194,7 @@
                                                     <input type="hidden" name="post_type" value="doublef-course"/>
                                                 </label>
                                                 {{ csrf_field() }}
-                                                <input type="submit" class="search-submit" value="Go"/>
+                                                <input type="submit" class="search-submit" value="Искать"/>
                                             </form>
                                         </div>
                                     </div><br/>

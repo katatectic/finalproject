@@ -3,7 +3,7 @@
 	Обратная связь
 @endsection
 @section('content')
-<div class="content">
+<div id="content" class="site-content wrappr">
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8">
             <div class="left_content">
