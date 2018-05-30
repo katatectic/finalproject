@@ -12,6 +12,10 @@ class Event extends Model {
         return $this->belongsTo('App\User');
     }
 
+    public function studentClass() {
+        return $this->belongsTo('App\StudentClass');
+    }
+
     public function comments() {
         return $this->hasMany('App\Comment');
     }

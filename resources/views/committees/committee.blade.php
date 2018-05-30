@@ -27,39 +27,39 @@
                                          data-index="1">
                                         <div class="panel-widget-style panel-widget-style-for-425-1-0-0">
                                             <div class="so-widget-buntington2-news-list so-widget-buntington2-news-list-base">
-                                                <h2 class="widget-title">Последние новости</h2>
+                                                <h2 class="widget-title">Последние новости</h2><a href=""></a>
                                                 <div class="news-list-widget-wrap" style="text-align: left;">
-                                                    @foreach($committee->news as $article)
-                                                    <div class="news-list-item news-list-left has-separator-line-top">
-                                                        <figure class="post-thumbnail news-list-item-featured-image">
-                                                            <a href="{{route('article',['id'=>$article->id])}}">
-                                                                <img width="1140" height="500"
-                                                                     src="{{asset('images/news/'.$article->photo)}}"
-                                                                     class="attachment-full size-full wp-post-image"
-                                                                     alt=""
-                                                                     srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w"
-                                                                     sizes="(max-width: 1140px) 100vw, 1140px"/>
-                                                            </a>
-                                                        </figure>
-                                                        <div class="news-list-item-elements ">
-                                                            <h5>
-                                                                <a href="{{route('article', ['id'=>$article->id])}}"
-                                                                   rel="bookmark">{{$article->title}}</a>
-                                                            </h5>
-                                                            <h6 class="doublef-event-item-date">
-                                                                Добавил: 
-                                                                <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}
+                                                    @foreach($committee->news->take(-3) as $article)
+                                                        <div class="news-list-item news-list-left has-separator-line-top">
+                                                            <figure class="post-thumbnail news-list-item-featured-image">
+                                                                <a href="{{route('article',['id'=>$article->id])}}">
+                                                                    <img width="1140" height="500"
+                                                                         src="{{asset('images/news/'.$article->photo)}}"
+                                                                         class="attachment-full size-full wp-post-image"
+                                                                         alt=""
+                                                                         srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w"
+                                                                         sizes="(max-width: 1140px) 100vw, 1140px"/>
                                                                 </a>
-                                                            </h6>
-                                                            <div class="entry-meta">
-                                                                <ul class="post-meta-wrapper ul-horizontal-list">
-                                                                    <li class="post-meta-date">
-                                                                        <time class="entry-date published">{{$article->created_at->format('d.m.Y')}}</time> 
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div><!-- .news-list-item-elements -->
-                                                    </div><!-- .news-list-item -->
+                                                            </figure>
+                                                            <div class="news-list-item-elements ">
+                                                                <h5>
+                                                                    <a href="{{route('article', ['id'=>$article->id])}}"
+                                                                       rel="bookmark">{{$article->title}}</a>
+                                                                </h5>
+                                                                <h6 class="doublef-event-item-date">
+                                                                    Добавил:
+                                                                    <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}
+                                                                    </a>
+                                                                </h6>
+                                                                <div class="entry-meta">
+                                                                    <ul class="post-meta-wrapper ul-horizontal-list">
+                                                                        <li class="post-meta-date">
+                                                                            <time class="entry-date published">{{$article->created_at->format('d.m.Y')}}</time>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div><!-- .news-list-item-elements -->
+                                                        </div><!-- .news-list-item -->
                                                     @endforeach
                                                 </div><!-- .news-list-widget-wrap-->
                                             </div>
@@ -122,20 +122,14 @@
                                          class="so-panel widget widget_doublef-courses-search panel-first-child"
                                          data-index="4">
                                         <div class="so-widget-doublef-courses-search so-widget-doublef-courses-search-base">
-                                            <h2 class="widget-title">Что-то будем искать?</h2>
-                                            <form role="search" method="get" id="course-finder"
-                                                  class="search-form one-field-submit"
-                                                  action="{{route('search')}}">
-                                                <label>
-                                                    <span class="screen-reader-text">Что-нибудь поищи...</span>
-                                                    <input type="text" class="search-field" placeholder="Поиск..." name="search"/>
-                                                    <input type="hidden" name="post_type" value="doublef-course"/>
-                                                </label>
-                                                {{ csrf_field() }}
-                                                <input type="submit" class="search-submit" value="Go"/>
-                                            </form>
+                                            <h2 class="widget-title">Участники комитета ({{$committee->user->count()}})</h2>
+                                            <ul>
+                                                @foreach ($committee->user as $user)
+                                                    <li><a href="{{route('profile',['id'=>$user->id])}}">{{$user->name}} {{$user->surname}}</a></li>
+                                                @endforeach
+                                            </ul>
                                         </div>
-                                    </div><br/>
+                                    </div>
                                     <div id="panel-425-1-2-1"
                                          class="so-panel widget widget_buntington2-button-banner" data-index="5">
                                         <div class="panel-widget-style panel-widget-style-for-425-1-2-1">

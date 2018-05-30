@@ -124,9 +124,11 @@ Route::post('addreport', 'ReportController@store')->name('addreport');
 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут подтягивает перечень комитетов школы из базы*/
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+Route::get('/about', 'CommitteesController@about')->name('about');
+//Committees
+Route::get('/committees', 'CommitteesController@index')->name('allCommittees');
+Route::get('/committees/committee/{id}', 'CommitteesController@show')->name('oneCommittee');
+
 
 /* пока такой роут, здесь никакой логики не задейстовано.
 Данный роут просто содержит контакты*/
@@ -167,6 +169,3 @@ Route::get('/admin/students-classes/delete/{id}', 'StudentClassController@destro
 Route::get('/ajax', 'Ajax\StudentClassController@getClasses')->name('getStudentClasses');
 
 
-//Committees
-Route::get('/committees', 'CommitteesController@index')->name('allCommittees');
-Route::get('/committees/committee/{id}', 'CommitteesController@show')->name('oneCommittee');

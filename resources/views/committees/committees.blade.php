@@ -3,8 +3,10 @@
 <head>
     <style>
         .committees {display:flex;flex-wrap: wrap;}
-        .committee {width: 220px; margin:20px;}
-        a.consist {color:#18d220}
+        .committee {width: 300px; margin:3px 20px;background: #f3f3f3;padding: 0 20px;border-radius: 10px;box-shadow: 0 0 10px rgba(0,0,0,0.5);}
+        .committee a {display: block;width: 100%}
+        .committee:hover {padding: 0 10px;border-radius: 30px;}
+        a.consist {color:#18d220;}
     </style>
 </head>
 <div id="cinemahead">
@@ -33,7 +35,7 @@
                                 <div id="" class="committees">
                                     @foreach ($committees as $committee)
                                         <div class="committee">
-                                            <a href="{{ route('oneCommittee',['id' => $committee->id]) }}" class="@if($user->studentsClasses->contains('pivot.student_class_id', $committee->id)) consist @endif">
+                                            <a href="{{ route('oneCommittee',['id' => $committee->id]) }}" class="@if($user != '') @if($user->studentsClasses->contains('pivot.student_class_id', $committee->id)) consist @endif @endif">
                                                 {{$classesNumbers()[$committee->id]}}
                                                 {{$committee->letter_class}} (Участников: {{$committee->user_count}})
                                                 @if($user != '') @if($user->studentsClasses->contains('pivot.student_class_id', $committee->id)) Состоите @endif @endif

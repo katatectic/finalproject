@@ -16,6 +16,12 @@ class NewsController extends Controller {
         return view('news', compact('all'));
     }
 
+    public function committeeNews($committeeId) {
+        $all = Article::where('student_class_id', $committeeId)->orderBy('id', 'DESC')->paginate($this->puginationNews);
+        $committee = $committeeId;
+        return view('news', compact('all', 'committee'));
+    }
+
     public function article($id) {
         $article = Article::select()->where('id', $id)->first();
 		$lastNews=Article::orderBy('id', 'desc')->take(5)->get();

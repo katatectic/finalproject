@@ -19,6 +19,9 @@
                                                 <li id="menu-item-312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312">
                                                     <a title="" href="{{route('event.index')}}">События</a>
                                                 </li>
+                                                <li id="menu-item-312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-312">
+                                                    <a href="{{ route('allCommittees') }}">Комитеты</a>
+                                                </li>
                                                 <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
                                                     <a title="" href="{{route('addFeedback')}}">Обратная связь</a>
                                                 </li>

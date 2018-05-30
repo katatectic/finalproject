@@ -13,19 +13,24 @@ use Illuminate\Support\Facades\Auth;
 class CommitteesController extends Controller
 {
     /**
+     * Display a listing of some committees(stusentsClasses) adn info about as
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function about()
+    {
+        $committees = StudentClass::withCount('user')->get();
+        return view('about', ['committees' => $committees]);
+    }
+    /**
      * Display a listing of all committees(stusentsClasses).
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        if (Auth::id() !== null) {
-            $userId = Auth::id();
-            $user = User::with('studentsClasses')->find($userId);
-        } else {
-            $user = '';
-        }
-
+        $userId = Auth::id();
+        $user = User::with('studentsClasses')->find($userId);
         $committees = StudentClass::withCount('user')->get();
         return view('committees.committees', ['committees' => $committees, 'user' => $user]);
     }
@@ -38,7 +43,7 @@ class CommitteesController extends Controller
      */
     public function show($id)
     {
-        $committee = StudentClass::with('user', 'news')->find($id);
+        $committee = StudentClass::with('user', 'news', 'events')->find($id);
         return view('committees.committee', ['committee' => $committee]);
 
     }
