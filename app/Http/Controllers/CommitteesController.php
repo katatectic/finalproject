@@ -20,7 +20,8 @@ class CommitteesController extends Controller
     public function about()
     {
         $committees = StudentClass::has('user')->withCount('user')->get();
-        return view('about', ['committees' => $committees]);
+        $count = ($committees->count() < 5 )? $committees->count() : 5;
+        return view('about', ['committees' => $committees, 'rand' => $count]);
     }
     /**
      * Display a listing of all committees(stusentsClasses).

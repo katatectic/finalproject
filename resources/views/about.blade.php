@@ -30,7 +30,7 @@
 						<h4>Перечень родительских комитетов в школе.</h4>
 						<i><a href="{{ route('allCommittees') }}">Список всех комитетов</a></i>
 						<ul>
-							@foreach ($committees->random(5) as $committee)
+							@foreach ($committees->random($rand) as $committee)
 								<li>
 									<a href="{{ route('oneCommittee',['id' => $committee->id]) }}">
 										{{$classesNumbers()[$committee->id]}} - {{$committee->letter_class}} класс
