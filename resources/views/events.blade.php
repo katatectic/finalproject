@@ -9,7 +9,13 @@
              data-url="http://buntington2.wpshow.me/wp-content/uploads/2014/06/9510947151_ef1d3fdf52_b.jpg"
              style="background-position: center center; padding-top: 150px; padding-bottom: 20px;">
             <div class="wrappr text-left">
-                <h1 class="h-gigant">Ближайшие события</h1>
+                <h1 class="h-gigant">
+                    @isset($committee)
+                        События комитета {{$classesNumbers()[$committee->id]}} - {{$committee->letter_class}} класса
+                    @else
+                        Ближайшие события
+                    @endif
+                </h1>
                 <p>Список всех событий.</p>
             </div><!-- .wrappr -->
         </div><!-- .buntington2-cinema -->
@@ -29,7 +35,8 @@
                 <main id="main" class="site-main" role="main">
                     <article id="post-519"
                              class="grid layout_1 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events"
-                             style="margin-top: 15px; margin-bottom: 15px;">
+                             style="margin-top: 15px; margin-bottom: 15px;"
+                    >
                         <figure class="post-thumbnail grid__col grid__col--6-of-12 grid__col--m-1-of-1">
                             <a href="{{route('event.show',['id'=>$event->id])}}"
                                title="{{ $event->title }}">
@@ -60,6 +67,7 @@
                                 <span class="screen-reader-text">Продолжить чтение  {{ $event->title }}</span>
                             </div><!-- .entry-content -->
                         </div><!-- .post-text-block -->
+                    </article>
                 </main><!-- #main -->
             </div><!-- #primary -->
         </div>

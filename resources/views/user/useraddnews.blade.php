@@ -26,6 +26,17 @@
                                 <span style="color:red">{{ $errors->first('date') }}</span>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label>Комитет</label>
+                            <select name="student_class_id">
+                                <option value="0">Общая новость</option>
+                                @foreach($user->studentsClasses as $class)
+                                    <option value="{{$class->id}}">
+                                        {{$classesNumbers()[$class->id]}} - {{$class->letter_class}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 						<div class="form-group">
                             <label for="description" class="col-md-4 control-label">Краткое описание новости</label>
                             <div class="col-md-6">

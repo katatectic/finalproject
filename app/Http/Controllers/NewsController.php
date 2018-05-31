@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Article;
 use App\User;
 use DateTime;
+use App\StudentClass;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller {
 
@@ -17,8 +19,8 @@ class NewsController extends Controller {
     }
 
     public function committeeNews($committeeId) {
+        $committee = StudentClass::find($committeeId);
         $all = Article::where('student_class_id', $committeeId)->orderBy('id', 'DESC')->paginate($this->puginationNews);
-        $committee = $committeeId;
         return view('news', compact('all', 'committee'));
     }
 
@@ -35,11 +37,15 @@ class NewsController extends Controller {
     }
 
     public function create() {
-        return view('admin.news.create');
+        $userId = Auth::id();
+        $user = User::with('studentsClasses')->find($userId);
+        return view('admin.news.create', ['user' => $user]);
     }
 
     public function userNewsCreate() {
-        return view('user.useraddnews');
+        $userId = Auth::id();
+        $user = User::with('studentsClasses')->find($userId);
+        return view('user.useraddnews', ['user' => $user]);
     }
 
     public function store(Request $request) {

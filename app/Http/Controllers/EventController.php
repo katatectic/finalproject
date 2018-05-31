@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\User;
 use DateTime;
+use App\StudentClass;
 
 class EventController extends Controller {
 
@@ -26,6 +27,12 @@ class EventController extends Controller {
         $events = Event::orderBy('id', 'DESC')->paginate(10);
         $eventsCount = Event::count();
         return view('admin.events.index', compact('events', 'eventsCount'));
+    }
+
+    public function committeeEvents($committeeId) {
+        $committee = StudentClass::find($committeeId);
+        $events = Event::where('student_class_id', $committeeId)->orderBy('id', 'DESC')->paginate($this->puginationEvents);
+        return view('events', compact('events', 'committee'));
     }
 
     public function create() {

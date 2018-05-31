@@ -141,6 +141,8 @@ Route::get('/about', 'CommitteesController@about')->name('about');
 //Committees
 Route::get('/committees', 'CommitteesController@index')->name('allCommittees');
 Route::get('/committees/committee/{id}', 'CommitteesController@show')->name('oneCommittee');
+Route::get('/committees/committee/{committeeId}/news', 'NewsController@committeeNews')->name('newsCommittee');
+Route::get('/committees/committee/{committeeId}/events', 'EventController@committeeEvents')->name('eventCommittee');
 
 
 /* пока такой роут, здесь никакой логики не задейстовано.

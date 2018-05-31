@@ -30,6 +30,17 @@
                             <input type="file" name="photo" id="exampleInputFile">
                             <span style="color:red">{{ $errors->first('photo') }}</span>
                         </div>
+                        <div class="form-group">
+                            <label>Комитет</label>
+                            <select name="student_class_id">
+                                <option value="0">Общая новость</option>
+                                @foreach($user->studentsClasses as $class)
+                                    <option value="{{$class->id}}">
+                                        {{$classesNumbers()[$class->id]}} - {{$class->letter_class}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="col-md-12">
 						<div class="form-group">

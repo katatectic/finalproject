@@ -94,16 +94,18 @@
                                                 <div class="news-list-widget-wrap" style="text-align: left;">
                                                     @foreach($news as $article)
                                                     <div class="news-list-item news-list-left has-separator-line-top">
-                                                        <figure class="post-thumbnail news-list-item-featured-image">
-                                                            <a href="{{route('article',['id'=>$article->id])}}">
-                                                                <img width="1140" height="500"
-                                                                     src="{{asset('images/news/'.$article->photo)}}"
-                                                                     class="attachment-full size-full wp-post-image"
-                                                                     alt="{{$article->title}}" title="{{$article->title}}"
-                                                                     srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w"
-                                                                     sizes="(max-width: 1140px) 100vw, 1140px"/>
-                                                            </a>
-                                                        </figure>
+                                                        @isset($article->photo)
+                                                            <figure class="post-thumbnail news-list-item-featured-image">
+                                                                <a href="{{route('article',['id'=>$article->id])}}">
+                                                                    <img width="1140" height="500"
+                                                                         src="{{asset('images/news/'.$article->photo)}}"
+                                                                         class="attachment-full size-full wp-post-image"
+                                                                         alt="{{$article->title}}" title="{{$article->title}}"
+                                                                         srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w"
+                                                                         sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                                </a>
+                                                            </figure>
+                                                        @endisset
                                                         <div class="news-list-item-elements ">
                                                             <h5>
                                                                 <a href="{{route('article', ['id'=>$article->id])}}"
@@ -142,17 +144,19 @@
                                                 @foreach($events as $event)
                                                 <article id="post-519"
                                                          class="layout_2 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
-                                                    <figure class="post-thumbnail">
-                                                        <a href="{{ route('event.show',['id'=>$event->id]) }}"
-                                                           title="Newcomers welcome party">
-                                                            <img width="1140" height="500"
-                                                                 src="{{asset('images/events/'.$event->photo)}}"
-                                                                 class="attachment-full size-full wp-post-image"
-                                                                 alt="{{$event->title}}" title="{{$event->title}}"
-                                                                 srcset="{{asset('images/events/'.$event->photo)}} 1140w, {{asset('images/events/'.$event->photo)}} 600w"
-                                                                 sizes="(max-width: 1140px) 100vw, 1140px"/>
-                                                        </a>
-                                                    </figure>
+                                                    @isset($event->photo)
+                                                        <figure class="post-thumbnail">
+                                                            <a href="{{ route('event.show',['id'=>$event->id]) }}"
+                                                               title="Newcomers welcome party">
+                                                                <img width="1140" height="500"
+                                                                     src="{{asset('images/events/'.$event->photo)}}"
+                                                                     class="attachment-full size-full wp-post-image"
+                                                                     alt="{{$event->title}}" title="{{$event->title}}"
+                                                                     srcset="{{asset('images/events/'.$event->photo)}} 1140w, {{asset('images/events/'.$event->photo)}} 600w"
+                                                                     sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                            </a>
+                                                        </figure>
+                                                    @endisset
                                                     <div class="doublef-events-content-wrap">
                                                         <header class="entry-header">
                                                             <h5 class="entry-title">
@@ -231,7 +235,7 @@
                                                  data-index="2">
                                                 @if($albums)
                                                 <div class="so-widget-doublef-featured-gallery so-widget-doublef-featured-gallery-base"><br/><br/>
-                                                    <a href="{{route('album.index')}}"<h5 class="doublef-gallery-photos-num"><h2 class="widget-title">Избранная галлерея</h2></a>
+                                                    <h5 class="doublef-gallery-photos-num"></h5><h2 class="widget-title"><a href="{{route('album.index')}}">Избранная галлерея</a></h2>
                                                     <div class="doublef-gallery-widget-wrap">
                                                         <figure class="post-thumbnail">
                                                             <a href="{{route('album.index')}}"
@@ -257,6 +261,7 @@
                             </div>
                         </div>
                     </div>
+                </article>
             </main>
         </div>
     </div>
