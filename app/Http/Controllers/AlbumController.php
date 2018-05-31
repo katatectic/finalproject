@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AlbumsRequest;
 use App\Album;
 use App\Image;
 
@@ -38,16 +39,8 @@ class AlbumController extends Controller {
         return $newfilename;
     }
 
-    public function store(Request $request) {
+    public function store(AlbumsRequest $request) {
         if ($request->method() == 'POST') {
-            $this->validate($request, [
-                'name' => 'required',
-                'description' => 'required',
-                'cover_image' => 'required|image|max:2048',], [
-                '*.required' => 'Поле не должно быть пустым',
-                'cover_image.image' => 'Загруженный файл должен быть изображением',
-                'cover_image.max' => 'Максимальный размер изображения=2048'
-            ]);
             $data = $request->all();
             if ($request->hasFile('cover_image')) {
                 $data['cover_image'] = $this->addPhoto($request);

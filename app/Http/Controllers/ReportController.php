@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ReportsRequest;
 use App\Report;
 use App\User;
 use DateTime;
@@ -38,12 +39,8 @@ class ReportController extends Controller {
         return view('admin.reports.create', compact('reports'));
     }
 
-    public function store(Request $request) {
+    public function store(ReportsRequest $request) {
         if ($request->method() == 'POST') {
-            $this->validate($request, [
-                'content' => 'required',
-                'date' => 'required',
-            ]);
             $data = $request->all();
             unset($data['__token']);
             $date = new DateTime();
@@ -70,7 +67,7 @@ class ReportController extends Controller {
         return redirect()->route('adminReports');
     }
 
-    public function edit($id, Request $request) {
+    public function edit(Request $request, $id) {
         if ($request->method() == "POST") {
             $this->validate($request, [
                 'content' => 'required',

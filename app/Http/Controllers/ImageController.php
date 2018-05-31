@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ImagesRequest;
 use App\Album;
 use App\Image;
 use Illuminate\Support\Facades\Input;
@@ -15,15 +16,8 @@ class ImageController extends Controller {
         return view('album.addimage', compact('album'));
     }
 
-    public function imageAdd(Request $request) {
+    public function imageAdd(ImagesRequest $request) {
         if ($request->method() == 'POST') {
-            $this->validate($request, [
-                'description' => 'required',
-                'image' => 'required|image|max:2048',], [
-                '*.required' => 'Поле не должно быть пустым',
-                'image.image' => 'Загруженный файл должен быть изображением',
-                'image.max' => 'Максимальный размер изображения=2048'
-            ]);
             $data = $request->all();
             if ($request->hasFile('image')) {
                 $data['image'] = $this->image($request);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\NewsRequest;
 use App\Article;
 use App\User;
 use DateTime;
@@ -42,18 +43,8 @@ class NewsController extends Controller {
         return view('user.useraddnews');
     }
 
-    public function store(Request $request) {
+    public function store(NewsRequest $request) {
         if ($request->method() == 'POST') {
-            $this->validate($request, [
-                'title' => 'required',
-                'date' => 'required',
-                'content' => 'required',
-                'photo' => 'required|image|max:2048',
-				'description'=>'required',],[
-				'*.required' => 'Поле не должно быть пустым',
-                'photo.image' => 'Загруженный файл должен быть изображением',
-                'photo.max' => 'Максимальный размер изображения=2048'
-            ]);
             $data = $request->all();
             unset($data['__token']);
             $date = new DateTime();

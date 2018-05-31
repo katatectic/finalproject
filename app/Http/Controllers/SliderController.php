@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\SlidersRequest;
 use App\Slider;
 
 class SliderController extends Controller {
@@ -12,16 +13,8 @@ class SliderController extends Controller {
         return view('admin.sliders.slider');
     }
 
-    public function store(Request $request) {
+    public function store(SlidersRequest $request) {
         if ($request->method() == 'POST') {
-            $this->validate($request, ['title' => 'required|max:50',
-                'photo' => 'required|image|max:2048',
-                'description' => 'required',], ['title.required' => 'Введите название слайдера',
-                'title.max' => 'Максимум 30 символов',
-                'photo.required' => 'Добавьте изображение',
-                'photo.image' => 'Загруженный файл должен быть изображением',
-                'photo.max' => 'Максимальный размер изображения=2048',
-                'description.required' => 'Введите краткое описание']);
             $data = $request->all();
             if ($request->hasFile('photo')) {
                 $data['photo'] = $this->addSliderPhoto($request);
