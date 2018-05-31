@@ -10,7 +10,7 @@
         </h1>
     </section>
     <section class="content">
-        <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('admin.report.edit', ['id' => $report->id ])}}" >
+        <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('admin.report.update', ['id' => $report->id ])}}" >
             <div class="box">
                 <div class="box-body">
                     <div class="col-md-6">

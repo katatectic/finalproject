@@ -11,7 +11,7 @@
         <div class="box">
             <div class="box-body">
                 <div class="form-group">
-                    <a href="{{ route('slider.store')}}" class="btn btn-success bg-orange">Добавить слайдер</a>
+                    <a href="{{ route('slider.create')}}" class="btn btn-success bg-orange">Добавить слайдер</a>
                 </div>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>

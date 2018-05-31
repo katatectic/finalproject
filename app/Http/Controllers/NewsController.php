@@ -78,19 +78,13 @@ class NewsController extends Controller {
         $article->delete();
         return redirect()->route('adminnews');
     }
+	public function edit($id) {
+          $all = Article::find($id);
+        return view('admin.news.edit',compact('all'));
+    }
 
-    public function edit($id, Request $request) {
+    public function update($id, NewsRequest $request) {
         if ($request->method() == "POST") {
-            $this->validate($request, [
-                'title' => 'required',
-                'date' => 'required',
-                'content' => 'required',
-                'photo' => 'required|image|max:2048',
-				'description'=>'required'], [
-                '*.required' => 'Поле не должно быть пустым',
-                'photo.image' => 'Загруженный файл должен быть изображением',
-                'photo.max' => 'Максимальный размер изображения=2048'
-            ]);
 			$editOne = Article::find($id);
 			$img = $editOne->photo;
 			if (is_file(public_path() . '/images/news/' . $img)) {
@@ -107,8 +101,6 @@ class NewsController extends Controller {
             $editOne->save();
             return redirect()->route('adminnews');
         }
-        $all = Article::find($id);
-        return view('admin.news.edit',compact('all'));
     }
 
 }

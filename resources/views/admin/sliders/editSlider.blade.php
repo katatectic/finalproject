@@ -10,7 +10,7 @@
         </h1>
     </section>
     <section class="content">
-        <form enctype="multipart/form-data" action="{{route('slider.edit', ['id' => $slider->id ] ) }}" class="contact_form" method="POST" >
+        <form enctype="multipart/form-data" action="{{route('slider.update', ['id' => $slider->id ] ) }}" class="contact_form" method="POST" >
             <div class="box">
                 <div class="box-body">
                     <div class="col-md-6">
