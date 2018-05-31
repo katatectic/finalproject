@@ -34,6 +34,7 @@
             </div>
         </figure>
         @endforeach
+		{{$albums->links()}}
     </div>
 </div>    
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventsRequest;
 use App\Event;
+use App\Comment;
 use App\User;
 use DateTime;
 
@@ -19,8 +20,9 @@ class EventController extends Controller {
 
     public function show($id) {
         $event = Event::select()->where('id', $id)->first();
+		$event->setRelation('comments', $event->comments()->paginate(1));
 		$lastEvents=Event::orderBy('id', 'desc')->take(5)->get();
-        return view('event', compact('event','lastEvents'));
+        return view('event', compact('event','lastEvents','comments'));
     }
 
     public function adminEvents() {

@@ -10,7 +10,7 @@ use App\Image;
 class AlbumController extends Controller {
 
     public function index() {
-        $albums = Album::with('Photos')->get();
+        $albums = Album::with('Photos')->paginate(9);
         return view('album.index', compact('albums'));
     }
 
