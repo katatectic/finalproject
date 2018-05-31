@@ -109,11 +109,13 @@
                                 <div class="copy clear">
                                     <p>{{$comment->comment}}</p>
                                 </div>
+								@if(Auth::user())
                                 @if (Auth::user()->role == 1 || Auth::user()->id == $comment->user->id)
                                 <p>
                                     <a style="float:right" onclick="return confirm('Удалить комментарий?')" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
                                 </p>
                                 @endif
+								@endif
                             </div>
                         </div>
                     </div>
