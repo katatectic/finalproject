@@ -73,8 +73,8 @@
                         <div style="margin-top: 20px;">
                             <h3>Список событий автора</h3>
                             @foreach($user->events as $event)
-                            <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-                            <div class="grid"><!-- toast grid declaration -->
+                            <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+                            <div class="grid">
                                 <div id="primary" class="content-area grid__col grid__col--3-of-3">
                                     <main id="main" class="site-main" role="main">
                                         <article id="post-519" class="grid layout_1 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events" style="margin-top: 15px; margin-bottom: 15px;">
@@ -94,18 +94,18 @@
                                                     <h2 class="entry-title">
                                                         <a href="{{route('event.show',['id'=>$event->id])}}">{{ $event->title }}</a>
                                                     </h2>
-                                                </header><!-- .entry-header -->
-                                            </div><!-- .post-text-block -->
+                                                </header>
+                                            </div>
                                         </article>
-                                    </main><!-- #main -->
-                                </div><!-- #primary -->
+                                    </main>
+                                </div>
                             </div>
                             @endforeach
                             {{-- {{ $user->events->links() }} --}}
                             <h3>Список новостей автора</h3>
                             @foreach($user->articles as $article)
-                            <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-                            <div class="grid"><!-- toast grid declaration -->
+                            <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+                            <div class="grid">
                                 <div id="primary" class="content-area grid__col grid__col--3-of-3">
                                     <main id="main" class="site-main" role="main">
                                         <article id="post-519" class="grid layout_1 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events" style="margin-top: 15px; margin-bottom: 15px;">
@@ -125,11 +125,11 @@
                                                     <h2 class="entry-title">
                                                         <a href="{{route('article',['id'=>$article->id])}}">{{ $article->title }}</a>
                                                     </h2>
-                                                </header><!-- .entry-header -->
-                                            </div><!-- .post-text-block -->
+                                                </header>
+                                            </div>
                                         </article>
-                                    </main><!-- #main -->
-                                </div><!-- #primary -->
+                                    </main>
+                                </div>
                             </div>
                             @endforeach
                             {{-- {{ $user->events->links() }} --}}

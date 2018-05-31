@@ -4,16 +4,16 @@
 @endsection
 @section('content')
 <div id="cinemahead">
-    <div id="mobile-nav-container"></div><!-- Small devices menu -->
-</div><!-- #cinemahead -->
+    <div id="mobile-nav-container"></div>
+</div>
 <div id="content" class="site-content wrappr">
     <div class="bread">
         <a href="{{route('main')}}">Главная</a> / 
         <a href="{{route('event.index')}}">События</a> /
         {{$event->title}}
     </div>
-    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-    <div class="grid"><!-- toast grid declaration -->
+    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+    <div class="grid">
         <div id="primary" class="content-area grid__col grid__col--3-of-3">
             <main id="main" class="site-main" role="main">
                 @if($event)
@@ -25,7 +25,6 @@
                     </div>
                     <header class="entry-header">
                         <h3 class="entry-title">{{$event->title}}</h3>
-                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
                         <div class="addthis_inline_share_toolbox"></div>
                         <h5 class="doublef-event-item-date">Добавил: 
                             <a href="{{route('profile',['id'=>$event->user->id])}}">{{$event->user->name}} {{$event->user->surname}}</a>
@@ -40,7 +39,7 @@
                     @if (!Auth::guest())
                     @if (Auth::user()->role == 1 or Auth::user()->role == 2)
                     <a href="{{ route('event.edit',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a>
-                    <a href="{{route('event.delete',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button">Удалить событие</a><!-- .entry-content -->
+                    <a href="{{route('event.delete',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button">Удалить событие</a>
                     @endif
                     @endif
                 </article>
@@ -64,9 +63,8 @@
                                     <h4>Неопубликованный</h4>
                                     <div class="avatar clear">
                                         <div class="avatar-image pull-left">
-                                            <img alt=''
-                                                 src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
-                                                 srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
+                                            <img src="{{asset('images/users/'.$comment->user->avatar)}}"
+                                                 srcset="{{asset('images/users/'.$comment->user->avatar)}}"
                                                  class='avatar avatar-50 photo' height='50' width='50'/>
                                         </div>
                                         <div class="avatar-body pull-left">
@@ -87,8 +85,8 @@
                                     </p>
                                     @endif
                                     @endif
-                                </div><!-- #comment-## -->
-                            </div><!-- .comment-list -->
+                                </div>
+                            </div>
                         @endif
                     @endif
                     @if ($comment->ispublished == 1)
@@ -97,9 +95,8 @@
                             <div class="comment byuser comment-author-adminschool bypostauthor even thread-even depth-1" id="comment-7">
                                 <div class="avatar clear">
                                     <div class="avatar-image pull-left">
-                                        <img alt=''
-                                             src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
-                                             srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
+                                        <img src="{{asset('images/users/'.$comment->user->avatar)}}"
+                                             srcset="{{asset('images/users/'.$comment->user->avatar)}}"
                                              class='avatar avatar-50 photo' height='50' width='50'/>
                                     </div>
                                     <div class="avatar-body pull-left">
@@ -117,9 +114,9 @@
                                     <a style="float:right" onclick="return confirm('Удалить комментарий?')" href="{{route('deleteComment',$comment->id)}}" class="more-link button">Удалить комментарий</a>
                                 </p>
                                 @endif
-                            </div><!-- #comment-## -->
+                            </div>
                         </div>
-                    </div><!-- .comment-list -->
+                    </div>
                     @endif
                 @endforeach
                 @if (!Auth::guest())
@@ -128,24 +125,18 @@
                     <form action="{{route('add_comment')}}" method="post" id="commentform" class="comment-form" novalidate>
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <input type="hidden" name="event_id" value="{{$event->id}}">
-                        {{--<p class="comment-notes">
-                        <span id="email-notes">Ваш адрес электронной почты не будет опубликован.</span> Обязательные для заполнения поля отмечены <span class="required">*</span>
-                                             </p>--}}
-                    <p class="comment-form-comment">
-                            <label for="comment">Комментарий</label>
-                            <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
+                        <label for="comment">Комментарий</label>
+                        <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" placeholder="Комментарий" required="required"></textarea>
                         </p>                                
                         <p class="form-submit">
                             <input name="submit" type="submit" id="submit" class="submit" value="Опубликовать комментарий"/>
-                            <input type='hidden' name='comment_post_ID' value='35' id='comment_post_ID'/>
-                            <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
                         </p>
                         {{ csrf_field() }}
                     </form>
                 </div>
                 @endif                      
-                </div><!-- #comments -->
-            </main><!-- #main -->        
+                </div>
+            </main>    
         </div>           
     </div>
 </script>

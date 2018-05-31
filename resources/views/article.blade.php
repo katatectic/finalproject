@@ -20,7 +20,7 @@
                 <article id="post-519" class="post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
 					<div class="image-lightbox">
                         <a href="{{asset('images/news/'.$article->photo)}}" data-lightbox="{{asset('images/news/'.$article->photo)}}" title="{{ $article->title }}">
-                            <img width="500" height="500" src="{{asset('images/news/'.$article->photo)}}" class="attachment-full size-full wp-post-image" alt=""/>
+                            <img width="500" height="500" src="{{asset('images/news/'.$article->photo)}}" class="attachment-full size-full wp-post-image" alt="{{$article->title}}"/>
                         </a>
                     </div>
                     <header class="entry-header">
@@ -61,9 +61,8 @@
                                     <h4>Неопубликованный</h4>
                                     <div class="avatar clear">
                                         <div class="avatar-image pull-left">
-                                            <img alt=''
-                                                 src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
-                                                 srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
+                                            <img src="{{asset('images/users/'.$comment->user->avatar)}}"
+                                                 srcset="{{asset('images/users/'.$comment->user->avatar)}}"
                                                  class='avatar avatar-50 photo' height='50' width='50'/>
                                         </div>
                                         <div class="avatar-body pull-left">
@@ -96,8 +95,8 @@
                                 <div class="avatar clear">
                                     <div class="avatar-image pull-left">
                                         <img alt=''
-                                             src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
-                                             srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
+                                             src="{{asset('images/users/'.$comment->user->avatar)}}"
+                                             srcset="{{asset('images/users/'.$comment->user->avatar)}}"
                                              class='avatar avatar-50 photo' height='50' width='50'/>
                                     </div>
                                     <div class="avatar-body pull-left">
@@ -128,17 +127,12 @@
                     <form action="{{route('add_comment')}}" method="post" id="commentform" class="comment-form" novalidate>
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <input type="hidden" name="article_id" value="{{$article->id}}">
-                        {{--<p class="comment-notes">
-                        <span id="email-notes">Ваш адрес электронной почты не будет опубликован.</span> Обязательные для заполнения поля отмечены <span class="required">*</span>
-                        </p>--}}
                         <p class="comment-form-comment">
                             <label for="comment">Комментарий</label>
-                            <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
+                            <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" placeholder="Комментарий" required="required"></textarea>
                         </p>                                
                         <p class="form-submit">
                             <input name="submit" type="submit" id="submit" class="submit" value="Опубликовать комментарий"/>
-                            <input type='hidden' name='comment_post_ID' value='35' id='comment_post_ID'/>
-                            <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
                         </p>
                         {{ csrf_field() }}
                     </form>

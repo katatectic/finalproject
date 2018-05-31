@@ -22,7 +22,7 @@
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label>Дата </label>
-                            <input type="date" class="form-control" placeholder="Дата новости" name="date" value="{{ old('date') }}">
+                            <input type="datetime" class="form-control" placeholder="Дата новости" name="date" value="{{ old('date') }}">
                             <span style="color:red">{{ $errors->first('date') }}</span>
                         </div>
                         <div class="form-group">
@@ -32,9 +32,14 @@
                         </div>
                     </div>
                     <div class="col-md-12">
+						<div class="form-group">
+                            <label>Краткое описание</label>
+                            <textarea name="description" placeholder="Краткое описание новости" cols="30" rows="10" class="form-control">{{ old('description') }}</textarea>
+                            <span style="color:red">{{ $errors->first('description') }}</span>
+                        </div>
                         <div class="form-group">
                             <label>Полное описание</label>
-                            <textarea name="content" placeholder="Полное описание события" cols="30" rows="10" class="form-control">{{ old('content') }}</textarea>
+                            <textarea name="content" placeholder="Полное описание новости" cols="30" rows="10" class="form-control">{{ old('content') }}</textarea>
                             <span style="color:red">{{ $errors->first('content') }}</span>
                         </div>
                         <div class="box-footer">

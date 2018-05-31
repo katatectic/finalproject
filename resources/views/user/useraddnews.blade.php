@@ -20,10 +20,17 @@
                         </div>
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
-                            <label for="event_date" class="col-md-4 control-label">Дата новости</label>
+                            <label for="date" class="col-md-4 control-label">Дата новости</label>
                             <div class="col-md-6">
-                                <input id="date" type="date" class="form-control" name="date" value="{{ old('date') }}"  autofocus>
+                                <input id="date" type="datetime-local" class="form-control" name="date" value="{{ old('date') }}"  autofocus>
                                 <span style="color:red">{{ $errors->first('date') }}</span>
+                            </div>
+                        </div>
+						<div class="form-group">
+                            <label for="description" class="col-md-4 control-label">Краткое описание новости</label>
+                            <div class="col-md-6">
+                                <textarea class="form-control" id="description" rows='23' name="description" placeholder="Краткое описание новости" autofocus>{{ old('description') }}</textarea>
+                                <span style="color:red">{{ $errors->first('description') }}</span>
                             </div>
                         </div>
                         <div class="form-group">

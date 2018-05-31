@@ -45,7 +45,7 @@
                                 <h5 class="doublef-event-item-date">{{$news->date}}</h5>
                             </header>      
                             <div class="entry-content">            
-                                <p>{{$news->content}}
+                                <p>{{$news->description}}
                                     <a class="more-link button" href="{{route('article', ['id'=>$news->id])}}">Читать далее...</a>
                                 </p>
                                 <span class="screen-reader-text">Продолжить чтение  {{ $news->title }}</span>

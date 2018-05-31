@@ -48,8 +48,9 @@ class NewsController extends Controller {
                 'title' => 'required',
                 'date' => 'required',
                 'content' => 'required',
-                'photo' => 'required|image|max:2048',], [
-                '*.required' => 'Поле не должно быть пустым',
+                'photo' => 'required|image|max:2048',
+				'description'=>'required',],[
+				'*.required' => 'Поле не должно быть пустым',
                 'photo.image' => 'Загруженный файл должен быть изображением',
                 'photo.max' => 'Максимальный размер изображения=2048'
             ]);
@@ -93,7 +94,8 @@ class NewsController extends Controller {
                 'title' => 'required',
                 'date' => 'required',
                 'content' => 'required',
-                'photo' => 'required|image|max:2048',], [
+                'photo' => 'required|image|max:2048',
+				'description'=>'required'], [
                 '*.required' => 'Поле не должно быть пустым',
                 'photo.image' => 'Загруженный файл должен быть изображением',
                 'photo.max' => 'Максимальный размер изображения=2048'

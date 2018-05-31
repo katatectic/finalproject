@@ -12,8 +12,8 @@
         <a href="{{route('reports')}}">Отчеты</a> /
         Протокол № {{ $report->id }} от {{ $report->date }}
     </div>
-    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-    <div class="grid"><!-- toast grid declaration -->
+    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+    <div class="grid">
         <div id="primary" class="content-area grid__col grid__col--3-of-3">
             <main id="main" class="site-main" role="main">
                 @if($report)
@@ -25,7 +25,7 @@
                             Добавил: <a href="{{route('profile',['id'=>$report->user->id])}}">{{$report->user->name}} {{$report->user->surname}} </a>
                         </h5>
                         <h5 class="doublef-event-item-date">{{$report->date}}</h5>
-                    </header><!-- .entry-header -->
+                    </header>
                     <div class="entry-content">
                         <p>{{$report->content}}</p>
                     </div>
@@ -62,9 +62,8 @@
                             <h4>Неопубликованный</h4>
                             <div class="avatar clear">
                                 <div class="avatar-image pull-left">
-                                    <img alt=''
-                                         src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
-                                         srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
+                                    <img src="{{asset('images/users/'.$comment->user->avatar)}}"
+                                         srcset="{{asset('images/users/'.$comment->user->avatar)}}"
                                          class='avatar avatar-50 photo' height='50' width='50'/>
                                 </div>
                                 <div class="avatar-body pull-left">
@@ -96,9 +95,8 @@
                         <div class="comment byuser comment-author-adminschool bypostauthor even thread-even depth-1" id="comment-7">
                             <div class="avatar clear">
                                 <div class="avatar-image pull-left">
-                                    <img alt=''
-                                         src='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=50&#038;d=mm&#038;r=g'
-                                         srcset='http://2.gravatar.com/avatar/5a338e41aca0e2e1d4b43bae120eec90?s=100&#038;d=mm&#038;r=g 2x'
+                                    <img src="{{asset('images/users/'.$comment->user->avatar)}}"
+                                         srcset="{{asset('images/users/'.$comment->user->avatar)}}"
                                          class='avatar avatar-50 photo' height='50' width='50'/>
                                 </div>
                                 <div class="avatar-body pull-left">
@@ -131,12 +129,10 @@
                             <input type="hidden" name="report_id" value="{{$report->id}}">
                             <p class="comment-form-comment">
                                 <label for="comment">Комментарий</label>
-                                <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
+                                <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" placeholder="Комментарий" required="required"></textarea>
                             </p>                                
                             <p class="form-submit">
                                 <input name="submit" type="submit" id="submit" class="submit" value="Опубликовать комментарий"/>
-                                <input type='hidden' name='comment_post_ID' value='35' id='comment_post_ID'/>
-                                <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
                             </p>
                             {{ csrf_field() }}
                         </form>
