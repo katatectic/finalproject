@@ -11,7 +11,7 @@
             <div class="wrappr text-left">
                 <h1 class="h-gigant">
                     @isset($committee)
-                        События комитета {{$classesNumbers()[$committee->id]}} - {{$committee->letter_class}} класса
+                        События комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
                     @else
                         Ближайшие события
                     @endif

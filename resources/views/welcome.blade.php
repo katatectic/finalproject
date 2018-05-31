@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div id="cinemahead">
-    <div id="mobile-nav-container"></div><!-- Small devices menu -->
+    <div id="mobile-nav-container"></div><!-- Small devices menu  -->
 </div><!-- #cinemahead -->
 <div id="content" class="site-content wrappr">
     <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->

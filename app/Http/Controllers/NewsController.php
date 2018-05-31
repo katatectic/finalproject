@@ -22,7 +22,7 @@ class NewsController extends Controller {
     public function committeeNews($committeeId) {
         $committee = StudentClass::find($committeeId);
         $all = Article::where('student_class_id', $committeeId)->orderBy('id', 'DESC')->paginate($this->puginationNews);
-        return view('news', compact('all', 'committee'));
+        return  view('news', compact('all', 'committee'));
     }
 
     public function article($id) {

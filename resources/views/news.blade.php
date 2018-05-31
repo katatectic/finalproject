@@ -10,7 +10,7 @@
 
                 <h1 class="h-gigant">
                     @isset($committee)
-                        Новости комитета {{$classesNumbers()[$committee->id]}} - {{$committee->letter_class}} класса
+                        Новости комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
                     @else
                         Все школьные новости!
                     @endif

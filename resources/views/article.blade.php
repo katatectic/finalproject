@@ -8,7 +8,7 @@
 </div>
 <div id="content" class="site-content wrappr">
     <div class="bread">
-        <a href="{{route('main')}}">Главная</a> / 
+        <a href="{{route('main')}}">Главная</a> /
         <a href="{{route('news')}}">Новости</a> /
         {{$article->title}}
     </div>
@@ -26,7 +26,7 @@
                             </div>
                         @endisset
                         <header class="entry-header">
-                            <h3 class="entry-title">{{$article->title}}</h3>
+                            <h3 class="entry-title">{{ $article->title }}</h3>
                             <div class="addthis_inline_share_toolbox"></div>
                             <h5 class="doublef-event-item-date">
                                 Добавил: <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}</a>

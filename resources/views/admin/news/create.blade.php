@@ -36,7 +36,7 @@
                                 <option value="0">Общая новость</option>
                                 @foreach($user->studentsClasses as $class)
                                     <option value="{{$class->id}}">
-                                        {{$classesNumbers()[$class->id]}} - {{$class->letter_class}}
+                                        {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
                                     </option>
                                 @endforeach
                             </select>
