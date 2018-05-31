@@ -98,10 +98,10 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('send', 'AdminController@sendMail')->name('sendMail');
     Route::get('mail', 'AdminController@mailForm')->name('mail');
     // Classes
-    Route::get('/admin/students-classes', 'StudentClassController@index')->name('studentsClasses');
-    Route::post('/admin/students-classes/create', 'StudentClassController@store')->name('storeStudentsClasses');
-    Route::post('/admin/students-classes/update', 'StudentClassController@update')->name('updateStudentsClasses');
-    Route::get('/admin/students-classes/delete/{id}', 'StudentClassController@destroy')->name('destroyStudentsClasses');
+    Route::get('students-classes', 'StudentClassController@index')->name('studentsClasses');
+    Route::post('students-classes/create', 'StudentClassController@store')->name('storeStudentsClasses');
+    Route::post('students-classes/update', 'StudentClassController@update')->name('updateStudentsClasses');
+    Route::get('students-classes/delete/{id}', 'StudentClassController@destroy')->name('destroyStudentsClasses');
     });
 });
 

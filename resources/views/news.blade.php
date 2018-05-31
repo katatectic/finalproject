@@ -9,11 +9,11 @@
             <div class="wrappr text-left">                    
                 <h1 class="h-gigant">Все школьные новости!</h1>
                 <p>Вы можете найти что-то интересное для себя. Особенно, если вы любите эту школу.</p>
-            </div><!-- .wrappr -->                
-        </div><!-- .buntington2-cinema -->            
-    </div><!-- .buntington2-cinema-bg -->           
-    <div id="mobile-nav-container"></div><!-- Small devices menu -->    
-</div><!-- #cinemahead -->
+            </div>           
+        </div>         
+    </div>    
+    <div id="mobile-nav-container"></div>    
+</div>
 <div id="content" class="site-content wrappr">
     <div class="bread">
         <a href="{{route('main')}}">Главная</a> / Новости
@@ -21,8 +21,8 @@
     @if (count($all) > 0)   
     <section class="news">
             @foreach($all as $news)
-            <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-            <div class="grid"><!-- toast grid declaration -->
+            <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+            <div class="grid">
                 <div id="primary" class="content-area grid__col grid__col--2-of-3 grid__col--m-1-of-1">    
                 <main id="main" class="site-main" role="main">
                     <div class="article-wrapper layout-sleek"> 
@@ -43,14 +43,14 @@
                                 <h5 class="doublef-event-item-date">Добавил: <a href="{{route('profile',['id'=>$news->user->id])}}">{{$news->user->name}} {{$news->user->surname}}</a>
                                 </h5>
                                 <h5 class="doublef-event-item-date">{{$news->date}}</h5>
-                            </header><!-- .entry-header -->        
+                            </header>      
                             <div class="entry-content">            
                                 <p>{{$news->content}}
                                     <a class="more-link button" href="{{route('article', ['id'=>$news->id])}}">Читать далее...</a>
                                 </p>
                                 <span class="screen-reader-text">Продолжить чтение  {{ $news->title }}</span>
-                            </div><!-- .entry-content -->        
-                        </article><!-- #post-35 -->                   
+                            </div>       
+                        </article>                  
                     </div>
                 </main>
             </div>

@@ -5,6 +5,9 @@
 @section('content')
 <div id="content" class="site-content wrappr">
     <div class="row">
+	<div class="bread">
+        <a href="{{route('main')}}">Главная</a> / Обратная связь
+    </div>
         <div class="col-lg-8 col-md-8 col-sm-8">
             <div class="left_content">
                 <div class="contact_area">

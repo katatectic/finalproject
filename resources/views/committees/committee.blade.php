@@ -1,23 +1,37 @@
 @extends('layouts.app')
+@section('title')
+Комитет @if (date('Y') - $committee->start_year + $transition < 4)
+            {{date('Y') - $committee->start_year + $transition}}
+        @elseif (date('Y') <= $committee->year_of_issue)
+            {{date('Y') - $committee->start_year + $transition + 1 - $committee->fourth_class}}
+        @else
+            (Выпустился) {{$committee->year_of_issue - $committee->start_year - $committee->fourth_class}}
+        @endif
+        - {{$committee->letter_class}} класса
+@endsection
 @section('content')
-
 <div id="cinemahead">
-    <div id="mobile-nav-container"></div><!-- Small devices menu -->
-</div><!-- #cinemahead -->
+    <div id="mobile-nav-container"></div>
+</div>
 <div id="content" class="site-content wrappr">
-    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-    <div class="grid"><!-- toast grid declaration -->
+	<div class="bread">
+        <a href="{{route('main')}}">Главная</a> /
+		<a href="{{route('allCommittees')}}">Комитеты</a> /
+		Комитет такого-то класса
+    </div>
+    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+    <div class="grid">
         <div id="primary" class="content-area grid__col grid__col--3-of-3">
             <main id="main" class="site-main" role="main">
                 <article id="post-425" class="post-425 page type-page status-publish hentry">
                     <div id="pl-425" class="panel-layout">
                         <h1>
                             Комитет @if (date('Y') - $committee->start_year + $transition < 4)
-                                {{date('Y') - $committee->start_year + $transition}}
+                            {{date('Y') - $committee->start_year + $transition}}
                             @elseif (date('Y') <= $committee->year_of_issue)
-                                {{date('Y') - $committee->start_year + $transition + 1 - $committee->fourth_class}}
+                            {{date('Y') - $committee->start_year + $transition + 1 - $committee->fourth_class}}
                             @else
-                                 (Выпустился) {{$committee->year_of_issue - $committee->start_year - $committee->fourth_class}}
+                            (Выпустился) {{$committee->year_of_issue - $committee->start_year - $committee->fourth_class}}
                             @endif
                             - {{$committee->letter_class}} класса
                         </h1>
@@ -32,44 +46,43 @@
                                                 <h2 class="widget-title">Последние новости</h2><a href=""></a>
                                                 <div class="news-list-widget-wrap" style="text-align: left;">
                                                     @foreach($committee->news->take(-3) as $article)
-                                                        <div class="news-list-item news-list-left has-separator-line-top">
-                                                            <figure class="post-thumbnail news-list-item-featured-image">
-                                                                <a href="{{route('article',['id'=>$article->id])}}">
-                                                                    <img width="1140" height="500"
-                                                                         src="{{asset('images/news/'.$article->photo)}}"
-                                                                         class="attachment-full size-full wp-post-image"
-                                                                         alt=""
-                                                                         srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w"
-                                                                         sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                    <div class="news-list-item news-list-left has-separator-line-top">
+                                                        <figure class="post-thumbnail news-list-item-featured-image">
+                                                            <a href="{{route('article',['id'=>$article->id])}}">
+                                                                <img width="1140" height="500"
+                                                                     src="{{asset('images/news/'.$article->photo)}}"
+                                                                     class="attachment-full size-full wp-post-image"
+                                                                     alt=""
+                                                                     srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w"
+                                                                     sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                            </a>
+                                                        </figure>
+                                                        <div class="news-list-item-elements ">
+                                                            <h5>
+                                                                <a href="{{route('article', ['id'=>$article->id])}}"
+                                                                   rel="bookmark">{{$article->title}}</a>
+                                                            </h5>
+                                                            <h6 class="doublef-event-item-date">
+                                                                Добавил:
+                                                                <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}
                                                                 </a>
-                                                            </figure>
-                                                            <div class="news-list-item-elements ">
-                                                                <h5>
-                                                                    <a href="{{route('article', ['id'=>$article->id])}}"
-                                                                       rel="bookmark">{{$article->title}}</a>
-                                                                </h5>
-                                                                <h6 class="doublef-event-item-date">
-                                                                    Добавил:
-                                                                    <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}
-                                                                    </a>
-                                                                </h6>
-                                                                <div class="entry-meta">
-                                                                    <ul class="post-meta-wrapper ul-horizontal-list">
-                                                                        <li class="post-meta-date">
-                                                                            <time class="entry-date published">{{$article->created_at->format('d.m.Y')}}</time>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div><!-- .news-list-item-elements -->
-                                                        </div><!-- .news-list-item -->
+                                                            </h6>
+                                                            <div class="entry-meta">
+                                                                <ul class="post-meta-wrapper ul-horizontal-list">
+                                                                    <li class="post-meta-date">
+                                                                        <time class="entry-date published">{{$article->created_at->format('d.m.Y')}}</time>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     @endforeach
-                                                </div><!-- .news-list-widget-wrap-->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Закончился левый сайдбар с новостями + галерея внизу -->
                             <div id="pgc-425-1-1" class="panel-grid-cell">
                                 <div class="panel-cell-style panel-cell-style-for-425-1-1">
                                     <div id="panel-425-1-1-0"
@@ -106,12 +119,12 @@
                                                             <p class="doublef-event-item-time">Время {{$event->event_hours}}</p>
                                                             <div class="doublef-event-address">Адрес: {{$event->address}}
                                                                 <a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>
-                                                            </div><!-- .doublef-event-address -->
-                                                        </header><!-- .entry-header -->
-                                                    </div><!-- custom/inline style wrapper -->
+                                                            </div>
+                                                        </header>
+                                                    </div>
                                                 </article>
                                                 @endforeach
-                                            </div><!-- .doublef-event-posts-* -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +139,7 @@
                                             <h2 class="widget-title">Участники комитета ({{$committee->user->count()}})</h2>
                                             <ul>
                                                 @foreach ($committee->user as $user)
-                                                    <li><a href="{{route('profile',['id'=>$user->id])}}">{{$user->name}} {{$user->surname}}</a></li>
+                                                <li><a href="{{route('profile',['id'=>$user->id])}}">{{$user->name}} {{$user->surname}}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -179,7 +192,6 @@
                                                         <div class="doublef-gallery-title-wrap">
                                                             <h2 class="doublef-gallery-title">
                                                             </h2>
-                                                            <a href="{{route('album.index')}}"><h5 class="doublef-gallery-photos-num">11 фото</h5></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -192,8 +204,8 @@
                         </div>
                     </div>
                 </article>
-            </main><!-- #main -->
-        </div><!-- #primary -->
-    </div><!-- .grid-->
-</div><!-- #content -->
+            </main>
+        </div>
+    </div>
+</div>
 @endsection

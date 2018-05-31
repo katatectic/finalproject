@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+	Комитеты
+@endsection
 @section('content')
 <head>
     <style>
@@ -10,11 +13,14 @@
     </style>
 </head>
 <div id="cinemahead">
-    <div id="mobile-nav-container"></div><!-- Small devices menu -->
-</div><!-- #cinemahead -->
+    <div id="mobile-nav-container"></div>
+</div>
 <div id="content" class="site-content wrappr">
-    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-    <div class="grid"><!-- toast grid declaration -->
+	<div class="bread">
+        <a href="{{route('main')}}">Главная</a> / Комитеты
+    </div>
+    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+    <div class="grid">
         <div id="primary" class="content-area grid__col grid__col--3-of-3">
             <main id="main" class="site-main" role="main">
                 <article id="post-425" class="post-425 page type-page status-publish hentry">
@@ -47,8 +53,8 @@
                         </div>
                     </div>
                 </article>
-            </main><!-- #main -->
-        </div><!-- #primary -->
-    </div><!-- .grid-->
-</div><!-- #content -->
+            </main>
+        </div>
+    </div>
+</div>
 @endsection
