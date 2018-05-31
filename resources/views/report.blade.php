@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Протокол № {{ $report->id }} от {{ $report->date }}
+Протокол № {{ $report->id }} от {{ $report->date }}
 @endsection
 @section('content')
 <div id="cinemahead">
@@ -35,18 +35,20 @@
                             <img width="300" height="300" src="{{asset('images/reports/'.$report->pay_check)}}" class="attachment-full size-full wp-post-image"/>
                         </a>
                     </div>	
+                    @if (Auth::user())
                     @if (Auth::user()->role == 1 or Auth::user()->role == 2)
                     <a href="{{ route('admin.report.edit',['id'=>$report->id]) }}" class="more-link button">Редактировать отчёт</a>
                     <a href="{{route('admin.report.destroy',['id'=>$report->id])}}" style=""onclick="return confirm('Удалить отчёт?')" class="more-link button">Удалить отчёт</a>
                     @endif
+                    @endif
                 </article>
                 @endif
-				<div class="col-md-6 blog-right">
+                <div class="col-md-6 blog-right">
                     <div>
                         <h3>Последние отчёты</h3>
                         <ul>
                             @foreach($lastReports as $reports)
-                        <li><a href="{{ route('report.show', ['id' => $reports->id]) }}">Протокол № {{ $reports->id }} от {{ $reports->date }}</a></li>
+                            <li><a href="{{ route('report.show', ['id' => $reports->id]) }}">Протокол № {{ $reports->id }} от {{ $reports->date }}</a></li>
                             @endforeach
                         </ul>
                     </div>

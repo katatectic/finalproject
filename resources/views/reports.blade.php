@@ -11,10 +11,10 @@
             <div class="wrappr text-left">
                 <h1 class="h-gigant">Отчеты</h1>
                 <p>Список всех отчетов</p>
-            </div><!-- .wrappr -->
-        </div><!-- .buntington2-cinema -->
-    </div><!-- .buntington2-cinema-bg -->
-    <div id="mobile-nav-container"></div><!-- Small devices menu -->
+            </div>
+        </div>
+    </div>
+    <div id="mobile-nav-container"></div>
 </div>
 <div id="content" class="site-content wrappr">
     <div class="bread">
@@ -29,8 +29,7 @@
                 <main id="main" class="site-main" role="main">
                     <article id="post-519"
                              class="grid layout_1 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events"
-                             style="margin-top: 15px; margin-bottom: 15px;">
-                        
+                             style="margin-top: 15px; margin-bottom: 15px;">                       
                         {{--
                         <figure class="post-thumbnail grid__col grid__col--6-of-12 grid__col--m-1-of-1">
                             <a href="{{route('event.show',['id'=>$event->id])}}"
@@ -44,11 +43,9 @@
                             </a>
                         </figure>
                         --}}
-
                         <div class="post-text-block grid__col grid__col--6-of-12 grid__col--m-1-of-1">
                             <header class="entry-header">
-                                <h3 class="entry-title">
-                                    
+                                <h3 class="entry-title">  
                                     <a href="{{route('report.show',['id'=>$report->id])}}">Протокол № {{ $report->id }} от {{ $report->date }}</a>
                                     
                                 </h3>
@@ -57,12 +54,13 @@
                                 <h5 class="doublef-event-item-date">{{ $report->date }} </h5>
                                 <div class="entry-content">                                
                                 <a class="more-link button"  href="{{ route('report.show',['id'=>$report->id]) }}">Читать далее</a>
-                            </div><!-- .entry-content -->
-                            </header><!-- .entry-header -->
-                            
-                        </div><!-- .post-text-block -->
-                </main><!-- #main -->
-            </div><!-- #primary -->
+                            </div>
+                            </header>
+             
+                        </div>
+					<article>
+                </main>
+            </div>
         </div>
         @endforeach
         {{ $reports->links() }}
