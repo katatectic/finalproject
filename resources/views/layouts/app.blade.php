@@ -17,12 +17,6 @@
         <link rel='stylesheet' href="{{asset ('css/kirki-styles-buntington2-inline-css.css') }}" type='text/css' media='all'>
 		<link rel='stylesheet' href="{{asset ('css/gallery.css') }}" type='text/css' media='all'>
 		<link rel="shortcut icon" href="{{ asset('images/favicon/favicon.ico')}}">
-    </head>
-    <body class="home page-template page-template-template-page-builder page-template-template-page-builder-php page page-id-425 siteorigin-panels siteorigin-panels-before-js siteorigin-panels-home">
-        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>    
-        @include('partials.header')
-        @yield('content')
-        @include('partials.footer')
 		<script src="{{ asset('js/jquery.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
         <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -32,5 +26,11 @@
 		<script src="{{ asset('js/lightbox-2.6.min.js') }}"></script>
 		<script src="{{ asset('js/ajax.js') }}"></script>
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5afc1be96e78ffbe"></script>
+    </head>
+    <body class="home page-template page-template-template-page-builder page-template-template-page-builder-php page page-id-425 siteorigin-panels siteorigin-panels-before-js siteorigin-panels-home">
+        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>    
+        @include('partials.header')
+        @yield('content')
+        @include('partials.footer')
     </body>
 </html>
