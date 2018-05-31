@@ -50,7 +50,23 @@ class NewsController extends Controller {
         return view('user.useraddnews', ['user' => $user]);
     }
 
-    public function store(NewsRequest $request) {
+    public function adminNewsStore(NewsRequest $request) {
+        if ($request->method() == 'POST') {
+            $data = $request->all();
+            unset($data['__token']);
+            $date = new DateTime();
+            $data['date'] = $date->format('Y-m-d');
+            if ($request->hasFile('photo')) {
+                $data['photo'] = $this->addPhoto($request);
+            };
+            $create = Article::create($data);
+            $id = $create->id;
+            return redirect()->route('adminnews');
+        }
+        return view('admin.news.create');
+    }
+
+    public function userNewsStore(NewsRequest $request) {
         if ($request->method() == 'POST') {
             $data = $request->all();
             unset($data['__token']);

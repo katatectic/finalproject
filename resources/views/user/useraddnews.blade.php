@@ -9,7 +9,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Добавить новость</div><br/><br/>
                 <div class="panel-body">
-                    <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('addNews')}}">
+                    <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('user.addNews')}}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="title" class="col-md-4 control-label">Заголовок</label>

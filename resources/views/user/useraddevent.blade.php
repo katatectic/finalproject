@@ -9,7 +9,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Добавить событие</div><br/><br/>
                 <div class="panel-body">
-                    <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('event.store')}}">
+                    <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('user.event.store')}}">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="title" class="col-md-4 control-label">Название события</label>

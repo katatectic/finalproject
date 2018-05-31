@@ -37,13 +37,15 @@ Route::group(['middleware' => 'adminandchief'], function() {
     Route::get('/admin','AdminController@index')->name('admin');
     // News
     Route::get('news', 'NewsController@adminNews')->name('adminnews');/* Список всех новостей в админке*/
-    Route::any('newscreate', 'NewsController@create')->name('newsview');
+    Route::get('newscreate', 'NewsController@create')->name('newsview');
+    Route::post('addNews', 'NewsController@adminNewsStore')->name('admin.addNews');
     Route::get('article/{id}/edit', 'NewsController@edit')->name('article.edit');/* Редактирование новость*/
     Route::post('article/{id}/update', 'NewsController@edit')->name('article.update');/* Редактирование новость*/
     Route::get('article/{id}/delete', 'NewsController@destroy')->name('deletenews');/* Удаление новости*/
     // Events
     Route::get('events', 'EventController@adminEvents')->name('adminevents');/*Список всех событий в админке*/
     Route::get('eventcreate', 'EventController@create')->name('event.create');
+    Route::post('eventstore', 'EventController@adminEventStore')->name('admin.event.store');
     Route::get('event/{id}/delete', 'EventController@destroy')->name('event.delete');/* Удаление события*/
     Route::get('event/{id}/edit', 'EventController@edit')->name('event.edit');/* Редактирование события*/
     Route::post('event/{id}/edit', 'EventController@edit')->name('event.edit');/* Редактирование события*/
@@ -109,10 +111,10 @@ Route::group(['middleware' => 'admin'], function() {
 Route::group(['middleware' => ['role:3']], function () {
     // News
     Route::get('usernewscreate', 'NewsController@userNewsCreate')->name('user.news.create');/*переход на добавление новости пользователем с ролью 3*/
-    Route::post('addNews', 'NewsController@store')->name('addNews');
+    Route::post('addNews', 'NewsController@userNewsStore')->name('user.addNews');
     //Events
     Route::get('usereventcreate', 'EventController@userEventCreate')->name('user.event.create'); /*переход на добавление события пользователем с ролью 3*/
-    Route::post('eventstore', 'EventController@store')->name('event.store'); /* Само добавления события*/
+    Route::post('eventstore', 'EventController@userEventStore')->name('user.event.store'); /* Само добавления события*/
     Route::get('createreport', 'ReportController@userReportCreate')->name('user.reports.create'); /*переход на добавление новости пользователем с ролью 3*/
     Route::post('addreport', 'ReportController@store')->name('addreport');        
 });

@@ -46,7 +46,7 @@ class EventController extends Controller {
         return view('user.useraddevent');
     }
 
-    public function store(EventsRequest $request) {
+    public function adminEventStore(EventsRequest $request) {
         if ($request->method() == 'POST') {
             $data = $request->all();
             $date = new DateTime();
@@ -59,6 +59,21 @@ class EventController extends Controller {
             return redirect()->route('adminevents');
         }
         return view('admin.events.create');
+    }
+
+    public function userEventStore(EventsRequest $request) {
+        if ($request->method() == 'POST') {
+            $data = $request->all();
+            $date = new DateTime();
+            $data['event_date'] = $date->format('Y-m-d');
+            if ($request->hasFile('photo')) {
+                $data['photo'] = $this->addPhoto($request);
+            };
+            $create = Event::create($data);
+            $id = $create->id;
+            return redirect()->route('event.index');
+        }
+        return view('event.index');
     }
 
     public function addPhoto($request) {
