@@ -121,6 +121,7 @@
                     </div>
                     @endif
                     @endforeach
+					{{$report->comments->links()}}
                     @if (!Auth::guest())
                     <div id="respond" class="comment-respond">
                         <h3 id="reply-title" class="comment-reply-title">Оставить комментарий</h3>

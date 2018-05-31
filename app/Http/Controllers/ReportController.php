@@ -26,6 +26,7 @@ class ReportController extends Controller {
 
     public function show($id) {
         $report = Report::select()->where('id', $id)->first();
+		$report->setRelation('comments', $report->comments()->paginate(1));
         $lastReports = Report::orderBy('id', 'desc')->take(5)->get();
         return view('report', compact('report', 'lastReports'));
     }

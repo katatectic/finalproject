@@ -25,6 +25,7 @@ class NewsController extends Controller {
 
     public function article($id) {
         $article = Article::select()->where('id', $id)->first();
+		$article->setRelation('comments', $article->comments()->paginate(1));
 		$lastNews=Article::orderBy('id', 'desc')->take(5)->get();
         return view('article', compact('article','lastNews'));
     }

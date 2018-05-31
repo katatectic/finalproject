@@ -22,6 +22,7 @@ class AlbumController extends Controller {
 
     public function show($id) {
         $album = Album::with('Photos')->find($id);
+		$album->setRelation('Photos', $album->Photos()->paginate(1));
         return view('album.album', compact('album'));
     }
 
