@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FeedbacksRequest;
 use App\Feedback;
 use Mail;
 use App\Mail\MailClass;
@@ -13,15 +14,8 @@ class FeedbacksController extends Controller {
         return view('feedback.feedback');
     }
 
-    public function addFeedback(Request $request) {
+    public function addFeedback(FeedbacksRequest $request) {
         if ($request->method() == 'POST') {
-            $this->validate($request, ['name' => 'required|max:50',
-                'email' => 'required|email',
-                'message' => 'required',], ['name.required' => 'Введите Ваше имя',
-                'name.max' => 'Максимум 30 символов',
-                'email.required' => 'Выберите Вашу почту',
-                'email.email' => 'Введите правильный email',
-                'message.required' => 'Введите сообщение',]);
             $data = $request->all();
             $create = Feedback::create($data);
             Mail::send('feedback.email', ['request' => $request], function($message) use($request) {

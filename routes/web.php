@@ -38,8 +38,8 @@ Route::group(['middleware' => 'adminandchief'], function() {
     // News
     Route::get('news', 'NewsController@adminNews')->name('adminnews');/* Список всех новостей в админке*/
     Route::any('newscreate', 'NewsController@create')->name('newsview');
-    Route::get('article/{id}/edit', 'NewsController@edit')->name('editnews');/* Редактирование новость*/
-    Route::post('article/{id}/edit', 'NewsController@edit')->name('editnews');/* Редактирование новость*/
+    Route::get('article/{id}/edit', 'NewsController@edit')->name('article.edit');/* Редактирование новость*/
+    Route::post('article/{id}/update', 'NewsController@edit')->name('article.update');/* Редактирование новость*/
     Route::get('article/{id}/delete', 'NewsController@destroy')->name('deletenews');/* Удаление новости*/
     // Events
     Route::get('events', 'EventController@adminEvents')->name('adminevents');/*Список всех событий в админке*/
@@ -57,7 +57,7 @@ Route::group(['middleware' => 'adminandchief'], function() {
     Route::post('createalbum','AlbumController@store')->name('album.create');
     Route::get('album/{id}/delete', 'AlbumController@destroy')->name('album.destroy');
     Route::get('album/{id}/edit', 'AlbumController@edit')->name('album.edit');
-    Route::post('album/{id}/edit', 'AlbumController@edit')->name('album.edit');
+    Route::post('album/{id}/update', 'AlbumController@update')->name('album.update');
     // Search
     Route::get('/adminsearch/results', 'AdminController@search')->name('admin.search');
     });
@@ -79,20 +79,20 @@ Route::group(['middleware' => 'admin'], function() {
 	Route::get('feedback/{id}/reply', 'FeedbacksController@reply')->name('feedback.reply');
     Route::post('feedback/{id}/reply', 'FeedbacksController@reply')->name('feedback.reply');
     //Sliders
+	Route::get('sliders', 'SliderController@adminSliders')->name('adminSliders');
+	Route::get('slider/{id}', 'SliderController@show')->name('slider.show');
     Route::get('slidercreate', 'SliderController@create')->name('slider.create');
-    Route::any('sliderstore', 'SliderController@store')->name('slider.store');
-    Route::get('slider/{id}', 'SliderController@show')->name('slider.show');
+    Route::post('sliderstore', 'SliderController@store')->name('slider.store');
     Route::get('slider/{id}/edit', 'SliderController@edit')->name('slider.edit');
-    Route::post('slider/{id}/edit', 'SliderController@edit')->name('slider.edit');
+    Route::post('slider/{id}/update', 'SliderController@update')->name('slider.update');
     Route::get('slider/{id}/delete', 'SliderController@destroy')->name('slider.destroy');
-    Route::get('sliders', 'SliderController@adminSliders')->name('adminSliders');
 	//Reports
 	Route::get('reports', 'ReportController@adminIndex')->name('adminReports');
 	Route::get('reportcreate', 'ReportController@create')->name('admin.report.create');
 	Route::post('reportcreate', 'ReportController@store')->name('admin.report.store');
 	Route::get('report/{id}/delete', 'ReportController@destroy')->name('admin.report.destroy');
 	Route::get('report/{id}/edit', 'ReportController@edit')->name('admin.report.edit');
-    Route::post('report/{id}/edit', 'ReportController@edit')->name('admin.report.edit');
+    Route::post('report/{id}/update', 'ReportController@update')->name('admin.report.update');
     // Send email
     Route::get('send', 'AdminController@sendMail')->name('sendMail');
     Route::post('send', 'AdminController@sendMail')->name('sendMail');

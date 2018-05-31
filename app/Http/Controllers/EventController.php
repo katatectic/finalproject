@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\EventsRequest;
 use App\Event;
+use App\Comment;
 use App\User;
 use DateTime;
 use App\StudentClass;
@@ -19,8 +21,9 @@ class EventController extends Controller {
 
     public function show($id) {
         $event = Event::select()->where('id', $id)->first();
+		$event->setRelation('comments', $event->comments()->paginate(1));
 		$lastEvents=Event::orderBy('id', 'desc')->take(5)->get();
-        return view('event', compact('event','lastEvents'));
+        return view('event', compact('event','lastEvents','comments'));
     }
 
     public function adminEvents() {
@@ -43,20 +46,8 @@ class EventController extends Controller {
         return view('user.useraddevent');
     }
 
-    public function store(Request $request) {
+    public function store(EventsRequest $request) {
         if ($request->method() == 'POST') {
-            $this->validate($request, [
-                'title' => 'required',
-                'event_date' => 'required',
-                'event_hours' => 'required',
-                'address' => 'required',
-                'description' => 'required',
-                'content' => 'required',
-                'photo' => 'required|image|max:2048',], [
-                '*.required' => 'Поле не должно быть пустым',
-                'photo.image' => 'Загруженный файл должен быть изображением',
-                'photo.max' => 'Максимальный размер изображения=2048'
-            ]);
             $data = $request->all();
             $date = new DateTime();
             $data['event_date'] = $date->format('Y-m-d');

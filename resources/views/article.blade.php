@@ -38,7 +38,7 @@
                         </div>
                         @if (!Auth::guest())
                             @if (Auth::user()->role == 1 or Auth::user()->role == 2)
-                                <a href="{{ route('editnews',['id'=>$article->id]) }}" class="more-link button">Редактировать новость</a>
+                                <a href="{{ route('article.edit',['id'=>$article->id]) }}" class="more-link button">Редактировать новость</a>
                                 <a href="{{route('deletenews',$article->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button">Удалить новость</a>
                             @endif
                         @endif
@@ -128,6 +128,7 @@
                         </div>
                     @endif
                 @endforeach
+				{{$article->comments->links()}}
                 @if (!Auth::guest())
                     <div id="respond" class="comment-respond">
                         <h3 id="reply-title" class="comment-reply-title">Оставить комментарий</h3>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ReportsRequest;
 use App\Report;
 use App\User;
 use DateTime;
@@ -25,8 +26,9 @@ class ReportController extends Controller {
 
     public function show($id) {
         $report = Report::select()->where('id', $id)->first();
-		$lastReports=Report::orderBy('id', 'desc')->take(5)->get();
-        return view('report', compact('report','lastReports'));
+		$report->setRelation('comments', $report->comments()->paginate(1));
+        $lastReports = Report::orderBy('id', 'desc')->take(5)->get();
+        return view('report', compact('report', 'lastReports'));
     }
 
     public function userReportCreate() {
@@ -38,12 +40,8 @@ class ReportController extends Controller {
         return view('admin.reports.create', compact('reports'));
     }
 
-    public function store(Request $request) {
+    public function store(ReportsRequest $request) {
         if ($request->method() == 'POST') {
-            $this->validate($request, [
-                'content' => 'required',
-                'date' => 'required',
-            ]);
             $data = $request->all();
             unset($data['__token']);
             $date = new DateTime();
@@ -60,8 +58,8 @@ class ReportController extends Controller {
 
     public function destroy($id) {
         $report = Report::find($id);
-		Report::find($id)->comments()->forceDelete();
-		$img = $report->pay_check;
+        Report::find($id)->comments()->forceDelete();
+        $img = $report->pay_check;
         if (is_file(public_path() . '/images/reports/' . $img)) {
             unlink(public_path() . '/images/reports/' . $img);
         }
@@ -70,16 +68,13 @@ class ReportController extends Controller {
         return redirect()->route('adminReports');
     }
 
-    public function edit($id, Request $request) {
+    public function edit($id) {
+        $report = Report::find($id);
+        return view('admin.reports.edit', compact('report'));
+    }
+
+    public function update(ReportsRequest $request, $id) {
         if ($request->method() == "POST") {
-            $this->validate($request, [
-                'content' => 'required',
-                'date' => 'required',
-                'pay_check' => 'required|image|max:2048',], [
-                '*.required' => 'Поле не должно быть пустым',
-                'pay_check.image' => 'Загруженный файл должен быть изображением',
-                'pay_check.max' => 'Максимальный размер изображения=2048'
-            ]);
             $data = $request->all();
             if ($request->hasFile('pay_check')) {
                 $data['pay_check'] = $this->addPayCheck($request);
@@ -89,9 +84,6 @@ class ReportController extends Controller {
             $editOne->save();
             return redirect()->route('adminReports');
         }
-        $report = Report::find($id);
-		$id = $report->id;
-        return view('admin.reports.edit', compact('report'));
     }
 
     public function addPayCheck($request) {
@@ -100,4 +92,5 @@ class ReportController extends Controller {
         $file->move(public_path() . '/images/reports', $newfilename);
         return $newfilename;
     }
+
 }

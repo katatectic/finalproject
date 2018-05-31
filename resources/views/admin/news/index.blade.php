@@ -41,7 +41,7 @@
                             </td>
                             <td>
                                 <a href="{{route('article', ['id'=>$news->id])}}" class="fa fa-eye"></a>
-                                <a href="{{route('editnews',['id'=>$news->id]) }}" class="fa fa-pencil"></a>
+                                <a href="{{route('article.edit',['id'=>$news->id]) }}" class="fa fa-pencil"></a>
                                 <a href="{{route('deletenews',$news->id)}}" onclick="return confirm('Удалить новость?')" class="fa fa-remove"></a>
                             </td>
                         </tr>

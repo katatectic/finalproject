@@ -39,6 +39,7 @@
             @endif
         </figure>
         @endforeach
+		{{$album->Photos->links()}}
     </div>
 </div>
 </div>
