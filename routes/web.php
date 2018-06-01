@@ -48,7 +48,7 @@ Route::group(['middleware' => 'adminandchief'], function() {
     Route::post('eventstore', 'EventController@adminEventStore')->name('admin.event.store');
     Route::get('event/{id}/delete', 'EventController@destroy')->name('event.delete');/* Удаление события*/
     Route::get('event/{id}/edit', 'EventController@edit')->name('event.edit');/* Редактирование события*/
-    Route::post('event/{id}/edit', 'EventController@edit')->name('event.edit');/* Редактирование события*/
+    Route::post('event/{id}/update', 'EventController@update')->name('event.update');/* Редактирование события*/
     // Comments confirmation
     Route::get('comments', 'CommentsController@adminComments')->name('admincomments');/*Список всех комментариев в админке*/
     Route::get('comment.confirm/{id}', 'CommentsController@commentConfirm')->name('comment.confirm');/* Одобрить комментарий*/   

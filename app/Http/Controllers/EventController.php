@@ -82,21 +82,13 @@ class EventController extends Controller {
         $file->move(public_path() . '/images/events', $newfilename);
         return $newfilename;
     }
-
-    public function edit($id, Request $request) {
+	public function edit($id) {
+         $event = Event::find($id);
+        return view('admin.events.edit', compact('event'));
+    }
+		
+    public function update($id, EventsRequest $request) {
         if ($request->method() == "POST") {
-            $this->validate($request, [
-                'title' => 'required',
-                'event_date' => 'required',
-                'event_hours' => 'required',
-                'address' => 'required',
-                'description' => 'required',
-                'content' => 'required',
-                'photo' => 'required|image|max:2048',], [
-                '*.required' => 'Поле не должно быть пустым',
-                'photo.image' => 'Загруженный файл должен быть изображением',
-                'photo.max' => 'Максимальный размер изображения=2048'
-            ]);
 			$editOne = Event::find($id);
 			$img = $editOne->photo;
 			if (is_file(public_path() . '/images/events/' . $img)) {
@@ -112,8 +104,6 @@ class EventController extends Controller {
             $editOne->save();
             return redirect()->route('adminevents');
         }
-        $event = Event::find($id);
-        return view('admin.events.edit', compact('event'));
     }
 
     public function destroy($id) {

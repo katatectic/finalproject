@@ -26,7 +26,8 @@ class NewsRequest extends FormRequest {
             'date' => 'required',
             'content' => 'required',
             'photo' => 'required|image|max:2048',
-            'description' => 'required'];
+            'description' => 'required',
+			'student_class_id'=>'required'];
     }
 
     public function messages() {
