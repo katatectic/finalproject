@@ -102,7 +102,7 @@ class NewsController extends Controller {
         return redirect()->route('adminnews');
     }
 	public function edit($id) {
-          $all = Article::find($id);
+        $all = Article::find($id);
         return view('admin.news.edit',compact('all'));
     }
 

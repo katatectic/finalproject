@@ -36,6 +36,7 @@
                                     </option>
                                 @endforeach
                             </select>
+                            <span style="color:red">{{ $errors->first('student_class_id') }}</span>
                         </div>
 						<div class="form-group">
                             <label for="description" class="col-md-4 control-label">Краткое описание новости</label>

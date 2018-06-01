@@ -48,7 +48,7 @@ Route::group(['middleware' => 'adminandchief'], function() {
     Route::post('eventstore', 'EventController@adminEventStore')->name('admin.event.store');
     Route::get('event/{id}/delete', 'EventController@destroy')->name('event.delete');/* Удаление события*/
     Route::get('event/{id}/edit', 'EventController@edit')->name('event.edit');/* Редактирование события*/
-    Route::post('event/{id}/edit', 'EventController@edit')->name('event.edit');/* Редактирование события*/
+    Route::post('event/{id}/update', 'EventController@update')->name('event.update');/* Редактирование события*/
     // Comments confirmation
     Route::get('comments', 'CommentsController@adminComments')->name('admincomments');/*Список всех комментариев в админке*/
     Route::get('comment.confirm/{id}', 'CommentsController@commentConfirm')->name('comment.confirm');/* Одобрить комментарий*/   
@@ -123,7 +123,10 @@ Route::group(['middleware' => ['role:3']], function () {
 
 // Что могут делать зарегистрированные пользователи
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('profile/id{id}', 'UserController@profile')->name('profile'); //Просмотр профиля пользователя с админки
+    Route::get('profile/id{id}', 'UserController@profile')->name('profile'); //Просмотр профиля пользователя
+	Route::get('profile/id{id}/events', 'UserController@profileEvents')->name('profile.events');
+	Route::get('profile/id{id}/news', 'UserController@profileNews')->name('profile.news');
+	Route::get('profile/id{id}/reports', 'UserController@profileReports')->name('profile.reports');
     // Comments
     Route::post('/add_comment', 'CommentsController@addComment')->name('add_comment');
     Route::get('deletecomment/{id}', 'CommentsController@deleteComment')->name('deleteComment');
@@ -136,11 +139,7 @@ Route::post('addimage','ImageController@imageAdd')->name('add_image_to_album');
 Route::get('image/{id}/delete','ImageController@deleteImage')->name('deleteImage');
 Route::get('addimage/{id}','ImageController@getForm')->name('add_image');
 
-
-/* !!!!! Ниже роуты надо или удалить или добавить в соответствующее место в файле !!!!! */
-
-/* пока такой роут, здесь никакой логики не задейстовано.
-Данный роут подтягивает перечень комитетов школы из базы*/
+/*Данный роут подтягивает перечень комитетов школы из базы*/
 Route::get('/about', 'CommitteesController@about')->name('about');
 //Committees
 Route::get('/committees', 'CommitteesController@index')->name('allCommittees');
@@ -148,28 +147,11 @@ Route::get('/committees/committee/{id}', 'CommitteesController@show')->name('one
 Route::get('/committees/committee/{committeeId}/news', 'NewsController@committeeNews')->name('newsCommittee');
 Route::get('/committees/committee/{committeeId}/events', 'EventController@committeeEvents')->name('eventCommittee');
 
-
-/* пока такой роут, здесь никакой логики не задейстовано.
-Данный роут просто содержит контакты*/
+/* Данный роут просто содержит контакты*/
 Route::get('/contacts', function () {
     return view('contacts');
 })->name('contacts');
 
-/* пока такой роут, здесь никакой логики не задейстовано.
-Данный роут подтягивает информацию о конкретном комитете класса из базы*/
-Route::get('/committee', function () {
-    return view('committee');
-})->name('committee');
-
-Route::group(['middleware' => ['role:1']], function () {
-
-});
-Route::group(['middleware' => ['role:2']], function () {
-
-});
-Route::group(['middleware' => ['role:3']], function () {
-
-});
 
 
 

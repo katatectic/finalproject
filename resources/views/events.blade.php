@@ -17,10 +17,10 @@
                     @endif
                 </h1>
                 <p>Список всех событий.</p>
-            </div><!-- .wrappr -->
-        </div><!-- .buntington2-cinema -->
-    </div><!-- .buntington2-cinema-bg -->
-    <div id="mobile-nav-container"></div><!-- Small devices menu -->
+            </div>
+        </div>
+    </div>
+    <div id="mobile-nav-container"></div>
 </div>
 <div id="content" class="site-content wrappr">
     <div class="bread">
@@ -29,8 +29,8 @@
     @if (count($events) > 0)
     <section class="events">
         @foreach($events as $event)
-        <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-        <div class="grid"><!-- toast grid declaration -->
+        <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+        <div class="grid">
             <div id="primary" class="content-area grid__col grid__col--3-of-3">
                 <main id="main" class="site-main" role="main">
                     <article id="post-519"
@@ -58,18 +58,18 @@
                                 <h5 class="doublef-event-item-time">Время проведения: {{ $event->event_hours }}</h5>
                                 <div class="doublef-event-address">
                                     Место проведения: {{ $event->address }}
-                                </div><!-- .doublef-event-address -->
-                            </header><!-- .entry-header -->
+                                </div>
+                            </header>
                             <div class="entry-content">
                                 <p>{{ $event->description }}
                                     <a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>
                                 </p>
                                 <span class="screen-reader-text">Продолжить чтение  {{ $event->title }}</span>
-                            </div><!-- .entry-content -->
-                        </div><!-- .post-text-block -->
+                            </div>
+                        </div>
                     </article>
-                </main><!-- #main -->
-            </div><!-- #primary -->
+                </main>
+            </div>
         </div>
         @endforeach
         {{ $events->links() }}

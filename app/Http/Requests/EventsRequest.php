@@ -28,7 +28,8 @@ class EventsRequest extends FormRequest {
             'address' => 'required',
             'description' => 'required',
             'content' => 'required',
-            'photo' => 'required|image|max:2048'];
+            'photo' => 'required|image|max:2048',
+			'student_class_id'=>'required'];
     }
 
     public function messages() {
