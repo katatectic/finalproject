@@ -10,7 +10,7 @@
 	<div class="bread">
         <a href="{{route('main')}}">Главная</a> /
 		<a href="{{route('allCommittees')}}">Комитеты</a> /
-        <a href="{{ route('oneCommittee',['id' => $committee->id]) }}}}">Комитет {{$classesNumbers()[$committee->id]}} - {{$committee->letter_class}} класса</a>
+        <a href="{{ route('oneCommittee', ['id' => $committee->id]) }}}}">Комитет {{$classesNumbers()[$committee->id]}} - {{$committee->letter_class}} класса</a>
     </div>
     <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
     <div class="grid">
