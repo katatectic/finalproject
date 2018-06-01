@@ -4,7 +4,7 @@
     События пользователя {{$user->name}} {{$user->surname}}
 @endsection
 <div class="bread">
-     <a href="{{route('main')}}">Главная</a> / <a href="{{route('profile',['id'=>$user->id])}}">Профиль пользователя {{$user->name}} {{$user->surname}}</a> / События пользователя {{$user->name}} {{$user->surname}}
+    <a href="{{route('main')}}">Главная</a> / <a href="{{route('profile',['id'=>$user->id])}}">Профиль пользователя {{$user->name}} {{$user->surname}}</a> / События пользователя {{$user->name}} {{$user->surname}}
 </div>
 <h3>События пользователя {{$user->name}} {{$user->surname}}</h3>
 @if (count($user->events) > 0)

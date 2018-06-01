@@ -4,7 +4,7 @@
     Отчёты пользователя {{$user->name}} {{$user->surname}}
 @endsection
 <div class="bread">
-     <a href="{{route('main')}}">Главная</a> / <a href="{{route('profile',['id'=>$user->id])}}">Профиль пользователя {{$user->name}} {{$user->surname}}</a> / Отчёты пользователя {{$user->name}} {{$user->surname}}
+    <a href="{{route('main')}}">Главная</a> / <a href="{{route('profile',['id'=>$user->id])}}">Профиль пользователя {{$user->name}} {{$user->surname}}</a> / Отчёты пользователя {{$user->name}} {{$user->surname}}
 </div>
 <h3>Отчёты пользователя {{$user->name}} {{$user->surname}}  </h3>
 @if (count($user->reports) > 0)

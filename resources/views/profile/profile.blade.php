@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="content">
-	<div class="bread">
+    <div class="bread">
         <a href="{{route('main')}}">Главная</a> / Профиль пользователя {{$user->name}} {{$user->surname}}
     </div>
     <section id="contentSection">
@@ -39,44 +39,44 @@
                                         <td class="active">Комитеты:</td>
                                         <td>
                                             @foreach( $user->studentsClasses as $class)
-                                                @if(!$loop->first),  @endif
-                                                @if (date('Y') - $class->start_year + $transition < 4)
-                                                    {{date('Y') - $class->start_year + $transition}}
-                                                @elseif (date('Y') <= $class->year_of_issue)
-                                                    {{date('Y') - $class->start_year + $transition + 1 - $class->fourth_class}}
-                                                @else
-                                                     (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
-                                                @endif
-                                                <span>{{$class->letter_class}}</span>
+                                            @if(!$loop->first),  @endif
+                                            @if (date('Y') - $class->start_year + $transition < 4)
+                                            {{date('Y') - $class->start_year + $transition}}
+                                            @elseif (date('Y') <= $class->year_of_issue)
+                                            {{date('Y') - $class->start_year + $transition + 1 - $class->fourth_class}}
+                                            @else
+                                            (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
+                                            @endif
+                                            <span>{{$class->letter_class}}</span>
                                             @endforeach
                                         </td>
                                     </tr>
                                     <tr><td class="active">Дата регистрации</td><td>{{$user->created_at}}</td></tr>
-									<tr><td class="active">Всего объявлений</td>
-									@if (!empty($eventCount) )
-									    <td><a href="">{{$eventCount}}</td></a></tr>
-									@else
-                                        <td><a href="">0</a></td>
-									@endif
-									<tr><td class="active">Всего новостей</td>
-									@if (!empty($newsCount) )
-									    <td><a href="">{{$newsCount}}</a></td></tr>
-									@else
-                                        <td><a href="">0</a></td>
-									@endif
-									<tr><td class="active">Всего отчётов</td>
-									@if (!empty($reportCount) )
-									    <td><a href="">{{$reportCount}}</a></td></tr>
-									@else
-                                        <td><a href="">0</a></td>
-									@endif
+                                    <tr><td class="active">Всего объявлений</td>
+                                        @if ($eventCount > 0 )
+                                        <td><a href="{{ route('profile.events',['id'=>$user->id]) }}">{{$eventCount}}</td></a></tr>
+                                    @else
+                                <td><a href="{{ route('profile.events',['id'=>$user->id]) }}">0</a></td>
+                                @endif
+                                <tr><td class="active">Всего новостей</td>
+                                    @if ($newsCount > 0 )
+                                    <td><a href="{{ route('profile.news',['id'=>$user->id]) }}">{{$newsCount}}</a></td></tr>
+                                @else
+                                <td><a href="{{ route('profile.news',['id'=>$user->id]) }}">0</a></td>
+                                @endif
+                                <tr><td class="active">Всего отчётов</td>
+                                    @if ($reportsCount > 0 )
+                                    <td><a href="{{ route('profile.reports',['id'=>$user->id]) }}">{{$reportsCount}}</a></td></tr>
+                                @else
+                                <td><a href="{{ route('profile.reports',['id'=>$user->id]) }}">0</a></td>
+                                @endif
                                 </tbody>
                             </table>
-							@if (!Auth::guest())
-                                @if (Auth::user()->role == 1 or Auth::user()->role == 2)
-                                    <a href="{{route('profile.edit',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a>
-                                    <a href="{{route('profile.destroy',$user->id)}}" onclick="return confirm('Удалить профиль?')" class="more-link button">Удалить профиль</a>
-                                @endif
+                            @if (!Auth::guest())
+                            @if (Auth::user()->role == 1 or Auth::user()->role == 2)
+                            <a href="{{route('profile.edit',['id'=>$user->id]) }}" class="more-link button">Изменить данные</a>
+                            <a href="{{route('profile.destroy',$user->id)}}" onclick="return confirm('Удалить профиль?')" class="more-link button">Удалить профиль</a>
+                            @endif
                             @endif
                         </div>
                     </div>

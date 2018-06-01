@@ -22,7 +22,7 @@ class UserController extends Controller {
     public $puginationUsers = 9;
     public $puginationNews = 5;
     public $puginationEvents = 5;
-	public $puginationReports = 10;
+    public $puginationReports = 10;
 
     public function adminUsers() {
         $users = User::orderBy('id', 'DESC')->with('studentsClasses')->paginate($this->puginationUsers);
@@ -35,28 +35,28 @@ class UserController extends Controller {
         $eventCount = Event::where("user_id", "=", $user->id)->count();
         $newsCount = Article::where("user_id", "=", $user->id)->count();
         $reportsCount = Report::where("user_id", "=", $user->id)->count();
-        return view('profile.profile', compact('user', 'eventCount', 'newsCount'));
+        return view('profile.profile', compact('user', 'eventCount', 'newsCount', 'reportsCount'));
     }
 
     public function profileEvents($id) {
         $user = User::find($id);
         $user->setRelation('events', $user->events()->orderBy('id', 'DESC')->paginate($this->puginationEvents));
-		$lastEvents=Event::orderBy('id', 'desc')->take(5)->get();
-        return view('profile.events', compact('user','lastEvents'));
+        $lastEvents = Event::orderBy('id', 'desc')->take(5)->get();
+        return view('profile.events', compact('user', 'lastEvents'));
     }
 
     public function profileNews($id) {
         $user = User::find($id);
         $user->setRelation('articles', $user->articles()->orderBy('id', 'DESC')->paginate($this->puginationNews));
-		$lastNews=Article::orderBy('id', 'desc')->take(5)->get();
-        return view('profile.news', compact('user','lastNews'));
+        $lastNews = Article::orderBy('id', 'desc')->take(5)->get();
+        return view('profile.news', compact('user', 'lastNews'));
     }
 
     public function profileReports($id) {
         $user = User::find($id);
-		$user->setRelation('reports', $user->reports()->orderBy('id', 'DESC')->paginate($this->puginationReports));
-		$lastReports=Report::orderBy('id', 'desc')->take(5)->get();
-        return view('profile.reports', compact('user','lastReports'));
+        $user->setRelation('reports', $user->reports()->orderBy('id', 'DESC')->paginate($this->puginationReports));
+        $lastReports = Report::orderBy('id', 'desc')->take(5)->get();
+        return view('profile.reports', compact('user', 'lastReports'));
     }
 
     public function destroy($id) {
