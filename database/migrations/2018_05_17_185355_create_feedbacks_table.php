@@ -19,7 +19,7 @@ class CreateFeedbacksTable extends Migration
             $table->string('name');
 			$table->string('email');
 			$table->text('message');
-		  
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

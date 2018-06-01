@@ -20,8 +20,11 @@ class CreateNewsTable extends Migration
             $table->dateTime('date')->nullable();
             $table->string('photo', 300)->nullable();
             $table->string('content', 15000)->nullable();
-            $table->integer('author_id')->unsigned()->nullable();
-            $table->foreign('author_id')->references('id')->on('users');
+            $table->text('description', 1000)->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('student_class_id')->unsigned()->nullable();
+            $table->foreign('student_class_id')->references('id')->on('students_classes');
             $table->timestamps();
         });
     }
