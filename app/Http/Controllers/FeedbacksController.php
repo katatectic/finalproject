@@ -24,7 +24,7 @@ class FeedbacksController extends Controller {
                 $message->subject('Сообщение пользователя' . ' ' . $request->name . ' ' . 'об ошибке');
             });
 
-            return view('feedback.addFeedback');
+            return redirect()->route('main')->with(['status' => 'Ваша заявка отправлена!']);;
         }
         return view('feedback.feedback');
     }
@@ -56,7 +56,7 @@ class FeedbacksController extends Controller {
 			$email = $request->email;
 			$msg = $request->message;
 			Mail::to($email)->send(new MailClass($name, $email, $msg));
-			return redirect()->route('admin.feedback.index');
+			return redirect()->route('admin.feedback.index')->with(['status' => 'Сообщение пользователю отправлено!']);
         }
         $feedback = Feedback::find($id);
         return view('admin.feedbacks.reply', compact('feedback'));

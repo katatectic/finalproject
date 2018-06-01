@@ -16,14 +16,14 @@ class EventController extends Controller {
 
     public function index(Request $request) {
         $events = Event::orderBy('id', 'DESC')->paginate($this->puginationEvents);
-        return view('events', compact('events'));
+        return view('events.events', compact('events'));
     }
 
     public function show($id) {
         $event = Event::select()->where('id', $id)->first();
 		$event->setRelation('comments', $event->comments()->paginate(1));
 		$lastEvents=Event::orderBy('id', 'desc')->take(5)->get();
-        return view('event', compact('event','lastEvents','comments'));
+        return view('events.event', compact('event','lastEvents','comments'));
     }
 
     public function adminEvents() {
@@ -35,7 +35,7 @@ class EventController extends Controller {
     public function committeeEvents($committeeId) {
         $committee = StudentClass::find($committeeId);
         $events = Event::where('student_class_id', $committeeId)->orderBy('id', 'DESC')->paginate($this->puginationEvents);
-        return view('events', compact('events', 'committee'));
+        return view('events.events', compact('events', 'committee'));
     }
 
     public function create() {

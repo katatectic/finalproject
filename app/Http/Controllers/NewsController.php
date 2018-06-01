@@ -16,20 +16,20 @@ class NewsController extends Controller {
 
     public function index(Request $request) {
         $all = Article::orderBy('id', 'DESC')->paginate($this->puginationNews);
-        return view('news', compact('all'));
+        return view('news.news', compact('all'));
     }
 
     public function committeeNews($committeeId) {
         $committee = StudentClass::find($committeeId);
         $all = Article::where('student_class_id', $committeeId)->orderBy('id', 'DESC')->paginate($this->puginationNews);
-        return  view('news', compact('all', 'committee'));
+        return  view('news.news', compact('all', 'committee'));
     }
 
     public function article($id) {
         $article = Article::select()->where('id', $id)->first();
 		$article->setRelation('comments', $article->comments()->paginate(1));
 		$lastNews=Article::orderBy('id', 'desc')->take(5)->get();
-        return view('article', compact('article','lastNews'));
+        return view('news.article', compact('article','lastNews'));
     }
 
     public function adminNews() {

@@ -15,7 +15,7 @@ class ReportController extends Controller {
 
     public function index() {
         $reports = Report::orderBy('id', 'DESC')->paginate($this->puginationReports);
-        return view('reports', compact('reports'));
+        return view('reports.reports', compact('reports'));
     }
 
     public function adminIndex() {
@@ -28,7 +28,7 @@ class ReportController extends Controller {
         $report = Report::select()->where('id', $id)->first();
 		$report->setRelation('comments', $report->comments()->paginate(1));
         $lastReports = Report::orderBy('id', 'desc')->take(5)->get();
-        return view('report', compact('report', 'lastReports'));
+        return view('reports.report', compact('report', 'lastReports'));
     }
 
     public function userReportCreate() {
