@@ -116,7 +116,9 @@ Route::group(['middleware' => ['role:3']], function () {
     Route::get('usereventcreate', 'EventController@userEventCreate')->name('user.event.create'); /*переход на добавление события пользователем с ролью 3*/
     Route::post('eventstore', 'EventController@userEventStore')->name('user.event.store'); /* Само добавления события*/
     Route::get('createreport', 'ReportController@userReportCreate')->name('user.reports.create'); /*переход на добавление новости пользователем с ролью 3*/
-    Route::post('addreport', 'ReportController@store')->name('addreport');        
+    Route::post('addreport', 'ReportController@store')->name('addreport');
+    // Переход на вьюху с возможностью добавления события/новости/отчета
+    Route::get('/add', function () {return view('add');})->name('user.add');       
 });
 
 // Что могут делать зарегистрированные пользователи

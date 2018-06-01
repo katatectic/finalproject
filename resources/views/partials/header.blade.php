@@ -65,7 +65,7 @@
                     <!-- toggle mobile menu icon END -->                            
                     <div class="site-header--branding">
                         <a href="{{ url('/') }}" rel="home" class="site-header--branding-a" data-img-width="166" data-img-height="120">
-                        <img src="https://pp.userapi.com/c631424/v631424704/26f3d/Dxs8EtCzOaE.jpg" alt="Buntington Public Schools" />
+                        <img src="http://ugrafmsh.ru/wp-content/uploads/2017/10/image001-1.jpg" alt="Buntington Public Schools" />
                         </a>
                     </div><!-- .site-header--branding -->                        
                     <nav id="site-navigation" class="main-navigation" role="navigation">                
@@ -92,16 +92,36 @@
                                 <a title="" href="{{route('addFeedback')}}">Обратная связь</a>
                             </li>
                             
-                                @if (!Auth::guest())
-                                {{--
-                                <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('contacts')}}">Контакты</a></li>
-                                --}}
+                                @if (!Auth::guest())                                
+                                @if (Auth::user()->role == 3)
+                                <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('user.add')}}">Добавить</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650">
+                                            <a title="" href="{{route('user.event.create')}}">Добавить событие</a>
+                                        </li>       
+                                        <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
+                                            <a href="{{ route('user.news.create') }}">Добавить новость</a>
+                                        </li>
+                                        <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
+                                            <a href="{{ route('user.reports.create') }}">Добавить отчет</a>
+                                        </li>
+                                    </ul>
+                                </li>     
+                                
+                                @endif
+                                @endif
+
+                                {{-- <!--СТАРЫЙ ВАРИАНТ МЕНЮШКИ-->
+                                @if (!Auth::guest())                                
                                 @if (Auth::user()->role == 3)
                                 <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('user.event.create')}}">Добавить событие</a></li>       
                                 <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309"><a href="{{ route('user.news.create') }}">Добавить новость</a></li>
                                 <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309"><a href="{{ route('user.reports.create') }}">Добавить отчет</a></li>
                                 @endif
                                 @endif
+                                --}}
+
+
                         </ul>                    
                     </nav><!-- #site-navigation -->                                
                 </div>        

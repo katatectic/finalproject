@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 @section('title')
-	Заявки пользователей
+Заявки пользователей
 @endsection
 @section('content')
 <style>
-    .2 {
+    .red {
         background-color:#90EE90
     }
-    .1 {
+    .green {
         background-color:#F08080
     }
 </style>
@@ -16,6 +16,14 @@
         <h1>Заявки от пользователей</h1>
     </section>
     <section class="content">
+        @if(session('status'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{session('status')}}
+        </div>
+        @endif
         <div class="box">
             <div class="box-header">
                 <h3 class="btn btn-success bg-orange">Всего заявок: {{$feedbacksCount}}</h3>
@@ -33,7 +41,7 @@
                     </thead>
                     <tbody>
                         @foreach($feedbacks as $feedback)
-                        <tr class="{{$feedback->status}}">
+						<tr class="@if ($feedback->status == 1) red @else green @endif" ></tr>
                             <td>{{$feedback->name}}</td>
                             <td>{{$feedback->email}}</td>
                             <td>{{$feedback->message}}</td>

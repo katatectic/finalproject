@@ -50,7 +50,7 @@ class AdminController extends Controller {
         $email = $request->email;
         $msg = $request->message;
         Mail::to($email)->send(new MailClass($name, $email, $msg));
-        return redirect()->route('admin');
+        return redirect()->route('admin')->with(['status' => 'Сообщение отправлено']);
     }
 
 }
