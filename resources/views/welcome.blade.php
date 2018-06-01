@@ -98,7 +98,7 @@
                                         <div class="panel-widget-style panel-widget-style-for-425-1-0-0">
                                             <div class="so-widget-buntington2-news-list so-widget-buntington2-news-list-base">
 
-                                                <h2 class="widget-title">Последние новости</h2>
+                                                <h2 class="widget-title"><a title="" href="{{route('news')}}">Последние новости</a></h2>
                                                 <div class="news-list-widget-wrap" style="text-align: left;">
                                                     @foreach($news as $article)
                                                     <div class="news-list-item news-list-left has-separator-line-top">
@@ -147,7 +147,7 @@
                                          class="so-panel widget widget_doublef-event-posts-widget panel-first-child panel-last-child"
                                          data-index="3">
                                         <div class="so-widget-doublef-event-posts-widget so-widget-doublef-event-posts-widget-base">
-                                            <h2 class="widget-title">Будущие мероприятия</h2>
+                                            <h2 class="widget-title"><a title="" href="{{route('event.index')}}">Будущие мероприятия</a></h2>
                                             <div class="doublef-event-posts-layout_2">
                                                 @foreach($events as $event)
                                                 <article id="post-519"
