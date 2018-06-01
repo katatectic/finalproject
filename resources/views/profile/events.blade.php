@@ -3,6 +3,7 @@
 @section('title')
     События пользователя {{$user->name}} {{$user->surname}}
 @endsection
+<div id="content" class="site-content wrappr">
 <div class="bread">
     <a href="{{route('main')}}">Главная</a> / <a href="{{route('profile',['id'=>$user->id])}}">Профиль пользователя {{$user->name}} {{$user->surname}}</a> / События пользователя {{$user->name}} {{$user->surname}}
 </div>
@@ -66,5 +67,6 @@
             @endforeach
         </ul>
     </div>
-</div>		
+</div>	
+</div>	
 @endsection    
