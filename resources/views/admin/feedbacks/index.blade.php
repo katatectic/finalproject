@@ -41,7 +41,7 @@
                     </thead>
                     <tbody>
                         @foreach($feedbacks as $feedback)
-						<tr class="  @if ($feedback->status == 1) red @else  green  @endif " ></tr>
+						<tr class="@if ($feedback->status == 1) red @else green @endif" ></tr>
                             <td>{{$feedback->name}}</td>
                             <td>{{$feedback->email}}</td>
                             <td>{{$feedback->message}}</td>
