@@ -25,17 +25,20 @@ class NewsRequest extends FormRequest {
     public function rules() {
         $userId = Auth::id();
         $user = User::with('studentsClasses')->find($userId);
-        $studentsClasses = $user->studentsClasses->keyBy('id')->keys();
+        $studentsClasses = $user->studentsClasses->keyBy('id')->keys()->all();
         return [
             'title' => 'required',
             'date' => 'required',
             'content' => 'required',
             'photo' => 'required|image|max:2048',
             'description' => 'required',
-			'student_class_id'=>'required|in:'.$studentsClasses.', 0'];
+			'student_class_id'=>'required|in:0,'.implode(",", $studentsClasses)];
     }
 
     public function messages() {
+        $userId = Auth::id();
+        $user = User::with('studentsClasses')->find($userId);
+        $studentsClasses = $user->studentsClasses->keyBy('id')->keys();
         return [
             '*.required' => 'Поле не должно быть пустым',
             'photo.image' => 'Загруженный файл должен быть изображением',

@@ -31,9 +31,10 @@
                             <span style="color:red">{{ $errors->first('photo') }}</span>
                         </div>
                         <div class="form-group">
+                            {{$user->studentsClasses->keyBy('id')->keys()}}
                             <label>Комитет </label>
                             <select name="student_class_id">
-								<option value="" disabled="disabled" selected="selected">Выберите комитет новости</option>
+								{{--<option value="" disabled="disabled" selected="selected">Выберите комитет новости</option>--}}
                                 <option value="0">Общая новость</option>
                                 @foreach($user->studentsClasses as $class)
                                     <option value="{{$class->id}}">

@@ -145,8 +145,7 @@
                             {{ csrf_field() }}
                         </form>
                     </div>
-                @endif                      
-                </div>
+                @endif
             </main>      
         </div>              
     </div>
