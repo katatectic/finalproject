@@ -4,13 +4,21 @@
 @endsection
 @section('content')
 <div id="cinemahead">
-    <div id="mobile-nav-container"></div><!-- Small devices menu  -->
-</div><!-- #cinemahead -->
+    <div id="mobile-nav-container"></div>
+</div>
 <div id="content" class="site-content wrappr">
-    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
-    <div class="grid"><!-- toast grid declaration -->
+    <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+    <div class="grid">
         <div id="primary" class="content-area grid__col grid__col--3-of-3">
             <main id="main" class="site-main" role="main">
+                @if(session('status'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{session('status')}}
+                </div>
+                @endif
                 <article id="post-425" class="post-425 page type-page status-publish hentry">
                     <div id="pl-425" class="panel-layout">
                         <div id="pg-425-0" class="panel-grid panel-has-style">
@@ -44,7 +52,7 @@
                                                         class="fa fa-chevron-left"></i></div>
                                                 <div class="button-next" style="color: #ffffff;"><i
                                                         class="fa fa-chevron-right"></i></div>
-                                            </div><!-- END Slider main container -->
+                                            </div>
                                             <script language="javascript">
                                                 jQuery('#swiper-1514403464').css('visibility', 'hidden');
                                                 jQuery(document).ready(function () {
@@ -95,16 +103,16 @@
                                                     @foreach($news as $article)
                                                     <div class="news-list-item news-list-left has-separator-line-top">
                                                         @isset($article->photo)
-                                                            <figure class="post-thumbnail news-list-item-featured-image">
-                                                                <a href="{{route('article',['id'=>$article->id])}}">
-                                                                    <img width="1140" height="500"
-                                                                         src="{{asset('images/news/'.$article->photo)}}"
-                                                                         class="attachment-full size-full wp-post-image"
-                                                                         alt="{{$article->title}}" title="{{$article->title}}"
-                                                                         srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w"
-                                                                         sizes="(max-width: 1140px) 100vw, 1140px"/>
-                                                                </a>
-                                                            </figure>
+                                                        <figure class="post-thumbnail news-list-item-featured-image">
+                                                            <a href="{{route('article',['id'=>$article->id])}}">
+                                                                <img width="1140" height="500"
+                                                                     src="{{asset('images/news/'.$article->photo)}}"
+                                                                     class="attachment-full size-full wp-post-image"
+                                                                     alt="{{$article->title}}" title="{{$article->title}}"
+                                                                     srcset="{{asset('images/news/'.$article->photo)}} 1140w, {{asset('images/news/'.$article->photo)}} 600w"
+                                                                     sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                            </a>
+                                                        </figure>
                                                         @endisset
                                                         <div class="news-list-item-elements ">
                                                             <h5>
@@ -145,17 +153,17 @@
                                                 <article id="post-519"
                                                          class="layout_2 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
                                                     @isset($event->photo)
-                                                        <figure class="post-thumbnail">
-                                                            <a href="{{ route('event.show',['id'=>$event->id]) }}"
-                                                               title="Newcomers welcome party">
-                                                                <img width="1140" height="500"
-                                                                     src="{{asset('images/events/'.$event->photo)}}"
-                                                                     class="attachment-full size-full wp-post-image"
-                                                                     alt="{{$event->title}}" title="{{$event->title}}"
-                                                                     srcset="{{asset('images/events/'.$event->photo)}} 1140w, {{asset('images/events/'.$event->photo)}} 600w"
-                                                                     sizes="(max-width: 1140px) 100vw, 1140px"/>
-                                                            </a>
-                                                        </figure>
+                                                    <figure class="post-thumbnail">
+                                                        <a href="{{ route('event.show',['id'=>$event->id]) }}"
+                                                           title="Newcomers welcome party">
+                                                            <img width="1140" height="500"
+                                                                 src="{{asset('images/events/'.$event->photo)}}"
+                                                                 class="attachment-full size-full wp-post-image"
+                                                                 alt="{{$event->title}}" title="{{$event->title}}"
+                                                                 srcset="{{asset('images/events/'.$event->photo)}} 1140w, {{asset('images/events/'.$event->photo)}} 600w"
+                                                                 sizes="(max-width: 1140px) 100vw, 1140px"/>
+                                                        </a>
+                                                    </figure>
                                                     @endisset
                                                     <div class="doublef-events-content-wrap">
                                                         <header class="entry-header">
