@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Event;
-use App\User;
 use App\Slider;
-use App\Image;
 use App\Album;
 
 class IndexController extends Controller {
@@ -22,7 +20,8 @@ class IndexController extends Controller {
         $albums = Album::with('Photos')->get();
         return view('welcome', compact('news', 'events', 'sliders', 'albums'));
     }
-	public function search(Request $request) {
+
+    public function search(Request $request) {
         $search = $request['search'];
         $events = Event::latest()
                 ->where('title', 'like', '%' . $search . '%')

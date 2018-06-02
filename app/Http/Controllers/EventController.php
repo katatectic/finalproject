@@ -5,28 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventsRequest;
 use App\Event;
-use App\Comment;
-use App\User;
 use DateTime;
 use App\StudentClass;
 
 class EventController extends Controller {
 
     public $puginationEvents = 5;
-	public $puginationEventComments = 10;
-	public $lastEvents = 5;
-	public $puginationAdminEvents= 15;
+    public $puginationEventComments = 10;
+    public $lastEvents = 5;
+    public $puginationAdminEvents = 15;
 
-    public function index(Request $request) {
+    public function index() {
         $events = Event::orderBy('id', 'DESC')->paginate($this->puginationEvents);
         return view('events.events', compact('events'));
     }
 
     public function show($id) {
         $event = Event::select()->where('id', $id)->first();
-		$event->setRelation('comments', $event->comments()->paginate($this->puginationEventComments));
-		$lastEvents=Event::orderBy('id', 'desc')->take($this->lastEvents)->get();
-        return view('events.event', compact('event','lastEvents','comments'));
+        $event->setRelation('comments', $event->comments()->paginate($this->puginationEventComments));
+        $lastEvents = Event::orderBy('id', 'desc')->take($this->lastEvents)->get();
+        return view('events.event', compact('event', 'lastEvents', 'comments'));
     }
 
     public function adminEvents() {
@@ -50,18 +48,15 @@ class EventController extends Controller {
     }
 
     public function adminEventStore(EventsRequest $request) {
-        if ($request->method() == 'POST') {
-            $data = $request->all();
-            $date = new DateTime();
-            $data['event_date'] = $date->format('Y-m-d');
-            if ($request->hasFile('photo')) {
-                $data['photo'] = $this->addPhoto($request);
-            };
-            $create = Event::create($data);
-            $id = $create->id;
-            return redirect()->route('adminevents');
-        }
-        return view('admin.events.create');
+        $data = $request->all();
+        $date = new DateTime();
+        $data['event_date'] = $date->format('Y-m-d');
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $this->addPhoto($request);
+        };
+        $create = Event::create($data);
+        $id = $create->id;
+        return redirect()->route('adminevents');
     }
 
     public function userEventStore(EventsRequest $request) {
@@ -85,18 +80,19 @@ class EventController extends Controller {
         $file->move(public_path() . '/images/events', $newfilename);
         return $newfilename;
     }
-	public function edit($id) {
-         $event = Event::find($id);
+
+    public function edit($id) {
+        $event = Event::find($id);
         return view('admin.events.edit', compact('event'));
     }
-		
+
     public function update($id, EventsRequest $request) {
         if ($request->method() == "POST") {
-			$editOne = Event::find($id);
-			$img = $editOne->photo;
-			if (is_file(public_path() . '/images/events/' . $img)) {
-				unlink(public_path() . '/images/events/' . $img);
-			}
+            $editOne = Event::find($id);
+            $img = $editOne->photo;
+            if (is_file(public_path() . '/images/events/' . $img)) {
+                unlink(public_path() . '/images/events/' . $img);
+            }
             $data = $request->all();
             $date = new DateTime();
             $data['event_date'] = $date->format('Y-m-d');
@@ -117,7 +113,7 @@ class EventController extends Controller {
         if (file_exists(public_path() . '/images/events/' . $img)) {
             unlink(public_path() . '/images/events/' . $img);
         }
-		Event::find($id)->comments()->forceDelete();
+        Event::find($id)->comments()->forceDelete();
         $event->delete();
         return redirect()->route('adminevents');
     }

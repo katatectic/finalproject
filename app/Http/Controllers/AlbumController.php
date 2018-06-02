@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\AlbumsRequest;
 use App\Album;
-use App\Image;
 
 class AlbumController extends Controller {
 
@@ -22,7 +20,7 @@ class AlbumController extends Controller {
 
     public function show($id) {
         $album = Album::with('Photos')->find($id);
-		$album->setRelation('Photos', $album->Photos()->paginate(1));
+        $album->setRelation('Photos', $album->Photos()->paginate(1));
         return view('album.album', compact('album'));
     }
 
@@ -35,23 +33,19 @@ class AlbumController extends Controller {
     }
 
     public function store(AlbumsRequest $request) {
-        if ($request->method() == 'POST') {
             $data = $request->all();
             if ($request->hasFile('cover_image')) {
                 $data['cover_image'] = $this->addPhoto($request);
             };
             $create = Album::create($data);
-            $id = $create->id;
             return redirect()->route('adminAlbums');
-        }
-        return view('admin.albums.create');
     }
 
     public function destroy($id) {
-        if (!is_numeric($id)){
+        if (!is_numeric($id)) {
             return false;
         }
-        $album = Album::with('Photos')->find($id);
+        $album = Album::with('Photos')->findOrFail($id);
         $img = $album->cover_image;
         if (is_file(public_path() . '/images/albums/' . $img)) {
             unlink(public_path() . '/images/albums/' . $img);
@@ -72,7 +66,6 @@ class AlbumController extends Controller {
     }
 
     public function update($id, AlbumsRequest $request) {
-        if ($request->method() == "POST") {
             $editOne = Album::find($id);
             $img = $editOne->cover_image;
             if (is_file(public_path() . '/images/albums/' . $img)) {
@@ -85,7 +78,6 @@ class AlbumController extends Controller {
             $editOne->fill($data);
             $editOne->save();
             return redirect()->route('adminAlbums');
-        }
     }
 
     public function addPhoto($request) {

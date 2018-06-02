@@ -15,18 +15,15 @@ class FeedbacksController extends Controller {
     }
 
     public function addFeedback(FeedbacksRequest $request) {
-        if ($request->method() == 'POST') {
-            $data = $request->all();
-            $create = Feedback::create($data);
-            Mail::send('feedback.email', ['request' => $request], function($message) use($request) {
-                $message->from([$request->email]);
-                $message->to('devilchonok@gmail.com');
-                $message->subject('Сообщение пользователя' . ' ' . $request->name . ' ' . 'об ошибке');
-            });
+        $data = $request->all();
+        $create = Feedback::create($data);
+        Mail::send('feedback.email', ['request' => $request], function($message) use($request) {
+            $message->from([$request->email]);
+            $message->to('devilchonok@gmail.com');
+            $message->subject('Сообщение пользователя' . ' ' . $request->name . ' ' . 'об ошибке');
+        });
 
-            return redirect()->route('main')->with(['status' => 'Ваша заявка отправлена!']);;
-        }
-        return view('feedback.feedback');
+        return redirect()->route('main')->with(['status' => 'Ваша заявка отправлена!']);
     }
 
     public function adminFeedbacks() {
@@ -43,20 +40,21 @@ class FeedbacksController extends Controller {
     }
 
     public function destroy($id) {
-        if (!is_numeric($id))
+        if (!is_numeric($id)) {
             return false;
-        $feedback = Feedback::find($id);
+        }
+        $feedback = Feedback::findOrFail($id);
         $feedback->delete();
         return redirect()->route('admin.feedback.index');
     }
-	
-	public function reply($id, Request $request) {
-        if ($request->method() == "POST"){
-			$name = $request->name;
-			$email = $request->email;
-			$msg = $request->message;
-			Mail::to($email)->send(new MailClass($name, $email, $msg));
-			return redirect()->route('admin.feedback.index')->with(['status' => 'Сообщение пользователю отправлено!']);
+
+    public function reply($id, Request $request) {
+        if ($request->method() == "POST") {
+            $name = $request->name;
+            $email = $request->email;
+            $msg = $request->message;
+            Mail::to($email)->send(new MailClass($name, $email, $msg));
+            return redirect()->route('admin.feedback.index')->with(['status' => 'Сообщение пользователю отправлено!']);
         }
         $feedback = Feedback::find($id);
         return view('admin.feedbacks.reply', compact('feedback'));
