@@ -35,7 +35,6 @@ class MailRequest extends FormRequest {
             'email.required' => 'Выберите почту пользователя',
             'email.email' => 'Введите правильный email',
             'message.required' => 'Введите сообщение пользователю'
-           
         ];
     }
 

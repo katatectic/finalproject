@@ -36,7 +36,7 @@
                                 <td title="{{$user->email}}">{{str_limit($user->email, 10, '...')}}</td>
                                 <td>{{$user->phone}}</td>
                                 <td title="{{$roleNames[$user->role]}}">{{str_limit($roleNames[$user->role], 10, '...')}}</td>
-                                <td>{{$user->created_at}}</td>
+                                <td>{{$user->created_at->format('d.m.Y')}}</td>
                                 <td>
                                     <div class="image-lightbox">
                                         <a href="{{asset('images/users/'.$user->avatar)}}" data-lightbox="{{asset('images/users/'.$user->avatar)}}" >

@@ -9,6 +9,7 @@ use App\User;
 use App\Comment;
 use App\Article;
 use App\Report;
+use App\Cache;
 use App\StudentClass;
 use DateTime;
 use Illuminate\Support\Facades\Auth;

@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
-
+use Cache;
 
 class User extends Authenticatable
 {
@@ -33,6 +33,11 @@ class User extends Authenticatable
     public function reports()
     {
         return $this->hasMany('App\Report'); // один пользователь много отчетов
+    }
+	
+	public function isOnline()
+    {
+        return Cache::has('user-is-online-'. $this->id);
     }
     /**
      * The attributes that are mass assignable.
