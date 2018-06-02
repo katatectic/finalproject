@@ -82,6 +82,7 @@
                         <li><a href="{{route('adminSliders')}}"><i class="fa fa-sticky-note-o"></i> <span>Слайдеры</span></a></li>
                         <li><a href="{{route('adminReports')}}"><i class="fa fa-sticky-note-o"></i> <span>Отчёты</span></a></li>
                         <li><a href="{{route('mail')}}"><i class="fa fa-sticky-note-o"></i> <span>Отправка почты</span></a></li>
+                        <li><a href="{{route('settings')}}"><i class="fa fa-sticky-note-o"></i> <span>Настройки сайта</span></a></li>
                         @endif
                     </ul>
                 </section>

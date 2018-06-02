@@ -12,6 +12,7 @@ use App\User;
 use App\Slider;
 use App\Image;
 use App\Album;
+use App\Setting;
 use Mail;
 use App\Mail\MailClass;
 
@@ -55,6 +56,24 @@ class AdminController extends Controller {
         $msg = $request->message;
         Mail::to($email)->send(new MailClass($name, $email, $msg));
         return redirect()->route('admin')->with(['status' => 'Сообщение отправлено']);
+    }
+
+    public function settings() {
+        $settings = Setting::first();        
+        return view('admin.settings.edit', compact('settings'));
+    }
+
+    public function settingsUpdate(SettingsRequest $request) {
+        if ($request->method() == "POST") {
+            $data = $request->all();
+            if ($request->hasFile('logo')) {
+                $data['logo'] = $this->addLogo($request);
+            };
+            $editOne = Setting::first();
+            $editOne->fill($data);
+            $editOne->save();
+            return redirect()->route('admin');
+        }
     }
 
 }

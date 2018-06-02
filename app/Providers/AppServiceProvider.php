@@ -9,6 +9,7 @@ use Blade;
 use App\StudentClass;
 use App\Comment;
 use App\Feedback;
+use App\Setting;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::share('settings', Setting::first());
         //Schema::defaultStringLength(191);
         View::share('thisYear', date('Y', time()));
         

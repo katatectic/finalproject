@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name='robots' content='noindex,follow' />
-        <title>@yield('title')</title>
+        <title>{{$settings->title}}</title>
         <link rel="profile" href="http://gmpg.org/xfn/11">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/lightbox.css') }}">
         <link rel='dns-prefetch' href='//use.fontawesome.com' />

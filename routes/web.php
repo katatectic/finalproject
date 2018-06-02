@@ -104,6 +104,9 @@ Route::group(['middleware' => 'admin'], function() {
     Route::post('students-classes/create', 'StudentClassController@store')->name('storeStudentsClasses');
     Route::post('students-classes/update', 'StudentClassController@update')->name('updateStudentsClasses');
     Route::get('students-classes/delete/{id}', 'StudentClassController@destroy')->name('destroyStudentsClasses');
+    // Settings
+    Route::get('settings', 'AdminController@settings')->name('settings');
+    Route::post('settingsupdate', 'AdminController@settingsUpdate')->name('settings.update');
     });
 });
 

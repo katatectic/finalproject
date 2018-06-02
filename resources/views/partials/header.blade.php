@@ -65,7 +65,7 @@
                 <!-- toggle mobile menu icon END -->                            
                 <div class="site-header--branding">
                     <a href="{{ url('/') }}" rel="home" class="site-header--branding-a" data-img-width="166" data-img-height="120">
-                    <img src="http://ugrafmsh.ru/wp-content/uploads/2017/10/image001-1.jpg" alt="Buntington Public Schools" />
+                    <img src="{{asset('images/logo/'.$settings->logo)}}" alt="{{$settings->title}}" />
                     </a>
                 </div><!-- .site-header--branding -->                        
                 <nav id="site-navigation" class="main-navigation" role="navigation">                

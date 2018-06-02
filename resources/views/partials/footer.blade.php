@@ -39,9 +39,9 @@
                                                             <a href="https://goo.gl/maps/VcBD9V9LD8t" target="_blank">Мы на карте</a>
                                                         </h3>    
                                                         <p class="quick-contact-addr">
-                                                            <p>84300, Украина, г. Краматорск, ул. Б. Хмельницкого, 25</p>
+                                                            <p>{{$settings->address}}</p>
                                                             <p>Телефон</p>
-                                                            <p>06264 71588</p>
+                                                            <p>{{$settings->phone}}</p>
                                                         </p>
                                                     </div>
                                                 </div>
