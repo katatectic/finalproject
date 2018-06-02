@@ -33,6 +33,7 @@
                                     <tr><td class="active">Имя:</td><td>{{$user->name}}</td></tr>
                                     <tr><td class="active">Фамилия:</td><td>{{$user->surname}}</td></tr>
                                     <tr><td class="active">Отчество:</td><td>{{$user->middle_name}}</td></tr>
+									<tr><td class="active">Пол:</td><td>{{$user->sex}}</td></tr>
                                     <tr><td class="active">Почта:</td><td>{{$user->email}}</td></tr>
                                     <tr><td class="active">Телефон:</td><td>{{$user->phone}}</td></tr>
                                     <tr>

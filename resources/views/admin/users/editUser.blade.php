@@ -53,6 +53,17 @@
                             <label for="middle_name">Отчество пользователя</label>
                             <input type="text" class="form-control" id="middle_name" name="middle_name" value="{{$all->middle_name}}"> <span style="color:red">{{ $errors->first('middle_name') }}</span>
                         </div>
+						<div class="form-group">
+                            <label for="sex" class="col-md-4 col-lg-12 control-label">Пол</label>
+                            <div class="col-md-6">
+                                <select name="sex" id="sex" class="form-control" value="{{$all->sex}}">
+                                    <option value="" disabled="disabled" selected="selected">Выберите пол</option>
+                                    <option value="Мужской">Мужской</option>
+                                    <option value="Женский">Женский</option>
+                                </select><br/>
+                                <span style="color:red">{{ $errors->first('sex') }}</span>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="email">Почта пользователя</label>
                             <input type="email" class="form-control" id="email" name="email" value="{{$all->email}}"> <span style="color:red">{{ $errors->first('email') }}</span>

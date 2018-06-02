@@ -11,7 +11,9 @@ use DateTime;
 class ReportController extends Controller {
 
     public $puginationReports = 5;
-    public $adminPuginationReports = 10;
+	public $puginationReportComments = 10;
+	public $lastReports = 5;
+    public $puginationAdminReports = 15;
 
     public function index() {
         $reports = Report::orderBy('id', 'DESC')->paginate($this->puginationReports);
@@ -19,15 +21,15 @@ class ReportController extends Controller {
     }
 
     public function adminIndex() {
-        $reports = Report::orderBy('id', 'DESC')->paginate($this->adminPuginationReports);
+        $reports = Report::orderBy('id', 'DESC')->paginate($this->puginationAdminReports);
         $reportsCount = Report::count();
         return view('admin.reports.index', compact('reports', 'reportsCount'));
     }
 
     public function show($id) {
         $report = Report::select()->where('id', $id)->first();
-		$report->setRelation('comments', $report->comments()->paginate(1));
-        $lastReports = Report::orderBy('id', 'desc')->take(5)->get();
+		$report->setRelation('comments', $report->comments()->paginate($this->puginationReportComments));
+        $lastReports = Report::orderBy('id', 'desc')->take($this->lastReports)->get();
         return view('reports.report', compact('report', 'lastReports'));
     }
 
@@ -88,7 +90,7 @@ class ReportController extends Controller {
 
     public function addPayCheck($request) {
         $file = $request->file('pay_check');
-        $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
+        $newfilename = rand(1000, 50000) . "." . $file->getClientOriginalExtension();
         $file->move(public_path() . '/images/reports', $newfilename);
         return $newfilename;
     }

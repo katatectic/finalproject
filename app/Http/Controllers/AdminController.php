@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\MailRequest;
 use App\Article;
 use App\Event;
 use App\User;
@@ -45,7 +46,7 @@ class AdminController extends Controller {
         return view('admin.mail.form');
     }
 
-    public function sendMail(Request $request) {
+    public function sendMail(MailRequest $request) {
         $name = $request->name;
         $email = $request->email;
         $msg = $request->message;

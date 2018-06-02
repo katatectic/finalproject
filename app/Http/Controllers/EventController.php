@@ -13,6 +13,9 @@ use App\StudentClass;
 class EventController extends Controller {
 
     public $puginationEvents = 5;
+	public $puginationEventComments = 10;
+	public $lastEvents = 5;
+	public $puginationAdminEvents= 15;
 
     public function index(Request $request) {
         $events = Event::orderBy('id', 'DESC')->paginate($this->puginationEvents);
@@ -21,13 +24,13 @@ class EventController extends Controller {
 
     public function show($id) {
         $event = Event::select()->where('id', $id)->first();
-		$event->setRelation('comments', $event->comments()->paginate(1));
-		$lastEvents=Event::orderBy('id', 'desc')->take(5)->get();
+		$event->setRelation('comments', $event->comments()->paginate($this->puginationEventComments));
+		$lastEvents=Event::orderBy('id', 'desc')->take($this->lastEvents)->get();
         return view('events.event', compact('event','lastEvents','comments'));
     }
 
     public function adminEvents() {
-        $events = Event::orderBy('id', 'DESC')->paginate(10);
+        $events = Event::orderBy('id', 'DESC')->paginate($this->puginationAdminEvents);
         $eventsCount = Event::count();
         return view('admin.events.index', compact('events', 'eventsCount'));
     }
@@ -78,7 +81,7 @@ class EventController extends Controller {
 
     public function addPhoto($request) {
         $file = $request->file('photo');
-        $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
+        $newfilename = rand(1000, 50000) . "." . $file->getClientOriginalExtension();
         $file->move(public_path() . '/images/events', $newfilename);
         return $newfilename;
     }

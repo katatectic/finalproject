@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Auth;
 class NewsController extends Controller {
 
     public $puginationNews = 5;
+	public $puginationArticleComments = 10;
+	public $lastNews = 5;
+	public $puginationAdminNews= 15;
 
     public function index(Request $request) {
         $all = Article::orderBy('id', 'DESC')->paginate($this->puginationNews);
@@ -27,13 +30,13 @@ class NewsController extends Controller {
 
     public function article($id) {
         $article = Article::select()->where('id', $id)->first();
-		$article->setRelation('comments', $article->comments()->paginate(1));
-		$lastNews=Article::orderBy('id', 'desc')->take(5)->get();
+		$article->setRelation('comments', $article->comments()->paginate($this->puginationArticleComments));
+		$lastNews=Article::orderBy('id', 'desc')->take($this->lastNews)->get();
         return view('news.article', compact('article','lastNews'));
     }
 
     public function adminNews() {
-        $all = Article::orderBy('id', 'DESC')->paginate(10);
+        $all = Article::orderBy('id', 'DESC')->paginate($this->puginationAdminNews);
         $newsCount = Article::count();
         return view('admin.news.index', compact('all', 'newsCount'));
     }
@@ -84,7 +87,7 @@ class NewsController extends Controller {
 
     public function addPhoto($request) {
         $file = $request->file('photo');
-        $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
+        $newfilename = rand(1000, 50000) . "." . $file->getClientOriginalExtension();
         $file->move(public_path() . '/images/news', $newfilename);
         return $newfilename;
     }

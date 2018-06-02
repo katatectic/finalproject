@@ -10,6 +10,8 @@ use App\Article;
 use DateTime;
 
 class CommentsController extends Controller {
+	
+	public $puginationAdminComments= 20;
 
     public function addComment(Request $request) {
         $comment = new Comment;
@@ -34,7 +36,7 @@ class CommentsController extends Controller {
     }
 
     public function adminComments() {
-        $all = Comment::orderBy('id', 'DESC')->paginate(3);
+        $all = Comment::orderBy('id', 'DESC')->paginate($this->puginationAdminComments);
         $unpublishedCommentsCount = Comment::where('ispublished', '=', 0)->count();
         $publishedCommentsCount = Comment::where('ispublished', '=', 1)->count();
         return view('admin.comments.allComments', compact('all', 'unpublishedCommentsCount', 'publishedCommentsCount'));

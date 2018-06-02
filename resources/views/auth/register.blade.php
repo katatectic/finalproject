@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-	Регистрация на сайте
+Регистрация на сайте
 @endsection
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -31,6 +31,17 @@
                             <div class="col-md-6">
                                 <input id="middle_name" type="text" class="form-control" name="middle_name" value="{{ old('middle_name') }}"  autofocus>
                                 <span style="color:red">{{ $errors->first('middle_name') }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-md-4 col-lg-12 control-label">Пол</label>
+                            <div class="col-md-6">
+                                <select name="sex" id="sex" class="form-control" value="{{ old('sex') }}">
+                                    <option value="" disabled="disabled" selected="selected">Выберите пол</option>
+                                    <option value="Мужской">Мужской</option>
+                                    <option value="Женский">Женский</option>
+                                </select><br/>
+                                <span style="color:red">{{ $errors->first('sex') }}</span>
                             </div>
                         </div>
                         <div class="form-group">
