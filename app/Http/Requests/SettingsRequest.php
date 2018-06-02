@@ -31,8 +31,8 @@ class SettingsRequest extends FormRequest {
     public function messages() {
         return [
             '*.required' => 'Поле не должно быть пустым',
-            'pay_check.image' => 'Загруженный файл должен быть изображением',
-            'pay_check.max' => 'Максимальный размер изображения=2048'
+            'phone.image' => 'Загруженный файл должен быть изображением',
+            'phone.max' => 'Максимальный размер изображения=2048'
         ];
     }
 

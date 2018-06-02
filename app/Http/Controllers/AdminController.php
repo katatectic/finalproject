@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\MailRequest;
+use App\Http\Requests\SettingsRequest;
 use App\Article;
 use App\Event;
 use App\Feedback;
@@ -74,6 +75,13 @@ class AdminController extends Controller {
             $editOne->save();
             return redirect()->route('admin');
         }
+    }
+
+    public function addLogo($request) {
+        $file = $request->file('logo');
+        $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
+        $file->move(public_path() . '/images/logo', $newfilename);
+        return $newfilename;
     }
 
 }
