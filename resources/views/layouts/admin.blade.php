@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{asset('assets/dist/css/AdminLTE.min.css')}}">
         <link rel="stylesheet" href="{{asset('assets/dist/css/skins/_all-skins.min.css')}}">
         <link rel="stylesheet" href="{{asset('assets/style.css')}}">
-		<link rel="shortcut icon" href="{{ asset('images/favicon/favicon.ico')}}">
+        <link rel="shortcut icon" href="{{ asset('images/favicon/favicon.ico')}}">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -21,7 +21,6 @@
         <![endif]-->
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
-        <!-- Site wrapper -->
         <div class="wrapper">
             @include('partials.admin.header')
             <aside class="main-sidebar">
@@ -54,14 +53,25 @@
                         <li><a href="{{route('adminnews')}}"><i class="fa fa-sticky-note-o"></i> <span>Новости</span></a></li>
                         <li><a href="{{route('adminevents')}}"><i class="fa fa-list-ul"></i> <span>События</span></a></li>
                         <li><a href="{{route('adminAlbums')}}"><i class="fa fa-list-ul"></i> <span>Альбомы</span></a></li>
-                        <li><a href="{{route('admincomments')}}"><i class="fa fa-commenting"></i> <span>Комментарии</span></a></li>
+                        <li>
+                            <a href="{{route('admincomments')}}">
+                                <i class="fa fa-commenting"></i> 
+                                <span>Комментарии</span>
+                                <span class="pull-right-container">
+                                   @if($unpublishedCommentsCount() > 0)
+                                    <small class="label pull-right bg-red">{{$unpublishedCommentsCount()}}</small>
+                                    @endif 
+                                    
+                                </span>
+                            </a>
+                        </li>
                         @if (Auth::user()->role == 1)
                         <li><a href="{{route('studentsClasses')}}"><i class="fa fa-sticky-note-o"></i> <span>Классы</span></a></li>
                         <li><a href="{{route('users')}}"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
                         <li><a href="{{route('admin.feedback.index')}}"><i class="fa fa-sticky-note-o"></i> <span>Обратная связь</span></a></li>
                         <li><a href="{{route('adminSliders')}}"><i class="fa fa-sticky-note-o"></i> <span>Слайдеры</span></a></li>
                         <li><a href="{{route('adminReports')}}"><i class="fa fa-sticky-note-o"></i> <span>Отчёты</span></a></li>
-						<li><a href="{{route('mail')}}"><i class="fa fa-sticky-note-o"></i> <span>Отправка почты</span></a></li>
+                        <li><a href="{{route('mail')}}"><i class="fa fa-sticky-note-o"></i> <span>Отправка почты</span></a></li>
                         @endif
                     </ul>
                 </section>

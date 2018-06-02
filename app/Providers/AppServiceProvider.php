@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Blade;
 use App\StudentClass;
+use App\Comment;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -20,9 +21,12 @@ class AppServiceProvider extends ServiceProvider
     {
         //Schema::defaultStringLength(191);
         View::share('thisYear', date('Y', time()));
+        
         View::share('roleNames', [1 => 'Администратор', 'Глава комитета', 'Участник комитета', 'Зарегестрированный пользователь']);
+        
         View::share('transition', ceil((strtotime('now') -
                 strtotime(date('Y',strtotime('now')).'-08-01'))/(60*60*24*365)));
+        
         View::share('classesNumbers', function() {
             $classes = StudentClass::get();
             $data = [];
@@ -37,8 +41,15 @@ class AppServiceProvider extends ServiceProvider
                     $data[$class->id] = '(Выпустился)'.$class->year_of_issue - $class->start_year - $class->fourth_class;
                 }
             }
-            return $data;
+            return $data; 
         });
+        
+        View::share('unpublishedCommentsCount', function() {
+            $unpublishedCommentsCount = Comment::where('ispublished', '=', 0)->count();
+            return $unpublishedCommentsCount;
+        });
+        
+        
     }
 
     /**

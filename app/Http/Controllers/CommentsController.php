@@ -37,9 +37,9 @@ class CommentsController extends Controller {
 
     public function adminComments() {
         $all = Comment::orderBy('id', 'DESC')->paginate($this->puginationAdminComments);
-        $unpublishedCommentsCount = Comment::where('ispublished', '=', 0)->count();
-        $publishedCommentsCount = Comment::where('ispublished', '=', 1)->count();
-        return view('admin.comments.allComments', compact('all', 'unpublishedCommentsCount', 'publishedCommentsCount'));
+        $unpublishedComments = Comment::where('ispublished', '=', 0)->count();
+        $publishedComments = Comment::where('ispublished', '=', 1)->count();
+        return view('admin.comments.allComments', compact('all', 'unpublishedComments', 'publishedComments'));
     }
 
     public function commentConfirm(Request $request, $id) {

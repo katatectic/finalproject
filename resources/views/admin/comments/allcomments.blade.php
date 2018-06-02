@@ -10,7 +10,7 @@
     <section class="content">
         <div class="box">
             <div class="box-header">
-                <h3 class="btn btn-primary mb1 bg-orange">Всего неопубликованных комментариев: {{$unpublishedCommentsCount}}</h3>
+                <h3 class="btn btn-primary mb1 bg-orange">Всего неопубликованных комментариев: {{$unpublishedComments}}</h3>
             </div>
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -50,7 +50,7 @@
         </div>
         <div class="box">
             <div class="box-header">
-                <h3 class="btn btn-primary mb1 bg-orange">Всего опубликованных комментариев: {{$publishedCommentsCount}}</h3>
+                <h3 class="btn btn-primary mb1 bg-orange">Всего опубликованных комментариев: {{$publishedComments}}</h3>
             </div>
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">

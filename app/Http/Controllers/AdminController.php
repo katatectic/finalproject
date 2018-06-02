@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\MailRequest;
 use App\Article;
 use App\Event;
+use App\Feedback;
+use App\Comment;
 use App\User;
 use App\Slider;
 use App\Image;
@@ -16,6 +18,7 @@ use App\Mail\MailClass;
 class AdminController extends Controller {
 
     public function index() {
+
         return view('admin.admin');
     }
 
