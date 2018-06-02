@@ -39,9 +39,15 @@
                                                             <a href="https://goo.gl/maps/VcBD9V9LD8t" target="_blank">Мы на карте</a>
                                                         </h3>    
                                                         <p class="quick-contact-addr">
+                                                            @if($settings)
                                                             <p>{{$settings->address}}</p>
                                                             <p>Телефон</p>
                                                             <p>{{$settings->phone}}</p>
+                                                            @else
+                                                            <p>Наш адрес</p>
+                                                            <p>Телефон</p>
+                                                            <p>Добавьте телефон</p>
+                                                            @endif
                                                         </p>
                                                     </div>
                                                 </div>
