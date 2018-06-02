@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\View;
 use Blade;
 use App\StudentClass;
 use App\Comment;
+use App\Feedback;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -47,6 +48,11 @@ class AppServiceProvider extends ServiceProvider
         View::share('unpublishedCommentsCount', function() {
             $unpublishedCommentsCount = Comment::where('ispublished', '=', 0)->count();
             return $unpublishedCommentsCount;
+        });
+        
+        View::share('notViewedFeedbacks', function() {
+            $notViewedFeedbacks = Feedback::where('status', '=', 1)->count();
+            return $notViewedFeedbacks;
         });
         
         
