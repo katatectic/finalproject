@@ -61,7 +61,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminandchief'], function() 
     Route::post('album/{id}/update', 'AlbumController@update')->name('album.update');
     // Search
     Route::get('/adminsearch/results', 'AdminController@search')->name('admin.search');
-    });
 });
 
 //коллекция роутов только для админа
