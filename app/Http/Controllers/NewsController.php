@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\NewsRequest;
 use App\Article;
 use App\User;
@@ -13,11 +12,11 @@ use Illuminate\Support\Facades\Auth;
 class NewsController extends Controller {
 
     public $puginationNews = 5;
-	public $puginationArticleComments = 10;
-	public $lastNews = 5;
-	public $puginationAdminNews= 15;
+    public $puginationArticleComments = 10;
+    public $lastNews = 5;
+    public $puginationAdminNews = 15;
 
-    public function index(Request $request) {
+    public function index() {
         $all = Article::orderBy('id', 'DESC')->paginate($this->puginationNews);
         return view('news.news', compact('all'));
     }
@@ -25,14 +24,14 @@ class NewsController extends Controller {
     public function committeeNews($committeeId) {
         $committee = StudentClass::find($committeeId);
         $all = Article::where('student_class_id', $committeeId)->orderBy('id', 'DESC')->paginate($this->puginationNews);
-        return  view('news.news', compact('all', 'committee'));
+        return view('news.news', compact('all', 'committee'));
     }
 
     public function article($id) {
         $article = Article::select()->where('id', $id)->first();
-		$article->setRelation('comments', $article->comments()->paginate($this->puginationArticleComments));
-		$lastNews=Article::orderBy('id', 'desc')->take($this->lastNews)->get();
-        return view('news.article', compact('article','lastNews'));
+        $article->setRelation('comments', $article->comments()->paginate($this->puginationArticleComments));
+        $lastNews = Article::orderBy('id', 'desc')->take($this->lastNews)->get();
+        return view('news.article', compact('article', 'lastNews'));
     }
 
     public function adminNews() {
@@ -100,9 +99,10 @@ class NewsController extends Controller {
     }
 
     public function destroy($id) {
-        if (!is_numeric($id))
+        if (!is_numeric($id)) {
             return false;
-        $article = Article::find($id);
+        }
+        $article = Article::findOrFail($id);
         $img = $article->photo;
         if (is_file(public_path() . '/images/news/' . $img)) {
             unlink(public_path() . '/images/news/' . $img);
@@ -111,8 +111,10 @@ class NewsController extends Controller {
         $article->delete();
         return redirect()->route('adminnews');
     }
-	public function edit($id) {
+
+    public function edit($id) {
         $all = Article::find($id);
+        return view('admin.news.edit', compact('all'));
         $date = new DateTime($all->date);
         $all->date = $date->format('Y-m-d\Th:i');
         $studentsClasses = StudentClass::get();

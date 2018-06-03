@@ -24,9 +24,9 @@ class UserController extends Controller {
     public $puginationNews = 5;
     public $puginationEvents = 5;
     public $puginationReports = 10;
-	public $profileEvents = 5;
-	public $profileNews = 5;
-	public $profileReports = 5;
+    public $profileEvents = 5;
+    public $profileNews = 5;
+    public $profileReports = 5;
 
     public function adminUsers() {
         $users = User::orderBy('id', 'DESC')->with('studentsClasses')->paginate($this->puginationUsers);

@@ -30,7 +30,7 @@ class CommentsController extends Controller {
     public function deleteComment($id) {
         if (!is_numeric($id))
             return false;
-        $all = Comment::find($id);
+        $all = Comment::findOrFail($id);
         $all->delete();
         return back();
     }

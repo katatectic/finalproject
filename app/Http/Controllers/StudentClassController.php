@@ -56,7 +56,9 @@ class StudentClassController extends Controller
      */
     public function destroy($id)
     {
-        if (!is_numeric($id)) return false;
+        if (!is_numeric($id)) {
+            return false;
+        }
         StudentClass::find($id)->user()->detach();
         StudentClass::destroy($id);
         return redirect()->back();

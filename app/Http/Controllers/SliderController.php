@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\SlidersRequest;
 use App\Slider;
 
@@ -24,22 +23,19 @@ class SliderController extends Controller {
     }
 
     public function store(SlidersRequest $request) {
-        if ($request->method() == 'POST') {
             $data = $request->all();
             if ($request->hasFile('photo')) {
                 $data['photo'] = $this->addSliderPhoto($request);
             };
             $create = Slider::create($data);
-            $id = $create->id;
             return redirect()->route('adminSliders');
-        }
-        return view('admin.sliders.slider');
     }
 
     public function destroy($id) {
-        if (!is_numeric($id))
+        if (!is_numeric($id)) {
             return false;
-        $slider = Slider::find($id);
+        }
+        $slider = Slider::findOrFail($id);
         $img = $slider->photo;
         if (is_file($img)) {
             unlink(public_path() . '/images/sliders/' . $img);
@@ -54,7 +50,6 @@ class SliderController extends Controller {
     }
 
     public function update($id, SlidersRequest $request) {
-        if ($request->method() == "POST") {
             $editOne = Slider::find($id);
             $img = $editOne->photo;
             if (is_file(public_path() . '/images/sliders/' . $img)) {
@@ -67,7 +62,6 @@ class SliderController extends Controller {
             $editOne->fill($data);
             $editOne->save();
             return redirect()->route('adminSliders');
-        }
     }
 
     public function addSliderPhoto($request) {
