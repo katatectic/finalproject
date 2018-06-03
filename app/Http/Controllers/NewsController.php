@@ -7,7 +7,7 @@ use App\Article;
 use App\User;
 use DateTime;
 use App\StudentClass;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth; 
 
 class NewsController extends Controller {
 
