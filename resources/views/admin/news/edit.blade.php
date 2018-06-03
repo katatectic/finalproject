@@ -23,7 +23,6 @@
                                 <span style="color:red">{{ $errors->first('title') }}</span>
                             </label>
                         </div>
-                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label>Дата </label>
                             <input type="datetime-local" class="form-control" placeholder="Дата новости" name="date"
