@@ -42,7 +42,6 @@ class StudentClassController extends Controller
      */
     public function update(StudentClassRequest $request)
     {
-
         $class = $request->all();
         unset($class['_token'], $class['page'],$class['id']);
         StudentClass::find($request->id)->update($class);

@@ -37,10 +37,10 @@
                         <p>{{$article->content}}</p>
                     </div>
                     @if (!Auth::guest())
-                    @if (Auth::user()->role == 1 or Auth::user()->role == 2)
-                    <a href="{{ route('article.edit',['id'=>$article->id]) }}" class="more-link button">Редактировать новость</a>
-                    <a href="{{route('deletenews',$article->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button">Удалить новость</a>
-                    @endif
+                        @if ( Auth::user()->role == 1 or (Auth::user()->role == 2 and Auth::user()->studentsClasses->contains('id', $article->studentClass['id'])) )
+                            <a href="{{ route('article.edit',['id'=>$article->id]) }}" class="more-link button">Редактировать новость</a>
+                            <a href="{{route('deletenews',$article->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button">Удалить новость</a>
+                        @endif
                     @endif
                 </article>
                 <div class="col-md-6 blog-right">

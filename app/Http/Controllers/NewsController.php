@@ -44,7 +44,8 @@ class NewsController extends Controller {
     public function create() {
         $userId = Auth::id();
         $user = User::with('studentsClasses')->find($userId);
-        return view('admin.news.create', ['user' => $user]);
+        $studentsClasses = StudentClass::get();
+        return view('admin.news.create', ['user' => $user, 'studentsClasses' => $studentsClasses]);
     }
 
     public function userNewsCreate() {
@@ -56,9 +57,12 @@ class NewsController extends Controller {
     public function adminNewsStore(NewsRequest $request) {
         if ($request->method() == 'POST') {
             $data = $request->all();
+            if ($data['student_class_id'] == 0) {
+                unset($data['student_class_id']);
+            }
             unset($data['__token']);
-            $date = new DateTime();
-            $data['date'] = $date->format('Y-m-d');
+            $date = new DateTime($data['date']);
+            $data['date'] = $date->format('Y-m-d h:i:s');
             if ($request->hasFile('photo')) {
                 $data['photo'] = $this->addPhoto($request);
             };
@@ -73,11 +77,14 @@ class NewsController extends Controller {
         if ($request->method() == 'POST') {
             $data = $request->all();
             unset($data['__token']);
-            $date = new DateTime();
-            $data['date'] = $date->format('Y-m-d');
+            $date = new DateTime($data['date']);
+            $data['date'] = $date->format('Y-m-d h:i:s');
             if ($request->hasFile('photo')) {
                 $data['photo'] = $this->addPhoto($request);
             };
+            if ($data['student_class_id'] == 0) {
+                unset($data['student_class_id']);
+            }
             $create = Article::create($data);
             $id = $create->id;
             return redirect()->route('adminnews');
@@ -106,27 +113,31 @@ class NewsController extends Controller {
     }
 	public function edit($id) {
         $all = Article::find($id);
-        return view('admin.news.edit',compact('all'));
+        $date = new DateTime($all->date);
+        $all->date = $date->format('Y-m-d\Th:i');
+        $studentsClasses = StudentClass::get();
+        return view('admin.news.edit',compact('all', 'studentsClasses'));
     }
 
     public function update($id, NewsRequest $request) {
-        if ($request->method() == "POST") {
-			$editOne = Article::find($id);
-			$img = $editOne->photo;
-			if (is_file(public_path() . '/images/news/' . $img)) {
-				unlink(public_path() . '/images/news/' . $img);
-			}
-            $data = $request->all();
-            $date = new DateTime();
-            $data['date'] = $date->format('Y-m-d');
-            if ($request->hasFile('photo')) {
-                $data['photo'] = $this->addPhoto($request);
-            };
-            $editOne = Article::find($id);
-            $editOne->fill($data);
-            $editOne->save();
-            return redirect()->route('adminnews');
+        $editOne = Article::find($id);
+        $img = $editOne->photo;
+        $data = $request->all();
+        if ( $request->hasFile('photo') ) {
+            $data['photo'] = $this->addPhoto($request);
+            if (is_file(public_path() . '/images/news/' . $img)) {
+                unlink(public_path() . '/images/news/' . $img);
+            }
         }
+        if ($data['student_class_id'] == 0) {
+            $data['student_class_id'] = null;
+        }
+        $date = new DateTime($data['date']);
+        $data['date'] = $date->format('Y-m-d h:i:s');
+        Article::find($id)->update($data);
+        $editOne->fill($data);
+        $editOne->save();
+        return redirect()->route('adminnews');
     }
 
 }

@@ -16,7 +16,7 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    {{session('status')}}
+                    {{session('status')}}s
                 </div>
                 @endif
                 <article id="post-425" class="post-425 page type-page status-publish hentry">

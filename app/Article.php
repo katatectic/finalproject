@@ -22,7 +22,7 @@ class Article extends Model
         return $this->belongsTo('App\User'); // одна статья принадлежит одному пользователю
     }
 
-    public function studentsClasses()
+    public function studentClass()
     {
         return $this->belongsTo('App\StudentClass'); // одна статья принадлежит одному классу
     }

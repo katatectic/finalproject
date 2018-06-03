@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\StudentClass;
 
 class EventsRequest extends FormRequest {
 
@@ -21,6 +24,13 @@ class EventsRequest extends FormRequest {
      * @return array
      */
     public function rules() {
+        if (Auth::user()->role != 1) {
+            $userId = Auth::id();
+            $user = User::with('studentsClasses')->find($userId);
+            $studentsClasses = $user->studentsClasses->keyBy('id')->keys()->all();
+        } else {
+            $studentsClasses = StudentClass::get()->keyBy('id')->keys()->all();
+        }
         return [
             'title' => 'required',
             'event_date' => 'required',
@@ -29,14 +39,15 @@ class EventsRequest extends FormRequest {
             'description' => 'required',
             'content' => 'required',
             'photo' => 'required|image|max:2048',
-			'student_class_id'=>'required'];
+            'student_class_id'=>'required|in:0,'.implode(",", $studentsClasses)];
     }
 
     public function messages() {
         return [
             '*.required' => 'Поле не должно быть пустым',
             'photo.image' => 'Загруженный файл должен быть изображением',
-            'photo.max' => 'Максимальный размер изображения=2048'
+            'photo.max' => 'Максимальный размер изображения=2048',
+            'student_class_id.in' => 'Вы не состоите в этом комитете'
         ];
     }
 

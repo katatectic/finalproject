@@ -44,6 +44,7 @@ class AppServiceProvider extends ServiceProvider
                     $data[$class->id] = '(Выпустился)'.$class->year_of_issue - $class->start_year - $class->fourth_class;
                 }
             }
+            $data[null] = '';
             return $data; 
         });
         
@@ -56,7 +57,6 @@ class AppServiceProvider extends ServiceProvider
             $notViewedFeedbacks = Feedback::where('status', '=', 1)->count();
             return $notViewedFeedbacks;
         });
-        
         
     }
 

@@ -40,7 +40,7 @@ Route::group(['middleware' => 'adminandchief'], function() {
     Route::get('newscreate', 'NewsController@create')->name('newsview');
     Route::post('addNews', 'NewsController@adminNewsStore')->name('admin.addNews');
     Route::get('article/{id}/edit', 'NewsController@edit')->name('article.edit');/* Редактирование новость*/
-    Route::post('article/{id}/update', 'NewsController@edit')->name('article.update');/* Редактирование новость*/
+    Route::post('article/{id}/update', 'NewsController@update')->name('article.update');/* Редактирование новость*/
     Route::get('article/{id}/delete', 'NewsController@destroy')->name('deletenews');/* Удаление новости*/
     // Events
     Route::get('events', 'EventController@adminEvents')->name('adminevents');/*Список всех событий в админке*/

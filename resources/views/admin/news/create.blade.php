@@ -22,7 +22,7 @@
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label>Дата </label>
-                            <input type="date" class="form-control" placeholder="Дата новости" name="date" value="{{ old('date') }}">
+                            <input type="datetime-local" class="form-control" placeholder="Дата новости" name="date" value="{{ old('date') }}">
                             <span style="color:red">{{ $errors->first('date') }}</span>
                         </div>
                         <div class="form-group">
@@ -31,17 +31,16 @@
                             <span style="color:red">{{ $errors->first('photo') }}</span>
                         </div>
                         <div class="form-group">
-                            {{$user->studentsClasses->keyBy('id')->keys()}}
-                            <label>Комитет </label>
-                            <select name="student_class_id">
-								{{--<option value="" disabled="disabled" selected="selected">Выберите комитет новости</option>--}}
-                                <option value="0">Общая новость</option>
-                                @foreach($user->studentsClasses as $class)
-                                    <option value="{{$class->id}}">
-                                        {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <label>Комитет
+                                <select name="student_class_id">
+                                    <option value="0">Общая новость</option>
+                                    @foreach($studentsClasses as $class)
+                                        <option value="{{$class->id}}">
+                                            {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </label>
 							<span style="color:red">{{ $errors->first('student_class_id') }}</span>
                         </div>
                     </div>
