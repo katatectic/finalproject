@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\NewsRequest;
 use App\Article;
 use App\User;
@@ -114,7 +115,6 @@ class NewsController extends Controller {
 
     public function edit($id) {
         $all = Article::find($id);
-        return view('admin.news.edit', compact('all'));
         $date = new DateTime($all->date);
         $all->date = $date->format('Y-m-d\Th:i');
         $studentsClasses = StudentClass::get();
