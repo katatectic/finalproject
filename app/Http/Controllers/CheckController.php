@@ -22,17 +22,17 @@ class CheckController extends Controller {
         return redirect()->route('adminReports');
     }
 
-    public function deleteImage($id) {
+    public function deleteCheck($id) {
         if (!is_numeric($id)) {
             return false;
         }
-        $photo = Check::findOrFail($id);
-        $img = $photo->image;
+        $check = Check::findOrFail($id);
+        $img = $check->image;
         if (is_file(public_path() . '/images/reports/checks/' . $img)) {
             unlink(public_path() . '/images/reports/checks/' . $img);
         }
-        $photo->delete();
-        return redirect()->route('adminReports');
+        $check->delete();
+        return redirect()->route('reports');
     }
 
     public function image($request) {

@@ -33,7 +33,7 @@
                             <td><a href="{{route('profile',['id'=>$report->user->id])}}">{{$report->user->name}}</a></td>
                             <td>{{$report->date}}</td>
                             <td>{{str_limit($report->content,25)}}</td>
-							<td></td>
+							<td><a href="{{route('check.create',['id'=>$report->id])}}" class="fa fa-plus"></td>
                             <td>
                                 <a href="{{route('report.show',['id'=>$report->id])}}" class="fa fa-eye"></a>
                                 <a href="{{route('admin.report.edit', ['id' => $report->id ] ) }}" class="fa fa-pencil"></a>

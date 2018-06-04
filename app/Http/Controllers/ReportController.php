@@ -54,16 +54,18 @@ class ReportController extends Controller {
         if (!is_numeric($id)) {
             return false;
         }
-        $report = Report::findOrFail($id);
-        Report::find($id)->comments()->forceDelete();
-        $img = $report->pay_check;
-        if (is_file(public_path() . '/images/reports/' . $img)) {
-            unlink(public_path() . '/images/reports/' . $img);
+        $report = Report::with('checks')->findOrFail($id);
+		$checks = $report->checks;
+		foreach ($checks as $check) {
+            if (is_file(public_path() . '/images/reports/checks/' . $check->image)) {
+                unlink(public_path() . '/images/reports/checks/' . $check->image);
+            }
         }
         Report::find($id)->comments()->forceDelete();
         $report->delete($id);
         return redirect()->route('adminReports');
     }
+
 
     public function edit($id) {
         $report = Report::find($id);

@@ -46,7 +46,7 @@
                                 </a>
                             </div>   
                             @if((Auth::user() and Auth::user()->role==1) or (Auth::user() and Auth::user()->role==2))
-                            <a href="" onclick="return confirm('Удалить чек?')" class="more-link button" style="margin:0 auto">Удалить чек</a>
+                            <a href="{{route('check.delete',$check->id)}}" onclick="return confirm('Удалить чек?')" class="more-link button" style="margin:0 auto">Удалить чек</a>
                             @endif
                         </figure>
                         @endforeach
