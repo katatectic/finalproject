@@ -20,6 +20,18 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Комитет</label>
+                            <select name="student_class_id">
+                                <option value="0">Для всех</option>
+                                @foreach($user->studentsClasses as $class)
+                                    <option value="{{$class->id}}">
+                                        {{$classesNumbers()[$class->id]}}-{{$class->letter_class}}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <span style="color:red">{{ $errors->first('student_class_id') }}</span>
+                        </div>
+                        <div class="form-group">
                             <label for="content" class="col-md-4 control-label">Текст отчета</label>
                             <div class="col-md-6">
                                 <textarea class="form-control" id="content" rows='23' name="content" placeholder="Введите текст отчета" autofocus>{{ old('content') }}</textarea>

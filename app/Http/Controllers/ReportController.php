@@ -36,7 +36,9 @@ class ReportController extends Controller {
     }
 
     public function userReportCreate() {
-        return view('user.useraddreport');
+        $userId = Auth::id();
+        $user = User::with('studentsClasses')->find($userId);
+        return view('user.useraddreport', compact('user'));
     }
 
     public function create() {
