@@ -127,7 +127,7 @@
                                                             <div class="entry-meta">
                                                                 <ul class="post-meta-wrapper ul-horizontal-list">
                                                                     <li class="post-meta-date">
-                                                                        <time class="entry-date published">{{$article->created_at->format('d.m.Y')}}</time> 
+                                                                        <time class="entry-date published">{{date('j '.$monthNames[date('n', strtotime($article->date))].' Y года'.' в H:i', strtotime($article->date))}}</time> 
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -175,9 +175,9 @@
                                                                 <a href="{{route('profile',['id'=>$event->user->id])}}">{{$event->user->name}}
                                                                 </a>
                                                             </h6>
-                                                            <p class="doublef-event-item-date">Дата {{date('j '.$monthNames[date('n', strtotime($event->event_date))].' Y года', strtotime($event->event_date))}}</p>
-                                                            <p class="doublef-event-item-time">Время {{$event->event_hours}}</p>
-                                                            <div class="doublef-event-address">Адрес: <a href="https://www.google.com/maps/search/{{implode('+', explode(" ",$event->address))}}">{{$event->address}}</a>
+                                                            <p class="doublef-event-item-date">Дата проведения — {{date('j '.$monthNames[date('n', strtotime($event->event_date))].' Y года', strtotime($event->event_date))}}</p>
+                                                            <p class="doublef-event-item-time">Время — {{$event->event_hours}}</p>
+                                                            <div class="doublef-event-address">Адрес — <a href="https://www.google.com/maps/search/{{implode('+', explode(" ",$event->address))}}">{{$event->address}}</a>
                                                                 <a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>
                                                             </div>
                                                         </header>

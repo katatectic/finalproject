@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-	Добавить изображение в альбом
+    Добавить изображение в альбом
 @endsection
 @section('content')
 <div class="container">

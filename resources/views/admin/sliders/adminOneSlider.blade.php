@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	{{$slider->title}}
+    {{$slider->title}}
 @endsection
 @section('content')
 <div class="content-wrapper">

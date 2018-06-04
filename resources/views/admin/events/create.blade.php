@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Добавление события
+    Добавление события
 @endsection
 @section('content')
 <div class="content-wrapper">

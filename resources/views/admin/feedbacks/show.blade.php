@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Заявка № {{$feedback->id}}
+    Заявка № {{$feedback->id}}
 @endsection
 @section('content')
 <div class="content-wrapper">

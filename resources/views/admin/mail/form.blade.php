@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Отправка почты
+    Отправка почты
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -13,16 +13,16 @@
         <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('sendMail')}}" >
             <div class="box">
                 <div class="box-body">
-                        <div class="form-group">
-                            <label>Имя</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Имя получателя" name="name" value="{{ old('name') }}">
-                            <span style="color:red">{{ $errors->first('name') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Почта</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Почта получателя" name="email" value="{{ old('email') }}">
-                            <span style="color:red">{{ $errors->first('email') }}</span>
-                        </div>
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Имя получателя" name="name" value="{{ old('name') }}">
+                        <span style="color:red">{{ $errors->first('name') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Почта</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Почта получателя" name="email" value="{{ old('email') }}">
+                        <span style="color:red">{{ $errors->first('email') }}</span>
+                    </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Сообщение</label>

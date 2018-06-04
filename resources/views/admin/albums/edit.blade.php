@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Редактирование альбома {{$album->name}}
+    Редактирование альбома {{$album->name}}
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -19,7 +19,7 @@
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Название альбома" name="name" value="{{$album->name}}">
                             <span style="color:red">{{ $errors->first('name') }}</span>
                         </div>
-						<div class="form-group">
+                        <div class="form-group">
                             <label for="exampleInputFile">Изображение</label>
                             @isset($album->cover_image)
                                 <img width="100" src="{{asset('images/albums/'.$album->cover_image)}}" class="attachment-full size-full wp-post-image"/>

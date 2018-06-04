@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Ответ пользователю {{$feedback->name}}
+    Ответ пользователю {{$feedback->name}}
 @endsection
 @section('content')
 <div class="content-wrapper">

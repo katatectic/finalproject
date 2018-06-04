@@ -31,8 +31,8 @@
                                                     @endif
                                                     <li id="menu-item-1121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1121" role="menu">
                                                         <a href="{{ route('logout') }}"
-                                                            onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">Выйти
+                                                           onclick="event.preventDefault();
+                                                                   document.getElementById('logout-form').submit();">Выйти
                                                         </a>
                                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                             {{ csrf_field() }}
@@ -54,24 +54,22 @@
     <div class="cast-all-inside site-header--background">    
         <div class="wrappr">        
             <div id="navhead" class="site-header--logo-left">            
-                <!-- toggle mobile menu icon -->
                 <span class="menu-toggler">
                     <span id="nav-icon" class="icon">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </span>
-                </span>
-                <!-- toggle mobile menu icon END -->                            
+                </span>                          
                 <div class="site-header--branding">
                     <a href="{{ url('/') }}" rel="home" class="site-header--branding-a" data-img-width="166" data-img-height="120">
-                    @if($settings)
-                    <img src="{{asset('images/logo/'.$settings->logo)}}" alt="{{$settings->title}}" />
-                    @else
-                    <img src="https://pp.userapi.com/c631424/v631424704/26f3c/dgyz8G3Zuko.jpg?ava=1" alt="Родительский комитет" />
-                    @endif
+                        @if($settings)
+                        <img src="{{asset('images/logo/'.$settings->logo)}}" alt="{{$settings->title}}" />
+                        @else
+                        <img src="https://pp.userapi.com/c631424/v631424704/26f3c/dgyz8G3Zuko.jpg?ava=1" alt="Родительский комитет" />
+                        @endif
                     </a>
-                </div><!-- .site-header--branding -->                        
+                </div>                
                 <nav id="site-navigation" class="main-navigation" role="navigation">                
                     <ul id="primary-menu" class="">
                         <li id="menu-item-21" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-21">
@@ -92,45 +90,30 @@
                         <li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
                             <a href="{{ route('allCommittees') }}">Комитеты</a>
                         </li>
-						<li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
+                        <li id="menu-item-512" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-events menu-item-512">
                             <a title="" href="{{route('addFeedback')}}">Обратная связь</a>
                         </li>
-                        
-                            @if (!Auth::guest())                                
-                            @if (Auth::user()->role == 3)
-                            <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('user.add')}}">Добавить</a>
-                                <ul class="sub-menu">
-                                    <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650">
-                                        <a title="" href="{{route('user.event.create')}}">Добавить событие</a>
-                                    </li>       
-                                    <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
-                                        <a href="{{ route('user.news.create') }}">Добавить новость</a>
-                                    </li>
-                                    <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
-                                        <a href="{{ route('user.reports.create') }}">Добавить отчет</a>
-                                    </li>
-                                </ul>
-                            </li>     
-                            
-                            @endif
-                            @endif
-
-                            {{-- <!--СТАРЫЙ ВАРИАНТ МЕНЮШКИ-->
-                            @if (!Auth::guest())                                
-                            @if (Auth::user()->role == 3)
-                            <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('user.event.create')}}">Добавить событие</a></li>       
-                            <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309"><a href="{{ route('user.news.create') }}">Добавить новость</a></li>
-                            <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309"><a href="{{ route('user.reports.create') }}">Добавить отчет</a></li>
-                            @endif
-                            @endif
-                            --}}
-
-
+                        @if (!Auth::guest())                                
+                        @if (Auth::user()->role == 3)
+                        <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650"><a title="" href="{{route('user.add')}}">Добавить</a>
+                            <ul class="sub-menu">
+                                <li id="menu-item-650" class="menu-item menu-item-type-taxonomy menu-item-object-doublef-courses menu-item-650">
+                                    <a title="" href="{{route('user.event.create')}}">Добавить событие</a>
+                                </li>       
+                                <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
+                                    <a href="{{ route('user.news.create') }}">Добавить новость</a>
+                                </li>
+                                <li id="menu-item-309" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-309">
+                                    <a href="{{ route('user.reports.create') }}">Добавить отчет</a>
+                                </li>
+                            </ul>
+                        </li>     
+                        @endif
+                        @endif
                     </ul>                    
-                </nav><!-- #site-navigation -->                                
+                </nav>                             
             </div>        
-        </div><!-- .cast-all-inside -->        
+        </div>   
     </div>
-</header><!-- #masthead -->
+</header>
 
-    

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Добавить новость
+    Добавить новость
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -43,11 +43,11 @@
                                     @endforeach
                                 </select>
                             </label>
-							<span style="color:red">{{ $errors->first('student_class_id') }}</span>
+                            <span style="color:red">{{ $errors->first('student_class_id') }}</span>
                         </div>
                     </div>
                     <div class="col-md-12">
-						<div class="form-group">
+                        <div class="form-group">
                             <label>Краткое описание</label>
                             <textarea name="description" placeholder="Краткое описание новости" cols="30" rows="10" class="form-control">{{ old('description') }}</textarea>
                             <span style="color:red">{{ $errors->first('description') }}</span>

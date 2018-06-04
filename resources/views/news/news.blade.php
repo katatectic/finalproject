@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Новости
+    Новости
 @endsection
 @section('content')
 <div id="cinemahead">
@@ -50,7 +50,7 @@
                                     <a href="{{route('article',['id'=>$news->id])}}" rel="bookmark">{{$news->title}}</a></h3>
                                 <h5 class="doublef-event-item-date">Добавил: <a href="{{route('profile',['id'=>$news->user->id])}}">{{$news->user->name}} {{$news->user->surname}}</a>
                                 </h5>
-                                <h5 class="doublef-event-item-date">{{$news->date}}</h5>
+                                <h5 class="doublef-event-item-date">{{date('j '.$monthNames[date('n', strtotime($news->date))].' Y года'.' в H:i', strtotime($news->date))}}</h5>
                             </header>
                             <div class="entry-content">
                                 <p>{{$news->description}}
@@ -64,7 +64,7 @@
             </div>
         </div>
         @endforeach
-        {{ $all->links() }}
+        {{$all->links()}}
     </section>
     @endif
 </div>

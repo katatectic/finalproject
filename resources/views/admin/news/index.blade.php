@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Новости
+    Новости
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -34,7 +34,7 @@
                             <td><a href="{{route('profile',['id'=>$news->user->id])}}">{{$news->user->name}}</a></td>
                             <td>{{ $classesNumbers()[ $news->studentClass['id'] ] }} - {{$news->studentClass['letter_class']}}</td>
                             <td>{{$news->title}}</td>
-                            <td>{{$news->date}}</td>
+                            <td>{{date('j '.$monthNames[date('n', strtotime($news->date))].' Y года'.' в H:i', strtotime($news->date))}}</td>
                             <td>{{str_limit($news->content,25)}}</td>
                             <td>
                                 @isset($news->photo)
@@ -44,7 +44,7 @@
                                         </a>
                                     </div>
                                 @else
-                                    Отсутствует
+                                    Изображение отсутствует
                                 @endisset
                             </td>
                             <td>

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Добавить отчёт
+    Добавить отчёт
 @endsection
 @section('content')
 <div class="content-wrapper">

@@ -33,18 +33,18 @@
                         <div class="post-text-block grid__col grid__col--6-of-12 grid__col--m-1-of-1">
                             <header class="entry-header">
                                 <h3 class="entry-title">  
-                                    <a href="{{route('report.show',['id'=>$report->id])}}">Протокол № {{ $report->id }} от {{ $report->date }}</a>
+                                    <a href="{{route('report.show',['id'=>$report->id])}}">Протокол № {{ $report->id }} от {{date('j '.$monthNames[date('n', strtotime($report->date))].' Y года', strtotime($report->date))}}</a>
                                 </h3>
                                 <h5 class="doublef-event-item-date">
                                     Добавил: <a href="{{route('profile',['id'=>$report->user->id])}}">{{$report->user->name}} {{$report->user->surname}}</a></h5>
-                                <h5 class="doublef-event-item-date">{{ $report->date }} </h5>
+                                <h5 class="doublef-event-item-date">{{date('j '.$monthNames[date('n', strtotime($report->date))].' Y года', strtotime($report->date))}} </h5>
                                 <div class="entry-content">                                
-                                <a class="more-link button"  href="{{ route('report.show',['id'=>$report->id]) }}">Читать далее</a>
-                            </div>
+                                    <a class="more-link button"  href="{{ route('report.show',['id'=>$report->id]) }}">Читать далее</a>
+                                </div>
                             </header>
-             
+
                         </div>
-					</article>
+                    </article>
                 </main>
             </div>
         </div>

@@ -34,7 +34,7 @@
                             <td>{{$report->id}}</td>
                             <td><a href="{{route('profile',['id'=>$report->user->id])}}">{{$report->user->name}}</a></td>
                             <td>{{ $classesNumbers()[ $report->studentClass['id'] ] }} - {{$report->studentClass['letter_class']}}</td>
-                            <td>{{$report->date}}</td>
+                            <td>{{date('j '.$monthNames[date('n', strtotime($report->date))].' Y года', strtotime($report->date))}}</td>
                             <td>{{str_limit($report->content,25)}}</td>
                             <td><a href="{{route('check.create',['id'=>$report->id])}}" class="fa fa-plus"></a></td>
                             <td>

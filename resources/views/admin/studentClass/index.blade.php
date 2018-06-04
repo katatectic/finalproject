@@ -15,7 +15,7 @@
 </head>
 @extends('layouts.admin')
 @section('title')
-	Классы
+    Классы
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -59,22 +59,22 @@
                     </thead>
                     <tbody>
                         @foreach($studentsClasses as $class)
-                        <tr class="showForm" id="{{$class->id}}">
-                            <td class="className">
-                                @if ($thisYear - $class->start_year + $transition < 4)
-                                {{$thisYear - $class->start_year + $transition}}
-                                @elseif ($thisYear <= $class->year_of_issue)
-                                {{$thisYear - $class->start_year + $transition + 1 - $class->fourth_class}}
-                                @else
-                                (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
-                                @endif
-                                <span>{{$class->letter_class}}</span>
-                            </td>
-                            <td class="start_year">{{$class->start_year}}</td>
-                            <td class="year_of_issue">{{$class->year_of_issue}}</td>
-                            <td class="fourth_class" value="{{$class->fourth_class}}">@if (!$class->fourth_class) Пропускают @else Проходят @endif</td>
-                            <td>{{$class->created_at}}</td>
-                        </tr>
+                            <tr class="showForm" id="{{$class->id}}">
+                                <td class="className">
+                                    @if ($thisYear - $class->start_year + $transition < 4)
+                                        {{$thisYear - $class->start_year + $transition}}
+                                    @elseif ($thisYear <= $class->year_of_issue)
+                                        {{$thisYear - $class->start_year + $transition + 1 - $class->fourth_class}}
+                                    @else
+                                        (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
+                                    @endif
+                                    <span>{{$class->letter_class}}</span>
+                                </td>
+                                <td class="start_year">{{$class->start_year}}</td>
+                                <td class="year_of_issue">{{$class->year_of_issue}}</td>
+                                <td class="fourth_class" value="{{$class->fourth_class}}">@if (!$class->fourth_class) Пропускают @else Проходят @endif</td>
+                                <td>{{$class->created_at}}</td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>		  

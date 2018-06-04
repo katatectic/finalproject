@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Создать альбом
+    Создать альбом
 @endsection
 @section('content')
 <div class="content-wrapper">
