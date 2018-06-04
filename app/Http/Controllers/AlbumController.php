@@ -33,12 +33,12 @@ class AlbumController extends Controller {
     }
 
     public function store(AlbumsRequest $request) {
-            $data = $request->all();
-            if ($request->hasFile('cover_image')) {
-                $data['cover_image'] = $this->addPhoto($request);
-            };
-            $create = Album::create($data);
-            return redirect()->route('adminAlbums');
+        $data = $request->all();
+        if ($request->hasFile('cover_image')) {
+            $data['cover_image'] = $this->addPhoto($request);
+        };
+        $create = Album::create($data);
+        return redirect()->route('adminAlbums');
     }
 
     public function destroy($id) {
@@ -66,18 +66,18 @@ class AlbumController extends Controller {
     }
 
     public function update($id, AlbumsRequest $request) {
-            $editOne = Album::find($id);
-            $img = $editOne->cover_image;
+        $editOne = Album::find($id);
+        $img = $editOne->cover_image;
+        $data = $request->all();
+        if ($request->hasFile('cover_image')) {
+            $data['cover_image'] = $this->addPhoto($request);
             if (is_file(public_path() . '/images/albums/' . $img)) {
                 unlink(public_path() . '/images/albums/' . $img);
             }
-            $data = $request->all();
-            if ($request->hasFile('cover_image')) {
-                $data['cover_image'] = $this->addPhoto($request);
-            };
-            $editOne->fill($data);
-            $editOne->save();
-            return redirect()->route('adminAlbums');
+        };
+        $editOne->fill($data);
+        $editOne->save();
+        return redirect()->route('adminAlbums');
     }
 
     public function addPhoto($request) {

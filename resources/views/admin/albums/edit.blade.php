@@ -19,8 +19,11 @@
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Название альбома" name="name" value="{{$album->name}}">
                             <span style="color:red">{{ $errors->first('name') }}</span>
                         </div>
-                        <div class="form-group">
+						<div class="form-group">
                             <label for="exampleInputFile">Изображение</label>
+                            @isset($album->cover_image)
+                                <img width="100" src="{{asset('images/albums/'.$album->cover_image)}}" class="attachment-full size-full wp-post-image"/>
+                            @endisset
                             <input type="file" name="cover_image" id="exampleInputFile">
                             <span style="color:red">{{ $errors->first('cover_image') }}</span>
                         </div>

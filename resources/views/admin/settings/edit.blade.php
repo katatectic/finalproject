@@ -19,13 +19,14 @@
                             <input type="text" class="form-control" placeholder="Название события" name="title" value="{{$settings->title}}">
                             <span style="color:red">{{ $errors->first('title') }}</span>
                         </div>                        
-
-                        <div class="form-group">
+						<div class="form-group">
                             <label for="exampleInputFile">Изображение</label>
+                            @isset($settings->logo)
+                                <img width="100" src="{{asset('images/logo/'.$settings->logo)}}" class="attachment-full size-full wp-post-image"/>
+                            @endisset
                             <input type="file" name="logo" id="exampleInputFile">
                             <span style="color:red">{{ $errors->first('logo') }}</span>
                         </div>
-
                         <div class="form-group">
                             <label>Адрес организации</label>
                             <input type="text" class="form-control" placeholder="Название события" name="address" value="{{$settings->address}}">

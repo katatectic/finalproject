@@ -19,8 +19,11 @@
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Название слайдера" name="title" value="{{$slider->title}}">
                             <span style="color:red">{{ $errors->first('title') }}</span>
                         </div>
-                        <div class="form-group">
+						<div class="form-group">
                             <label for="exampleInputFile">Изображение</label>
+                            @isset($slider->photo)
+                                <img width="100" src="{{asset('images/sliders/'.$slider->photo)}}" class="attachment-full size-full wp-post-image"/>
+                            @endisset
                             <input type="file" name="photo" id="exampleInputFile">
                             <span style="color:red">{{ $errors->first('photo') }}</span>
                         </div>

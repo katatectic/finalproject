@@ -23,12 +23,12 @@ class SliderController extends Controller {
     }
 
     public function store(SlidersRequest $request) {
-            $data = $request->all();
-            if ($request->hasFile('photo')) {
-                $data['photo'] = $this->addSliderPhoto($request);
-            };
-            $create = Slider::create($data);
-            return redirect()->route('adminSliders');
+        $data = $request->all();
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $this->addSliderPhoto($request);
+        };
+        $create = Slider::create($data);
+        return redirect()->route('adminSliders');
     }
 
     public function destroy($id) {
@@ -50,18 +50,18 @@ class SliderController extends Controller {
     }
 
     public function update($id, SlidersRequest $request) {
-            $editOne = Slider::find($id);
-            $img = $editOne->photo;
+        $editOne = Slider::find($id);
+        $img = $editOne->photo;
+        $data = $request->all();
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $this->addSliderPhoto($request);
             if (is_file(public_path() . '/images/sliders/' . $img)) {
                 unlink(public_path() . '/images/sliders/' . $img);
             }
-            $data = $request->all();
-            if ($request->hasFile('photo')) {
-                $data['photo'] = $this->addSliderPhoto($request);
-            };
-            $editOne->fill($data);
-            $editOne->save();
-            return redirect()->route('adminSliders');
+        };
+        $editOne->fill($data);
+        $editOne->save();
+        return redirect()->route('adminSliders');
     }
 
     public function addSliderPhoto($request) {

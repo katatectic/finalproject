@@ -80,7 +80,8 @@ class EventController extends Controller {
                 unset($data['student_class_id']);
             }
             $create = Event::create($data);
-            return redirect()->route('event.index');;
+            return redirect()->route('event.index');
+            ;
         }
         return view('event.index');
     }
@@ -101,25 +102,23 @@ class EventController extends Controller {
     }
 
     public function update($id, EventsRequest $request) {
-        if ($request->method() == "POST") {
-            $editOne = Event::find($id);
-            $img = $editOne->photo;
-            $data = $request->all();
-            if ( $request->hasFile('photo') ) {
-                $data['photo'] = $this->addPhoto($request);
-                if (is_file(public_path() . '/images/events/' . $img)) {
-                    unlink(public_path() . '/images/events/' . $img);
-                }
+        $editOne = Event::find($id);
+        $img = $editOne->photo;
+        $data = $request->all();
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $this->addPhoto($request);
+            if (is_file(public_path() . '/images/events/' . $img)) {
+                unlink(public_path() . '/images/events/' . $img);
             }
-            if ($data['student_class_id'] == 0) {
-                $data['student_class_id'] = null;
-            }
-            $date = new DateTime($data['event_date']);
-            $data['event_date'] = $date->format('Y-m-d h:i:s');
-            $editOne->fill($data);
-            $editOne->save();
-            return redirect()->route('adminevents');
         }
+        if ($data['student_class_id'] == 0) {
+            $data['student_class_id'] = null;
+        }
+        $date = new DateTime($data['event_date']);
+        $data['event_date'] = $date->format('Y-m-d h:i:s');
+        $editOne->fill($data);
+        $editOne->save();
+        return redirect()->route('adminevents');
     }
 
     public function destroy($id) {

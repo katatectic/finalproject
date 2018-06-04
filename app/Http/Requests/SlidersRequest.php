@@ -23,7 +23,7 @@ class SlidersRequest extends FormRequest {
     public function rules() {
         return [
             'title' => 'required|max:50',
-            'photo' => 'required|image|max:2048',
+            'photo' => 'image|max:2048',
             'description' => 'required'];
     }
 

@@ -55,21 +55,23 @@ class AdminController extends Controller {
     }
 
     public function settings() {
-        $settings = Setting::first();        
+        $settings = Setting::first();
         return view('admin.settings.edit', compact('settings'));
     }
 
     public function settingsUpdate(SettingsRequest $request) {
-        if ($request->method() == "POST") {
-            $data = $request->all();
-            if ($request->hasFile('logo')) {
-                $data['logo'] = $this->addLogo($request);
-            };
-            $editOne = Setting::first();
-            $editOne->fill($data);
-            $editOne->save();
-            return redirect()->route('admin');
+        $editOne = Setting::first();
+        $img = $editOne->logo;
+        $data = $request->all();
+        if ($request->hasFile('logo')) {
+            $data['logo'] = $this->addLogo($request);
+            if (is_file(public_path() . '/images/logo/' . $img)) {
+                unlink(public_path() . '/images/logo/' . $img);
+            }
         }
+        $editOne->fill($data);
+        $editOne->save();
+        return redirect()->route('admin');
     }
 
     public function addLogo($request) {

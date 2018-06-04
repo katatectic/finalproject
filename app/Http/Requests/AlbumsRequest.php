@@ -24,7 +24,7 @@ class AlbumsRequest extends FormRequest {
         return [
             'name' => 'required',
             'description' => 'required',
-            'cover_image' => 'required|image|max:2048'];
+            'cover_image' => 'image|max:2048'];
     }
 
     public function messages() {

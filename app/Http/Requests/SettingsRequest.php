@@ -25,7 +25,7 @@ class SettingsRequest extends FormRequest {
             'title' => 'required',
             'address' => 'required',
             'phone' => 'required',
-            'logo' => 'required|image|max:2048',];
+            'logo' => 'image|max:2048',];
     }
 
     public function messages() {

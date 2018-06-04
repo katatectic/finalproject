@@ -12,54 +12,57 @@
                     <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{route('user.event.store')}}">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="title" class="col-md-4 control-label">Название события</label>
-                            <div class="col-md-6">
-                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}"  autofocus>
-                                <span style="color:red">{{ $errors->first('title') }}</span>
-                            </div>
+                            <label>Название события</label>
+                            <input type="text" class="form-control" placeholder="Название события" name="title" value="{{ old('title') }}">
+                            <span style="color:red">{{ $errors->first('title') }}</span>
                         </div>
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
-                            <label for="event_date" class="col-md-4 control-label">Дата проведения события</label>
-                            <div class="col-md-6">
-                                <input id="event_date" type="date" class="form-control" name="event_date" value="{{ old('event_date') }}"  autofocus>
-                                <span style="color:red">{{ $errors->first('event_date') }}</span>
-                            </div>
+                            <label>Дата проведения события</label>
+                            <input type="datetime-local" class="form-control" placeholder="Дата проведения события" name="event_date" value="{{ old('event_date') }}">
+                            <span style="color:red">{{ $errors->first('event_date') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="event_hours" class="col-md-1 control-label">Время проведения события</label>
-                            <div class="col-md-6">
-                                <input id="event_hours" type="text" class="form-control" name="event_hours" value="{{ old('event_hours') }}"  autofocus>
-                                <span style="color:red">{{ $errors->first('event_hours') }}</span>
-                            </div>
+                            <label>Время проведения события</label>
+                            <input type="text" class="form-control" placeholder="Время проведения события" name="event_hours" value="{{ old('event_hours') }}">
+                            <span style="color:red">{{ $errors->first('event_hours') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="address" class="col-md-4 control-label">Место проведения события</label>
-                            <div class="col-md-6">
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}"  autofocus>
-                                <span style="color:red">{{ $errors->first('address') }}</span>
-                            </div>
+                            <label>Место проведения события</label>
+                            <input type="text" class="form-control" placeholder="Место проведения события" name="address" value="{{ old('address') }}">
+                            <span style="color:red">{{ $errors->first('address') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="description" class="col-md-4 control-label">Краткое описание события</label>
-                            <div class="col-md-6">
-                                <textarea class="form-control" id="description" rows='23' name="description" placeholder="Введите краткое описание события" autofocus>{{ old('description') }}</textarea>
-                                <span style="color:red">{{ $errors->first('description') }}</span>
-                            </div>
+                            <label for="exampleInputFile">Изображение</label>
+                            <input type="file" name="photo" id="exampleInputFile">
+                            <span style="color:red">{{ $errors->first('photo') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="content" class="col-md-4 control-label">Полное описание события</label>
-                            <div class="col-md-6">
-                                <textarea class="form-control" id="content" rows='23' name="content" placeholder="Введите полное описание события" autofocus>{{ old('content') }}</textarea>
-                                <span style="color:red">{{ $errors->first('content') }}</span>
-                            </div>
+                            <label>Комитет
+                                <select name="student_class_id">
+                                    <option value="0">Общая новость</option>
+                                    @foreach($studentsClasses as $class)
+                                        @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $class['id']))
+                                            <option value="{{$class->id}}">
+                                                {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </label>
+                            <span style="color:red">{{ $errors->first('student_class_id') }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Краткое описание </label>
+                            <textarea name="description" placeholder="Краткое описание события" cols="30" rows="10" class="form-control">{{ old('description') }}</textarea>
+                            <span style="color:red">{{ $errors->first('description') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="photo" class="col-md-4 control-label">Изображение</label>
-                            <div class="col-md-6">
-                                <input id="photo" type="file" class="form-control" name="photo" value="{{ old('photo') }}"  autofocus>
-                                <span style="color:red">{{ $errors->first('photo') }}</span>
-                            </div><br/>
+                            <label>Полное описание</label>
+                            <textarea name="content" placeholder="Полное описание события" cols="30" rows="10" class="form-control">{{ old('content') }}</textarea>
+                            <span style="color:red">{{ $errors->first('content') }}</span>
                         </div>
                         <div class="form-group">
                             <input name="submit" type="submit" id="submit" class="submit" value="Добавить событие"/>
