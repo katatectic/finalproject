@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Поиск
+Поиск
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -16,22 +16,23 @@
                     <thead>
                         <tr>
                             <th>Название</th>
+                            <th>Автор события</th>
+                            <th>Дата проведения</th>
                             <th>Адрес</th>
-                            <th>Время</th>
                             <th>Краткое описание</th>
-                            <th>Полное описание</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($events as $event)
                         <tr>
                             <td><a href="{{route('event.show', $event->id) }}">{{ $event->title }}</a></td>
+                            <td><a href="{{route('event.show', $event->id) }}">{{$event->user->name}} {{$event->user->surname}}</a></td>
+                            <td><a href="{{route('event.show', $event->id) }}">{{date('j '.$monthNames[date('n', strtotime($event->event_date))].' Y года', strtotime($event->event_date))}}</a></td>
                             <td><a href="{{route('event.show', $event->id) }}">{{ $event->address }}</a></td>
-                            <td><a href="{{route('event.show', $event->id) }}">{{ $event->event_hours }}</a></td>
                             <td><a href="{{route('event.show', $event->id) }}">{{str_limit($event->description,20)}}</a></td>
-                            <td><a href="{{route('event.show', $event->id) }}">{{str_limit($event->content,20)}}</a></td>
                             <td>
                                 <a href="{{route('event.show', $event->id) }}" class="fa fa-eye"></a>
+                            </td>
                         </tr>
                         @endforeach
                         </tfoot>
@@ -50,16 +51,18 @@
                     <thead>
                         <tr>
                             <th>Название</th>
+                            <th>Автор новости</th>
+                            <th>Дата новости</th>
                             <th>Краткое описание</th>
-                            <th>Полное описание</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($news as $article)
                         <tr>
                             <td><a href="{{route('article',['id'=>$article->id])}}">{{ $article->title }}</a></td>
-                            <td><a href="{{route('article', ['id'=>$article->id])}}">{{str_limit($article->content,20)}}</a></td>
-                            <td></td>
+                            <td><a href="{{route('article',['id'=>$article->id])}}">{{$article->user->name}} {{$article->user->surname}}</a></td>
+                            <td><a href="{{route('article', ['id'=>$article->id])}}">{{date('j '.$monthNames[date('n', strtotime($article->date))].' Y года'.' в H:i', strtotime($article->date))}}</a></td>
+                            <td>{{str_limit($article->content,20)}}</td>
                             <td><a href="{{route('article', ['id'=>$article->id])}}" class="fa fa-eye"></a></tr>
                         @endforeach
                         </tfoot>
@@ -69,6 +72,7 @@
             {{$news->links()}}
         </div>
     </section>
+
     <section class="content">
         <div class="box">
             <div class="box-body">
