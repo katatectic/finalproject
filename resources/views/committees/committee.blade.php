@@ -128,6 +128,7 @@
                                          data-index="4">
                                         <div class="so-widget-doublef-courses-search so-widget-doublef-courses-search-base">
                                             <h2 class="widget-title">Участники комитета ({{$committee->user->count()}})</h2>
+                                            @if(empty($committee->user->first())) Никто не состоит @endif
                                             <ul>
                                                 @foreach ($committee->user as $user)
                                                 <li><a href="{{route('profile',['id'=>$user->id])}}">{{$user->name}} {{$user->surname}}</a></li>
@@ -139,8 +140,13 @@
                                          class="so-panel widget widget_buntington2-button-banner" data-index="5">
                                         <div class="panel-widget-style panel-widget-style-for-425-1-2-1">
                                             <div class="so-widget-buntington2-button-banner so-widget-buntington2-button-banner-base">
-                                                <h2 class="widget-title">Отчёты</h2>
-
+                                                <h2 class="widget-title"><a href="{{ route('reportsCommittee',['committeeId' => $committee->id]) }}" title="посмотрть все отчёты комитета">Отчёты</a></h2>
+                                                @if(empty($committee->report->first())) Нет отчётов @endif
+                                                <ul>
+                                                    @foreach ($committee->report as $report)
+                                                        <li><a href="{{route('report.show',['id'=>$report->id])}}">Протокол № {{ $report->id }} от {{date('d.m.Y', strtotime($report->date))}}</a></li>
+                                                    @endforeach
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>

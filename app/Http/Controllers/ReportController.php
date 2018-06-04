@@ -28,6 +28,12 @@ class ReportController extends Controller {
         return view('admin.reports.index', compact('reports', 'reportsCount'));
     }
 
+    public function committeeReports($committeeId) {
+        $committee = StudentClass::find($committeeId);
+        $reports = Report::with('checks')->where('student_class_id', $committeeId)->orderBy('id', 'DESC')->paginate($this->puginationReports);
+        return view('reports.reports', compact('reports', 'committee'));
+    }
+
     public function show($id) {
 		$report = Report::with('checks')->find($id);
         $report->setRelation('comments', $report->comments()->paginate($this->puginationReportComments));

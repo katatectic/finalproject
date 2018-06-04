@@ -44,7 +44,7 @@ class CommitteesController extends Controller
      */
     public function show($id)
     {
-        $committee = StudentClass::with('user', 'news', 'event')->find($id);
+        $committee = StudentClass::with('user', 'news', 'event', 'report')->find($id);
         return view('committees.committee', ['committee' => $committee]);
 
     }

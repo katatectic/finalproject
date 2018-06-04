@@ -23,7 +23,11 @@
 </div>
 <div id="content" class="site-content wrappr">
     <div class="bread">
-        <a href="{{route('main')}}">Главная</a> / Новости
+        <a href="{{route('main')}}">Главная</a> /
+        @isset($committee)
+            <a href="{{ route('oneCommittee',['id' => $committee->id]) }}">Комитет {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса</a> /
+        @endisset
+        Новости
     </div>
     @if (count($all) > 0)   
     <section class="news">

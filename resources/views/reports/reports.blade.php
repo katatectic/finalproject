@@ -10,7 +10,13 @@
              style="background-position: center center; padding-top: 150px; padding-bottom: 20px;">
             <div class="wrappr text-left">
                 <h1 class="h-gigant">Отчеты</h1>
-                <p>Список всех отчетов</p>
+                <p>
+                    @isset($committee)
+                        Отчёты комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
+                    @else
+                        Список всех отчетов
+                    @endif
+                </p>
             </div>
         </div>
     </div>
@@ -18,7 +24,11 @@
 </div>
 <div id="content" class="site-content wrappr">
     <div class="bread">
-        <a href="{{route('main')}}">Главная</a> / Отчеты
+        <a href="{{route('main')}}">Главная</a> /
+        @isset($committee)
+            <a href="{{ route('oneCommittee',['id' => $committee->id]) }}">Комитет {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса</a> /
+        @endisset
+        Отчеты
     </div>
     @if (count($reports) > 0)
     <section class="events">

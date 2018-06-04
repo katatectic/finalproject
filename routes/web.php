@@ -150,6 +150,7 @@ Route::get('/committees', 'CommitteesController@index')->name('allCommittees');
 Route::get('/committees/committee/{id}', 'CommitteesController@show')->name('oneCommittee');
 Route::get('/committees/committee/{committeeId}/news', 'NewsController@committeeNews')->name('newsCommittee');
 Route::get('/committees/committee/{committeeId}/events', 'EventController@committeeEvents')->name('eventCommittee');
+Route::get('/committees/committee/{committeeId}/reports', 'ReportController@committeeReports')->name('reportsCommittee');
 
 /* Данный роут просто содержит контакты */
 Route::get('/contacts', function () {
