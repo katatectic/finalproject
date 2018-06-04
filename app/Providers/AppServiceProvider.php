@@ -57,7 +57,11 @@ class AppServiceProvider extends ServiceProvider
             $notViewedFeedbacks = Feedback::where('status', '=', 1)->count();
             return $notViewedFeedbacks;
         });
-        
+
+        View::share('monthNames',
+            [1 => 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября',
+                'Ноября', 'Декабря']);
+
     }
 
     /**

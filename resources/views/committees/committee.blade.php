@@ -106,9 +106,9 @@
                                                                 <a href="{{route('profile',['id'=>$event->user->id])}}">{{$event->user->name}}
                                                                 </a>
                                                             </h6>
-                                                            <p class="doublef-event-item-date">Дата {{$event->event_date}}</p>
+                                                            <p class="doublef-event-item-date">Дата {{date('j '.$monthNames[date('n', strtotime($event->event_date))].' Y года', strtotime($event->event_date))}}</p>
                                                             <p class="doublef-event-item-time">Время {{$event->event_hours}}</p>
-                                                            <div class="doublef-event-address">Адрес: {{$event->address}}
+                                                            <div class="doublef-event-address">Адрес: <a href="https://www.google.com/maps/search/{{implode('+', explode(" ",$event->address))}}">{{$event->address}}</a>
                                                                 <a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>
                                                             </div>
                                                         </header>

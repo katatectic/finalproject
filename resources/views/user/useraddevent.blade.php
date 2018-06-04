@@ -19,7 +19,7 @@
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label>Дата проведения события</label>
-                            <input type="datetime-local" class="form-control" placeholder="Дата проведения события" name="event_date" value="{{ old('event_date') }}">
+                            <input type="date" class="form-control" placeholder="Дата проведения события" name="event_date" value="{{ old('event_date') }}">
                             <span style="color:red">{{ $errors->first('event_date') }}</span>
                         </div>
                         <div class="form-group">

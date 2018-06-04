@@ -60,7 +60,7 @@ class EventController extends Controller {
             unset($data['student_class_id']);
         }
         $date = new DateTime($data['event_date']);
-        $data['event_date'] = $date->format('Y-m-d h:i:s');
+        $data['event_date'] = $date->format('Y-m-d');
         if ($request->hasFile('photo')) {
             $data['photo'] = $this->addPhoto($request);
         };
@@ -72,7 +72,7 @@ class EventController extends Controller {
         if ($request->method() == 'POST') {
             $data = $request->all();
             $date = new DateTime($data['event_date']);
-            $data['event_date'] = $date->format('Y-m-d h:i:s');
+            $data['event_date'] = $date->format('Y-m-d');
             if ($request->hasFile('photo')) {
                 $data['photo'] = $this->addPhoto($request);
             };
@@ -96,7 +96,7 @@ class EventController extends Controller {
     public function edit($id) {
         $event = Event::find($id);
         $date = new DateTime($event->event_date);
-        $event->event_date = $date->format('Y-m-d\Th:i');
+        $event->event_date = $date->format('Y-m-d');
         $studentsClasses = StudentClass::get();
         return view('admin.events.edit', compact('event', 'studentsClasses'));
     }
@@ -115,7 +115,7 @@ class EventController extends Controller {
             $data['student_class_id'] = null;
         }
         $date = new DateTime($data['event_date']);
-        $data['event_date'] = $date->format('Y-m-d h:i:s');
+        $data['event_date'] = $date->format('Y-m-d');
         $editOne->fill($data);
         $editOne->save();
         return redirect()->route('adminevents');

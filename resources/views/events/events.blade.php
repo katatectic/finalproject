@@ -54,10 +54,10 @@
                                     <a href="{{route('event.show',['id'=>$event->id])}}">{{ $event->title }}</a>
                                 </h3>
                                 <h5 class="doublef-event-item-date"><a href="{{route('profile',['id'=>$event->user->id])}}">Добавил: {{$event->user->name}} {{$event->user->surname}} </a></h5>
-                                <h5 class="doublef-event-item-date">Дата проведения: {{ $event->event_date }} </h5>
+                                <h5 class="doublef-event-item-date">Дата проведения: {{date('j '.$monthNames[date('n', strtotime($event->event_date))].' Y года', strtotime($event->event_date))}} </h5>
                                 <h5 class="doublef-event-item-time">Время проведения: {{ $event->event_hours }}</h5>
                                 <div class="doublef-event-address">
-                                    Место проведения: {{ $event->address }}
+                                    Место проведения: <a href="https://www.google.com/maps/search/{{implode('+', explode(" ",$event->address))}}">{{$event->address}}</a>
                                 </div>
                             </header>
                             <div class="entry-content">
