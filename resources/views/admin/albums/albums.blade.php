@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Список альбомов
+    Список альбомов
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -22,7 +22,7 @@
                             <th>Название</th>
                             <th>Краткое описание</th>
                             <th>Изображение</th>
-							<th>Добавить фото в альбом</th>
+                            <th>Добавить фото в альбом</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,7 +37,7 @@
                                     </a>
                                 </div>
                             </td>
-							<td><a href="{{route('add_image',['id'=>$album->id])}}" class="fa fa-plus"></a></td>
+                            <td><a href="{{route('add_image',['id'=>$album->id])}}" class="fa fa-plus"></a></td>
                             <td>
                                 <a href="{{route('album.show',['id'=>$album->id])}}" class="fa fa-eye"></a>
                                 <a href="{{route('album.edit', ['id' => $album->id ] ) }}" class="fa fa-pencil"></a>

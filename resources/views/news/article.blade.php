@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-{{$article->title}}
+    {{$article->title}}
 @endsection
 @section('content')
 <div id="cinemahead">
@@ -31,7 +31,7 @@
                         <h5 class="doublef-event-item-date">
                             Добавил: <a href="{{route('profile',['id'=>$article->user->id])}}">{{$article->user->name}} {{$article->user->surname}}</a>
                         </h5>
-                        <h5 class="doublef-event-item-date">{{$article->date}}</h5>
+                        <h5 class="doublef-event-item-date">{{date('j '.$monthNames[date('n', strtotime($article->date))].' Y года'.' в H:i', strtotime($article->date))}}</h5>					
                     </header>
                     <div class="entry-content">
                         <p>{{$article->content}}</p>

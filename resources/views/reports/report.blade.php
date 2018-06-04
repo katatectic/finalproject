@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Протокол № {{ $report->id }} от {{ $report->date }}
+    Протокол № {{ $report->id }} от {{ $report->date }}
 @endsection
 @section('content')
 <div id="cinemahead">
@@ -19,22 +19,22 @@
                 @if($report)
                 <article id="post-519" class="post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">                    
                     <header class="entry-header">
-                        <h3 class="entry-title">Протокол № {{ $report->id }} от {{ $report->date }}</h3>
+                        <h3 class="entry-title">Протокол № {{ $report->id }} от {{date('j '.$monthNames[date('n', strtotime($report->date))].' Y года', strtotime($report->date))}}</h3>
                         <div class="addthis_inline_share_toolbox"></div>
                         <h5 class="doublef-event-item-date">
                             Добавил: <a href="{{route('profile',['id'=>$report->user->id])}}">{{$report->user->name}} {{$report->user->surname}} </a>
                         </h5>
-                        <h5 class="doublef-event-item-date">{{$report->date}}</h5>
+                        <h5 class="doublef-event-item-date">{{date('j '.$monthNames[date('n', strtotime($report->date))].' Y года', strtotime($report->date))}}</h5>
                     </header>
                     <div class="entry-content">
                         <p>{{$report->content}}</p>
                     </div>
                     @if (Auth::user())
-                    @if (Auth::user()->role == 1 or Auth::user()->role == 2)		
-                    <a href="{{ route('admin.report.edit',['id'=>$report->id]) }}" class="more-link button">Редактировать отчёт</a>
-                    <a href="{{route('check.create',['id'=>$report->id])}}"><button type="button"class="btn btn-primary btn-large">Добавить платёжный чек</button></a>
-                    <a href="{{route('admin.report.destroy',['id'=>$report->id])}}" style=""onclick="return confirm('Удалить отчёт?')" class="more-link button">Удалить отчёт</a>
-                    @endif
+                        @if (Auth::user()->role == 1 or Auth::user()->role == 2)		
+                            <a href="{{ route('admin.report.edit',['id'=>$report->id]) }}" class="more-link button">Редактировать отчёт</a>
+                            <a href="{{route('check.create',['id'=>$report->id])}}"><button type="button"class="btn btn-primary btn-large">Добавить платёжный чек</button></a>
+                            <a href="{{route('admin.report.destroy',['id'=>$report->id])}}" style=""onclick="return confirm('Удалить отчёт?')" class="more-link button">Удалить отчёт</a>
+                        @endif
                     @endif
                     <h5>Платежные чеки</h5>
                     <div class="gallery">

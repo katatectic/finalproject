@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-	Добавить платёжные чеки
+    Добавить платёжные чеки
 @endsection
 @section('content')
 <div class="container">

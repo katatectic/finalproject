@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-	Галерея
+    Галерея
 @endsection
 @section('content')
 <div id="cinemahead">
@@ -9,12 +9,12 @@
 <div id="content" class="site-content wrappr">
     <div class="navbar navbar-inverse navbar-fixed-top">
         @if(Auth::user())
-        @if(Auth::user()->role==1 or Auth::user()->role==2)
-        <a href="{{ route('album.create')}}" class="more-link button" style="margin:0 auto">Создать новый альбом</a>
-        @endif
-        @if(Auth::user()->role==3)
-        <a href="{{ route('album.user.create')}}" class="more-link button" style="margin:0 auto">Создать новый альбом</a>
-        @endif
+            @if(Auth::user()->role==1 or Auth::user()->role==2)
+                <a href="{{ route('album.create')}}" class="more-link button" style="margin:0 auto">Создать новый альбом</a>
+            @endif
+            @if(Auth::user()->role==3)
+                <a href="{{ route('album.user.create')}}" class="more-link button" style="margin:0 auto">Создать новый альбом</a>
+            @endif
         @endif
     </div><br/>
     <div class="gallery">
@@ -28,13 +28,13 @@
                 <div>
                     <a href="{{route('album.show',['id'=>$album->id])}}" class="more-link button" style="float:left">Открыть альбом</a>
                     @if((Auth::user() and Auth::user()->role==1) or (Auth::user() and Auth::user()->role==2))
-                    <a href="{{route('album.destroy',$album->id)}}" onclick="return confirm('Удалить альбом?')"class="more-link button" style="float:right">Удалить альбом</a>
+                        <a href="{{route('album.destroy',$album->id)}}" onclick="return confirm('Удалить альбом?')"class="more-link button" style="float:right">Удалить альбом</a>
                     @endif
                 </div>
             </div>
         </figure>
         @endforeach
-		{{$albums->links()}}
+        {{$albums->links()}}
     </div>
 </div>    
 @endsection

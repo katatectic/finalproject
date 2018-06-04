@@ -36,9 +36,9 @@
                             <td><a href="{{route('profile',['id'=>$event->user->id])}}">{{$event->user->name}}</a></td>
                             <td>{{ $classesNumbers()[ $event->studentClass['id'] ] }} - {{$event->studentClass['letter_class']}}</td>
                             <td>{{str_limit($event->title, 10)}}</td>
-                            <td>{{$event->event_date}}</td>
+                            <td>{{date('j '.$monthNames[date('n', strtotime($event->event_date))].' Y года', strtotime($event->event_date))}}</td>
                             <td>{{str_limit($event->event_hours, 7)}}</td>
-                            <td>{{str_limit($event->address, 5)}}</td>
+                            <td><a href="https://www.google.com/maps/search/{{implode('+', explode(" ",$event->address))}}">{{$event->address}}</a></td>
                             <td>{{str_limit($event->description,10)}}</td>
                             <td>
                                 @isset($event->photo)

@@ -39,26 +39,26 @@
                             <th>Статус заявки</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tfoot>
                         @foreach($feedbacks as $feedback)
-						<tr class="@if ($feedback->status == 1) red @else green @endif" ></tr>
-                            <td>{{$feedback->name}}</td>
-                            <td>{{$feedback->email}}</td>
-                            <td>{{$feedback->message}}</td>
-                            <td>{{$feedback->created_at}}</td>
-                            @if($feedback->status==1)
-                            <td>Не просмотрено</td>
-                            @else	 
-                            <td>Просмотрено</td>
-                            @endif
-                            <td>
-                                <a href="{{ route('feedback.show',['id'=>$feedback->id]) }}" class="fa fa-eye"></a>
-                                <a href="{{ route('feedback.reply',['id'=>$feedback->id]) }}" class="fa fa-reply"></a>
-                                <a href="{{route('feedback.destroy',$feedback->id)}}" onclick="return confirm('Удалить заявку?')" class="fa fa-remove"></a>
-                            </td>
-                        </tr>
+                            <tr class="@if ($feedback->status == 1) green @else red @endif" >
+                                <td>{{$feedback->name}}</td>
+                                <td>{{$feedback->email}}</td>
+                                <td>{{$feedback->message}}</td>
+                                <td>{{date('j '.$monthNames[date('n', strtotime($feedback->created_at))].' Y года'.' в H:i', strtotime($feedback->created_at))}}</td>
+                                @if($feedback->status==1)
+                                    <td>Не просмотрено</td>
+                                @else	 
+                                    <td>Просмотрено</td>
+                                @endif
+                                <td>
+                                    <a href="{{ route('feedback.show',['id'=>$feedback->id]) }}" class="fa fa-eye"></a>
+                                    <a href="{{ route('feedback.reply',['id'=>$feedback->id]) }}" class="fa fa-reply"></a>
+                                    <a href="{{route('feedback.destroy',$feedback->id)}}" onclick="return confirm('Удалить заявку?')" class="fa fa-remove"></a>
+                                </td>
+                            </tr>
                         @endforeach
-                        </tfoot>
+                    </tfoot>
                 </table>		  
             </div>
             {{$feedbacks->links()}}

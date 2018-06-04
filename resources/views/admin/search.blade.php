@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Поиск
+    Поиск
 @endsection
 @section('content')
 <div class="content-wrapper">

@@ -17,7 +17,7 @@
                         <a href="{{route('profile',['id'=>$comment->user->id])}}">{{$comment->user->name}} {{$comment->user->surname}}</a>
                     </h6>
                     <p class="avatar-time">
-                        Дата публикации: {{$comment->created_at->format('d.m.Y в H.m')}}
+                        Дата публикации: {{date('j '.$monthNames[date('n', strtotime($comment->created_at))].' Y года'.' в H:i', strtotime($comment->created_at))}}
                     </p>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                         <a href="{{route('profile',['id'=>$comment->user->id])}}">{{$comment->user->name}} {{$comment->user->surname}}</a>
                     </h6>
                     <p class="avatar-time">
-                        Дата публикации: {{$comment->created_at->format('d.m.Y в H.m')}}
+                        Дата публикации: {{date('j '.$monthNames[date('n', strtotime($comment->created_at))].' Y года'.' в H:i', strtotime($comment->created_at))}}
                     </p>
                 </div>
             </div>

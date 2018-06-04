@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Редактировать {{$all->title}}
+    Редактировать {{$all->title}}
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -49,29 +49,29 @@
                                         @endif
                                     @endforeach
                                 </select>
-                                <span style="color:red">{{ $errors->first('student_class_id') }}</span>
-                            </label>
-                        </div>
+                            <span style="color:red">{{ $errors->first('student_class_id') }}</span>
+                        </label>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Краткое описание</label>
-                            <textarea name="description" placeholder="Краткое описание новости" cols="30" rows="10" class="form-control">@if(!empty($errors->first('*'))){{old('description')}}@else{{$all->description}}@endif</textarea>
-                            <span style="color:red">{{ $errors->first('description') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Полное описание</label>
-                            <textarea name="content" placeholder="Полное описание события" cols="30" rows="10" class="form-control">@if(!empty($errors->first('*'))){{old('content')}}@else{{$all->content}}@endif</textarea>
-                            <span style="color:red">{{ $errors->first('content') }}</span>
-                        </div>
-                        <div class="box-footer">
-                            <button class="btn btn-success pull-left bg-orange"onclick="window.history.go(-1); return false;">Назад</button>
-                            <button class="btn btn-success pull-right bg-orange">Сохранить</button>
-                        </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Краткое описание</label>
+                        <textarea name="description" placeholder="Краткое описание новости" cols="30" rows="10" class="form-control">@if(!empty($errors->first('*'))){{old('description')}}@else{{$all->description}}@endif</textarea>
+                        <span style="color:red">{{ $errors->first('description') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Полное описание</label>
+                        <textarea name="content" placeholder="Полное описание события" cols="30" rows="10" class="form-control">@if(!empty($errors->first('*'))){{old('content')}}@else{{$all->content}}@endif</textarea>
+                        <span style="color:red">{{ $errors->first('content') }}</span>
+                    </div>
+                    <div class="box-footer">
+                        <button class="btn btn-success pull-left bg-orange"onclick="window.history.go(-1); return false;">Назад</button>
+                        <button class="btn btn-success pull-right bg-orange">Сохранить</button>
                     </div>
                 </div>
             </div>
-        </form>
-    </section>
+        </div>
+    </form>
+</section>
 </div>
 @endsection

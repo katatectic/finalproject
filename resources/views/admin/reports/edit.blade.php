@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('title')
-	Редактировать отчёт № {{$report->id}}
+    Редактировать отчёт № {{$report->id}}
 @endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-			Редактировать отчёт
+            Редактировать отчёт № {{$report->id}}
         </h1>
     </section>
     <section class="content">

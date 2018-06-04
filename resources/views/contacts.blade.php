@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-	Контакты родительского комитета
+    Контакты родительского комитета
 @endsection
 @section('content')
 <div id="cinemahead">

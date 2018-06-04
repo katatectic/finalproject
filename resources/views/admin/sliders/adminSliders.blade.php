@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Слайдеры
+    Слайдеры
 @endsection
 @section('content')
 <div class="content-wrapper">

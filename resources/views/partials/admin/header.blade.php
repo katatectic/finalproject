@@ -22,7 +22,7 @@
                         <li class="user-header">
                             <img src="{{asset('images/users/'.Auth::user()->avatar)}}" class="img-circle" alt="User Image">
                             <p>{{ Auth::user()->name }} {{ Auth::user()->surname }}
-                                <small>Дата регистрации {{ Auth::user()->created_at }}</small>
+                                <small>{{date('j '.$monthNames[date('n', strtotime(Auth::user()->created_at))].' Y года'.' в H:i', strtotime(Auth::user()->created_at))}}</small>
                             </p>
                         </li>
                         <li class="user-footer">

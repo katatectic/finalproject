@@ -1,8 +1,7 @@
- <footer class="main-footer">
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Футер</b>
+        <b>Футер</b>
     </div>
     <strong>Все права защищены &copy; 2018</strong> 
-  </footer>
+</footer>
 
-    

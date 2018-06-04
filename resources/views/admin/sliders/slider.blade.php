@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Добавить слайдер
+    Добавить слайдер
 @endsection
 @section('content')
 <div class="content-wrapper">
