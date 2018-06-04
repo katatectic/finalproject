@@ -34,7 +34,6 @@
                             <header class="entry-header">
                                 <h3 class="entry-title">  
                                     <a href="{{route('report.show',['id'=>$report->id])}}">Протокол № {{ $report->id }} от {{ $report->date }}</a>
-                                    
                                 </h3>
                                 <h5 class="doublef-event-item-date">
                                     Добавил: <a href="{{route('profile',['id'=>$report->user->id])}}">{{$report->user->name}} {{$report->user->surname}}</a></h5>

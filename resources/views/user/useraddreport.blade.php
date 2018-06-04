@@ -27,13 +27,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="pay_check" class="col-md-4 control-label">Чек</label>
-                            <div class="col-md-6">
-                                <input id="photo" type="file" class="form-control" name="pay_check" value="{{ old('pay_check') }}"  autofocus>
-                                <span style="color:red">{{ $errors->first('pay_check') }}</span>
-                            </div><br/>
-                        </div>
-                        <div class="form-group">
                             <input name="submit" type="submit" id="submit" class="submit" value="Добавить отчет"/>
                         </div>
                     </form>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReportsRequest;
 use App\Report;
+use App\Check;
 use DateTime;
 
 class ReportController extends Controller {
@@ -14,18 +15,18 @@ class ReportController extends Controller {
     public $puginationAdminReports = 15;
 
     public function index() {
-        $reports = Report::orderBy('id', 'DESC')->paginate($this->puginationReports);
+        $reports = Report::with('checks')->orderBy('id', 'DESC')->paginate($this->puginationReports);
         return view('reports.reports', compact('reports'));
     }
 
     public function adminIndex() {
-        $reports = Report::orderBy('id', 'DESC')->paginate($this->puginationAdminReports);
+        $reports = Report::with('checks')->orderBy('id', 'DESC')->paginate($this->puginationAdminReports);
         $reportsCount = Report::count();
         return view('admin.reports.index', compact('reports', 'reportsCount'));
     }
 
     public function show($id) {
-        $report = Report::select()->where('id', $id)->first();
+		$report = Report::with('checks')->find($id);
         $report->setRelation('comments', $report->comments()->paginate($this->puginationReportComments));
         $lastReports = Report::orderBy('id', 'desc')->take($this->lastReports)->get();
         return view('reports.report', compact('report', 'lastReports'));
@@ -45,9 +46,6 @@ class ReportController extends Controller {
         unset($data['__token']);
         $date = new DateTime();
         $data['date'] = $date->format('Y-m-d');
-        if ($request->hasFile('pay_check')) {
-            $data['pay_check'] = $this->addPayCheck($request);
-        };
         $create = Report::create($data);
         return redirect()->route('adminReports');
     }
@@ -74,20 +72,11 @@ class ReportController extends Controller {
 
     public function update(ReportsRequest $request, $id) {
         $data = $request->all();
-        if ($request->hasFile('pay_check')) {
-            $data['pay_check'] = $this->addPayCheck($request);
-        };
         $editOne = Report::find($id);
         $editOne->fill($data);
         $editOne->save();
         return redirect()->route('adminReports');
     }
 
-    public function addPayCheck($request) {
-        $file = $request->file('pay_check');
-        $newfilename = rand(1000, 50000) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . '/images/reports', $newfilename);
-        return $newfilename;
-    }
 
 }

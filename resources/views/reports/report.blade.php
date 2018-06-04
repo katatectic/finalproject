@@ -29,18 +29,28 @@
                     <div class="entry-content">
                         <p>{{$report->content}}</p>
                     </div>
-                    <h5>Платежные чеки</h5>
-                    <div class="image-lightbox">
-                        <a href="{{asset('images/reports/'.$report->pay_check)}}" data-lightbox="{{asset('images/reports/'.$report->pay_check)}}">
-                            <img width="300" height="300" src="{{asset('images/reports/'.$report->pay_check)}}" class="attachment-full size-full wp-post-image"/>
-                        </a>
-                    </div>	
                     @if (Auth::user())
-                    @if (Auth::user()->role == 1 or Auth::user()->role == 2)
+                    @if (Auth::user()->role == 1 or Auth::user()->role == 2)		
                     <a href="{{ route('admin.report.edit',['id'=>$report->id]) }}" class="more-link button">Редактировать отчёт</a>
+                    <a href="{{route('check.create',['id'=>$report->id])}}"><button type="button"class="btn btn-primary btn-large">Добавить платёжный чек</button></a>
                     <a href="{{route('admin.report.destroy',['id'=>$report->id])}}" style=""onclick="return confirm('Удалить отчёт?')" class="more-link button">Удалить отчёт</a>
                     @endif
                     @endif
+                    <h5>Платежные чеки</h5>
+                    <div class="gallery">
+                        @foreach($report->checks as $check)
+                        <figure>
+                            <div class="image-lightbox">
+                                <a href="{{asset('images/reports/checks/'.$check->image)}}" data-lightbox="roadtrip">
+                                    <img src="{{asset('images/reports/checks/'.$check->image)}}"/>
+                                </a>
+                            </div>   
+                            @if((Auth::user() and Auth::user()->role==1) or (Auth::user() and Auth::user()->role==2))
+                            <a href="" onclick="return confirm('Удалить чек?')" class="more-link button" style="margin:0 auto">Удалить чек</a>
+                            @endif
+                        </figure>
+                        @endforeach
+                    </div>
                 </article>
                 @endif
                 <div class="col-md-6 blog-right">

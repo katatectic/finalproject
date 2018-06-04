@@ -23,7 +23,7 @@
                             <th>Автор</th>
                             <th>Дата</th>
                             <th>На что потратили</th>
-                            <th>Чеки</th>
+                            <th>Добавить чек</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,14 +32,8 @@
                             <td>{{$report->id}}</td>
                             <td><a href="{{route('profile',['id'=>$report->user->id])}}">{{$report->user->name}}</a></td>
                             <td>{{$report->date}}</td>
-                            <td>{{str_limit($report->content,25)}}</td>    
-                            <td>
-                                <div class="image-lightbox">
-                                    <a href="{{asset('images/reports/'.$report->pay_check)}}" data-lightbox="{{asset('images/reports/'.$report->pay_check)}}" >
-                                        <img width="100" src="{{asset('images/reports/'.$report->pay_check)}}" class="attachment-full size-full wp-post-image"/>
-                                    </a>
-                                </div>
-                            </td>
+                            <td>{{str_limit($report->content,25)}}</td>
+							<td></td>
                             <td>
                                 <a href="{{route('report.show',['id'=>$report->id])}}" class="fa fa-eye"></a>
                                 <a href="{{route('admin.report.edit', ['id' => $report->id ] ) }}" class="fa fa-pencil"></a>

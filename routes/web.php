@@ -15,6 +15,9 @@ Route::get('event/{id}', 'EventController@show')->name('event.show'); /* Пок�
 //Report
 Route::get('reports', 'ReportController@index')->name('reports');
 Route::get('report/{id}', 'ReportController@show')->name('report.show'); /* Показ одного отчета */
+Route::get('addcheck/{id}', 'CheckController@create')->name('check.create');
+Route::post('addcheck', 'CheckController@store')->name('check.store');
+Route::get('check/{id}/delete', 'CheckController@deleteCheck')->name('check.delete');
 
 // Search
 Route::get('/search/results', 'IndexController@search')->name('search');

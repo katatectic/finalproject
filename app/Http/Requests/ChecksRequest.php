@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ReportsRequest extends FormRequest {
+class ChecksRequest extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,14 @@ class ReportsRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'content' => 'required',
-            'date' => 'required'];
+            'image' => 'required|image|max:2048'];
     }
 
     public function messages() {
         return [
-            '*.required' => 'Поле не должно быть пустым'
+            '*.required' => 'Поле не должно быть пустым',
+            'image.image' => 'Загруженный файл должен быть изображением',
+            'image.max' => 'Максимальный размер изображения=2048'
         ];
     }
 
