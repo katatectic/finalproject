@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label>Комитет
                                 <select name="student_class_id">
-                                    <option value="0">Общая новость</option>
+                                    <option value="0">Общие мероприятие</option>
                                     @foreach($studentsClasses as $class)
                                         @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $class['id']))
                                             <option value="{{$class->id}}">

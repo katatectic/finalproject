@@ -21,9 +21,11 @@
                         <tr>
                             <th>№</th>
                             <th>Автор</th>
+                            <th>Комитет</th>
                             <th>Дата</th>
                             <th>На что потратили</th>
                             <th>Добавить чек</th>
+                            <th>Действия</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,13 +33,16 @@
                         <tr>
                             <td>{{$report->id}}</td>
                             <td><a href="{{route('profile',['id'=>$report->user->id])}}">{{$report->user->name}}</a></td>
+                            <td>{{ $classesNumbers()[ $report->studentClass['id'] ] }} - {{$report->studentClass['letter_class']}}</td>
                             <td>{{$report->date}}</td>
                             <td>{{str_limit($report->content,25)}}</td>
-							<td><a href="{{route('check.create',['id'=>$report->id])}}" class="fa fa-plus"></td>
+                            <td><a href="{{route('check.create',['id'=>$report->id])}}" class="fa fa-plus"></a></td>
                             <td>
                                 <a href="{{route('report.show',['id'=>$report->id])}}" class="fa fa-eye"></a>
-                                <a href="{{route('admin.report.edit', ['id' => $report->id ] ) }}" class="fa fa-pencil"></a>
-                                <a href="{{route('admin.report.destroy',$report->id)}}" onclick="return confirm('Удалить отчёт?')" class="fa fa-remove"></a>
+                                @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $report->studentClass['id']))
+                                    <a href="{{route('admin.report.edit', ['id' => $report->id ] ) }}" class="fa fa-pencil"></a>
+                                    <a href="{{route('admin.report.destroy',$report->id)}}" onclick="return confirm('Удалить отчёт?')" class="fa fa-remove"></a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

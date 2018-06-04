@@ -20,7 +20,22 @@
                             <span style="color:red">{{ $errors->first('date') }}</span>
                         </div>
                     </div>
-                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">   
+                    <div class="col-md-7">
+                        <label>Комитет
+                            <select name="student_class_id">
+                                <option value="0">Для всех</option>
+                                @foreach($studentsClasses as $class)
+                                    @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $class['id']))
+                                        <option value="{{$class->id}}">
+                                            {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
+                                        </option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </label>
+                        <span style="color:red">{{ $errors->first('student_class_id') }}</span>
+                    </div>
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>На что потратили</label>

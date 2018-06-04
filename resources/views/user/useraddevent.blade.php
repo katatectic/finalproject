@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <label>Комитет
                                 <select name="student_class_id">
-                                    <option value="0">Общая новость</option>
+                                    <option value="0">Общие мероприятие</option>
                                     @foreach($user->studentsClasses as $class)
                                         @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $class['id']))
                                             <option value="{{$class->id}}">
@@ -52,20 +52,20 @@
                             </label>
                             <span style="color:red">{{ $errors->first('student_class_id') }}</span>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Краткое описание </label>
-                            <textarea name="description" placeholder="Краткое описание события" cols="30" rows="10" class="form-control">{{ old('description') }}</textarea>
-                            <span style="color:red">{{ $errors->first('description') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Полное описание</label>
-                            <textarea name="content" placeholder="Полное описание события" cols="30" rows="10" class="form-control">{{ old('content') }}</textarea>
-                            <span style="color:red">{{ $errors->first('content') }}</span>
-                        </div>
-                        <div class="form-group">
-                            <input name="submit" type="submit" id="submit" class="submit" value="Добавить событие"/>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Краткое описание </label>
+                                <textarea name="description" placeholder="Краткое описание события" cols="30" rows="10" class="form-control">{{ old('description') }}</textarea>
+                                <span style="color:red">{{ $errors->first('description') }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Полное описание</label>
+                                <textarea name="content" placeholder="Полное описание события" cols="30" rows="10" class="form-control">{{ old('content') }}</textarea>
+                                <span style="color:red">{{ $errors->first('content') }}</span>
+                            </div>
+                            <div class="form-group">
+                                <input name="submit" type="submit" id="submit" class="submit" value="Добавить событие"/>
+                            </div>
                         </div>
                     </form>
                 </div>

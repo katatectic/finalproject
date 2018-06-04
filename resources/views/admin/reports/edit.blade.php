@@ -20,7 +20,25 @@
                             <span style="color:red">{{ $errors->first('date') }}</span>
                         </div>
                     </div>
-					  <input type="hidden" name="user_id" value="{{Auth::user()->id}}">   
+                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>
+                                Комитет
+                                <select name="student_class_id">
+                                    <option value="0">Общая новость</option>
+                                    @foreach($studentsClasses as $class)
+                                        @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $class['id']))
+                                            <option value="{{$class->id}}" @if($class->id == $report->studentClass['id']) selected @endif>
+                                                {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                <span style="color:red">{{ $errors->first('student_class_id') }}</span>
+                            </label>
+                        </div>
+                    </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>На что потратили</label>
