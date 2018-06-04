@@ -7,8 +7,8 @@ use App\Http\Requests\MailRequest;
 use App\Http\Requests\SettingsRequest;
 use App\Article;
 use App\Event;
-use App\Report;
 use App\User;
+use App\Report;
 use App\Setting;
 use Mail;
 use App\Mail\MailClass;
@@ -24,29 +24,44 @@ class AdminController extends Controller {
 
     public function search(Request $request) {
         $search = $request['search'];
-        $events = Event::latest()
-                ->where('title', 'like', '%' . $search . '%')
-                ->orWhere('address', 'like', '%' . $search . '%')
-                ->orWhere('content', 'like', '%' . $search . '%')
-                ->orWhere('description', 'like', '%' . $search . '%')
-                
-                ->paginate($this->searchPagination);
-        $news = Article::latest()
-                ->where('title', 'like', '%' . $search . '%')
-                ->orWhere('description', 'like', '%' . $search . '%')
-                ->orWhere('content', 'like', '%' . $search . '%')
-                ->paginate($this->searchPagination);
-        $reports = Report::latest()
-                ->orWhere('content', 'like', '%' . $search . '%')
-                ->paginate($this->searchPagination);
-        $users = User::latest()
-                ->where('name', 'like', '%' . $search . '%')
-                ->orWhere('surname', 'like', '%' . $search . '%')
-                ->orWhere('middle_name', 'like', '%' . $search . '%')
-                ->orWhere('email', 'like', '%' . $search . '%')
-                ->orWhere('phone', 'like', '%' . $search . '%')
-                ->paginate($this->searchPagination);
-        return view('admin.search', compact('events', 'news', 'reports', 'users'));
+        if (empty($search)) {
+            return redirect()->route('admin');
+        } else {
+            $events = Event::with('user')
+                    ->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('address', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%')
+                    ->orWhere('content', 'like', '%' . $search . '%')
+                    ->orWhereHas('user', function($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('surname', 'like', '%' . $search . '%');
+                    })
+                    ->paginate($this->searchPagination);
+            $news = Article::with('user')
+                    ->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%')
+                    ->orWhere('content', 'like', '%' . $search . '%')
+                    ->orWhereHas('user', function($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('surname', 'like', '%' . $search . '%');
+                    })
+                    ->paginate($this->searchPagination);
+            $reports = Report::latest()
+                    ->where('content', 'like', '%' . $search . '%')
+                    ->orWhereHas('user', function($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('surname', 'like', '%' . $search . '%');
+                    })
+                    ->paginate($this->searchPagination);
+            $users = User::latest()
+                    ->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('surname', 'like', '%' . $search . '%')
+                    ->orWhere('middle_name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%')
+                    ->orWhere('phone', 'like', '%' . $search . '%')
+                    ->paginate(10);
+            return view('admin.search', compact('events', 'news', 'reports', 'users'));
+        }
     }
 
     public function mailForm() {

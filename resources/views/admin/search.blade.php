@@ -72,7 +72,34 @@
             {{$news->links()}}
         </div>
     </section>
-
+    <section class="content">
+        <div class="box">
+            <div class="box-body">
+                <h1>Найдено отчётов: {{count($reports)}}</h1>
+                @if (count($reports) > 0)
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Автор отчёта</th>
+                            <th>Краткое описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($reports as $report)
+                        <tr>
+                            <td><a href="{{route('report.show',['id'=>$report->id])}}">Протокол № {{ $report->id }} от {{date('j '.$monthNames[date('n', strtotime($report->created_at))].' Y года', strtotime($report->created_at))}}</a></td>
+                            <td><a href="{{route('report.show',['id'=>$report->id])}}">{{$report->user->name}} {{$report->user->surname}}</a></td>
+                            <td><a href="{{route('report.show',['id'=>$report->id])}}">{{str_limit($article->content,20)}}</a></td>
+                            <td><a href="{{route('report.show',['id'=>$report->id])}}" class="fa fa-eye"></a></tr>
+                        @endforeach
+                        </tfoot>
+                </table>
+                @endif
+            </div>
+            {{$reports->links()}}
+        </div>
+    </section>
     <section class="content">
         <div class="box">
             <div class="box-body">
@@ -96,7 +123,7 @@
                             <td><a href="{{route('profile',['id'=>$user->id])}}">{{ $user->middle_name }}</a></td>
                             <td><a href="{{route('profile',['id'=>$user->id])}}">{{ $user->email }}</a></td>
                             <td><a href="{{route('profile',['id'=>$user->id])}}">{{ $user->phone }}</a></td>
-                            <td><a href="{{route('article', ['id'=>$article->id])}}" class="fa fa-eye"></a></tr>
+                            <td><a href="{{route('profile', ['id'=>$user->id])}}" class="fa fa-eye"></a></tr>
                         @endforeach
                         </tfoot>
                 </table>
