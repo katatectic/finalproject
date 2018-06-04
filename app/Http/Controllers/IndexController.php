@@ -26,14 +26,14 @@ class IndexController extends Controller {
         $events = Event::latest()
                 ->where('title', 'like', '%' . $search . '%')
                 ->orWhere('address', 'like', '%' . $search . '%')
-                ->orWhere('event_hours', 'like', '%' . $search . '%')
-                ->orWhere('content', 'like', '%' . $search . '%')
                 ->orWhere('description', 'like', '%' . $search . '%')
-                ->paginate(5);
+                ->orWhere('content', 'like', '%' . $search . '%')
+                ->paginate(10);
         $news = Article::latest()
                 ->where('title', 'like', '%' . $search . '%')
+                ->orWhere('description', 'like', '%' . $search . '%')
                 ->orWhere('content', 'like', '%' . $search . '%')
-                ->paginate(5);
+                ->paginate(10);
         return view('search', compact('events', 'news'));
     }
 

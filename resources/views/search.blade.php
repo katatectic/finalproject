@@ -16,20 +16,18 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Название</th>
+							<th>Дата проведения</th>
                             <th>Адрес</th>
-                            <th>Время</th>
                             <th>Краткое описание</th>
-                            <th>Полное описание</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($events as $event)
                         <tr>
                             <td><a href="{{route('event.show', $event->id) }}">{{ $event->title }}</a></td>
-                            <td><a href="{{route('event.show', $event->id) }}">{{ $event->address }}</a></td>
-                            <td><a href="{{route('event.show', $event->id) }}">{{ $event->event_hours }}</a></td>
+                            <td><a href="{{route('event.show', $event->id) }}">{{date('j '.$monthNames[date('n', strtotime($event->event_date))].' Y года', strtotime($event->event_date))}}</a></td>
+							<td><a href="{{route('event.show', $event->id) }}">{{ $event->address }}</a></td>
                             <td><a href="{{route('event.show', $event->id) }}">{{str_limit($event->description,20)}}</a></td>
-                            <td><a href="{{route('event.show', $event->id) }}">{{str_limit($event->content,20)}}</a></td>
                             <td>
                                 <a href="{{route('event.show', $event->id) }}" class="btn btn-info btn-xs"><i class="more-link button">Просмотр</i></a> 
                             </td>
@@ -47,7 +45,8 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Название</th>
-                            <th>Полное описание</th>
+							<th>Дата новости</th>
+                            <th>Краткое описание</th>
                         </tr>
                     </thead>
                     <tbody>
