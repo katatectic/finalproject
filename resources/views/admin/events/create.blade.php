@@ -22,7 +22,7 @@
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label>Дата проведения события</label>
-                            <input type="date" class="form-control" placeholder="Дата проведения события" name="event_date" value="{{ old('event_date') }}">
+                            <input type="datetime-local" class="form-control" placeholder="Дата проведения события" name="event_date" value="{{ old('event_date') }}">
                             <span style="color:red">{{ $errors->first('event_date') }}</span>
                         </div>
                         <div class="form-group">
@@ -39,6 +39,21 @@
                             <label for="exampleInputFile">Изображение</label>
                             <input type="file" name="photo" id="exampleInputFile">
                             <span style="color:red">{{ $errors->first('photo') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Комитет
+                                <select name="student_class_id">
+                                    <option value="0">Общая новость</option>
+                                    @foreach($studentsClasses as $class)
+                                        @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $class['id']))
+                                            <option value="{{$class->id}}">
+                                                {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </label>
+                            <span style="color:red">{{ $errors->first('student_class_id') }}</span>
                         </div>
                     </div>
                     <div class="col-md-12">

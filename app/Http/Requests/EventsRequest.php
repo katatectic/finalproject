@@ -38,7 +38,7 @@ class EventsRequest extends FormRequest {
             'address' => 'required',
             'description' => 'required',
             'content' => 'required',
-            'photo' => 'required|image|max:2048',
+            'photo' => 'image|max:2048',
             'student_class_id'=>'required|in:0,'.implode(",", $studentsClasses)];
     }
 

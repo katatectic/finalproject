@@ -35,9 +35,11 @@
                                 <select name="student_class_id">
                                     <option value="0">Общая новость</option>
                                     @foreach($studentsClasses as $class)
-                                        <option value="{{$class->id}}">
-                                            {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
-                                        </option>
+                                        @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $class['id']))
+                                            <option value="{{$class->id}}">
+                                                {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </label>

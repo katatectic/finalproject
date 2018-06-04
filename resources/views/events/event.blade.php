@@ -37,10 +37,10 @@
                         <p>{{$event->content}}</p>
                     </div>
                     @if (!Auth::guest())
-                    @if (Auth::user()->role == 1 or Auth::user()->role == 2)
-                    <a href="{{ route('event.edit',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a>
-                    <a href="{{route('event.delete',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button">Удалить событие</a>
-                    @endif
+                        @if ( Auth::user()->role == 1 or (Auth::user()->role == 2 and Auth::user()->studentsClasses->contains('id', $event->studentClass['id'])) )
+                            <a href="{{ route('event.edit',['id'=>$event->id]) }}" class="more-link button">Редактировать событие</a>
+                            <a href="{{route('event.delete',$event->id)}}" onclick="return confirm('Удалить событие?')" class="more-link button">Удалить событие</a>
+                        @endif
                     @endif
                 </article>
                 @endif
@@ -58,6 +58,5 @@
             </main>    
         </div>           
     </div>
-</script>
 </div>
 @endsection
