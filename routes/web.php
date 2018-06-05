@@ -51,6 +51,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminandchief'], function() 
     Route::get('event/{id}/delete', 'EventController@destroy')->name('event.delete'); /* Удаление события */
     Route::get('event/{id}/edit', 'EventController@edit')->name('event.edit'); /* Редактирование события */
     Route::post('event/{id}/update', 'EventController@update')->name('event.update'); /* Редактирование события */
+    //Reports
+    Route::get('reports', 'ReportController@adminIndex')->name('adminReports');
+    Route::get('reportcreate', 'ReportController@create')->name('admin.report.create');
+    Route::post('reportcreate', 'ReportController@store')->name('admin.report.store');
+    Route::get('report/{id}/delete', 'ReportController@destroy')->name('admin.report.destroy');
+    Route::get('report/{id}/edit', 'ReportController@edit')->name('admin.report.edit');
+    Route::post('report/{id}/update', 'ReportController@update')->name('admin.report.update');
     // Comments confirmation
     Route::get('comments', 'CommentsController@adminComments')->name('admincomments'); /* Список всех комментариев в админке */
     Route::get('comment.confirm/{id}', 'CommentsController@commentConfirm')->name('comment.confirm'); /* Одобрить комментарий */
@@ -87,14 +94,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::post('sliderstore', 'SliderController@store')->name('slider.store');
     Route::get('slider/{id}/edit', 'SliderController@edit')->name('slider.edit');
     Route::post('slider/{id}/update', 'SliderController@update')->name('slider.update');
-    Route::get('slider/{id}/delete', 'SliderController@destroy')->name('slider.destroy');
-    //Reports
-    Route::get('reports', 'ReportController@adminIndex')->name('adminReports');
-    Route::get('reportcreate', 'ReportController@create')->name('admin.report.create');
-    Route::post('reportcreate', 'ReportController@store')->name('admin.report.store');
-    Route::get('report/{id}/delete', 'ReportController@destroy')->name('admin.report.destroy');
-    Route::get('report/{id}/edit', 'ReportController@edit')->name('admin.report.edit');
-    Route::post('report/{id}/update', 'ReportController@update')->name('admin.report.update');
+    Route::get('slider/{id}/delete', 'SliderController@destroy')->name('slider.destroy');    
     // Send email
     Route::get('send', 'AdminController@sendMail')->name('sendMail');
     Route::post('send', 'AdminController@sendMail')->name('sendMail');

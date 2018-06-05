@@ -39,7 +39,7 @@
                             <td><a href="{{route('check.create',['id'=>$report->id])}}" class="fa fa-plus"></a></td>
                             <td>
                                 <a href="{{route('report.show',['id'=>$report->id])}}" class="fa fa-eye"></a>
-                                @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $report->studentClass['id']))
+                                @if(Auth::user()->role == 1 || Auth::user()->role == 2 || Auth::user()->studentsClasses->contains('id', $report->studentClass['id']))
                                     <a href="{{route('admin.report.edit', ['id' => $report->id ] ) }}" class="fa fa-pencil"></a>
                                     <a href="{{route('admin.report.destroy',$report->id)}}" onclick="return confirm('Удалить отчёт?')" class="fa fa-remove"></a>
                                 @endif
