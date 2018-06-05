@@ -7,20 +7,24 @@ use App\Album;
 
 class AlbumController extends Controller {
 
+    public $adminPaginate = 15;
+    public $albumPaginate = 10;
+    public $imagePaginate = 10;
+
     public function index() {
-        $albums = Album::with('Photos')->paginate(9);
+        $albums = Album::with('Photos')->paginate($this->albumPaginate);
         return view('album.index', compact('albums'));
     }
 
     public function adminAlbums() {
         $albumsCount = Album::count();
-        $albums = Album::with('Photos')->orderBy('id', 'DESC')->paginate(10);
+        $albums = Album::with('Photos')->orderBy('id', 'DESC')->paginate($this->adminPaginate);
         return view('admin.albums.albums', compact('albums', 'albumsCount'));
     }
 
     public function show($id) {
         $album = Album::with('Photos')->find($id);
-        $album->setRelation('Photos', $album->Photos()->paginate(1));
+        $album->setRelation('Photos', $album->Photos()->paginate($this->imagePaginate));
         return view('album.album', compact('album'));
     }
 

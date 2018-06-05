@@ -26,6 +26,7 @@
         <div class="box">
             <div class="box-body">
                 <div class="form-group">
+					<div>
                     <form method="post" action="{{route('storeStudentsClasses')}}">
                         <label>Литтера класса<input type="text" name="letter_class" class="form-control"></label>
                         <label>Первый год обучния<input type="text" name="start_year" class="form-control"></label>
@@ -46,7 +47,6 @@
                     </div>
                     @endif
                 </div>
-                {{$studentsClasses->links()}}
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>		
                         <tr>
@@ -77,7 +77,8 @@
                             </tr>
                         @endforeach
                     </tbody>
-                </table>		  
+                </table>	
+				{{$studentsClasses->links()}}
             </div><br/>
             <div>
                 <section>

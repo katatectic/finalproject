@@ -6,7 +6,7 @@
 <div id="cinemahead">
     <div class="buntington2-cinema-bg">
         <div class="element-gradient buntington2-cinema buntington2-cinema-cat buntington2-cinema-doublef-events invert"
-             data-url="http://buntington2.wpshow.me/wp-content/uploads/2014/06/9510947151_ef1d3fdf52_b.jpg"
+             data-url="{{asset('images/site/events.JPG')}}"
              style="background-position: center center; padding-top: 150px; padding-bottom: 20px;">
             <div class="wrappr text-left">
                 <h1 class="h-gigant">Отчеты</h1>

@@ -5,9 +5,9 @@
 @section('content')
 <div id="cinemahead">
     <div class="buntington2-cinema-bg">
-        <div class="element-gradient buntington2-cinema buntington2-cinema-page invert" data-url="http://buntington2.wpshow.me/wp-content/uploads/2014/06/9735272889_e6fe99fd24_b.jpg" style="background-position: center center; padding-top: 350px; padding-bottom: 40px;">
+        <div class="element-gradient buntington2-cinema buntington2-cinema-page invert" data-url="{{asset('images/site/about.JPG')}}" style="background-position: center center; padding-top: 350px; padding-bottom: 40px;">
             <div class="wrappr text-left">
-                <h1 class="h-gigant">Страница комитета ОШ №25</h1>
+                <h1 class="h-gigant">Список комитетов школы № 25</h1>
                 <p>Повседневная практика показывает, что постоянное информационно-пропагандистское обеспечение нашей деятельности способствует подготовки и реализации форм развития.</p>
             </div>
         </div>

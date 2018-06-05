@@ -249,9 +249,9 @@
                                                             <a href="{{route('album.index')}}"
                                                                title="Галерея">
                                                                 <img width="1140" height="500"
-                                                                     src="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg"
+                                                                     src="{{asset('images/site/gallery.JPG')}}"
                                                                      class="attachment-full size-full wp-post-image" alt=""
-                                                                     srcset="http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b.jpg 1140w, http://buntington2.wpshow.me/wp-content/uploads/2014/06/14093140180_40cc891232_b-600x263.jpg 600w"
+                                                                     srcset="{{asset('images/site/gallery.JPG')}}, {{asset('images/site/gallery.JPG')}} 600w"
                                                                      sizes="(max-width: 1140px) 100vw, 1140px"/>
                                                             </a>
                                                         </figure>
