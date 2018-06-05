@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Поиск
+	Поиск
 @endsection
 @section('content')
 <div class="row">

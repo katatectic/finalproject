@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Родительский комитет ОШ №25
+    {{$settings->title}}
 @endsection
 @section('content')
 <div id="cinemahead">
