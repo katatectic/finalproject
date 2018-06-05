@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-	Редактировать пользователя {{$all->name}} {{$all->surname}}
+    Редактировать пользователя {{$all->name}} {{$all->surname}}
 @endsection
 @section('content')
 <head>
@@ -90,28 +90,26 @@
                         </div>
                         <div class="form-group">
                             <label for="role">Роль пользователя</label>
-                            {{--<input type="text" class="form-control" id="role" name="role" value="{{$all->role}}">--}}
-                                       <select name="role">
-                                    @foreach($roleNames as $key => $roleName)
+                            <select name="role">
+                                @foreach($roleNames as $key => $roleName)
                                     <option value="{{$key}}"
-                                            @if($key == $all->role) selected @endif>{{$roleName}}</option>
-                                    @endforeach
-                                </select>
-                            {{--<span style="color:red">{{ $errors->first('phone') }}</span>--}}
-                            </div>
-                            <div class="form-group">
-                                <p class="accordion">Подкомитеты (Классы)</p>
+                                        @if($key == $all->role) selected @endif>{{$roleName}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <p class="accordion">Подкомитеты (Классы)</p>
                             <div class="clasesSelect">
                                 <select name="studentsClasses[]" multiple style="height:200px">
                                     @foreach($studentsClasses as $class)
                                     <option value="{{$class->id}}"
                                             @if($all->studentsClasses->contains('pivot.student_class_id', $class->id)) selected @endif>
                                             @if (date('Y') - $class->start_year + $transition < 4)
-												{{date('Y') - $class->start_year + $transition}}
+                                                {{date('Y') - $class->start_year + $transition}}
                                             @elseif (date('Y') <= $class->year_of_issue)
-												{{date('Y') - $class->start_year + $transition + 1 - $class->fourth_class}}
+                                                {{date('Y') - $class->start_year + $transition + 1 - $class->fourth_class}}
                                             @else
-												(Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
+                                                (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
                                             @endif
                                 <span>{{$class->letter_class}}</span>
                                 </option>
@@ -120,12 +118,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="avatar" class="col-md-4 control-label">Фотография</label>
-                        <div class="col-md-6">
-                            <input id="avatar" type="file" class="form-control" name="avatar"
-                                   value="{{$all->avatar}}" autofocus>
-                            <span style="color:red">{{ $errors->first('avatar') }}</span>
-                        </div>
+                        <label for="exampleInputFile">Фотография</label>
+                        @isset($all->avatar)
+                            <img width="100" src="{{asset('images/users/'.$all->avatar)}}" class="attachment-full size-full wp-post-image"/>
+                        @endisset
+                        <input type="file" name="avatar" id="exampleInputFile">
+                        <span style="color:red">{{ $errors->first('avatar') }}</span>
                     </div>
                 </div>
                 <div class="col-md-12">
