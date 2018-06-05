@@ -15,7 +15,7 @@ class AddStudentClassIdToReportsTable extends Migration
     {
         Schema::table('reports', function (Blueprint $table) {
             $table->integer('student_class_id')->unsigned()->nullable();
-            $table->foreign('student_class_id')->references('id')->on('students_classes');
+            $table->foreign('student_class_id')->references('id')->on('students_classes')->onDelete('SET NULL');
         });
     }
 

@@ -25,7 +25,7 @@ class CreateEventsTable extends Migration
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('student_class_id')->unsigned()->nullable();
-            $table->foreign('student_class_id')->references('id')->on('students_classes');
+            $table->foreign('student_class_id')->references('id')->on('students_classes')->onDelete('SET NULL');
             $table->timestamps();
         });
     }
