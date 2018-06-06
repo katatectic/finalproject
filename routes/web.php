@@ -42,7 +42,8 @@ Route::get('/ajax', 'Ajax\StudentClassController@getClasses')->name('getStudentC
 Route::group(['prefix' => 'admin', 'middleware' => 'adminandchief'], function() {
     Route::get('/admin', 'AdminController@index')->name('admin');
     // News
-    Route::get('news', 'NewsController@adminNews')->name('adminnews'); /* Список всех новостей в админке */
+    Route::get('news', 'NewsController@adminNews')->name('adminnews');
+	Route::post('choose_admin_news', 'NewsController@chooseAdminNews')->name('article.admin.choose');
     Route::get('newscreate', 'NewsController@create')->name('newsview');
     Route::post('addNews', 'NewsController@adminNewsStore')->name('admin.addNews');
     Route::get('article/{id}/edit', 'NewsController@edit')->name('article.edit');/* Редактирование новость*/
@@ -50,6 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminandchief'], function() 
     Route::get('article/{id}/delete', 'NewsController@destroy')->name('deletenews');/* Удаление новости*/
     // Events
     Route::get('events', 'EventController@adminEvents')->name('adminevents'); /* Список всех событий в админке */
+	Route::post('choose_admin_events', 'EventController@chooseAdminEvents')->name('event.admin.choose');
     Route::get('eventcreate', 'EventController@create')->name('event.create');
     Route::post('eventstore', 'EventController@adminEventStore')->name('admin.event.store');
     Route::get('event/{id}/delete', 'EventController@destroy')->name('event.delete'); /* Удаление события */
@@ -57,6 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminandchief'], function() 
     Route::post('event/{id}/update', 'EventController@update')->name('event.update'); /* Редактирование события */
     //Reports
     Route::get('reports', 'ReportController@adminIndex')->name('adminReports');
+	Route::post('choose_admin_reports', 'ReportController@chooseAdminReports')->name('admin.report.choose');
     Route::get('reportcreate', 'ReportController@create')->name('admin.report.create');
     Route::post('reportcreate', 'ReportController@store')->name('admin.report.store');
     Route::get('report/{id}/delete', 'ReportController@destroy')->name('admin.report.destroy');

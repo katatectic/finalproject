@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Отчёты
+    Отчёты за {{$thisYear}} года 
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -9,33 +9,30 @@
     </section>
     <section class="content">
         <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">Всего отчётов: {{$reportsCount}}</h3>
-            </div>
             <div class="box-body">
-                <div class="form-group">
-                    <a href="{{route('admin.report.create')}}" class="btn btn-primary mb1 bg-orange">Добавить отчёт</a>
-                </div>
                 <div class="form-group">
                     <form method="POST" action="{{route('admin.report.choose')}}">
                         {{ csrf_field() }}
                         <div class="col-md-5">
                             <select name="month" class="form-control">
                                 @foreach (range(1,12) as $month)
-                                    <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                                <option value="{{$month}}">{{$monthNames[$month]}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-5">
                             <select name="year" class="form-control">
                                 @foreach (range($thisYear,2000) as $year)
-                                    <option value="{{$year}}">{{$year}}</option>
+                                <option value="{{$year}}">{{$year}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <button type="submit" id="subbut" class="btn btn-primary mb1 bg-orange">Найти отчёт</button>
                     </form>
                 </div>
+                @if (count($reportDate) == 0)
+                    <h3>Отчётов не найдено</h3>
+                @else
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -49,7 +46,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($reports as $report)
+                        @foreach($reportDate as $report)
                         <tr>
                             <td>{{$report->id}}</td>
                             <td><a href="{{route('profile',['id'=>$report->user->id])}}">{{$report->user->name}}</a></td>
@@ -68,8 +65,9 @@
                         @endforeach
                 </table>
             </div>
-            {{$reports->links()}}
+            {{$reportDate->links()}}
         </div>
+        @endif
     </section>
 </div>
 @endsection  

@@ -109,4 +109,10 @@ class ReportController extends Controller {
         return view('reports.choose', compact('reportDate'));
     }
 
+    public function chooseAdminReports(Request $request) {
+        $chooseAdminReport = $request->year . '-' . '0' . $request->month;
+        $reportDate = Report::where('date', 'like', '%' . $chooseAdminReport . '%')->paginate($this->puginationReports);
+        return view('admin.reports.choose', compact('reportDate'));
+    }
+
 }

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Новости
+Новости
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -15,6 +15,26 @@
             <div class="box-body">
                 <div class="form-group">
                     <a href="{{ route('newsview')}}" class="btn btn-primary mb1 bg-orange">Добавить новость</a>
+                </div>
+                <div class="form-group">
+                    <form method="POST" action="{{route('article.admin.choose')}}">
+                        {{ csrf_field() }}
+                        <div class="col-md-5">
+                            <select name="month" class="form-control">
+                                @foreach (range(1,12) as $month)
+                                    <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-5">
+                            <select name="year" class="form-control">
+                                @foreach (range($thisYear,2000) as $year)
+                                    <option value="{{$year}}">{{$year}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" id="subbut" class="btn btn-primary mb1 bg-orange">Найти новость</button>
+                    </form>
                 </div>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
@@ -42,7 +62,7 @@
                                         <a href="{{asset('images/news/'.$news->photo)}}" data-lightbox="{{asset('images/news/'.$news->photo)}}" >
                                             <img width="100" src="{{asset('images/news/'.$news->photo)}}" class="attachment-full size-full wp-post-image"/>
                                         </a>
-                                    </div>
+                                </div>
                                 @else
                                     Изображение отсутствует
                                 @endisset

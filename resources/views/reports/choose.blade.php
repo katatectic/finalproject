@@ -26,6 +26,7 @@
     <div class="bread">
         <a href="{{route('main')}}">Главная</a> /
         <a href="{{route('reports')}}">Отчёты</a> /
+        Отчёты за {{$thisYear}}
     </div>
     <form method="POST" action="{{route('report.choose')}}">
         {{ csrf_field() }}

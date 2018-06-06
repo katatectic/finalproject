@@ -148,4 +148,10 @@ class NewsController extends Controller {
         return view('news.choose', compact('newsDate'));
     }
 
+    public function chooseAdminNews(Request $request) {
+        $chooseAdminNews = $request->year . '-' . '0' . $request->month;
+        $newsDate = Article::where('date', 'like', '%' . $chooseAdminNews . '%')->paginate($this->puginationAdminNews);
+        return view('admin.news.choose', compact('newsDate'));
+    }
+
 }

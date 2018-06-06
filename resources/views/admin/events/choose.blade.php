@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Список событий
+	События за {{$thisYear}} года 
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -9,14 +9,8 @@
     </section>
     <section class="content">
         <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">Всего событий: {{$eventsCount}}</h3>
-            </div>
             <div class="box-body">
-                <div class="form-group">
-                    <a href="{{ route('event.create')}}" class="btn btn-primary mb1 bg-orange">Добавить событие</a>
-                </div>
-                <div class="form-group">
+							<div class="form-group">
                     <form method="POST" action="{{route('event.admin.choose')}}">
                         {{ csrf_field() }}
                         <div class="col-md-5">
@@ -36,6 +30,9 @@
                         <button type="submit" id="subbut" class="btn btn-primary mb1 bg-orange">Найти событие</button>
                     </form>
                 </div>
+				 @if (count($eventsDate) == 0)
+                        <h3>Событий не найдено</h3>
+                    @else
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -51,7 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($events as $event)
+                        @foreach($eventsDate as $event)
                         <tr>
                             <td><a href="{{route('profile',['id'=>$event->user->id])}}">{{$event->user->name}}</a></td>
                             <td>{{ $classesNumbers()[ $event->studentClass['id'] ] }} - {{$event->studentClass['letter_class']}}</td>
@@ -83,8 +80,9 @@
                         </tfoot>
                 </table>
             </div>
-            {{$events->links()}}
+            {{$eventsDate->links()}}
         </div>
+		@endif
     </section>
 </div>
 <@endsection  
