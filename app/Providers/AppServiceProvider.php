@@ -61,8 +61,12 @@ class AppServiceProvider extends ServiceProvider
         View::share('monthNames',
             [1 => 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября',
                 'Ноября', 'Декабря']);
-				
 
+        View::share('endingOfAge', function($n) {
+            $titles = ['год', 'года', 'лет'];
+            $cases = array(2, 0, 1, 1, 1, 2);
+            return $titles[($n % 100 > 4 && $n % 100 < 20) ? 2 : $cases[min($n % 10, 5)]];
+        });
 				
 				
 
