@@ -38,8 +38,13 @@
                             <div class="col-md-6">
                                 <select name="sex" id="sex" class="form-control" value="{{ old('sex') }}">
                                     <option value="" disabled="disabled" selected="selected">Выберите пол</option>
-                                    <option value="Мужской">Мужской</option>
-                                    <option value="Женский">Женский</option>
+
+
+
+    @for ($i = 1900; $i <=2018 ; $i++)
+        <option value="{{ $i }}">{{ $i }}</option>
+    @endfor
+                                    
                                 </select><br/>
                                 <span style="color:red">{{ $errors->first('sex') }}</span>
                             </div>

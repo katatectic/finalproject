@@ -16,6 +16,20 @@
     <div class="grid">
         <div id="primary" class="content-area grid__col grid__col--3-of-3">
             <main id="main" class="site-main" role="main">
+                <form method="POST" action="{{route('article.choose')}}">
+                    {{ csrf_field() }}
+                    <select name="month">
+                        @foreach (range(1,12) as $month)
+                            <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                        @endforeach
+                    </select>
+                    <select name="year">
+                        @foreach (range($thisYear,2000) as $year)
+                            <option value="{{$year}}">{{$year}}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" id="subbut" class="button">Найти</button>
+                </form>
                 @if($article)
                 <article id="post-519" class="post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">
                     @isset($article->photo)
@@ -48,7 +62,7 @@
                         <h3>Последние новости</h3>
                         <ul>
                             @foreach($lastNews as $news)
-                            <li><a href="{{ route('article', ['id' => $news->id]) }}">{{ $news->title }}</a></li>
+                                <li><a href="{{ route('article', ['id' => $news->id]) }}">{{ $news->title }}</a></li>
                             @endforeach
                         </ul>
                     </div>

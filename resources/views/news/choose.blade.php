@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Новости
+    Новости за {{$thisYear}}
 @endsection
 @section('content')
 <div id="cinemahead">
@@ -11,10 +11,9 @@
                     @isset($committee)
                         Новости комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
                     @else
-                        Все школьные новости!
+                        Новости за  {{$thisYear}}
                     @endif
                 </h1>
-                <p>Вы можете найти что-то интересное для себя. Особенно, если вы любите эту школу.</p>
             </div>           
         </div>         
     </div>    
@@ -23,10 +22,8 @@
 <div id="content" class="site-content wrappr">
     <div class="bread">
         <a href="{{route('main')}}">Главная</a> /
-        @isset($committee)
-            <a href="{{ route('oneCommittee',['id' => $committee->id]) }}">Комитет {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса</a> /
-        @endisset
-        Новости
+        <a href="{{route('news')}}">Новости</a> /
+        Новости за {{$thisYear}}
     </div>
     <form method="POST" action="{{route('article.choose')}}">
         {{ csrf_field() }}
@@ -42,9 +39,11 @@
         </select>
         <button type="submit" id="subbut" class="button">Найти</button>
     </form>
-    @if (count($all) > 0)   
+    @if (count($newsDate) == 0)
+        <p>Новостей не найдено</p>
+    @else  
     <section class="news">
-        @foreach($all as $news)
+        @foreach($newsDate as $news)
         <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
         <div class="grid">
             <div id="primary" class="content-area grid__col grid__col--2-of-3 grid__col--m-1-of-1">    
@@ -81,7 +80,7 @@
             </div>
         </div>
         @endforeach
-        {{$all->links()}}
+        {{$newsDate->links()}}
     </section>
     @endif
 </div>

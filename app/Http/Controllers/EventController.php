@@ -133,5 +133,11 @@ class EventController extends Controller {
         $event->delete();
         return redirect()->route('adminevents');
     }
+	
+	public function chooseEvents(Request $request) {
+        $chooseEvents = $request->year . '-' . '0' . $request->month;
+        $eventsDate = Event::where('event_date', 'like', '%' . $chooseEvents . '%')->paginate($this->puginationEvents);
+        return view('events.choose', compact('eventsDate'));
+    }
 
 }

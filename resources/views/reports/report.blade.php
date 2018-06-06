@@ -16,6 +16,20 @@
     <div class="grid">
         <div id="primary" class="content-area grid__col grid__col--3-of-3">
             <main id="main" class="site-main" role="main">
+                <form method="POST" action="{{route('report.choose')}}">
+                    {{ csrf_field() }}
+                    <select name="month">
+                        @foreach (range(1,12) as $month)
+                            <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                        @endforeach
+                    </select>
+                    <select name="year">
+                        @foreach (range($thisYear,2000) as $year)
+                            <option value="{{$year}}">{{$year}}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" id="subbut" class="button">Найти</button>
+                </form>
                 @if($report)
                 <article id="post-519" class="post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events">                    
                     <header class="entry-header">
@@ -46,7 +60,7 @@
                                 </a>
                             </div>   
                             @if((Auth::user() and Auth::user()->role==1) or (Auth::user() and Auth::user()->role==2))
-                            <a href="{{route('check.delete',$check->id)}}" onclick="return confirm('Удалить чек?')" class="more-link button" style="margin:0 auto">Удалить чек</a>
+                                <a href="{{route('check.delete',$check->id)}}" onclick="return confirm('Удалить чек?')" class="more-link button" style="margin:0 auto">Удалить чек</a>
                             @endif
                         </figure>
                         @endforeach
@@ -58,7 +72,7 @@
                         <h3>Последние отчёты</h3>
                         <ul>
                             @foreach($lastReports as $reports)
-                            <li><a href="{{ route('report.show', ['id' => $reports->id]) }}">Протокол № {{ $reports->id }} от {{ $reports->date }}</a></li>
+                                <li><a href="{{ route('report.show', ['id' => $reports->id]) }}">Протокол № {{ $reports->id }} от {{ $reports->date }}</a></li>
                             @endforeach
                         </ul>
                     </div>

@@ -118,14 +118,14 @@ class NewsController extends Controller {
         $date = new DateTime($all->date);
         $all->date = $date->format('Y-m-d\Th:i');
         $studentsClasses = StudentClass::get();
-        return view('admin.news.edit',compact('all', 'studentsClasses'));
+        return view('admin.news.edit', compact('all', 'studentsClasses'));
     }
 
     public function update($id, NewsRequest $request) {
         $editOne = Article::find($id);
         $img = $editOne->photo;
         $data = $request->all();
-        if ( $request->hasFile('photo') ) {
+        if ($request->hasFile('photo')) {
             $data['photo'] = $this->addPhoto($request);
             if (is_file(public_path() . '/images/news/' . $img)) {
                 unlink(public_path() . '/images/news/' . $img);
@@ -140,6 +140,12 @@ class NewsController extends Controller {
         $editOne->fill($data);
         $editOne->save();
         return redirect()->route('adminnews');
+    }
+
+    public function chooseNews(Request $request) {
+        $chooseNews = $request->year . '-' . '0' . $request->month;
+        $newsDate = Article::where('date', 'like', '%' . $chooseNews . '%')->paginate($this->puginationNews);
+        return view('news.choose', compact('newsDate'));
     }
 
 }

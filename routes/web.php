@@ -6,18 +6,22 @@ Auth::routes();
 
 // News, article
 Route::get('news', 'NewsController@index')->name('news');
-Route::get('article/{id}','NewsController@article')->name('article');/* Показ одной новости*/
+Route::get('article/{id}','NewsController@article')->name('article');
+Route::post('choose_news', 'NewsController@chooseNews')->name('article.choose');
 
 // Events, event
-Route::get('events', 'EventController@index')->name('event.index'); //Вьюха всех событий
-Route::get('event/{id}', 'EventController@show')->name('event.show'); /* Показ одного события */
+Route::get('events', 'EventController@index')->name('event.index'); 
+Route::get('event/{id}', 'EventController@show')->name('event.show'); 
+Route::post('choose_events', 'EventController@chooseEvents')->name('event.choose');
 
 //Report
 Route::get('reports', 'ReportController@index')->name('reports');
-Route::get('report/{id}', 'ReportController@show')->name('report.show'); /* Показ одного отчета */
-Route::get('addcheck/{id}', 'CheckController@create')->name('check.create');
-Route::post('addcheck', 'CheckController@store')->name('check.store');
+Route::get('report/{id}', 'ReportController@show')->name('report.show');
+Route::post('choose_reports', 'ReportController@chooseReports')->name('report.choose');
+Route::get('add_check/{id}', 'CheckController@create')->name('check.create');
+Route::post('add_check', 'CheckController@store')->name('check.store');
 Route::get('check/{id}/delete', 'CheckController@deleteCheck')->name('check.delete');
+
 
 // Search
 Route::get('/search/results', 'IndexController@search')->name('search');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReportsRequest;
+use Illuminate\Http\Request;
 use App\Report;
 use App\Check;
 use DateTime;
@@ -12,7 +13,7 @@ use App\User;
 
 class ReportController extends Controller {
 
-    public $puginationReports = 5;
+    public $puginationReports = 10;
     public $puginationReportComments = 10;
     public $lastReports = 5;
     public $puginationAdminReports = 15;
@@ -35,7 +36,7 @@ class ReportController extends Controller {
     }
 
     public function show($id) {
-		$report = Report::with('checks')->find($id);
+        $report = Report::with('checks')->find($id);
         $report->setRelation('comments', $report->comments()->paginate($this->puginationReportComments));
         $lastReports = Report::orderBy('id', 'desc')->take($this->lastReports)->get();
         return view('reports.report', compact('report', 'lastReports'));
@@ -72,8 +73,8 @@ class ReportController extends Controller {
             return false;
         }
         $report = Report::with('checks')->findOrFail($id);
-		$checks = $report->checks;
-		foreach ($checks as $check) {
+        $checks = $report->checks;
+        foreach ($checks as $check) {
             if (is_file(public_path() . '/images/reports/checks/' . $check->image)) {
                 unlink(public_path() . '/images/reports/checks/' . $check->image);
             }
@@ -82,7 +83,6 @@ class ReportController extends Controller {
         $report->delete($id);
         return redirect()->route('adminReports');
     }
-
 
     public function edit($id) {
         $report = Report::find($id);
@@ -103,5 +103,10 @@ class ReportController extends Controller {
         return redirect()->route('adminReports');
     }
 
+    public function chooseReports(Request $request) {
+        $chooseReport = $request->year . '-' . '0' . $request->month;
+        $reportDate = Report::where('date', 'like', '%' . $chooseReport . '%')->paginate($this->puginationReports);
+        return view('reports.choose', compact('reportDate'));
+    }
 
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    События
+    События {{$thisYear}} года
 @endsection
 @section('content')
 <div id="cinemahead">
@@ -13,7 +13,7 @@
                     @isset($committee)
                         События комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
                     @else
-                        Ближайшие события
+                        События за {{$thisYear}} года
                     @endif
                 </h1>
                 <p>Список всех событий.</p>
@@ -25,28 +25,28 @@
 <div id="content" class="site-content wrappr">
     <div class="bread">
         <a href="{{route('main')}}">Главная</a> /
-        @isset($committee)
-        <a href="{{ route('oneCommittee',['id' => $committee->id]) }}">Комитет {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса</a> /
-        @endisset
-        События
+        <a href="{{route('event.index')}}">События</a> /
+        События за {{$thisYear}} года
     </div>
     <form method="POST" action="{{route('event.choose')}}">
         {{ csrf_field() }}
         <select name="month">
             @foreach (range(1,12) as $month)
-            <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                <option value="{{$month}}">{{$monthNames[$month]}}</option>
             @endforeach
         </select>
         <select name="year">
             @foreach (range($thisYear,2000) as $year)
-            <option value="{{$year}}">{{$year}}</option>
+                <option value="{{$year}}">{{$year}}</option>
             @endforeach
         </select>
         <button type="submit" id="subbut" class="button">Найти</button>
     </form>
-    @if (count($events) > 0)
+    @if (count($eventsDate) == 0)
+    <h3>Событий не найдено</h3>
+    @else
     <section class="events">
-        @foreach($events as $event)
+        @foreach($eventsDate as $event)
         <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
         <div class="grid">
             <div id="primary" class="content-area grid__col grid__col--3-of-3">
@@ -90,7 +90,7 @@
             </div>
         </div>
         @endforeach
-        {{ $events->links() }}
+        {{ $eventsDate->links() }}
     </section>
     @endif
 </div>

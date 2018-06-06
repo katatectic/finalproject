@@ -61,6 +61,10 @@ class AppServiceProvider extends ServiceProvider
         View::share('monthNames',
             [1 => 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября',
                 'Ноября', 'Декабря']);
+				
+
+				
+				
 
     }
 

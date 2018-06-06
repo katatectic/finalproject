@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Отчёты
+    Отчёты за {{$thisYear}}
 @endsection
 @section('content')
 <div id="cinemahead">
@@ -9,12 +9,12 @@
              data-url="{{asset('images/site/events.JPG')}}"
              style="background-position: center center; padding-top: 150px; padding-bottom: 20px;">
             <div class="wrappr text-left">
-                <h1 class="h-gigant">Отчеты</h1>
+                <h1 class="h-gigant">Отчёты за {{$thisYear}}</h1>
                 <p>
                     @isset($committee)
                         Отчёты комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
                     @else
-                        Список всех отчетов
+                        Список всех отчётов
                     @endif
                 </p>
             </div>
@@ -25,10 +25,7 @@
 <div id="content" class="site-content wrappr">
     <div class="bread">
         <a href="{{route('main')}}">Главная</a> /
-        @isset($committee)
-            <a href="{{ route('oneCommittee',['id' => $committee->id]) }}">Комитет {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса</a> /
-        @endisset
-        Отчеты
+        <a href="{{route('reports')}}">Отчёты</a> /
     </div>
     <form method="POST" action="{{route('report.choose')}}">
         {{ csrf_field() }}
@@ -44,10 +41,12 @@
         </select>
         <button type="submit" id="subbut" class="button">Найти</button>
     </form>
-    @if (count($reports) > 0)
+    @if (count($reportDate) == 0)
+        <p>Отчётов не найдено</p>
+    @else
     <section class="events">
-        @foreach($reports as $report)
-        <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
+        @foreach($reportDate as $report)
+        <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
         <div class="grid">
             <div id="primary" class="content-area grid__col grid__col--3-of-3">
                 <main id="main" class="site-main" role="main">
@@ -72,7 +71,7 @@
             </div>
         </div>
         @endforeach
-        {{ $reports->links() }}
+        {{ $reportDate->links() }}
     </section>
     @endif
 </div>
