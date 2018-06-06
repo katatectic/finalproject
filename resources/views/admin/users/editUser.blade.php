@@ -67,17 +67,6 @@
                                    style="color:red">{{ $errors->first('middle_name') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="sex" class="col-md-4 col-lg-12 control-label">Пол</label>
-                            <div class="col-md-6">
-                                <select name="sex" id="sex" class="form-control" value="{{$all->sex}}">
-                                    <option value="" disabled="disabled" selected="selected">Выберите пол</option>
-                                    <option value="Мужской">Мужской</option>
-                                    <option value="Женский">Женский</option>
-                                </select><br/>
-                                <span style="color:red">{{ $errors->first('sex') }}</span>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="email">Почта пользователя</label>
                             <input type="email" class="form-control" id="email" name="email"
                                    value="{{$all->email}}"> <span
@@ -89,21 +78,63 @@
                             <span style="color:red">{{ $errors->first('phone') }}</span>
                         </div>
                         <div class="form-group">
+                            <label for="sex" class="col-md-4 col-lg-12 control-label">Пол</label>
+                            <select name="sex" id="sex" class="form-control" value="{{$all->sex}}">
+                                <option value="" disabled="disabled" selected="selected">Выберите пол</option>
+                                <option value="Мужской">Мужской</option>
+                                <option value="Женский">Женский</option>
+                            </select><br/>
+                            <span style="color:red">{{ $errors->first('sex') }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sex" class="col-md-4 col-lg-11 control-label">Дата рождения</label>
+                        <div class="col-md-3">
+                            <select name="day" class="form-control">
+                                <option value="" disabled="disabled" selected="selected">Выберите день</option>
+                                @foreach (range(1,31) as $day)
+                                    <option value="{{$day}}">{{$day}}</option>
+                                @endforeach
+                            </select>
+                            <span style="color:red">{{ $errors->first('day') }}</span>
+                        </div>
+                        <div class="col-md-3">
+                            <select name="month" class="form-control">
+                                <option value="" disabled="disabled" selected="selected">Выберите месяц</option>
+                                @foreach (range(1,12) as $month)
+                                    <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                                @endforeach
+                            </select>
+                            <span style="color:red">{{ $errors->first('month') }}</span>
+                        </div>
+                        <div class="col-md-3">
+                            <select name="year" class="form-control">
+                                <option value="" disabled="disabled" selected="selected">Выберите год</option>
+                                @foreach (range($thisYear,1920) as $year)
+                                    <option value="{{$year}}">{{$year}}</option>
+                                @endforeach
+                            </select>
+                            <span style="color:red">{{ $errors->first('year') }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="form-group">
                             <label for="role">Роль пользователя</label>
-                            <select name="role">
+                            <select name="role" class="form-control">
                                 @foreach($roleNames as $key => $roleName)
-                                    <option value="{{$key}}"
-                                        @if($key == $all->role) selected @endif>{{$roleName}}</option>
+                                <option value="{{$key}}"
+                                    @if($key == $all->role) selected @endif>{{$roleName}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <p class="accordion">Подкомитеты (Классы)</p>
-                            <div class="clasesSelect">
-                                <select name="studentsClasses[]" multiple style="height:200px">
-                                    @foreach($studentsClasses as $class)
+                    </div>
+                    <div class="form-group">
+                        <p class="accordion">Подкомитеты (Классы)</p>
+                        <div class="clasesSelect">
+                            <select name="studentsClasses[]" multiple style="height:200px">
+                                @foreach($studentsClasses as $class)
                                     <option value="{{$class->id}}"
-                                            @if($all->studentsClasses->contains('pivot.student_class_id', $class->id)) selected @endif>
+                                        @if($all->studentsClasses->contains('pivot.student_class_id', $class->id)) selected @endif>
                                             @if (date('Y') - $class->start_year + $transition < 4)
                                                 {{date('Y') - $class->start_year + $transition}}
                                             @elseif (date('Y') <= $class->year_of_issue)
@@ -111,12 +142,12 @@
                                             @else
                                                 (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
                                             @endif
-                                <span>{{$class->letter_class}}</span>
-                                </option>
-                                @endforeach
-                            </select>
+                                            <span>{{$class->letter_class}}</span>
+                                        </option>
+                                    @endforeach
+                                </select>
                         </div>
-                    </div>
+                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">Фотография</label>
                         @isset($all->avatar)
@@ -129,16 +160,15 @@
                 <div class="col-md-12">
                     <div class="box-footer">
                         <button class="btn btn-success pull-left bg-orange"
-                                onclick="window.history.go(-1); return false;">Назад
+                            onclick="window.history.go(-1); return false;">Назад
                         </button>
                         <button class="btn btn-success pull-right bg-orange">Сохранить</button>
                     </div>
                 </div>
                 {{ csrf_field() }}
             </div>
-        </div>
-    </form>
-</section>
+        </form>
+    </section>
 </div>
 <script>
     var acc = document.getElementsByClassName("accordion");

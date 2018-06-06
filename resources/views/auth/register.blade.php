@@ -38,15 +38,36 @@
                             <div class="col-md-6">
                                 <select name="sex" id="sex" class="form-control" value="{{ old('sex') }}">
                                     <option value="" disabled="disabled" selected="selected">Выберите пол</option>
-
-
-
-    @for ($i = 1900; $i <=2018 ; $i++)
-        <option value="{{ $i }}">{{ $i }}</option>
-    @endfor
-                                    
+                                    <option value="Мужской">Мужской</option>
+                                    <option value="Женский">Женский</option>
                                 </select><br/>
                                 <span style="color:red">{{ $errors->first('sex') }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Дата рождения</label>
+                            <div class="col-md-4">
+                                <select name="day">
+                                    <option value="" disabled="disabled" selected="selected">Выберите день</option>
+                                    @foreach (range(1,31) as $day)
+                                        <option value="{{$day}}">{{$day}}</option>
+                                    @endforeach
+                                </select>
+                                <span style="color:red">{{ $errors->first('day') }}</span>
+                                <select name="month">
+                                    <option value="" disabled="disabled" selected="selected">Выберите месяц</option>
+                                    @foreach (range(1,12) as $month)
+                                        <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                                    @endforeach
+                                </select>
+                                <span style="color:red">{{ $errors->first('month') }}</span>
+                                <select name="year">
+                                    <option value="" disabled="disabled" selected="selected">Выберите год</option>
+                                    @foreach (range($thisYear,1920) as $year)
+                                        <option value="{{$year}}">{{$year}}</option>
+                                    @endforeach
+                                </select>
+                                <span style="color:red">{{ $errors->first('year') }}</span>
                             </div>
                         </div>
                         <div class="form-group">

@@ -51,6 +51,9 @@ use RegistersUsers;
                     'surname' => 'required|alpha|max:30',
                     'middle_name' => 'required|alpha|max:30',
                     'sex' => 'required',
+                    'day' => 'required',
+                    'month' => 'required',
+                    'year' => 'required',
                     'phone' => 'required|numeric|digits_between:10,10',
                     'email' => 'required|email|max:30|unique:users',
                     'avatar' => 'nullable|image|max:2048',
@@ -80,6 +83,7 @@ use RegistersUsers;
      */
     protected function create(array $data) {
         $request = request();
+        $birthday = $request->year . '-' . $request->month . '-' . $request->day;
         if ($request->avatar == '') {
             $newfilename = 'default_avatar.jpg';
         } else {
@@ -91,6 +95,7 @@ use RegistersUsers;
                     'surname' => $data['surname'],
                     'name' => $data['name'],
                     'middle_name' => $data['middle_name'],
+                    'birthday' => $birthday,
                     'sex' => $data['sex'],
                     'email' => $data['email'],
                     'phone' => $data['phone'],

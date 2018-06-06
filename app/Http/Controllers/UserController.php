@@ -84,6 +84,7 @@ class UserController extends Controller {
 
     public function update($id, UsersRequest $request) {
         $data = $request->all();
+        $data['birthday'] = $request->year . '-' . $request->month . '-' . $request->day;
         if (isset($request->avatar)) {
             $data['avatar'] = $this->addAvatar($request);
         }

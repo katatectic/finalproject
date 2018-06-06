@@ -7,6 +7,7 @@ use App\Http\Requests\EventsRequest;
 use App\Event;
 use DateTime;
 use App\User;
+use App\Birtday;
 use App\StudentClass;
 use Illuminate\Support\Facades\Auth;
 
@@ -145,4 +146,5 @@ class EventController extends Controller {
         $eventsDate = Event::where('event_date', 'like', '%' . $chooseAdminEvents . '%')->paginate($this->puginationEvents);
         return view('admin.events.choose', compact('eventsDate'));
     }
+
 }

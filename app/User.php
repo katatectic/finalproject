@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Cache;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -35,6 +36,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Report'); // один пользователь много отчетов
     }
 	
+	public function age()
+    {
+      return Carbon::parse($this->attributes['birthday'])->age;
+    }
+	
 	public function isOnline()
     {
         return Cache::has('user-is-online-'. $this->id);
@@ -45,7 +51,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-       'surname','name','middle_name', 'email','phone','avatar','password', 'role','sex'
+       'surname','name','middle_name', 'email','phone','avatar','password', 'role','sex','birthday'
     ];
 
     /**

@@ -27,7 +27,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Изображение</label>
-                            <input type="file" name="photo" id="exampleInputFile">
+                            <input type="file" name="photo" id="exampleInputFile" required>
                             <span style="color:red">{{ $errors->first('photo') }}</span>
                         </div>
                         <div class="form-group">
