@@ -5,7 +5,7 @@
 @section('content')
 <div id="cinemahead">
     <div class="buntington2-cinema-bg">            
-        <div class="element-gradient buntington2-cinema buntington2-cinema-cat buntington2-cinema-category invert" data-url="{{asset('images/site/news.JPEG')}}" style="background-position: center center; padding-top: 150px; padding-bottom: 20px;">                
+        <div class="element-gradient buntington2-cinema buntington2-cinema-cat buntington2-cinema-category invert" data-url="{{asset('images/site/news.JPEG')}}" style="background-position: center center; padding-top: 150px; padding-bottom: 20px;">               
             <div class="wrappr text-left">
                 <h1 class="h-gigant">
                     @isset($committee)
@@ -21,7 +21,7 @@
     <div id="mobile-nav-container"></div>    
 </div>
 <div id="content" class="site-content wrappr">
-    <div class="bread">
+    <div class="bread" style="margin-top: 10px; margin-bottom: 10px;">
         <a href="{{route('main')}}">Главная</a> /
         @isset($committee)
             <a href="{{ route('oneCommittee',['id' => $committee->id]) }}">Комитет {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса</a> /
@@ -29,8 +29,7 @@
         Новости
     </div>    
     @if (count($all) > 0)   
-    <section class="news">
-        
+    <section class="news">        
         <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
         <div class="grid">
             <div id="primary" class="content-area grid__col grid__col--2-of-3 grid__col--m-1-of-1">    
@@ -40,7 +39,7 @@
                         <article id="post-35" class="post-35 post type-post status-publish format-standard has-post-thumbnail hentry category-news tag-galleries tag-meetings tag-school" style="margin-top: 30px;">
                             <figure class="post-thumbnail">
                                 <a href="{{route('article',['id'=>$news->id])}}" title="{{ $news->title }}">
-                                    <img width="1140" height="500"
+                                    <img width="800" height="200"
                                          src="{{asset('images/news/'.$news->photo)}}"
                                          class="attachment-full size-full wp-post-image"
                                          alt=""
