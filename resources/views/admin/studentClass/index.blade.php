@@ -26,7 +26,7 @@
         <div class="box">
             <div class="box-body">
                 <div class="form-group">
-					<div>
+		<div>
                     <form method="post" action="{{route('storeStudentsClasses')}}">
                         <label>Литтера класса<input type="text" name="letter_class" class="form-control"></label>
                         <label>Первый год обучния<input type="text" name="start_year" class="form-control"></label>
@@ -47,6 +47,14 @@
                     </div>
                     @endif
                 </div>
+                @if(session('status'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{session('status')}}
+                </div>
+                @endif   
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>		
                         <tr>
@@ -78,7 +86,7 @@
                         @endforeach
                     </tbody>
                 </table>	
-				{{$studentsClasses->links()}}
+		{{$studentsClasses->links()}}
             </div><br/>
             <div>
                 <section>

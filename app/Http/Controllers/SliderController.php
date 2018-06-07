@@ -28,7 +28,7 @@ class SliderController extends Controller {
             $data['photo'] = $this->addSliderPhoto($request);
         };
         $create = Slider::create($data);
-        return redirect()->route('adminSliders');
+        return redirect()->route('adminSliders')->with(['status' => 'Новый слайдер создан!']);
     }
 
     public function destroy($id) {
@@ -41,7 +41,7 @@ class SliderController extends Controller {
             unlink(public_path() . '/images/sliders/' . $img);
         }
         $slider->delete();
-        return redirect()->route('adminSliders');
+        return redirect()->route('adminSliders')->with(['status' => 'Слайдер удалён!']);
     }
 
     public function edit($id) {
@@ -61,7 +61,7 @@ class SliderController extends Controller {
         };
         $editOne->fill($data);
         $editOne->save();
-        return redirect()->route('adminSliders');
+        return redirect()->route('adminSliders')->with(['status' => 'Слайдер обновлён!']);
     }
 
     public function addSliderPhoto($request) {

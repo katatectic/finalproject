@@ -16,6 +16,14 @@
                 <div class="form-group">
                     <a href="{{ route('newsview')}}" class="btn btn-primary mb1 bg-orange">Добавить новость</a>
                 </div>
+                @if(session('status'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{session('status')}}
+                </div>
+                @endif
                 <div class="form-group">
                     <form method="POST" action="{{route('article.admin.choose')}}">
                         {{ csrf_field() }}

@@ -70,7 +70,7 @@ class NewsController extends Controller {
             $id = $create->id;
             return redirect()->route('adminnews');
         }
-        return view('admin.news.create');
+        return view('admin.news.create')->with(['status' => 'Новость создана!']);
     }
 
     public function userNewsStore(NewsRequest $request) {
@@ -110,7 +110,7 @@ class NewsController extends Controller {
         }
         Article::find($id)->comments()->forceDelete();
         $article->delete();
-        return redirect()->route('adminnews');
+        return redirect()->route('adminnews')->with(['status' => 'Новость удалена!']);
     }
 
     public function edit($id) {
@@ -139,7 +139,7 @@ class NewsController extends Controller {
         Article::find($id)->update($data);
         $editOne->fill($data);
         $editOne->save();
-        return redirect()->route('adminnews');
+        return redirect()->route('adminnews')->with(['status' => 'Новость обновлена!']);
     }
 
     public function chooseNews(Request $request) {

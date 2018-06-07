@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Providers;
-
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -10,8 +8,6 @@ use App\StudentClass;
 use App\Comment;
 use App\Feedback;
 use App\Setting;
-
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -57,11 +53,9 @@ class AppServiceProvider extends ServiceProvider
             $notViewedFeedbacks = Feedback::where('status', '=', 1)->count();
             return $notViewedFeedbacks;
         });
-
         View::share('monthNames',
             [1 => 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября',
                 'Ноября', 'Декабря']);
-
         View::share('endingOfAge', function($n) {
             $titles = ['год', 'года', 'лет'];
             $cases = array(2, 0, 1, 1, 1, 2);
@@ -69,9 +63,7 @@ class AppServiceProvider extends ServiceProvider
         });
 				
 				
-
     }
-
     /**
      * Register any application services.
      *

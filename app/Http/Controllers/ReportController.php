@@ -65,7 +65,7 @@ class ReportController extends Controller {
         $date = new DateTime($data['date']);
         $data['date'] = $date->format('Y-m-d');
         $create = Report::create($data);
-        return redirect()->route('adminReports');
+        return redirect()->route('adminReports')->with(['status' => 'Отчёт создан!']);
     }
 
     public function destroy($id) {
@@ -81,7 +81,7 @@ class ReportController extends Controller {
         }
         Report::find($id)->comments()->forceDelete();
         $report->delete($id);
-        return redirect()->route('adminReports');
+        return redirect()->route('adminReports')->with(['status' => 'Отчёт удалён!']);;
     }
 
     public function edit($id) {
@@ -100,7 +100,7 @@ class ReportController extends Controller {
         }
         $editOne->fill($data);
         $editOne->save();
-        return redirect()->route('adminReports');
+        return redirect()->route('adminReports')->with(['status' => 'Отчёт обновлён!']);;
     }
 
     public function chooseReports(Request $request) {
