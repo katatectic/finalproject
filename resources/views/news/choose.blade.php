@@ -9,9 +9,9 @@
             <div class="wrappr text-left">
                 <h1 class="h-gigant">
                     @isset($committee)
-                        Новости комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
+                    Новости комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
                     @else
-                        Новости за  {{$thisYear}}
+                    Новости за  {{$thisYear}}
                     @endif
                 </h1>
             </div>           
@@ -25,34 +25,20 @@
         <a href="{{route('news')}}">Новости</a> /
         Новости за {{$thisYear}}
     </div>
-    <form method="POST" action="{{route('article.choose')}}">
-        {{ csrf_field() }}
-        <select name="month">
-            @foreach (range(1,12) as $month)
-                <option value="{{$month}}">{{$monthNames[$month]}}</option>
-            @endforeach
-        </select>
-        <select name="year">
-            @foreach (range($thisYear,2000) as $year)
-                <option value="{{$year}}">{{$year}}</option>
-            @endforeach
-        </select>
-        <button type="submit" id="subbut" class="button">Найти</button>
-    </form>
     @if (count($newsDate) == 0)
-        <p>Новостей не найдено</p>
+    <p>Новостей не найдено</p>
     @else  
-    <section class="news">
-        @foreach($newsDate as $news)
+    <section class="news">        
         <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
         <div class="grid">
             <div id="primary" class="content-area grid__col grid__col--2-of-3 grid__col--m-1-of-1">    
                 <main id="main" class="site-main" role="main">
                     <div class="article-wrapper layout-sleek">
+                        @foreach($newsDate as $news)
                         <article id="post-35" class="post-35 post type-post status-publish format-standard has-post-thumbnail hentry category-news tag-galleries tag-meetings tag-school" style="margin-top: 30px;">
                             <figure class="post-thumbnail">
                                 <a href="{{route('article',['id'=>$news->id])}}" title="{{ $news->title }}">
-                                    <img width="1140" height="500"
+                                    <img width="800" height="200"
                                          src="{{asset('images/news/'.$news->photo)}}"
                                          class="attachment-full size-full wp-post-image"
                                          alt=""
@@ -75,11 +61,41 @@
                                 <span class="screen-reader-text">Продолжить чтение  {{ $news->title }}</span>
                             </div>
                         </article>
+                        @endforeach
                     </div>
                 </main>
             </div>
-        </div>
-        @endforeach
+            <div id="primary" class="content-area grid__col grid__col--1-of-3 grid__col--m-1-of-1">
+                <div class="col-md-3 blog-right">
+                    <div>
+                        <h3>Последние новости</h3>
+                        <ul style="list-style-type:none">
+                            @foreach($lastNews as $news)
+                            <li><a href="{{ route('article', ['id' => $news->id]) }}">{{ $news->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <h4 style="margin-top: 25px;">Выберите новости за месяц</h4>
+                <form method="POST" action="{{route('article.choose')}}">
+                    {{ csrf_field() }}
+                    <label for="month">Выберите месяц</label>
+                    <select name="month">
+                        @foreach (range(1,12) as $month)
+                        <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                        @endforeach
+                    </select>
+                    <label for="year">Выберите год</label>
+                    <select name="year">
+                        @foreach (range($thisYear,2000) as $year)
+                        <option value="{{$year}}">{{$year}}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" id="subbut" class="button">Найти</button>
+                </form>
+                @include('widget')
+            </div>
+        </div>        
         {{$newsDate->links()}}
     </section>
     @endif

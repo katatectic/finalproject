@@ -145,7 +145,8 @@ class NewsController extends Controller {
     public function chooseNews(Request $request) {
         $chooseNews = $request->year . '-' . '0' . $request->month;
         $newsDate = Article::where('date', 'like', '%' . $chooseNews . '%')->paginate($this->puginationNews);
-        return view('news.choose', compact('newsDate'));
+		$lastNews = Article::orderBy('id', 'desc')->take($this->lastNews)->get();
+        return view('news.choose', compact('newsDate','lastNews'));
     }
 
     public function chooseAdminNews(Request $request) {

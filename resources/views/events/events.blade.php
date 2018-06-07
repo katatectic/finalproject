@@ -82,11 +82,13 @@
                 <h4 style="margin-top: 25px;">Выберите события за месяц</h4>
                 <form method="POST" action="{{route('event.choose')}}">
                     {{ csrf_field() }}
+					<label for="month">Выберите месяц</label>
                     <select name="month">
                         @foreach (range(1,12) as $month)
                         <option value="{{$month}}">{{$monthNames[$month]}}</option>
                         @endforeach
                     </select>
+					<label for="year">Выберите год</label>
                     <select name="year">
                         @foreach (range($thisYear,2000) as $year)
                         <option value="{{$year}}">{{$year}}</option>
