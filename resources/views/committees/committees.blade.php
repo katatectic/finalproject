@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('title')
-	Комитеты
+    Комитеты
 @endsection
 @section('content')
 <head>
     <style>
         .committees {display:flex;flex-wrap: wrap;}
-        .committee {width: 300px; margin:3px 20px;background: #f3f3f3;padding: 0 20px;border-radius: 10px;box-shadow: 0 0 10px rgba(0,0,0,0.5);}
+        .committee {width: 250px; margin:3px 20px;background: #f3f3f3;padding: 0 20px;border-radius: 10px;box-shadow: 0 0 10px rgba(0,0,0,0.5);}
         .committee a {display: block;width: 100%}
         .committee:hover {padding: 0 10px;border-radius: 30px;}
         a.consist {color:#18d220;}
@@ -21,7 +21,6 @@
                 <h1 class="h-gigant">
                        Список всех комитетов
                 </h1>
-
             </div>
         </div>
     </div>
@@ -33,7 +32,7 @@
     </div>
     <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
     <div class="grid">
-        <div id="primary" class="content-area grid__col grid__col--3-of-3">
+        <div id="primary" class="content-area grid__col grid__col--3-of-4">
             <main id="main" class="site-main" role="main">
                 <article id="post-425" class="post-425 page type-page status-publish hentry">
                     <div id="pl-425" class="panel-layout">
@@ -66,6 +65,9 @@
                     </div>
                 </article>
             </main>
+        </div>
+        <div id="primary" class="content-area grid__col grid__col--1-of-4">
+            @include('widget')
         </div>
     </div>
 </div>
