@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-{{$article->title}}
+    {{$article->title}}
 @endsection
 @section('content')
 <div id="cinemahead">
@@ -37,10 +37,10 @@
                         <p>{{$article->content}}</p>
                     </div>
                     @if (!Auth::guest())
-                    @if ( Auth::user()->role == 1 or (Auth::user()->role == 2 and Auth::user()->studentsClasses->contains('id', $article->studentClass['id'])) )
-                    <a href="{{ route('article.edit',['id'=>$article->id]) }}" class="more-link button pull-left">Редактировать новость</a>
-                    <a href="{{route('deletenews',$article->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button pull-right">Удалить новость</a>
-                    @endif
+                        @if ( Auth::user()->role == 1 or (Auth::user()->role == 2 and Auth::user()->studentsClasses->contains('id', $article->studentClass['id'])) )
+                            <a href="{{ route('article.edit',['id'=>$article->id]) }}" class="more-link button pull-left">Редактировать новость</a>
+                            <a href="{{route('deletenews',$article->id)}}" onclick="return confirm('Удалить новость?')" class="more-link button pull-right">Удалить новость</a>
+                        @endif
                     @endif
                 </article>
                 @endif
@@ -53,7 +53,7 @@
                     <h3>Последние новости</h3>
                     <ul style="list-style-type:none">
                         @foreach($lastNews as $news)
-                        <li><a href="{{ route('article', ['id' => $news->id]) }}">{{ $news->title }}</a></li>
+                            <li><a href="{{ route('article', ['id' => $news->id]) }}">{{ $news->title }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -64,13 +64,13 @@
                 <label for="month">Выберите месяц</label>
                 <select name="month">
                     @foreach (range(1,12) as $month)
-                    <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                        <option value="{{$month}}">{{$monthNames[$month]}}</option>
                     @endforeach
                 </select>
                 <label for="year">Выберите год</label>
                 <select name="year">
                     @foreach (range($thisYear,2000) as $year)
-                    <option value="{{$year}}">{{$year}}</option>
+                        <option value="{{$year}}">{{$year}}</option>
                     @endforeach
                 </select>
                 <button type="submit" id="subbut" class="button">Найти</button>

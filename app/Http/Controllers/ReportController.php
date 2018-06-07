@@ -106,7 +106,8 @@ class ReportController extends Controller {
     public function chooseReports(Request $request) {
         $chooseReport = $request->year . '-' . '0' . $request->month;
         $reportDate = Report::where('date', 'like', '%' . $chooseReport . '%')->paginate($this->puginationReports);
-        return view('reports.choose', compact('reportDate'));
+        $lastReports = Report::orderBy('id', 'desc')->take($this->lastReports)->get();
+        return view('reports.choose', compact('reportDate','lastReports'));
     }
 
     public function chooseAdminReports(Request $request) {

@@ -30,13 +30,13 @@
                         <p>{{$report->content}}</p>
                     </div>
                     @if (Auth::user())
-                        @if (Auth::user()->role == 1 or Auth::user()->role == 2)		
-                            <a href="{{ route('admin.report.edit',['id'=>$report->id]) }}" class="more-link button">Редактировать отчёт</a>
-                            <a href="{{route('check.create',['id'=>$report->id])}}"><button type="button"class="btn btn-primary btn-large">Добавить платёжный чек</button></a>
-                            <a href="{{route('admin.report.destroy',['id'=>$report->id])}}" style=""onclick="return confirm('Удалить отчёт?')" class="more-link button">Удалить отчёт</a>
+                        @if (Auth::user()->role == 1 or Auth::user()->role == 2)
+                            <a href="{{ route('admin.report.edit',['id'=>$report->id]) }}" class="more-link button pull-left">Редактировать отчёт</a>
+                            <a href="{{route('admin.report.destroy',$report->id)}}" onclick="return confirm('Удалить отчёт?')" class="more-link button pull-right">Удалить отчёт</a>
                         @endif
                     @endif
-                    <h5>Платежные чеки</h5>
+                    <h5 style='margin-top:100px'>Платежные чеки</h5>
+                    <a href="{{route('check.create',['id'=>$report->id])}}" class="more-link button pull-center">Добавить платёжный чек</a>
                     <div class="gallery">
                         @foreach($report->checks as $check)
                         <figure>
@@ -53,75 +53,39 @@
                     </div>
                 </article>
                 @endif
-                <div class="col-md-6 blog-right">
-                    <div>
-                        <h3>Последние отчёты</h3>
-                        <ul>
-                            @foreach($lastReports as $reports)
-                                <li><a href="{{ route('report.show', ['id' => $reports->id]) }}">Протокол № {{ $reports->id }} от {{ $reports->date }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
                 @include('reports.comments')
             </main> 
-            <div id="primary" class="content-area grid__col grid__col--1-of-3">
-                <h4 style="">Выберите отчеты за месяц</h4>
-                <form method="POST" action="{{route('report.choose')}}">
-                    {{ csrf_field() }}
-                    <select name="month">
-                        @foreach (range(1,12) as $month)
-                            <option value="{{$month}}">{{$monthNames[$month]}}</option>
+        </div>  
+        <div id="primary" class="content-area grid__col grid__col--1-of-3">
+            <div class="col-md-6 blog-right">
+                <div>
+                    <h3>Последние отчёты</h3>
+                    <ul style="list-style-type:none">
+                        @foreach($lastReports as $reports)
+                        <li><a href="{{ route('report.show', ['id' => $reports->id]) }}">Протокол № {{ $reports->id }} от {{ $reports->date }}</a></li>
                         @endforeach
-                    </select>
-                    <select name="year">
-                        @foreach (range($thisYear,2000) as $year)
-                            <option value="{{$year}}">{{$year}}</option>
-                        @endforeach
-                    </select>
-                    <button type="submit" id="subbut" class="button">Найти</button>
-                </form>
-                <div class="so-widget-doublef-courses-search so-widget-doublef-courses-search-base">
-                    <h2 class="widget-title" style="margin-top: 20px;">Что-то будем искать?</h2>
-                    <form role="search" method="get" id="course-finder"
-                          class="search-form one-field-submit"
-                          action="{{route('search')}}">
-                        <label>
-                            <span class="screen-reader-text">Что-нибудь поищи...</span>
-                            <input type="text" class="search-field" placeholder="Поиск..." name="search"/>
-                            <input type="hidden" name="post_type" value="doublef-course"/>
-                        </label>
-                        {{ csrf_field() }}
-                        <input type="submit" class="search-submit" value="Искать"/>
-                    </form>
+                    </ul>
                 </div>
-                <div class="so-widget-buntington2-button-banner so-widget-buntington2-button-banner-base">
-                    <h2 class="widget-title" style="margin-top: 20px;">Полезные ссылки</h2>  
-                    <a href="http://www.mon.gov.ua/"
-                       target="_self" class="button-banner-link">
-                        <div class="button-banner-wrapper" style="background-color: #5dca9d; ; text-align: left; padding: 20px 20px 20px 20px;">
-                            <div class="button-banner-text">
-                                <h2 class="button-banner-title" style="color: #f7f5de; font-size: 22px;"> Министерство образования и науки Украины</h2>
-                                <div class="button-banner-tagline" style="color: #FFFFFF;">Ссылка на сайт МОН </div>
-                            </div>
-                            <div class="dbb-hover-canvas"></div>
-                        </div>
-                    </a>
-                    <a href="http://testportal.gov.ua/"
-                       target="_self" class="button-banner-link" style="margin-top: 10px;">
-                        <div class="button-banner-wrapper" style="background-color: #b9becd; ; text-align: left; padding: 20px 20px 20px 20px;">
-                            <div class="button-banner-text">
-                                <h2 class="button-banner-title" style="color: #f7f5de; font-size: 22px;"> УЦОЯО</h2>
-                                <div class="button-banner-tagline"
-                                     style="color: #FFFFFF;">Ссылка на сайт УЦОЯО
-                                </div>
-                            </div>
-                            <div class="dbb-hover-canvas"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>    
-        </div>                    
+            </div>
+            <h4 style="">Выберите отчеты за месяц</h4>
+            <form method="POST" action="{{route('report.choose')}}">
+                {{ csrf_field() }}
+                <label for='month'>Выберите месяц</label>
+                <select name="month">
+                    @foreach (range(1,12) as $month)
+                        <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                    @endforeach
+                </select>
+                <label for='year'>Выберите год</label>
+                <select name="year">
+                    @foreach (range($thisYear,2000) as $year)
+                        <option value="{{$year}}">{{$year}}</option>
+                    @endforeach
+                </select>
+                <button type="submit" id="subbut" class="button">Найти</button>
+            </form>
+            @include('widget')
+        </div>  
     </div>
 </div>
 @endsection

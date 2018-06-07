@@ -9,9 +9,9 @@
             <div class="wrappr text-left">
                 <h1 class="h-gigant">
                     @isset($committee)
-                    Новости комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
+                        Новости комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
                     @else
-                    Новости за  {{$thisYear}}
+                        Новости за  {{$thisYear}}
                     @endif
                 </h1>
             </div>           
@@ -26,7 +26,7 @@
         Новости за {{$thisYear}}
     </div>
     @if (count($newsDate) == 0)
-    <p>Новостей не найдено</p>
+        <p>Новостей не найдено</p>
     @else  
     <section class="news">        
         <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>

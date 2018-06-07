@@ -12,9 +12,9 @@
                 <h1 class="h-gigant">Отчёты за {{$thisYear}}</h1>
                 <p>
                     @isset($committee)
-                        Отчёты комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
+                    Отчёты комитета {{$classesNumbers()[$committee->id]}}-{{$committee->letter_class}} класса
                     @else
-                        Список всех отчётов
+                    Список всех отчётов
                     @endif
                 </p>
             </div>
@@ -28,33 +28,19 @@
         <a href="{{route('reports')}}">Отчёты</a> /
         Отчёты за {{$thisYear}}
     </div>
-    <form method="POST" action="{{route('report.choose')}}">
-        {{ csrf_field() }}
-        <select name="month">
-            @foreach (range(1,12) as $month)
-                <option value="{{$month}}">{{$monthNames[$month]}}</option>
-            @endforeach
-        </select>
-        <select name="year">
-            @foreach (range($thisYear,2000) as $year)
-                <option value="{{$year}}">{{$year}}</option>
-            @endforeach
-        </select>
-        <button type="submit" id="subbut" class="button">Найти</button>
-    </form>
     @if (count($reportDate) == 0)
-        <p>Отчётов не найдено</p>
+    <p>Отчётов не найдено</p>
     @else
     <section class="events">
-        @foreach($reportDate as $report)
         <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
         <div class="grid">
-            <div id="primary" class="content-area grid__col grid__col--3-of-3">
+            <div id="primary" class="content-area grid__col grid__col--2-of-3">
                 <main id="main" class="site-main" role="main">
+                    @foreach($reportDate as $report)
                     <article id="post-519"
                              class="grid layout_1 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events"
                              style="margin-top: 15px; margin-bottom: 15px;">                       
-                        <div class="post-text-block grid__col grid__col--6-of-12 grid__col--m-1-of-1">
+                        <div class="post-text-block grid__col grid__col--12-of-12 grid__col--m-1-of-1">
                             <header class="entry-header">
                                 <h3 class="entry-title">  
                                     <a href="{{route('report.show',['id'=>$report->id])}}">Протокол № {{ $report->id }} от {{date('j '.$monthNames[date('n', strtotime($report->date))].' Y года', strtotime($report->date))}}</a>
@@ -68,10 +54,41 @@
                             </header>
                         </div>
                     </article>
+                    @endforeach
+                    {{ $reportDate->links() }}
                 </main>
             </div>
+            <div id="primary" class="content-area grid__col grid__col--1-of-3 grid__col--m-1-of-1">
+                <div class="col-md-6 blog-right">
+                    <div>
+                        <h3>Последние отчёты</h3>
+                        <ul style="list-style-type:none">
+                            @foreach($lastReports as $reports)
+                                <li><a href="{{ route('report.show', ['id' => $reports->id]) }}">Протокол № {{ $reports->id }} от {{ $reports->date }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <h4 style="">Выберите отчеты за месяц</h4>
+                <form method="POST" action="{{route('report.choose')}}">
+                    {{ csrf_field() }}
+                    <label for='month'>Выберите месяц</label>
+                    <select name="month">
+                        @foreach (range(1,12) as $month)
+                            <option value="{{$month}}">{{$monthNames[$month]}}</option>
+                        @endforeach
+                    </select>
+                    <label for='year'>Выберите год</label>
+                    <select name="year">
+                        @foreach (range($thisYear,2000) as $year)
+                            <option value="{{$year}}">{{$year}}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" id="subbut" class="button">Найти</button>
+                </form>
+                @include('widget')
+            </div>
         </div>
-        @endforeach
         {{ $reportDate->links() }}
     </section>
     @endif

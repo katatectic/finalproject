@@ -138,7 +138,8 @@ class EventController extends Controller {
     public function chooseEvents(Request $request) {
         $chooseEvents = $request->year . '-' . '0' . $request->month;
         $eventsDate = Event::where('event_date', 'like', '%' . $chooseEvents . '%')->paginate($this->puginationEvents);
-        return view('events.choose', compact('eventsDate'));
+        $lastEvents = Event::orderBy('id', 'desc')->take($this->lastEvents)->get();
+        return view('events.choose', compact('eventsDate', 'lastEvents'));
     }
 
     public function chooseAdminEvents(Request $request) {
