@@ -92,7 +92,7 @@
                         @endforeach
                     </tbody>
                 </table>	
-				{{$studentsClasses->links()}}
+				{{$studentsClasses->links()}} 
                 <div class='option' style="width:450px;margin:auto">
                     <p class="className"></p>
                     <form method="post" action="{{route('updateStudentsClasses')}}"  id="updateClass" class="form-horizontal">
