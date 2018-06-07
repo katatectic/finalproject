@@ -93,7 +93,7 @@ class AdminController extends Controller {
         }
         $editOne->fill($data);
         $editOne->save();
-        return redirect()->route('admin');
+        return redirect()->route('admin')->with(['status' => 'Данные сайта обновлены!']);
     }
 
     public function addLogo($request) {

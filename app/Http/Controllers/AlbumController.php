@@ -42,7 +42,7 @@ class AlbumController extends Controller {
             $data['cover_image'] = $this->addPhoto($request);
         };
         $create = Album::create($data);
-        return redirect()->route('adminAlbums');
+        return redirect()->route('adminAlbums')->with(['status' => 'Новый альбом создан!']);;
     }
 
     public function destroy($id) {
@@ -61,7 +61,7 @@ class AlbumController extends Controller {
             }
         }
         $album->delete();
-        return redirect()->route('adminAlbums');
+        return redirect()->route('adminAlbums')->with(['status' => 'Альбом удалён!']);
     }
 
     public function edit($id) {
@@ -81,7 +81,7 @@ class AlbumController extends Controller {
         };
         $editOne->fill($data);
         $editOne->save();
-        return redirect()->route('adminAlbums');
+        return redirect()->route('adminAlbums')->with(['status' => 'Альбом обновлён!']);
     }
 
     public function addPhoto($request) {

@@ -66,7 +66,7 @@ class EventController extends Controller {
             $data['photo'] = $this->addPhoto($request);
         };
         $create = Event::create($data);
-        return redirect()->route('adminevents');
+        return redirect()->route('adminevents')->with(['status' => 'Событие создано!']);
     }
 
     public function userEventStore(EventsRequest $request) {
@@ -119,7 +119,7 @@ class EventController extends Controller {
         $data['event_date'] = $date->format('Y-m-d');
         $editOne->fill($data);
         $editOne->save();
-        return redirect()->route('adminevents');
+        return redirect()->route('adminevents')->with(['status' => 'Событие обновлено!']);
     }
 
     public function destroy($id) {
@@ -132,7 +132,7 @@ class EventController extends Controller {
         }
         Event::find($id)->comments()->forceDelete();
         $event->delete();
-        return redirect()->route('adminevents');
+        return redirect()->route('adminevents')->with(['status' => 'Событие удалено!']);;
     }
 
     public function chooseEvents(Request $request) {

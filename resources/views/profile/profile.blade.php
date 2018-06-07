@@ -47,7 +47,7 @@
                                         <td>Возраст скрыт</td>
                                 </tr>
                                     @else
-                                        <td>{{ $user->age() }} года</td>
+                                        <td>{{ $user->age()}} {{ $endingOfAge($user->age()) }}</td>
                                 </tr>
                                     @endif
                                 <tr><td class="active">Почта:</td><td>{{$user->email}}</td></tr>

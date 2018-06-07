@@ -50,7 +50,7 @@
         <div id="primary" class="content-area grid__col grid__col--1-of-3 grid__col--m-1-of-1">
             <div class="col-md-3 blog-right">
                 <div>
-                    <h3>Последние новости</h3>
+                    <h4>Последние новости</h4>
                     <ul style="list-style-type:none">
                         @foreach($lastNews as $news)
                             <li><a href="{{ route('article', ['id' => $news->id]) }}">{{ $news->title }}</a></li>

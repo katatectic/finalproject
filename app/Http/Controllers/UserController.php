@@ -23,7 +23,7 @@ class UserController extends Controller {
     public $puginationUsers = 9;
     public $puginationNews = 5;
     public $puginationEvents = 5;
-    public $puginationReports = 10;
+    public $puginationReports = 6;
     public $profileEvents = 5;
     public $profileNews = 5;
     public $profileReports = 5;
@@ -73,7 +73,7 @@ class UserController extends Controller {
             unlink(public_path() . '/images/users/' . $img);
         }
         $all->delete();
-        return redirect()->route('users');
+        return redirect()->route('users')->with(['status' => 'Профиль пользователя удалён!']);
     }
 
     public function edit($id) {
@@ -90,7 +90,7 @@ class UserController extends Controller {
         }
         User::find($id)->update(array_filter($data));
         User::find($id)->studentsClasses()->sync($request->studentsClasses);
-        return redirect()->route('users');
+        return redirect()->route('users')->with(['status' => 'Профиль пользователя изменён!']);
     }
 
     public function addAvatar($request) {

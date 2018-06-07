@@ -12,6 +12,14 @@
             <div class="box-header">
                 <h3 class="btn btn-primary mb1 bg-orange">Всего пользователей: {{$usersCount}}</h3>
             </div>
+            @if(session('status'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{session('status')}}
+                </div>
+            @endif
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
@@ -38,7 +46,7 @@
                                 @if (empty($user->age()))
                                     Возраст скрыт
                                 @else
-                                    {{ $user->age() }} года
+                                    {{ $user->age()}} {{ $endingOfAge($user->age()) }}
                                 @endif</td>
                             <td title="{{$user->email}}">{{str_limit($user->email, 10, '...')}}</td>
                             <td>{{$user->phone}}</td>

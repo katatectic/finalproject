@@ -30,7 +30,7 @@ class StudentClassController extends Controller
         $class = $request->all();
         unset($class['_token'], $class['page']);
         StudentClass::insert($class);
-        return redirect('/admin/students-classes');
+        return redirect('/admin/students-classes')->with(['status' => 'Новый класс создан!']);
     }
 
     /**
@@ -45,7 +45,7 @@ class StudentClassController extends Controller
         $class = $request->all();
         unset($class['_token'], $class['page'],$class['id']);
         StudentClass::find($request->id)->update($class);
-        return redirect()->back();
+        return redirect()->back()->with(['status' => 'Данные класса обновлены!']);
     }
 
     /**
@@ -61,6 +61,6 @@ class StudentClassController extends Controller
         }
         StudentClass::find($id)->user()->detach();
         StudentClass::destroy($id);
-        return redirect()->back();
+        return redirect()->back()->with(['status' => 'Класс удалён!']);;
     }
 }
