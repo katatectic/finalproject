@@ -32,7 +32,8 @@ class CommitteesController extends Controller
     {
         $userId = Auth::id();
         $user = User::with('studentsClasses')->find($userId);
-        $committees = StudentClass::has('user')->withCount('user')->get();
+        $pag = StudentClass::where('year_of_issue', '>=', date('Y', time()))->count();
+        $committees = StudentClass::has('user')->withCount('user')->orderBy('year_of_issue', 'desc')->paginate($pag-1);
         return view('committees.committees', ['committees' => $committees, 'user' => $user]);
     }
 

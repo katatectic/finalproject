@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
                 } elseif (date('Y') <= $class->year_of_issue) {
                     $data[$class->id] = date('Y') - $class->start_year + $transition + 1 - $class->fourth_class;
                 } else {
-                    $data[$class->id] = '(Выпустился)'.$class->year_of_issue - $class->start_year - $class->fourth_class;
+                    $data[$class->id] = '(Выпустился в '.$class->year_of_issue.')'.($class->year_of_issue - $class->start_year - $class->fourth_class);
                 }
             }
             $data[null] = '';

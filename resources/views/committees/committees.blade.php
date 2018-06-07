@@ -5,10 +5,10 @@
 @section('content')
 <head>
     <style>
-        .committees {display:flex;flex-wrap: wrap;}
-        .committee {width: 250px; margin:3px 20px;background: #f3f3f3;padding: 0 20px;border-radius: 10px;box-shadow: 0 0 10px rgba(0,0,0,0.5);}
+        .committees {display:flex;flex-wrap: wrap;text-align: center; margin: 20px 20px;justify-content: space-around;}
+        .committee {min-width: 300px; margin:3px 20px;background: #f3f3f3;padding: 0 20px;border-radius: 10px;box-shadow: 0 0 10px rgba(0,0,0,0.5);}
         .committee a {display: block;width: 100%}
-        .committee:hover {padding: 0 10px;border-radius: 30px;}
+        .committee:hover {border-radius: 30px;text-align: right;box-shadow: 0 0 20px rgba(0,0,0.5,0.9);}
         a.consist {color:#18d220;}
     </style>
 </head>
@@ -49,6 +49,10 @@
                         <div id="pg-425-1" class="panel-grid panel-no-style">
                             <div id="" class="">
                                 <h2>Все комитеты</h2>
+                                <ul class="pagination">
+                                    <li><a href="{{$committees->previousPageUrl()}}" class="btn btn-success">Активные комитеты</a></li>
+                                    <li><a href="{{$committees->nextPageUrl()}}">Закрытые комитеты</a></li>
+                                </ul>
                                 <div id="" class="committees">
                                     @foreach ($committees as $committee)
                                         <div class="committee">
