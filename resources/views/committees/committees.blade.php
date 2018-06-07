@@ -49,10 +49,10 @@
                         <div id="pg-425-1" class="panel-grid panel-no-style">
                             <div id="" class="">
                                 <h2>Все комитеты</h2>
-                                @if($committees->hasMorePages())
+                                @if($committees->total() > $committees->count())
                                     <ul class="pagination">
-                                        <li><a href="{{$committees->previousPageUrl()}}" class="btn btn-success">Активные комитеты</a></li>
-                                        <li><a href="{{$committees->nextPageUrl()}}">Закрытые комитеты</a></li>
+                                        <li><a href="{{$committees->previousPageUrl()}}" >Активные комитеты</a></li>
+                                        <li><a href="{{$committees->nextPageUrl()}}" >Закрытые комитеты</a></li>
                                     </ul>
                                 @endif
                                 <div id="" class="committees">
