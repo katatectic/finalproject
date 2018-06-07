@@ -7,7 +7,7 @@
         .admin.students-classes .confirmation {display:none;}
         .admin.students-classes #confirmForm {float: left;margin-right: 5px}
         .admin.students-classes #confirmation {display:flex;justify-content: center;}
-        .admin.students-classes .option {text-align:center;max-height:392px;position: absolute;background: #fafafa;padding: 19.5px 15px;border-left: 2px solid #d2d6de;border-radius: 0px;top: 24.8%;right: 0.9%;}
+        .admin.students-classes .option {text-align:center;max-height:395px;position: absolute;background: #fafafa;padding: 16px 15px;border-left: 2px solid #d2d6de;top: 27.7%;right: 0.9%;}
         .admin.students-classes p.className {font-weight: 600;font-size: 16px;text-align: center}
         .admin.students-classes tr:hover td {background: #ffd79d;}
         .admin.students-classes tr.select {background: #fdca7f;outline: 2px solid #ffc107 }
@@ -92,7 +92,7 @@
                         @endforeach
                     </tbody>
                 </table>	
-				{{$studentsClasses->links()}} 
+				{{$studentsClasses->links()}}
                 <div class='option' style="width:450px;margin:auto">
                     <p class="className"></p>
                     <form method="post" action="{{route('updateStudentsClasses')}}"  id="updateClass" class="form-horizontal">
