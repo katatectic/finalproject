@@ -32,7 +32,7 @@
     </div>
     <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
     <div class="grid">
-        <div id="primary" class="content-area grid__col grid__col--3-of-4">
+        <div id="primary" class="content-area grid__col grid__col--2-of-3">
             <main id="main" class="site-main" role="main">
                 <article id="post-425" class="post-425 page type-page status-publish hentry">
                     <div id="pl-425" class="panel-layout">
@@ -72,7 +72,7 @@
                 </article>
             </main>
         </div>
-        <div id="primary" class="content-area grid__col grid__col--1-of-4">
+        <div id="primary" class="content-area grid__col grid__col--1-of-3">
             @include('widget')
         </div>
     </div>
