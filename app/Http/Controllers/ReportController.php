@@ -13,7 +13,7 @@ use App\User;
 
 class ReportController extends Controller {
 
-    public $puginationReports = 10;
+    public $puginationReports = 6;
     public $puginationReportComments = 10;
     public $lastReports = 5;
     public $puginationAdminReports = 15;

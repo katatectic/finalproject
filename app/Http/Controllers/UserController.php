@@ -23,7 +23,7 @@ class UserController extends Controller {
     public $puginationUsers = 9;
     public $puginationNews = 5;
     public $puginationEvents = 5;
-    public $puginationReports = 10;
+    public $puginationReports = 6;
     public $profileEvents = 5;
     public $profileNews = 5;
     public $profileReports = 5;

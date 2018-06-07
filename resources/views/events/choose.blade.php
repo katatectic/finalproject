@@ -31,6 +31,8 @@
     @if (count($eventsDate) == 0)
         <h3>Событий не найдено</h3>
     @else
+        События за {{$thisYear}} года
+    @endif
     <section class="events">
         <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
         <div class="grid">
@@ -78,7 +80,7 @@
             <div id="primary" class="content-area grid__col grid__col--1-of-3 grid__col--m-1-of-1">
                 <div class="col-md-3 blog-right">
                     <div>
-                        <h3>Последние события</h3>
+                        <h4>Последние события</h4>
                         <ul style="list-style-type:none">
                             @foreach($lastEvents as $event)
                                 <li><a href="{{ route('event.show', ['id' => $event->id]) }}">{{ $event->title }}</a></li>
@@ -107,6 +109,5 @@
             </div>
         </div>
     </section>
-    @endif
 </div>
 @endsection

@@ -5,16 +5,21 @@
 @endsection
 <div id="content" class="site-content wrappr">
     <div class="bread">
-        <a href="{{route('main')}}">Главная</a> / <a href="{{route('profile',['id'=>$user->id])}}">Профиль пользователя {{$user->name}} {{$user->surname}}</a> / Новости пользователя {{$user->name}} {{$user->surname}}
+        <a href="{{route('main')}}">Главная</a> /
+        <a href="{{route('profile',['id'=>$user->id])}}">Профиль пользователя {{$user->name}} {{$user->surname}}</a> /
+        Новости пользователя {{$user->name}} {{$user->surname}}
     </div>
-    <h3>Новости пользователя {{$user->name}} {{$user->surname}}  </h3>
-    @if (count($user->articles) > 0)
+    @if (count($user->articles) == 0)
+        <h4>У пользователя {{$user->name}} {{$user->surname}} нет новостей</h4>
+    @else
+        <h4>Новости пользователя {{$user->name}} {{$user->surname}} </h4>
+    @endif
     <section class="events">
-        @foreach($user->articles as $article)
         <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div>
         <div class="grid">
-            <div id="primary" class="content-area grid__col grid__col--3-of-3">
+            <div id="primary" class="content-area grid__col grid__col--2-of-3">
                 <main id="main" class="site-main" role="main">
+                    @foreach($user->articles as $article)
                     <article id="post-519"
                              class="grid layout_1 post-519 doublef-event type-doublef-event status-publish has-post-thumbnail hentry doublef-events-school-events"
                              style="margin-top: 15px; margin-bottom: 15px;"
@@ -46,23 +51,24 @@
                             </div>
                         </div>
                     </article>
+                    @endforeach
                 </main>
             </div>
+            <div id="primary" class="content-area grid__col grid__col--1-of-3">
+                <div class="col-md-6 blog-right">
+                    <div>
+                        <h4>Последние новости</h4>
+                        <ul style="list-style-type:none">
+                            @foreach($lastNews as $news)
+                                <li><a href="{{ route('article', ['id' => $news->id]) }}">{{ $news->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                @include('widget')
+            </div>
         </div>
-        @endforeach
     </section>
-    {{$user->articles->links()}}
-    @else <h4>У пользователя нет новостей</h4>
-    @endif	
-    <div class="col-md-6 blog-right">
-        <div>
-            <h3>Последние новости</h3>
-            <ul>
-                @foreach($lastNews as $news)
-                <li><a href="{{ route('article', ['id' => $news->id]) }}">{{ $news->title }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
+    {{$user->articles->links()}}	
 </div>
 @endsection    

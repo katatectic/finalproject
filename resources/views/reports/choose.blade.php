@@ -29,8 +29,10 @@
         Отчёты за {{$thisYear}}
     </div>
     @if (count($reportDate) == 0)
-    <p>Отчётов не найдено</p>
+        <p>Отчётов не найдено</p>
     @else
+        Отчёты за {{$thisYear}}
+    @endif
     <section class="events">
         <div id="site-to-top"><i class="fa fa-chevron-up fa-lg"></i></div><!-- back to top button -->
         <div class="grid">
@@ -91,6 +93,5 @@
         </div>
         {{ $reportDate->links() }}
     </section>
-    @endif
 </div>
 @endsection
