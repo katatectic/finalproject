@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    {{$settings->title}}
+    {{$settings()->title}}
 @endsection
 @section('content')
 <div id="cinemahead">
