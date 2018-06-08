@@ -6,17 +6,17 @@ Auth::routes();
 
 // News, article
 Route::get('news', 'NewsController@index')->name('news');
-Route::get('article/{id}','NewsController@article')->name('article');
+Route::get('news/article-{id}','NewsController@article')->name('article');
 Route::post('choose_news', 'NewsController@chooseNews')->name('article.choose');
 
 // Events, event
 Route::get('events', 'EventController@index')->name('event.index'); 
-Route::get('event/{id}', 'EventController@show')->name('event.show'); 
+Route::get('events/event-{id}', 'EventController@show')->name('event.show'); 
 Route::post('choose_events', 'EventController@chooseEvents')->name('event.choose');
 
 //Report
 Route::get('reports', 'ReportController@index')->name('reports');
-Route::get('report/{id}', 'ReportController@show')->name('report.show');
+Route::get('reports/report-{id}', 'ReportController@show')->name('report.show');
 Route::post('choose_reports', 'ReportController@chooseReports')->name('report.choose');
 Route::get('add_check/{id}', 'CheckController@create')->name('check.create');
 Route::post('add_check', 'CheckController@store')->name('check.store');
@@ -154,7 +154,7 @@ Route::get('addimage/{id}', 'ImageController@getForm')->name('add_image');
 Route::get('/about', 'CommitteesController@about')->name('about');
 //Committees
 Route::get('/committees', 'CommitteesController@index')->name('allCommittees');
-Route::get('/committees/committee/{id}', 'CommitteesController@show')->name('oneCommittee');
+Route::get('/committees/committee-{id}', 'CommitteesController@show')->name('oneCommittee');
 Route::get('/committees/committee/{committeeId}/news', 'NewsController@committeeNews')->name('newsCommittee');
 Route::get('/committees/committee/{committeeId}/events', 'EventController@committeeEvents')->name('eventCommittee');
 Route::get('/committees/committee/{committeeId}/reports', 'ReportController@committeeReports')->name('reportsCommittee');

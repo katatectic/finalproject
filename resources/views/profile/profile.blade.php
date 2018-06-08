@@ -3,6 +3,7 @@
     Профиль пользователя {{$user->name}} {{$user->surname}}
 @endsection
 @section('content')
+<div id="content" class="site-content wrappr">
 <div class="content">
     <div class="bread">
         <a href="{{route('main')}}">Главная</a> / Профиль пользователя {{$user->name}} {{$user->surname}}
@@ -100,5 +101,6 @@
             @endif
         </div>
     </section>
+</div>
 </div>
 @endsection
