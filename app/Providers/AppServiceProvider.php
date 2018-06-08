@@ -17,7 +17,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('settings', Setting::first());
+        //View::share('settings', Setting::first());
+        View::share('settings',  function() {
+            $settings = Setting::first();
+            return $settings;
+        });    
         //Schema::defaultStringLength(191);
         View::share('thisYear', date('Y', time()));
         

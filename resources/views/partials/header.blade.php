@@ -64,7 +64,7 @@
                 <div class="site-header--branding">
                     <a href="{{ url('/') }}" rel="home" class="site-header--branding-a" data-img-width="166" data-img-height="120">
                         @if($settings)
-                        <img src="{{asset('images/logo/'.$settings->logo)}}" alt="{{$settings->title}}" />
+                        <img src="{{asset('images/logo/'.$settings()->logo)}}" alt="{{$settings()->title}}" />
                         @else
                         <img src="https://pp.userapi.com/c631424/v631424704/26f3c/dgyz8G3Zuko.jpg?ava=1" alt="Родительский комитет" />
                         @endif
