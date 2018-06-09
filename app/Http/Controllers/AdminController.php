@@ -82,7 +82,7 @@ class AdminController extends Controller {
         $img = $editOne->logo;
         $data = $request->all();
         if ($request->hasFile('logo')) {
-            $data['logo'] = $this->saveImage($request, '/images/logo', 'logo');
+            $data['logo'] = $this->saveImage($request->file('logo'), '/images/logo');
             if (is_file(public_path() . '/images/logo/' . $img)) {
                 unlink(public_path() . '/images/logo/' . $img);
             }

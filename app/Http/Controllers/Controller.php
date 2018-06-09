@@ -21,10 +21,9 @@ class Controller extends BaseController
 //        return $transition;
 //    }
     
-    public function saveImage($request, $path, $name) {
-        $file = $request->file($name);
-        $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . $path, $newfilename);
+    public function saveImage($image, $path) {
+        $newfilename = rand(10000, 50000) . "." . $image->getClientOriginalExtension();
+        $image->move(public_path() . $path, $newfilename);
         return $newfilename;
     }
 }

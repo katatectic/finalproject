@@ -83,10 +83,16 @@ class UserController extends Controller {
     }
 
     public function update($id, UsersRequest $request) {
+        $editOne = User::find($id);
+        $img = $editOne->avatar;
         $data = $request->all();
         $data['birthday'] = $request->year . '-' . $request->month . '-' . $request->day;
         if (isset($request->avatar)) {
-            $data['avatar'] = $this->saveImage($request, '/images/users', 'avatar');
+            $data['avatar'] = $this->saveImage($request->file('avatar'), '/images/users');
+            if (is_file(public_path() . '/images/users/' . $img)) {
+                unlink(public_path() . '/images/users/' . $img);
+            }
+            
         }
         User::find($id)->update(array_filter($data));
         User::find($id)->studentsClasses()->sync($request->studentsClasses);

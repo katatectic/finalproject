@@ -63,8 +63,8 @@ class EventController extends Controller {
         $date = new DateTime($data['event_date']);
         $data['event_date'] = $date->format('Y-m-d');
         if ($request->hasFile('photo')) {
-            $data['photo'] = $this->saveImage($request, '/images/events', 'photo');
-        };
+            $data['photo'] = $this->saveImage($request->file('photo'), '/images/events');
+        }
         $create = Event::create($data);
         return redirect()->route('adminevents')->with(['status' => 'Событие создано!']);
     }
@@ -75,8 +75,8 @@ class EventController extends Controller {
             $date = new DateTime($data['event_date']);
             $data['event_date'] = $date->format('Y-m-d');
             if ($request->hasFile('photo')) {
-                $data['photo'] = $this->saveImage($request, '/images/events', 'photo');
-            };
+                $data['photo'] = $this->saveImage($request->file('photo'), '/images/events');
+            }
             if ($data['student_class_id'] == 0) {
                 unset($data['student_class_id']);
             }
@@ -100,7 +100,7 @@ class EventController extends Controller {
         $img = $editOne->photo;
         $data = $request->all();
         if ($request->hasFile('photo')) {
-            $data['photo'] = $this->saveImage($request,'/images/events','photo');
+            $data['photo'] = $this->saveImage($request->file('photo'), '/images/events');
             if (is_file(public_path() . '/images/events/' . $img)) {
                 unlink(public_path() . '/images/events/' . $img);
             }
@@ -126,7 +126,6 @@ class EventController extends Controller {
         Event::find($id)->comments()->forceDelete();
         $event->delete();
         return redirect()->route('adminevents')->with(['status' => 'Событие удалено!']);
-        ;
     }
 
     public function chooseEvents(Request $request) {

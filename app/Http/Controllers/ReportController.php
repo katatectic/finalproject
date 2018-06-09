@@ -56,12 +56,6 @@ class ReportController extends Controller {
         return view('admin.reports.create', compact('reports', 'user', 'studentsClasses'));
     }
 
-    public function addCheck($check) {
-        $newfilename = rand(1000, 50000) . "." . $check->getClientOriginalExtension();
-        $check->move(public_path() . '/images/reports/checks', $newfilename);
-        return $newfilename;
-    }
-
     public function store(ReportsRequest $request) {
         $data = $request->all();
         unset($data['__token'], $data['image']);
@@ -74,7 +68,7 @@ class ReportController extends Controller {
         if ($request->hasFile('image')) {
             $images = [];
             foreach ($request->image as $check) {
-                $path = $this->addCheck($check);
+                $path = $this->saveImage($check, '/images/reports/checks/');
                 $images[] = ['image' => $path, 'report_id' => $create->id];
             }
         }
@@ -96,7 +90,6 @@ class ReportController extends Controller {
         Report::find($id)->comments()->forceDelete();
         $report->delete($id);
         return redirect()->route('adminReports')->with(['status' => 'Отчёт удалён!']);
-        ;
     }
 
     public function edit($id) {
@@ -116,7 +109,6 @@ class ReportController extends Controller {
         $editOne->fill($data);
         $editOne->save();
         return redirect()->route('adminReports')->with(['status' => 'Отчёт обновлён!']);
-        ;
     }
 
     public function chooseReports(Request $request) {

@@ -37,22 +37,16 @@ class AlbumController extends Controller {
         return view('album.create');
     }
 
-    public function addImages($photos) {
-        $newfilename = rand(10000, 50000) . "." . $photos->getClientOriginalExtension();
-        $photos->move(public_path() . '/images/albums/photos', $newfilename);
-        return $newfilename;
-    }
-
     public function store(AlbumsRequest $request) {
         $data = $request->all();
         if ($request->hasFile('cover_image')) {
-            $data['cover_image'] = $this->saveImage($request, '/images/albums/', 'cover_image');
+            $data['cover_image'] = $this->saveImage($request->file('cover_image'), '/images/albums');
         }
         $create = Album::create($data);
         if ($request->hasFile('image')) {
             $images = [];
-            foreach ($request->image as $check) {
-                $path = $this->addImages($check);
+            foreach ($request->image as $image) {
+                $path = $this->saveImage($image, '/images/albums/photos/');
                 $images[] = ['image' => $path, 'album_id' => $create->id];
             }
         }
@@ -90,7 +84,7 @@ class AlbumController extends Controller {
         $img = $editOne->cover_image;
         $data = $request->all();
         if ($request->hasFile('cover_image')) {
-            $data['cover_image'] = $this->saveImage($request, '/images/albums', 'cover_image');
+            $data['cover_image'] = $this->saveImage($request->file('cover_image'), '/images/albums');
             if (is_file(public_path() . '/images/albums/' . $img)) {
                 unlink(public_path() . '/images/albums/' . $img);
             }

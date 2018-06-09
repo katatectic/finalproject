@@ -22,12 +22,12 @@ class ChecksRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'image' => 'required|image|max:2048'];
+            'image' => 'required|max:2048'];
     }
 
     public function messages() {
         return [
-            '*.required' => 'Поле не должно быть пустым',
+            'image.required' => 'Загрузите чек',
             'image.image' => 'Загруженный файл должен быть изображением',
             'image.max' => 'Максимальный размер изображения=2048'
         ];

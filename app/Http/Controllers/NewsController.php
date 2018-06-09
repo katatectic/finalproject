@@ -64,7 +64,7 @@ class NewsController extends Controller {
             $date = new DateTime($data['date']);
             $data['date'] = $date->format('Y-m-d h:i:s');
             if ($request->hasFile('photo')) {
-                $data['photo'] = $this->saveImage($request, '/images/news', 'photo');
+                $data['photo'] = $this->saveImage($request->file('photo'), '/images/news');
             };
             $create = Article::create($data);
             $id = $create->id;
@@ -80,7 +80,7 @@ class NewsController extends Controller {
             $date = new DateTime($data['date']);
             $data['date'] = $date->format('Y-m-d h:i:s');
             if ($request->hasFile('photo')) {
-                $data['photo'] = $this->saveImage($request, '/images/news', 'photo');
+                $data['photo'] = $this->saveImage($request->file('photo'), '/images/news');
             };
             if ($data['student_class_id'] == 0) {
                 unset($data['student_class_id']);
@@ -119,7 +119,7 @@ class NewsController extends Controller {
         $img = $editOne->photo;
         $data = $request->all();
         if ($request->hasFile('photo')) {
-            $data['photo'] = $this->saveImage($request, '/images/news', 'photo');
+            $data['photo'] = $this->saveImage($request->file('photo'), '/images/news');
             if (is_file(public_path() . '/images/news/' . $img)) {
                 unlink(public_path() . '/images/news/' . $img);
             }

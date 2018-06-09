@@ -14,14 +14,11 @@ class CheckController extends Controller {
     }
 
     public function store(ChecksRequest $request) {
-        $data = $request->all();
-        unset($data['image']);
-        $create = Report::create($data);
         if ($request->hasFile('image')) {
             $images = [];
             foreach ($request->image as $check) {
                 $path = $this->addCheck($check);
-                $images[] = ['image' => $path, 'report_id' => $create->id];
+                $images[] = ['image' => $path];
             }
         }
         Check::insert($images);

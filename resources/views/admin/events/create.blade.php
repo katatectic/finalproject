@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label>Место проведения события</label>
-                            <input type="text" class="form-control" placeholder="Место проведения события" name="address" value="@if(!empty($errors->first('*'))){{ old('address') }}@else{{$settings->address}}@endif">
+                            <input type="text" class="form-control" placeholder="Место проведения события" name="address" value="@if(!empty($errors->first('*'))){{ old('address') }}@else{{$settings()->address}}@endif">
                             <span style="color:red">{{ $errors->first('address') }}</span>
                         </div>
                         <div class="form-group">
