@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Article;
 use App\StudentClass;
-use App\Report;
-use App\Event;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,8 +29,8 @@ class CommitteesController extends Controller
     {
         $userId = Auth::id();
         $user = User::with('studentsClasses')->find($userId);
-        $pag = StudentClass::where('year_of_issue', '>=', date('Y', time()))->count();
-        $committees = StudentClass::has('user')->withCount('user')->orderBy('year_of_issue', 'desc')->paginate($pag-1);
+        $pag = StudentClass::has('user')->where('year_of_issue', '>=', date('Y', time()))->count();
+        $committees = StudentClass::has('user')->withCount('user')->orderBy('year_of_issue', 'desc')->paginate($pag);
         return view('committees.committees', ['committees' => $committees, 'user' => $user]);
     }
 
@@ -50,26 +47,4 @@ class CommitteesController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

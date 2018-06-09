@@ -5,11 +5,11 @@
 @section('content')
 <head>
     <style>
-        .committees {display:flex;flex-wrap: wrap;text-align: center; margin: 20px 20px;justify-content: space-around;}
-        .committee {min-width: 300px; margin:3px 20px;background: #f3f3f3;padding: 0 20px;border-radius: 10px;box-shadow: 0 0 10px rgba(0,0,0,0.5);}
-        .committee a {display: block;width: 100%}
-        .committee:hover {border-radius: 30px;text-align: right;box-shadow: 0 0 20px rgba(0,0,0.5,0.9);}
-        a.consist {color:#18d220;}
+        .indexCommittees .committees {display:flex;flex-wrap: wrap;text-align: center; margin: 20px 20px;justify-content: space-around;}
+        .indexCommittees .committee {min-width: 300px; margin:3px 20px;background: #f3f3f3;padding: 0 20px;border-radius: 10px;box-shadow: 0 0 10px rgba(0,0,0,0.5);}
+        .indexCommittees .committee a {display: block;width: 100%}
+        .indexCommittees .committee:hover {border-radius: 30px;text-align: right;box-shadow: 0 0 20px rgba(0,0,0.5,0.9);}
+        .indexCommittees a.consist {color:#18d220;}
     </style>
 </head>
 <div id="cinemahead">
@@ -26,7 +26,7 @@
     </div>
     <div id="mobile-nav-container"></div>
 </div>
-<div id="content" class="site-content wrappr">
+<div id="content" class="site-content wrappr indexCommittees">
 	<div class="bread">
         <a href="{{route('main')}}">Главная</a> / Комитеты
     </div>

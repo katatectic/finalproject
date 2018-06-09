@@ -31,7 +31,7 @@
                         </h5>
                         <h5 class="doublef-event-item-date">Дата проведения {{date('j '.$monthNames[date('n', strtotime($event->event_date))].' Y года', strtotime($event->event_date))}}</h5>
                         <h5 class="doublef-event-item-time">Время проведения {{$event->event_hours}}</h5>
-                        <div class="doublef-event-address">Место проведения - <a href="https://www.google.com/maps/search/{{implode('+', explode(" ",$event->address))}}">{{$event->address}}</a></div>
+                        <div class="doublef-event-address">Место проведения - <a href="https://www.google.com/maps/search/{{implode('+', explode(" ",$event->address))}}" target="_blank">{{$event->address}}</a></div>
                     </header>
                     <div class="entry-content">
                         <p>{{$event->content}}</p>

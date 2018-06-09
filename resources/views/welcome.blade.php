@@ -20,62 +20,64 @@
                                          class="so-panel widget widget_buntington2-slider-widget panel-first-child panel-last-child"
                                          data-index="0">
                                         <div class="so-widget-buntington2-slider-widget so-widget-buntington2-slider-widget-base">
-                                            <div id="swiper-1514403464" class="swiper-container"
-                                                 style="height: 600px;"><!-- Slider main container -->
-                                                <!-- wrapper -->
-                                                <div class="swiper-wrapper">
-                                                    @foreach($sliders as $slider)
-                                                    <div class="swiper-slide"
-                                                         style="background: #000000 url( {{asset('images/sliders/'.$slider->photo)}}) no-repeat top center; background-size: cover;">
-                                                        <div data-swiper-parallax="-300"
-                                                             data-swiper-parallax-duration="500"
-                                                             class="swiper-slide-content"
-                                                             style="vertical-align: bottom;">
-                                                            <div class="clide-content-wrappr invert"
-                                                                 style="margin: 0px 0px 0px 0px; padding: 60px; background: rgba( 0,0,0,0.3 );">
-                                                                <h3>{{$slider->title}}</h3>
-                                                                <p class="remove-margin-bottom">{{$slider->description}}</p>
+                                            @if ( !empty($sliders->first()) )
+                                                <div id="swiper-1514403464" class="swiper-container"
+                                                     style="height: 600px;"><!-- Slider main container -->
+                                                    <!-- wrapper -->
+                                                    <div class="swiper-wrapper">
+                                                        @foreach($sliders as $slider)
+                                                        <div class="swiper-slide"
+                                                             style="background: #000000 url( {{asset('images/sliders/'.$slider->photo)}}) no-repeat top center; background-size: cover;">
+                                                            <div data-swiper-parallax="-300"
+                                                                 data-swiper-parallax-duration="500"
+                                                                 class="swiper-slide-content"
+                                                                 style="vertical-align: bottom;">
+                                                                <div class="clide-content-wrappr invert"
+                                                                     style="margin: 0px 0px 0px 0px; padding: 60px; background: rgba( 0,0,0,0.3 );">
+                                                                    <h3>{{$slider->title}}</h3>
+                                                                    <p class="remove-margin-bottom">{{$slider->description}}</p>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        @endforeach
                                                     </div>
-                                                    @endforeach
+                                                    <div class="button-prev" style="color: #ffffff;"><i
+                                                            class="fa fa-chevron-left"></i></div>
+                                                    <div class="button-next" style="color: #ffffff;"><i
+                                                            class="fa fa-chevron-right"></i></div>
                                                 </div>
-                                                <div class="button-prev" style="color: #ffffff;"><i
-                                                        class="fa fa-chevron-left"></i></div>
-                                                <div class="button-next" style="color: #ffffff;"><i
-                                                        class="fa fa-chevron-right"></i></div>
-                                            </div>
-                                            <script language="javascript">
-                                                jQuery('#swiper-1514403464').css('visibility', 'hidden');
-                                                jQuery(document).ready(function () {
-                                                    var mySwiper = new Swiper('#swiper-1514403464', {
-                                                        // Optional parameters
-                                                        height: 600,
-                                                        // sliding effect
-                                                        effect: 'slide',
-                                                        // slider_autoplay
-                                                        // parallax?
-                                                        parallax: true,
-                                                        // navigation
-                                                        navigation: {
-                                                            nextEl: '.button-next',
-                                                            prevEl: '.button-prev',
-                                                        },
-                                                        // pagination dots
-                                                        pagination: {
-                                                            el: '.swiper-pagination',
-                                                            type: 'bullets',
-                                                            clickable: true,
-                                                            renderBullet: function (index, className) {
-                                                                return '<span class="' + className + '" style="background-color: #ffffff;"></span>';
+                                                <script language="javascript">
+                                                    jQuery('#swiper-1514403464').css('visibility', 'hidden');
+                                                    jQuery(document).ready(function () {
+                                                        var mySwiper = new Swiper('#swiper-1514403464', {
+                                                            // Optional parameters
+                                                            height: 600,
+                                                            // sliding effect
+                                                            effect: 'slide',
+                                                            // slider_autoplay
+                                                            // parallax?
+                                                            parallax: true,
+                                                            // navigation
+                                                            navigation: {
+                                                                nextEl: '.button-next',
+                                                                prevEl: '.button-prev',
                                                             },
-                                                        },
-                                                        // uniterrupted loop of slides
-                                                        loop: true,
+                                                            // pagination dots
+                                                            pagination: {
+                                                                el: '.swiper-pagination',
+                                                                type: 'bullets',
+                                                                clickable: true,
+                                                                renderBullet: function (index, className) {
+                                                                    return '<span class="' + className + '" style="background-color: #ffffff;"></span>';
+                                                                },
+                                                            },
+                                                            // uniterrupted loop of slides
+                                                            loop: true,
+                                                        });
+                                                        jQuery('#swiper-1514403464').css('visibility', 'visible');
                                                     });
-                                                    jQuery('#swiper-1514403464').css('visibility', 'visible');
-                                                });
-                                            </script>
+                                                </script>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -168,7 +170,7 @@
                                                             </h6>
                                                             <p class="doublef-event-item-date">Дата проведения — {{date('j '.$monthNames[date('n', strtotime($event->event_date))].' Y года', strtotime($event->event_date))}}</p>
                                                             <p class="doublef-event-item-time">Время — {{$event->event_hours}}</p>
-                                                            <div class="doublef-event-address">Адрес — <a href="https://www.google.com/maps/search/{{implode('+', explode(" ",$event->address))}}">{{$event->address}}</a>
+                                                            <div class="doublef-event-address">Адрес — <a href="https://www.google.com/maps/search/{{implode('+', explode(" ",$event->address))}}" target="_blank">{{$event->address}}</a>
                                                                 <a class="more-link button"  href="{{ route('event.show',['id'=>$event->id]) }}">Читать далее</a>
                                                             </div>
                                                         </header>

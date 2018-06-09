@@ -75,13 +75,7 @@
                         @foreach($studentsClasses as $class)
                             <tr class="showForm" id="{{$class->id}}">
                                 <td class="className">
-                                    @if ($thisYear - $class->start_year + $transition < 4)
-                                        {{$thisYear - $class->start_year + $transition}}
-                                    @elseif ($thisYear <= $class->year_of_issue)
-                                        {{$thisYear - $class->start_year + $transition + 1 - $class->fourth_class}}
-                                    @else
-                                        (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
-                                    @endif
+                                    {{$classesNumbers()[$class->id]}}
                                     <span>{{$class->letter_class}}</span>
                                 </td>
                                 <td class="start_year">{{$class->start_year}}</td>
