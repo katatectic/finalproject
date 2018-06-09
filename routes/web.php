@@ -121,13 +121,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 // Колекция роутов для участника комитета с ролью 3
 Route::group(['middleware' => ['role:3']], function () {
     // News
-    Route::get('usernewscreate', 'NewsController@userNewsCreate')->name('user.news.create'); /* переход на добавление новости пользователем с ролью 3 */
-    Route::post('addNews', 'NewsController@userNewsStore')->name('user.addNews');
+    Route::get('news/article/create', 'NewsController@userNewsCreate')->name('user.news.create');
+    Route::post('news/article/store', 'NewsController@userNewsStore')->name('user.addNews');
     //Events
-    Route::get('usereventcreate', 'EventController@userEventCreate')->name('user.event.create'); /* переход на добавление события пользователем с ролью 3 */
-    Route::post('eventstore', 'EventController@userEventStore')->name('user.event.store'); /* Само добавления события */
-    Route::get('createreport', 'ReportController@userReportCreate')->name('user.reports.create'); /* переход на добавление новости пользователем с ролью 3 */
-    Route::post('addreport', 'ReportController@store')->name('addreport');
+    Route::get('events/event/create', 'EventController@userEventCreate')->name('user.event.create');
+    Route::post('events/event/store', 'EventController@userEventStore')->name('user.event.store');
+    //Reports
+    Route::get('reports/report/create', 'ReportController@userReportCreate')->name('user.reports.create');
+    Route::post('reports/report/store', 'ReportController@store')->name('addreport');
     // Переход на вьюху с возможностью добавления события/новости/отчета
     Route::get('/add', function () {
         return view('add');
@@ -148,10 +149,10 @@ Route::group(['prefix' => 'profile/', 'middleware' => 'auth'], function() {
 
 
 // Galery/Album/Image    
-Route::get('useralbumscreate', 'AlbumController@userCreate')->name('album.user.create');
-Route::post('addimage', 'ImageController@imageAdd')->name('add_image_to_album');
-Route::get('image/{id}/delete', 'ImageController@deleteImage')->name('deleteImage');
-Route::get('addimage/{id}', 'ImageController@getForm')->name('add_image');
+Route::get('create/album', 'AlbumController@userCreate')->name('album.user.create');
+Route::post('album/addimage', 'ImageController@imageAdd')->name('add_image_to_album');
+Route::get('album/image/{id}/delete', 'ImageController@deleteImage')->name('deleteImage');
+Route::get('album/addimage/{id}', 'ImageController@getForm')->name('add_image');
 
 /* Данный роут подтягивает перечень комитетов школы из базы */
 Route::get('/about', 'CommitteesController@about')->name('about');

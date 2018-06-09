@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-Добавить отчёт
+    Добавить отчёт
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -25,11 +25,11 @@
                             <select name="student_class_id">
                                 <option value="0">Для всех</option>
                                 @foreach($studentsClasses as $class)
-                                @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $class['id']))
-                                <option value="{{$class->id}}">
-                                    {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
-                                </option>
-                                @endif
+                                    @if(Auth::user()->role == 1 || Auth::user()->studentsClasses->contains('id', $class['id']))
+                                        <option value="{{$class->id}}">
+                                            {{ $classesNumbers()[$class->id] }} - {{$class->letter_class}}
+                                        </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </label>

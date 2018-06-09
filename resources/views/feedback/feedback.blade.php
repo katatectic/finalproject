@@ -13,9 +13,9 @@
             <div id="primary" class="content-area grid__col grid__col--2-of-3">
                 <div class="left_content">
                     <div class="contact_area">
-                        <h2>Свяжитесь с нами и мы решим вашу проблему</h2>
+                        <h4 style='text-align:center'>Свяжитесь с нами и мы решим вашу проблему</h4>
                         <div >
-                            <form action="{{route('addFeedback')}}" class="contact_form" method="POST">
+                            <form action="{{route('addFeedback')}}" class="contact_form" method="POST" style='margin:0 auto;max-width:700px'>
                                 <div class="form-group">
                                     <label for="name" class="col-md-4 control-label">Имя</label>
                                     <div class="col-md-6">
