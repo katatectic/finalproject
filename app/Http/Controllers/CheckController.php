@@ -15,11 +15,23 @@ class CheckController extends Controller {
 
     public function store(ChecksRequest $request) {
         $data = $request->all();
+        unset($data['image']);
+        $create = Report::create($data);
         if ($request->hasFile('image')) {
-            $data['image'] = $this->image($request);
-        };
-        $create = Check::create($data);
+            $images = [];
+            foreach ($request->image as $check) {
+                $path = $this->addCheck($check);
+                $images[] = ['image' => $path, 'report_id' => $create->id];
+            }
+        }
+        Check::insert($images);
         return redirect()->route('adminReports');
+    }
+
+    public function addCheck($check) {
+        $newfilename = rand(1000, 50000) . "." . $check->getClientOriginalExtension();
+        $check->move(public_path() . '/images/reports/checks', $newfilename);
+        return $newfilename;
     }
 
     public function deleteCheck($id) {
@@ -33,13 +45,6 @@ class CheckController extends Controller {
         }
         $check->delete();
         return redirect()->route('reports');
-    }
-
-    public function image($request) {
-        $file = $request->file('image');
-        $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . '/images/reports/checks/', $newfilename);
-        return $newfilename;
     }
 
 }

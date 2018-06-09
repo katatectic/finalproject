@@ -63,7 +63,7 @@ class EventController extends Controller {
         $date = new DateTime($data['event_date']);
         $data['event_date'] = $date->format('Y-m-d');
         if ($request->hasFile('photo')) {
-            $data['photo'] = $this->addPhoto($request);
+            $data['photo'] = $this->saveImage($request, '/images/events', 'photo');
         };
         $create = Event::create($data);
         return redirect()->route('adminevents')->with(['status' => 'Событие создано!']);
@@ -75,7 +75,7 @@ class EventController extends Controller {
             $date = new DateTime($data['event_date']);
             $data['event_date'] = $date->format('Y-m-d');
             if ($request->hasFile('photo')) {
-                $data['photo'] = $this->addPhoto($request);
+                $data['photo'] = $this->saveImage($request, '/images/events', 'photo');
             };
             if ($data['student_class_id'] == 0) {
                 unset($data['student_class_id']);
@@ -85,13 +85,6 @@ class EventController extends Controller {
             ;
         }
         return view('event.index');
-    }
-
-    public function addPhoto($request) {
-        $file = $request->file('photo');
-        $newfilename = rand(1000, 50000) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . '/images/events', $newfilename);
-        return $newfilename;
     }
 
     public function edit($id) {
@@ -107,7 +100,7 @@ class EventController extends Controller {
         $img = $editOne->photo;
         $data = $request->all();
         if ($request->hasFile('photo')) {
-            $data['photo'] = $this->addPhoto($request);
+            $data['photo'] = $this->saveImage($request,'/images/events','photo');
             if (is_file(public_path() . '/images/events/' . $img)) {
                 unlink(public_path() . '/images/events/' . $img);
             }
@@ -132,7 +125,8 @@ class EventController extends Controller {
         }
         Event::find($id)->comments()->forceDelete();
         $event->delete();
-        return redirect()->route('adminevents')->with(['status' => 'Событие удалено!']);;
+        return redirect()->route('adminevents')->with(['status' => 'Событие удалено!']);
+        ;
     }
 
     public function chooseEvents(Request $request) {

@@ -20,9 +20,14 @@
                             <span style="color:red">{{ $errors->first('name') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFile">Изображение</label>
-                            <input type="file" name="cover_image" id="exampleInputFile">
+                            <label for="exampleInputFile">Изображение альбома</label>
+                            <input type="file" name="cover_image" id="exampleInputFile" required>
                             <span style="color:red">{{ $errors->first('cover_image') }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile">Изображения в галерею</label>
+                            <input type="file" name="image[]" id="exampleInputFile" multiple required>
+                            <span style="color:red">{{ $errors->first('image') }}</span>
                         </div>
                     </div>
                     <div class="col-md-12">

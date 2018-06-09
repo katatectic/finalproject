@@ -56,15 +56,29 @@ class ReportController extends Controller {
         return view('admin.reports.create', compact('reports', 'user', 'studentsClasses'));
     }
 
+    public function addCheck($check) {
+        $newfilename = rand(1000, 50000) . "." . $check->getClientOriginalExtension();
+        $check->move(public_path() . '/images/reports/checks', $newfilename);
+        return $newfilename;
+    }
+
     public function store(ReportsRequest $request) {
         $data = $request->all();
-        unset($data['__token']);
+        unset($data['__token'], $data['image']);
         if ($data['student_class_id'] == 0) {
             unset($data['student_class_id']);
         }
         $date = new DateTime($data['date']);
         $data['date'] = $date->format('Y-m-d');
         $create = Report::create($data);
+        if ($request->hasFile('image')) {
+            $images = [];
+            foreach ($request->image as $check) {
+                $path = $this->addCheck($check);
+                $images[] = ['image' => $path, 'report_id' => $create->id];
+            }
+        }
+        Check::insert($images);
         return redirect()->route('adminReports')->with(['status' => 'Отчёт создан!']);
     }
 
@@ -81,7 +95,8 @@ class ReportController extends Controller {
         }
         Report::find($id)->comments()->forceDelete();
         $report->delete($id);
-        return redirect()->route('adminReports')->with(['status' => 'Отчёт удалён!']);;
+        return redirect()->route('adminReports')->with(['status' => 'Отчёт удалён!']);
+        ;
     }
 
     public function edit($id) {
@@ -100,14 +115,15 @@ class ReportController extends Controller {
         }
         $editOne->fill($data);
         $editOne->save();
-        return redirect()->route('adminReports')->with(['status' => 'Отчёт обновлён!']);;
+        return redirect()->route('adminReports')->with(['status' => 'Отчёт обновлён!']);
+        ;
     }
 
     public function chooseReports(Request $request) {
         $chooseReport = $request->year . '-' . '0' . $request->month;
         $reportDate = Report::where('date', 'like', '%' . $chooseReport . '%')->paginate($this->puginationReports);
         $lastReports = Report::orderBy('id', 'desc')->take($this->lastReports)->get();
-        return view('reports.choose', compact('reportDate','lastReports'));
+        return view('reports.choose', compact('reportDate', 'lastReports'));
     }
 
     public function chooseAdminReports(Request $request) {

@@ -20,4 +20,11 @@ class Controller extends BaseController
 //        $transition = ceil((strtotime('now') - strtotime(date('Y',strtotime('now')).'-08-01'))/(60*60*24*365));
 //        return $transition;
 //    }
+    
+    public function saveImage($request, $path, $name) {
+        $file = $request->file($name);
+        $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
+        $file->move(public_path() . $path, $newfilename);
+        return $newfilename;
+    }
 }

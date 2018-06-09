@@ -14,11 +14,9 @@
                         <input type="hidden" name="report_id" value="{{$report->id}}" />
                         <legend>Добавить платёжные чеки в отчёт в отчёт № {{$report->id}}</legend>
                         <div class="form-group">
-                            <label for="image" class="col-md-4 control-label">Чек</label>
-                            <div class="col-md-6">
-                                <input id="image" type="file" class="form-control" name="image" autofocus>
-                                <span style="color:red">{{ $errors->first('image') }}</span>
-                            </div><br/>
+                            <label for="exampleInputFile">Чеки</label>
+                            <input type="file" name="image[]" multiple>
+                            <span style="color:red">{{ $errors->first('image') }}</span>
                         </div>
                         <div class="form-group">
                             <input name="submit" type="submit" id="submit" class="submit" value="Добавить платёжный чек"/>

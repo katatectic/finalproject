@@ -86,7 +86,7 @@ class AdminController extends Controller {
         $img = $editOne->logo;
         $data = $request->all();
         if ($request->hasFile('logo')) {
-            $data['logo'] = $this->addLogo($request);
+            $data['logo'] = $this->saveImage($request, '/images/logo', 'logo');
             if (is_file(public_path() . '/images/logo/' . $img)) {
                 unlink(public_path() . '/images/logo/' . $img);
             }
@@ -95,12 +95,4 @@ class AdminController extends Controller {
         $editOne->save();
         return redirect()->route('admin')->with(['status' => 'Данные сайта обновлены!']);
     }
-
-    public function addLogo($request) {
-        $file = $request->file('logo');
-        $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . '/images/logo', $newfilename);
-        return $newfilename;
-    }
-
 }

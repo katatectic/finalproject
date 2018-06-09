@@ -86,18 +86,11 @@ class UserController extends Controller {
         $data = $request->all();
         $data['birthday'] = $request->year . '-' . $request->month . '-' . $request->day;
         if (isset($request->avatar)) {
-            $data['avatar'] = $this->addAvatar($request);
+            $data['avatar'] = $this->saveImage($request, '/images/users', 'avatar');
         }
         User::find($id)->update(array_filter($data));
         User::find($id)->studentsClasses()->sync($request->studentsClasses);
         return redirect()->route('users')->with(['status' => 'Профиль пользователя изменён!']);
-    }
-
-    public function addAvatar($request) {
-        $file = $request->file('avatar');
-        $newfilename = rand(1000, 50000) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . '/images/users', $newfilename);
-        return $newfilename;
     }
 
 }

@@ -6,21 +6,23 @@ Auth::routes();
 
 // News, article
 Route::get('news', 'NewsController@index')->name('news');
-Route::get('news/article-{id}','NewsController@article')->name('article');
+Route::get('news/article-{id}', 'NewsController@article')->name('article');
 Route::post('choose_news', 'NewsController@chooseNews')->name('article.choose');
 
 // Events, event
-Route::get('events', 'EventController@index')->name('event.index'); 
-Route::get('events/event-{id}', 'EventController@show')->name('event.show'); 
+Route::get('events', 'EventController@index')->name('event.index');
+Route::get('events/event-{id}', 'EventController@show')->name('event.show');
 Route::post('choose_events', 'EventController@chooseEvents')->name('event.choose');
 
 //Report
-Route::get('reports', 'ReportController@index')->name('reports');
-Route::get('reports/report-{id}', 'ReportController@show')->name('report.show');
-Route::post('choose_reports', 'ReportController@chooseReports')->name('report.choose');
-Route::get('add_check/{id}', 'CheckController@create')->name('check.create');
-Route::post('add_check', 'CheckController@store')->name('check.store');
-Route::get('check/{id}/delete', 'CheckController@deleteCheck')->name('check.delete');
+Route::prefix('reports/')->group(function () {
+    Route::get('/', 'ReportController@index')->name('reports');
+    Route::get('report-{id}', 'ReportController@show')->name('report.show');
+    Route::post('choose_reports', 'ReportController@chooseReports')->name('report.choose');
+    Route::get('add_check/{id}', 'CheckController@create')->name('check.create');
+    Route::post('add_check', 'CheckController@store')->name('check.store');
+    Route::get('check/{id}/delete', 'CheckController@deleteCheck')->name('check.delete');
+});
 
 
 // Search
@@ -39,19 +41,19 @@ Route::get('album/{id}', 'AlbumController@show')->name('album.show');
 Route::get('/ajax', 'Ajax\StudentClassController@getClasses')->name('getStudentClasses');
 
 //коллекция роутов для главы комитета и админа
-Route::group(['prefix' => 'admin', 'middleware' => 'adminandchief'], function() {
-    Route::get('/admin', 'AdminController@index')->name('admin');
+Route::group(['prefix' => 'admin/', 'middleware' => 'adminandchief'], function() {
+    Route::get('/', 'AdminController@index')->name('admin');
     // News
     Route::get('news', 'NewsController@adminNews')->name('adminnews');
-	Route::post('choose_admin_news', 'NewsController@chooseAdminNews')->name('article.admin.choose');
+    Route::post('choose_admin_news', 'NewsController@chooseAdminNews')->name('article.admin.choose');
     Route::get('newscreate', 'NewsController@create')->name('newsview');
     Route::post('addNews', 'NewsController@adminNewsStore')->name('admin.addNews');
-    Route::get('article/{id}/edit', 'NewsController@edit')->name('article.edit');/* Редактирование новость*/
-    Route::post('article/{id}/update', 'NewsController@update')->name('article.update');/* Редактирование новость*/
-    Route::get('article/{id}/delete', 'NewsController@destroy')->name('deletenews');/* Удаление новости*/
+    Route::get('article/{id}/edit', 'NewsController@edit')->name('article.edit'); /* Редактирование новость */
+    Route::post('article/{id}/update', 'NewsController@update')->name('article.update'); /* Редактирование новость */
+    Route::get('article/{id}/delete', 'NewsController@destroy')->name('deletenews'); /* Удаление новости */
     // Events
     Route::get('events', 'EventController@adminEvents')->name('adminevents'); /* Список всех событий в админке */
-	Route::post('choose_admin_events', 'EventController@chooseAdminEvents')->name('event.admin.choose');
+    Route::post('choose_admin_events', 'EventController@chooseAdminEvents')->name('event.admin.choose');
     Route::get('eventcreate', 'EventController@create')->name('event.create');
     Route::post('eventstore', 'EventController@adminEventStore')->name('admin.event.store');
     Route::get('event/{id}/delete', 'EventController@destroy')->name('event.delete'); /* Удаление события */
@@ -59,7 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminandchief'], function() 
     Route::post('event/{id}/update', 'EventController@update')->name('event.update'); /* Редактирование события */
     //Reports
     Route::get('reports', 'ReportController@adminIndex')->name('adminReports');
-	Route::post('choose_admin_reports', 'ReportController@chooseAdminReports')->name('admin.report.choose');
+    Route::post('choose_admin_reports', 'ReportController@chooseAdminReports')->name('admin.report.choose');
     Route::get('reportcreate', 'ReportController@create')->name('admin.report.create');
     Route::post('reportcreate', 'ReportController@store')->name('admin.report.store');
     Route::get('report/{id}/delete', 'ReportController@destroy')->name('admin.report.destroy');
@@ -101,7 +103,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::post('sliderstore', 'SliderController@store')->name('slider.store');
     Route::get('slider/{id}/edit', 'SliderController@edit')->name('slider.edit');
     Route::post('slider/{id}/update', 'SliderController@update')->name('slider.update');
-    Route::get('slider/{id}/delete', 'SliderController@destroy')->name('slider.destroy');    
+    Route::get('slider/{id}/delete', 'SliderController@destroy')->name('slider.destroy');
     // Send email
     Route::get('send', 'AdminController@sendMail')->name('sendMail');
     Route::post('send', 'AdminController@sendMail')->name('sendMail');
@@ -132,14 +134,15 @@ Route::group(['middleware' => ['role:3']], function () {
     })->name('user.add');
 });
 
+
 // Что могут делать зарегистрированные пользователи
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('profile/id{id}', 'UserController@profile')->name('profile'); //Просмотр профиля пользователя
-    Route::get('profile/id{id}/events', 'UserController@profileEvents')->name('profile.events');
-    Route::get('profile/id{id}/news', 'UserController@profileNews')->name('profile.news');
-    Route::get('profile/id{id}/reports', 'UserController@profileReports')->name('profile.reports');
+Route::group(['prefix' => 'profile/', 'middleware' => 'auth'], function() {
+    Route::get('id{id}', 'UserController@profile')->name('profile'); //Просмотр профиля пользователя
+    Route::get('id{id}/events', 'UserController@profileEvents')->name('profile.events');
+    Route::get('id{id}/news', 'UserController@profileNews')->name('profile.news');
+    Route::get('id{id}/reports', 'UserController@profileReports')->name('profile.reports');
     // Comments
-    Route::post('/add_comment', 'CommentsController@addComment')->name('add_comment');
+    Route::post('add_comment', 'CommentsController@addComment')->name('add_comment');
     Route::get('deletecomment/{id}', 'CommentsController@deleteComment')->name('deleteComment');
 });
 
@@ -153,11 +156,16 @@ Route::get('addimage/{id}', 'ImageController@getForm')->name('add_image');
 /* Данный роут подтягивает перечень комитетов школы из базы */
 Route::get('/about', 'CommitteesController@about')->name('about');
 //Committees
-Route::get('/committees', 'CommitteesController@index')->name('allCommittees');
-Route::get('/committees/committee-{id}', 'CommitteesController@show')->name('oneCommittee');
-Route::get('/committees/committee/{committeeId}/news', 'NewsController@committeeNews')->name('newsCommittee');
-Route::get('/committees/committee/{committeeId}/events', 'EventController@committeeEvents')->name('eventCommittee');
-Route::get('/committees/committee/{committeeId}/reports', 'ReportController@committeeReports')->name('reportsCommittee');
+
+Route::prefix('committees/')->group(function () {
+    Route::get('/', 'CommitteesController@index')->name('allCommittees');
+    Route::get('/committee-{id}', 'CommitteesController@show')->name('oneCommittee');
+    Route::get('/committee/{committeeId}/news', 'NewsController@committeeNews')->name('newsCommittee');
+    Route::get('/committee/{committeeId}/events', 'EventController@committeeEvents')->name('eventCommittee');
+    Route::get('/committee/{committeeId}/reports', 'ReportController@committeeReports')->name('reportsCommittee');
+});
+
+
 
 /* Данный роут просто содержит контакты */
 Route::get('/contacts', function () {

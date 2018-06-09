@@ -25,7 +25,7 @@ class SliderController extends Controller {
     public function store(SlidersRequest $request) {
         $data = $request->all();
         if ($request->hasFile('photo')) {
-            $data['photo'] = $this->addSliderPhoto($request);
+            $data['photo'] = $this->saveImage($request, '/images/sliders', 'photo');
         };
         $create = Slider::create($data);
         return redirect()->route('adminSliders')->with(['status' => 'Новый слайдер создан!']);
@@ -54,7 +54,7 @@ class SliderController extends Controller {
         $img = $editOne->photo;
         $data = $request->all();
         if ($request->hasFile('photo')) {
-            $data['photo'] = $this->addSliderPhoto($request);
+            $data['photo'] = $this->saveImage($request, '/images/sliders', 'photo');
             if (is_file(public_path() . '/images/sliders/' . $img)) {
                 unlink(public_path() . '/images/sliders/' . $img);
             }
@@ -62,13 +62,6 @@ class SliderController extends Controller {
         $editOne->fill($data);
         $editOne->save();
         return redirect()->route('adminSliders')->with(['status' => 'Слайдер обновлён!']);
-    }
-
-    public function addSliderPhoto($request) {
-        $file = $request->file('photo');
-        $newfilename = rand(0, 100) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . '/images/sliders', $newfilename);
-        return $newfilename;
     }
 
 }

@@ -64,7 +64,7 @@ class NewsController extends Controller {
             $date = new DateTime($data['date']);
             $data['date'] = $date->format('Y-m-d h:i:s');
             if ($request->hasFile('photo')) {
-                $data['photo'] = $this->addPhoto($request);
+                $data['photo'] = $this->saveImage($request, '/images/news', 'photo');
             };
             $create = Article::create($data);
             $id = $create->id;
@@ -80,7 +80,7 @@ class NewsController extends Controller {
             $date = new DateTime($data['date']);
             $data['date'] = $date->format('Y-m-d h:i:s');
             if ($request->hasFile('photo')) {
-                $data['photo'] = $this->addPhoto($request);
+                $data['photo'] = $this->saveImage($request, '/images/news', 'photo');
             };
             if ($data['student_class_id'] == 0) {
                 unset($data['student_class_id']);
@@ -90,13 +90,6 @@ class NewsController extends Controller {
             return redirect()->route('adminnews');
         }
         return view('admin.news.create');
-    }
-
-    public function addPhoto($request) {
-        $file = $request->file('photo');
-        $newfilename = rand(1000, 50000) . "." . $file->getClientOriginalExtension();
-        $file->move(public_path() . '/images/news', $newfilename);
-        return $newfilename;
     }
 
     public function destroy($id) {
@@ -126,7 +119,7 @@ class NewsController extends Controller {
         $img = $editOne->photo;
         $data = $request->all();
         if ($request->hasFile('photo')) {
-            $data['photo'] = $this->addPhoto($request);
+            $data['photo'] = $this->saveImage($request, '/images/news', 'photo');
             if (is_file(public_path() . '/images/news/' . $img)) {
                 unlink(public_path() . '/images/news/' . $img);
             }
