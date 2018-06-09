@@ -11,14 +11,6 @@
     <div class="grid">
         <div id="primary" class="content-area grid__col grid__col--3-of-3">
             <main id="main" class="site-main" role="main">
-                @if(session('status'))
-                <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    {{session('status')}}s
-                </div>
-                @endif
                 <article id="post-425" class="post-425 page type-page status-publish hentry">
                     <div id="pl-425" class="panel-layout">
                         <div id="pg-425-0" class="panel-grid panel-has-style">
@@ -97,7 +89,6 @@
                                          data-index="1">
                                         <div class="panel-widget-style panel-widget-style-for-425-1-0-0">
                                             <div class="so-widget-buntington2-news-list so-widget-buntington2-news-list-base">
-
                                                 <h2 class="widget-title"><a title="" href="{{route('news')}}">Последние новости</a></h2>
                                                 <div class="news-list-widget-wrap" style="text-align: left;">
                                                     @foreach($news as $article)
@@ -192,7 +183,7 @@
                             <!-- Закончился блок в середине -->
                             <div id="pgc-425-1-2" class="panel-grid-cell">
                                 <div class="panel-cell-style panel-cell-style-for-425-1-2">
-								@include('widget')
+                                    @include('widget')
                                 </div>
                             </div>
                         </div>
