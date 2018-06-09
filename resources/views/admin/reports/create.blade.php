@@ -38,7 +38,7 @@
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                     <div class="form-group">
                         <label for="exampleInputFile">Чеки</label>
-                        <input type="file" name="image[]" id="exampleInputFile" multiple>
+                        <input type="file" name="image[]" id="exampleInputFile" multiple required>
                         <span style="color:red">{{ $errors->first('image') }}</span>
                     </div>
                     <div class="col-md-12">

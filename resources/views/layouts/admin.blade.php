@@ -36,7 +36,7 @@
                     </div>
                     <form action="{{route('admin.search')}}" method="get" class="sidebar-form">
                         <div class="input-group">
-                            <input type="text" name="search" class="form-control" placeholder="Поиск...">
+                            <input type="text" name="search" class="form-control" placeholder="Поиск..." required>
                             <span class="input-group-btn">
                                 <button type="submit"  id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                                 </button>

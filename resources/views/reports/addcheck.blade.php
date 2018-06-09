@@ -15,7 +15,7 @@
                         <legend>Добавить платёжные чеки в отчёт в отчёт № {{$report->id}}</legend>
                         <div class="form-group">
                             <label for="exampleInputFile">Чеки</label>
-                            <input type="file" name="image[]" multiple>
+                            <input type="file" name="image[]" multiple required>
                             <span style="color:red">{{ $errors->first('image') }}</span>
                         </div>
                         <div class="form-group">

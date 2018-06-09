@@ -33,8 +33,8 @@
             @foreach($album->Photos as $photo)
             <figure>
                 <div class="image-lightbox">
-                    <a href="{{asset('images/albums/photos/'.$photo->image)}}" data-lightbox="roadtrip" title="{{ $photo->description }}">
-                        <img src="{{asset('images/albums/photos/'.$photo->image)}}"alt="{{$photo->name}}"/>
+                    <a href="{{asset('images/albums/photos/'.$photo->image)}}" data-lightbox="roadtrip" >
+                        <img src="{{asset('images/albums/photos/'.$photo->image)}}"/>
                     </a>
                 </div><br/>   
                 @if((Auth::user() and Auth::user()->role==1) or (Auth::user() and Auth::user()->role==2))

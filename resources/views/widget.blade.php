@@ -8,7 +8,7 @@
               action="{{route('search')}}">
             <label>
                 <span class="screen-reader-text">Что-нибудь поищи...</span>
-                <input type="text" class="search-field" placeholder="Поиск..." name="search"/>
+                <input type="text" class="search-field" placeholder="Поиск..." name="search"/ required>
                 <input type="hidden" name="post_type" value="doublef-course"/>
             </label>
             {{ csrf_field() }}

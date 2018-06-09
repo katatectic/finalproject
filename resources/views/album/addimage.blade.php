@@ -14,13 +14,6 @@
                         <input type="hidden" name="album_id" value="{{$album->id}}" />
                         <legend>Добавить изображение в альбом {{$album->name}}</legend>
                         <div class="form-group">
-                            <label for="description" class="col-md-4 control-label">Краткое описание</label>
-                            <div class="col-md-6">
-                                <textarea class="form-control" id="description" rows='23' name="description" placeholder="Краткое описание изображения" autofocus>{{ old('description') }}</textarea>
-                                <span style="color:red">{{ $errors->first('description') }}</span>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="image" class="col-md-4 control-label">Изображение</label>
                             <div class="col-md-6">
                                 <input id="image" type="file" class="form-control" name="image" value="{{ old('image') }}"  autofocus>

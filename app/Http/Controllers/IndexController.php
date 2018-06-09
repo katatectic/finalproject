@@ -26,37 +26,33 @@ class IndexController extends Controller {
 
     public function search(Request $request) {
         $search = $request['search'];
-        if (empty($search)) {
-            return redirect()->route('main');
-        } else {
-            $events = Event::with('user')
-                    ->where('title', 'like', '%' . $search . '%')
-                    ->orWhere('address', 'like', '%' . $search . '%')
-                    ->orWhere('description', 'like', '%' . $search . '%')
-                    ->orWhere('content', 'like', '%' . $search . '%')
-                    ->orWhereHas('user', function($query) use ($search) {
-                        $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('surname', 'like', '%' . $search . '%');
-                    })
-                    ->paginate($this->searchPagination);
-            $news = Article::with('user')
-                    ->where('title', 'like', '%' . $search . '%')
-                    ->orWhere('description', 'like', '%' . $search . '%')
-                    ->orWhere('content', 'like', '%' . $search . '%')
-                    ->orWhereHas('user', function($query) use ($search) {
-                        $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('surname', 'like', '%' . $search . '%');
-                    })
-                    ->paginate($this->searchPagination);
-            $reports = Report::latest()
-                    ->where('content', 'like', '%' . $search . '%')
-                    ->orWhereHas('user', function($query) use ($search) {
-                        $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('surname', 'like', '%' . $search . '%');
-                    })
-                    ->paginate($this->searchPagination);
-            return view('search', compact('events', 'news', 'reports'));
-        }
+        $events = Event::with('user')
+                ->where('title', 'like', '%' . $search . '%')
+                ->orWhere('address', 'like', '%' . $search . '%')
+                ->orWhere('description', 'like', '%' . $search . '%')
+                ->orWhere('content', 'like', '%' . $search . '%')
+                ->orWhereHas('user', function($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('surname', 'like', '%' . $search . '%');
+                })
+                ->paginate($this->searchPagination);
+        $news = Article::with('user')
+                ->where('title', 'like', '%' . $search . '%')
+                ->orWhere('description', 'like', '%' . $search . '%')
+                ->orWhere('content', 'like', '%' . $search . '%')
+                ->orWhereHas('user', function($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('surname', 'like', '%' . $search . '%');
+                })
+                ->paginate($this->searchPagination);
+        $reports = Report::latest()
+                ->where('content', 'like', '%' . $search . '%')
+                ->orWhereHas('user', function($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('surname', 'like', '%' . $search . '%');
+                })
+                ->paginate($this->searchPagination);
+        return view('search', compact('events', 'news', 'reports'));
     }
 
 }
