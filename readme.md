@@ -1,3 +1,10 @@
+Шаги по настройке сайта:
+1. Выполняем миграцию php artisan migrate
+2. Добавляем сиды:
+  - классы  php artisan db:seed --class=StudentClassTableSeeder
+  - настройки сайта по умолчанию php artisan db:seed --class=SettingsTableSeeder
+  - php artisan db:seed --class=SettingsTableSeeder
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
