@@ -65,15 +65,15 @@
                             <td>{{date('j '.$monthNames[date('n', strtotime($news->date))].' Y года'.' в H:i', strtotime($news->date))}}</td>
                             <td>{{str_limit($news->content,25)}}</td>
                             <td>
-                                @isset($news->photo)
-                                    <div class="image-lightbox">
-                                        <a href="{{asset('images/news/'.$news->photo)}}" data-lightbox="{{asset('images/news/'.$news->photo)}}" >
-                                            <img width="100" src="{{asset('images/news/'.$news->photo)}}" class="attachment-full size-full wp-post-image"/>
-                                        </a>
+                                <div class="image-lightbox">
+                                    @isset($news->photo)
+                                    <a href="{{asset('images/news/'.$news->photo)}}" data-lightbox="{{asset('images/news/'.$news->photo)}}" >
+                                        <img width="100" src="{{asset('images/news/'.$news->photo)}}" class="attachment-full size-full wp-post-image"/>
+                                    </a>
+                                    @else
+                                        Изображение отсутствует
+                                    @endisset
                                 </div>
-                                @else
-                                    Изображение отсутствует
-                                @endisset
                             </td>
                             <td>
                                 <a href="{{route('article', ['id'=>$news->id])}}" class="fa fa-eye"></a>

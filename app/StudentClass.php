@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentClass extends Model
 {
-    public $timestamps = false;
-
-    protected $guarded = [];
+    //public $timestamps = false;
 
     protected $table = 'students_classes';
+
+    protected $guarded = [];
 
     public function user() {
         return $this->belongsToMany('App\User'); // много комитетов много пользователей

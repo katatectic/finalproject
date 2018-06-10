@@ -1,0 +1,24 @@
+.option {display: none;}
+.showForm {cursor: pointer;}
+.admin.students-classes .confirmation {display:none;}
+.admin.students-classes #confirmForm {float: left;margin-right: 5px}
+.admin.students-classes #confirmation {display:flex;justify-content: center;}
+.admin.students-classes .option {text-align:center;max-height:395px;position: absolute;background: #fafafa;padding: 16px 15px;border-left: 2px solid #d2d6de;top: 23.8%;right: 0.55%;}
+.admin.students-classes p.className {font-weight: 600;font-size: 16px;text-align: center}
+.admin.students-classes tr:hover td {background: #ffd79d;}
+.admin.students-classes tr.select {background: #fdca7f;outline: 2px solid #ffc107 }
+.admin.students-classes .select td {background: #fdca7f;}
+.admin.students-classes input[type="radio"] + label {cursor: pointer;font-size: 15px;background: #fafafa;border: 2px solid #cacaca;padding: 2px 5px;border-radius: 30px;margin:2px;}
+.admin.students-classes input[type="radio"] + label:hover {border: 2px solid #fafafa;box-shadow: 0 0 10px rgba(0,0,0,0.5);}
+.admin.students-classes input:checked + label {background: #ff851b;color:#fff}
+
+
+@media (max-width: 1000px) {
+    .content-wrapper tbody {display: flex;flex-wrap: wrap;width: 100%;justify-content: center;}
+    .content-wrapper thead {display: none;}
+    .content-wrapper tbody td {min-height: 38px;text-align: center}
+    .content-wrapper tbody td .fa {margin: 0 15px}
+    .content-wrapper tbody tr {display: flex;flex-direction: column;width:200px;margin: 5px}
+    .content-wrapper tbody .image-lightbox {min-height: 75px;text-align: center}
+    .admin.students-classes .option {position: relative}
+}

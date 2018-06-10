@@ -1,22 +1,5 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
-    <style>
-        .option {display: none;}
-        .showForm {cursor: pointer;}
-        .admin.students-classes .confirmation {display:none;}
-        .admin.students-classes #confirmForm {float: left;margin-right: 5px}
-        .admin.students-classes #confirmation {display:flex;justify-content: center;}
-        .admin.students-classes .option {text-align:center;max-height:395px;position: absolute;background: #fafafa;padding: 16px 15px;border-left: 2px solid #d2d6de;top: 27.7%;right: 0.9%;}
-        .admin.students-classes p.className {font-weight: 600;font-size: 16px;text-align: center}
-        .admin.students-classes tr:hover td {background: #ffd79d;}
-        .admin.students-classes tr.select {background: #fdca7f;outline: 2px solid #ffc107 }
-        .admin.students-classes .select td {background: #fdca7f;}
-        .admin.students-classes input[type="radio"] + label {cursor: pointer;font-size: 15px;background: #fafafa;border: 2px solid #cacaca;padding: 2px 5px;border-radius: 30px;margin:2px;}
-        .admin.students-classes input[type="radio"] + label:hover {border: 2px solid #fafafa;box-shadow: 0 0 10px rgba(0,0,0,0.5);}
-        .admin.students-classes input:checked + label {background: #ff851b;color:#fff}
-        .admin.students-classes .option input[type="radio"] + label {}
-    </style>
 </head>
 @extends('layouts.admin')
 @section('title')
@@ -53,40 +36,6 @@
                     </div>
                     @endif
                 </div>
-                @if(session('status'))
-                <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    {{session('status')}}
-                </div>
-                @endif
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>		
-                        <tr>
-                            <th>Класс</th>
-                            <th>Год начала обучения</th>
-                            <th>Год выпуска</th>
-                            <th>4 класс</th>
-                            <th>Дата добавления</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($studentsClasses as $class)
-                            <tr class="showForm" id="{{$class->id}}">
-                                <td class="className">
-                                    {{$classesNumbers()[$class->id]}}
-                                    <span>{{$class->letter_class}}</span>
-                                </td>
-                                <td class="start_year">{{$class->start_year}}</td>
-                                <td class="year_of_issue">{{$class->year_of_issue}}</td>
-                                <td class="fourth_class" value="{{$class->fourth_class}}">@if (!$class->fourth_class) Пропускают @else Проходят @endif</td>
-                                <td>{{$class->created_at}}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>	
-				{{$studentsClasses->links()}}
                 <div class='option' style="width:450px;margin:auto">
                     <p class="className"></p>
                     <form method="post" action="{{route('updateStudentsClasses')}}"  id="updateClass" class="form-horizontal">
@@ -113,7 +62,7 @@
                                     <label for="editVal0">Пропускают 4 класс</label>
                                 </div>
                                 <div class="box-footer">
-                                    <button class="btn btn-success pull-left bg-orange">Отмена</button>
+                                    <a class="btn btn-success pull-left bg-orange no">Отмена</a>
                                     <input type="submit"  value="Пересохранить" class="btn btn-success pull-right bg-orange">
                                 </div>
                             </div>
@@ -129,6 +78,38 @@
                         </div>
                     </div>
                 </div>
+                @if(session('status'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{session('status')}}
+                </div>
+                @endif
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>		
+                        <tr>
+                            <th>Класс</th>
+                            <th>Год начала обучения</th>
+                            <th>Год выпуска</th>
+                            <th>4 класс</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($studentsClasses as $class)
+                            <tr class="showForm" id="{{$class->id}}">
+                                <td class="className">
+                                    {{$classesNumbers()[$class->id]}}
+                                    <span>{{$class->letter_class}}</span>
+                                </td>
+                                <td class="start_year">{{$class->start_year}}</td>
+                                <td class="year_of_issue">{{$class->year_of_issue}}</td>
+                                <td class="fourth_class" value="{{$class->fourth_class}}">@if (!$class->fourth_class) Пропускают @else Проходят @endif</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>	
+				{{$studentsClasses->links()}}
             </div><br/>
         </div>
     </section>
@@ -137,6 +118,7 @@
     $(document).ready(function () {
         $('.no').click(function () {
             $('.option').fadeOut('slow');
+            $('.select').removeClass("select");
         });
         $('.showForm').click(function (e) {
             $('.confirmation').fadeOut(10);

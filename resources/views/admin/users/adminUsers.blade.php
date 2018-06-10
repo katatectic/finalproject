@@ -62,13 +62,7 @@
                             <td>
                                 @foreach( $user->studentsClasses as $class)
                                     @if(!$loop->first),  @endif
-                                    @if (date('Y') - $class->start_year + $transition < 4)
-                                        {{date('Y') - $class->start_year + $transition}}
-                                    @elseif (date('Y') <= $class->year_of_issue)
-                                        {{date('Y') - $class->start_year + $transition + 1 - $class->fourth_class}}
-                                    @else
-                                        (Выпустился) {{$class->year_of_issue - $class->start_year - $class->fourth_class}}
-                                    @endif
+                                    {{$classesNumbers()[$class->id]}}
                                 <span>{{$class->letter_class}}</span>
                                 @endforeach
                             </td>
