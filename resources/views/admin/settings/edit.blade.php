@@ -20,9 +20,9 @@
                             <span style="color:red">{{ $errors->first('title') }}</span>
                         </div>                        
                         <div class="form-group">
-                            <label for="exampleInputFile">Изображение</label>
+                            <div><label for="exampleInputFile">Изображение</label></div>
                             @isset($settings->logo)
-                                <img width="100" src="{{asset('images/logo/'.$settings->logo)}}" class="attachment-full size-full wp-post-image"/>
+                                <div><img width="100" src="{{asset('images/logo/'.$settings->logo)}}" class="attachment-full size-full wp-post-image"/></div>
                             @endisset
                             <input type="file" name="logo" id="exampleInputFile">
                             <span style="color:red">{{ $errors->first('logo') }}</span>
@@ -33,13 +33,13 @@
                             <span style="color:red">{{ $errors->first('address') }}</span>
                         </div>
                         <div class="form-group">
-                            <label for="phone" class="col-md-4 control-label">Телефон</label>
+                            <label for="phone">Телефон</label>
                             <input type="text" id="phone"  class="form-control" name="phone" value="{{$settings->phone}}"  autofocus>
                             <span style="color:red">{{ $errors->first('phone') }}</span>
                         </div>
                         <div class="box-footer">
-                            <button class="btn btn-success bg-orange"onclick="window.history.go(-1); return false;">Назад</button>
-                            <button class="btn btn-success bg-orange">Сохранить</button>
+                            <button class="btn btn-success pull-left bg-orange"onclick="window.history.go(-1); return false;">Назад</button>
+                            <button class="btn btn-success pull-right bg-orange">Сохранить</button>
                         </div>
                     </div>
                     {{ csrf_field() }}
