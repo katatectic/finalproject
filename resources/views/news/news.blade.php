@@ -5,7 +5,7 @@
 @section('content')
 <div id="cinemahead">
     <div class="buntington2-cinema-bg">            
-        <div class="element-gradient buntington2-cinema buntington2-cinema-cat buntington2-cinema-category invert" data-url="{{asset('images/site/news.JPEG')}}" style="background-position: center center; padding-top: 150px; padding-bottom: 20px;">               
+        <div class="element-gradient buntington2-cinema buntington2-cinema-cat buntington2-cinema-category invert" data-url="{{asset('images/site/news.jpg')}}" style="background-position: center center; padding-top: 150px; padding-bottom: 20px;">               
             <div class="wrappr text-left">
                 <h1 class="h-gigant">
                     @isset($committee)
