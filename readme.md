@@ -3,7 +3,7 @@
 2. Добавляем сиды:
   - классы  php artisan db:seed --class=StudentClassTableSeeder
   - настройки сайта по умолчанию php artisan db:seed --class=SettingsTableSeeder
-  - php artisan db:seed --class=SettingsTableSeeder
+  - пользователи php artisan db:seed --class=UsersTableSeeder
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
