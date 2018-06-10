@@ -1,3 +1,16 @@
+Шаги по настройке сайта:
+1. Выполняем миграцию php artisan migrate
+2. Добавляем сиды:
+  - классы  php artisan db:seed --class=StudentClassTableSeeder
+  - настройки сайта по умолчанию php artisan db:seed --class=SettingsTableSeeder
+  - php artisan db:seed --class=SettingsTableSeeder
+3. Роли пользователей (у всех по умолчанию пароль qwerty)
+  - alex@gmail.com - админ
+  - ivan@gmail.com - глава комитета ОО
+  - igor@gmail.com - участник комитета
+  - sergey@gmail.com - зарегистрированный пользователь
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
