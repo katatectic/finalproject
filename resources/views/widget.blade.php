@@ -8,7 +8,7 @@
               action="{{route('search')}}">
             <label>
                 <span class="screen-reader-text">Что-нибудь поищи...</span>
-                <input type="text" class="search-field" placeholder="Поиск..." name="search"/ required>
+                <input type="text" class="search-field" placeholder="Поиск..." name="search" required />
                 <input type="hidden" name="post_type" value="doublef-course"/>
             </label>
             {{ csrf_field() }}
@@ -21,27 +21,23 @@
     <div class="panel-widget-style panel-widget-style-for-425-1-2-1">
         <div class="so-widget-buntington2-button-banner so-widget-buntington2-button-banner-base">
             <h2 class="widget-title">Полезные ссылки</h2>
-            <a href="http://www.mon.gov.ua/"
-               target="_self" class="button-banner-link">
-                <div class="button-banner-wrapper" style="background-color: #5dca9d; ; text-align: left; padding: 20px 20px 20px 20px;">
-                    <div class="button-banner-text">
+            <a href="http://www.mon.gov.ua/" target="_self" class="button-banner-link">
+                <span class="button-banner-wrapper" style="background-color: #5dca9d; ; text-align: left; padding: 20px 20px 20px 20px;">
+                    <span class="button-banner-text">
                         <h2 class="button-banner-title" style="color: #f7f5de; font-size: 22px;"> Министерство образования и науки Украины</h2>
-                        <div class="button-banner-tagline" style="color: #FFFFFF;">Ссылка на сайт МОН </div>
-                    </div>
-                    <div class="dbb-hover-canvas"></div>
-                </div>
+                        <span class="button-banner-tagline" style="color: #FFFFFF;">Ссылка на сайт МОН </span>
+                    </span>
+                    <span class="dbb-hover-canvas"></span>
+                </span>
             </a>
-            <a href="http://testportal.gov.ua/"
-               target="_self" class="button-banner-link" style="margin-top: 10px;">
-                <div class="button-banner-wrapper" style="background-color: #b9becd; ; text-align: left; padding: 20px 20px 20px 20px;">
-                    <div class="button-banner-text">
+            <a href="http://testportal.gov.ua/" target="_self" class="button-banner-link" style="margin-top: 10px;">
+                <span class="button-banner-wrapper" style="background-color: #b9becd; ; text-align: left; padding: 20px 20px 20px 20px;">
+                    <span class="button-banner-text">
                         <h2 class="button-banner-title" style="color: #f7f5de; font-size: 22px;"> УЦОЯО</h2>
-                        <div class="button-banner-tagline"
-                             style="color: #FFFFFF;">Ссылка на сайт УЦОЯО
-                        </div>
-                    </div>
-                    <div class="dbb-hover-canvas"></div>
-                </div>
+                        <span class="button-banner-tagline" style="color: #FFFFFF;">Ссылка на сайт УЦОЯО</span>
+                    </span>
+                    <span class="dbb-hover-canvas"></span>
+                </span>
             </a>
         </div>
         <div id="panel-425-1-0-1"

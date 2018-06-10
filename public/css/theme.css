@@ -315,7 +315,7 @@ div.wpcf7 input[type="file"]:disabled {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background: rgba( 255, 255, 255, 0.2 );
+	/*background: rgba( 255, 255, 255, 0.2 );*/
 	transform: rotate(-90deg);
 	transform-origin: 0% 0%;
 
@@ -640,7 +640,7 @@ div.wpcf7 input[type="file"]:disabled {
 	line-height: 1.4;
 	opacity: 0.7;
 }
-* Doublef Events : Custom Taxonomy and Custom Post Type */
+/* Doublef Events : Custom Taxonomy and Custom Post Type */
 
 .doublef-event.layout_2 .post-thumbnail {
 	z-index: 1;
@@ -1866,8 +1866,8 @@ html.remodal-is-locked {
 
 
 /* Layout 425 */ #pgc-425-0-0 { width:100%;width:calc(100% - ( 0 * 60px ) ) } #pg-425-0 , #pl-425 .so-panel:last-child { margin-bottom:0px } #pgc-425-1-0 , #pgc-425-1-1 , #pgc-425-1-2 { width:33.3333%;width:calc(33.3333% - ( 0.66666666666667 * 0px ) ) } #pg-425-1 { margin-bottom:2em } #pl-425 .so-panel { margin-bottom:60px } #pg-425-0> .panel-row-style { margin-top: 2em } #pg-425-0.panel-no-style, #pg-425-0.panel-has-style > .panel-row-style , #pg-425-1.panel-no-style, #pg-425-1.panel-has-style > .panel-row-style { -webkit-align-items:flex-start;align-items:flex-start } #pgc-425-1-0> .panel-cell-style , #pgc-425-1-2> .panel-cell-style { background-color:#ffffff;padding:2em 2em 2em 2em } #pgc-425-1-0 , #pgc-425-1-1 , #pgc-425-1-2 { align-self:auto } #panel-425-1-0-0> .panel-widget-style , #panel-425-1-2-1> .panel-widget-style { margin-bottom: 2em } #pgc-425-1-1> .panel-cell-style { background-color:#f4f4f4;padding:2em 2em 2em 2em } @media (max-width:780px){ #pg-425-0.panel-no-style, #pg-425-0.panel-has-style > .panel-row-style , #pg-425-1.panel-no-style, #pg-425-1.panel-has-style > .panel-row-style { -webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column } #pg-425-0 .panel-grid-cell , #pg-425-1 .panel-grid-cell { margin-right:0 } #pg-425-0 .panel-grid-cell , #pg-425-1 .panel-grid-cell { width:100% } #pgc-425-1-0 , #pgc-425-1-1 { margin-bottom:60px } #pl-425 .panel-grid-cell { padding:0 } #pl-425 .panel-grid .panel-grid-cell-empty { display:none } #pl-425 .panel-grid .panel-grid-cell-mobile-last { margin-bottom:0px }  }
- let's make functional menu font a little bit smaller. functional menu can be found in header-bar section */
+ /* let's make functional menu font a little bit smaller. functional menu can be found in header-bar section */
 #menu-functional li a {
-    font-size: 1em;
-
+	font-size: 1em;
+}
 	

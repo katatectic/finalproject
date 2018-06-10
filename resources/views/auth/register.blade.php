@@ -6,6 +6,9 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
+<div id="cinemahead">
+    <div id="mobile-nav-container"></div>
+</div>
 <div class="container login">
     <div class="card card-container register">
         <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />

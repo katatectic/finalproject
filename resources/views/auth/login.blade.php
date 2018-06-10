@@ -3,6 +3,9 @@
     Авторизация на сайте
 @endsection
 @section('content')
+<div id="cinemahead">
+    <div id="mobile-nav-container"></div>
+</div>
 <div class="container login">
     <div class="card card-container">
         <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
