@@ -3,15 +3,6 @@
     Комитеты
 @endsection
 @section('content')
-<head>
-    <style>
-        .indexCommittees .committees {display:flex;flex-wrap: wrap;text-align: center; margin: 20px 20px;justify-content: space-around;}
-        .indexCommittees .committee {min-width: 300px; margin:3px 20px;background: #f3f3f3;padding: 0 20px;border-radius: 10px;box-shadow: 0 0 10px rgba(0,0,0,0.5);}
-        .indexCommittees .committee a {display: block;width: 100%}
-        .indexCommittees .committee:hover {border-radius: 30px;text-align: right;box-shadow: 0 0 20px rgba(0,0,0.5,0.9);}
-        .indexCommittees a.consist {color:#18d220;}
-    </style>
-</head>
 <div id="cinemahead">
 	<div class="buntington2-cinema-bg">
         <div class="element-gradient buntington2-cinema buntington2-cinema-cat buntington2-cinema-doublef-events invert"
