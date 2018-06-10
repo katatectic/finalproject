@@ -20,7 +20,7 @@ Route::prefix('reports/')->group(function () {
     Route::get('report-{id}', 'ReportController@show')->name('report.show');
     Route::post('choose', 'ReportController@chooseReports')->name('report.choose');
     Route::get('add_check/{id}', 'CheckController@create')->name('check.create');
-    Route::post('add_check', 'CheckController@store')->name('check.store');
+    Route::post('add_check/{report_id}', 'CheckController@store')->name('check.store');
     Route::get('check/{id}/delete', 'CheckController@deleteCheck')->name('check.delete');
 });
 

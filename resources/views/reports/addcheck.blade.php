@@ -9,7 +9,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Добавить платёжные чеки</div><br/><br/>
                 <div class="panel-body">
-                    <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{URL::route('check.store')}}">
+                    <form method="POST" class="form-horizontal" enctype="multipart/form-data" action="{{URL::route('check.store', $report->id)}}">
                         {{ csrf_field() }}
                         <input type="hidden" name="report_id" value="{{$report->id}}" />
                         <legend>Добавить платёжные чеки в отчёт в отчёт № {{$report->id}}</legend>

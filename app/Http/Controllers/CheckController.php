@@ -13,12 +13,12 @@ class CheckController extends Controller {
         return view('reports.addcheck', compact('report'));
     }
 
-    public function store(ChecksRequest $request) {
+    public function store(ChecksRequest $request, $reportId) {
         if ($request->hasFile('image')) {
             $images = [];
             foreach ($request->image as $check) {
                 $path = $this->addCheck($check);
-                $images[] = ['image' => $path];
+                $images[] = ['image' => $path, 'report_id' => $reportId];
             }
         }
         Check::insert($images);
