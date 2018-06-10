@@ -65,7 +65,7 @@ class NewsController extends Controller {
             $data['date'] = $date->format('Y-m-d h:i:s');
             if ($request->hasFile('photo')) {
                 $data['photo'] = $this->saveImage($request->file('photo'), '/images/news');
-            };
+            }
             $create = Article::create($data);
             $id = $create->id;
             return redirect()->route('adminnews');
@@ -81,12 +81,11 @@ class NewsController extends Controller {
             $data['date'] = $date->format('Y-m-d h:i:s');
             if ($request->hasFile('photo')) {
                 $data['photo'] = $this->saveImage($request->file('photo'), '/images/news');
-            };
+            }
             if ($data['student_class_id'] == 0) {
                 unset($data['student_class_id']);
             }
             $create = Article::create($data);
-            $id = $create->id;
             return redirect()->route('adminnews');
         }
         return view('admin.news.create');

@@ -7,7 +7,6 @@ use App\Http\Requests\EventsRequest;
 use App\Event;
 use DateTime;
 use App\User;
-use App\Birtday;
 use App\StudentClass;
 use Illuminate\Support\Facades\Auth;
 
@@ -116,8 +115,9 @@ class EventController extends Controller {
     }
 
     public function destroy($id) {
-        if (!is_numeric($id))
+        if (!is_numeric($id)) {
             return false;
+        }
         $event = Event::find($id);
         $img = $event->photo;
         if (is_file(public_path() . '/images/events/' . $img)) {

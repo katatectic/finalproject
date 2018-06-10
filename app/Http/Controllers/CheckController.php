@@ -17,18 +17,12 @@ class CheckController extends Controller {
         if ($request->hasFile('image')) {
             $images = [];
             foreach ($request->image as $check) {
-                $path = $this->addCheck($check);
+                $path = $this->saveImage($check,'/images/reports/checks/');
                 $images[] = ['image' => $path, 'report_id' => $reportId];
             }
         }
         Check::insert($images);
         return redirect()->route('adminReports');
-    }
-
-    public function addCheck($check) {
-        $newfilename = rand(1000, 50000) . "." . $check->getClientOriginalExtension();
-        $check->move(public_path() . '/images/reports/checks', $newfilename);
-        return $newfilename;
     }
 
     public function deleteCheck($id) {
