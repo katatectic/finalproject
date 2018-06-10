@@ -150,7 +150,7 @@ Route::group(['prefix' => 'profile/', 'middleware' => 'auth'], function() {
 
 // Galery/Album/Image    
 Route::get('create/album', 'AlbumController@userCreate')->name('album.user.create');
-Route::post('album/addimage', 'ImageController@imageAdd')->name('add_image_to_album');
+Route::post('album/addimage/{album_id}', 'ImageController@imageAdd')->name('add_image_to_album');
 Route::get('album/image/{id}/delete', 'ImageController@deleteImage')->name('deleteImage');
 Route::get('album/addimage/{id}', 'ImageController@getForm')->name('add_image');
 

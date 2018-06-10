@@ -13,12 +13,15 @@ class ImageController extends Controller {
         return view('album.addimage', compact('album'));
     }
 
-    public function imageAdd(ImagesRequest $request) {
-        $data = $request->all();
+    public function imageAdd(ImagesRequest $request, $albumId) {
         if ($request->hasFile('image')) {
-            $data['image'] = $this->image($request);
-        };
-        $create = Image::create($data);
+            $images = [];
+            foreach ($request->image as $check) {
+                $path = $this->saveImage($check, '/images/albums/photos/');
+                $images[] = ['image' => $path, 'album_id' => $albumId];
+            }
+        }
+        Image::insert($images);
         return redirect()->route('album.index');
     }
 
