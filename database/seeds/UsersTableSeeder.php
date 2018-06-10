@@ -11,41 +11,50 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $data = [];
-        $surnames = ['Смирнов', 'Иванов', ' Кузнецов', ' Соколов', 'Попов', 'Лебедев', 'Козлов', 'Новиков', ' Морозов',
-            'Петров', 'Волков', 'Соловьёв', 'Васильев'];
-        $names = ['Пётр', 'Гарри', 'Геннадий', 'Генри', 'Генрих', 'Георгий', 'Герасим', 'Герман', 'Германн', 'Глеб'];
-        $middleNames = ['Вадимович', 'Викторович', 'Давидович', 'Лаврентьевич', 'Олегович', 'Святославович',
-            'Эдуардович', 'Яковлевич', 'Николаевич', 'Иосифович'];
-        $data[] = [
-            'surname' => 'admin',
-            'name' => 'admin',
-            'middle_name' => 'admin',
-            'email' => 'admin@admin.ru',
-            'phone' => '8050'.rand(1000000, 9999999),
-            'password' => '$2y$10$QT0vDEoeWtScNVfmBLJUC.hhCABVDIpGsZ6pCmxrTCKVvBL7J3Lcm', //qwerty
-            'role' => 1,
-            'appointment' => 'admin',
-            'your_child' => 'child-0',
-            'created_at' => date('Y-m-d', time())
-        ];
-        for ($i = 0; $i < 10; $i++) {
-            shuffle($surnames);
-            shuffle($names);
-            shuffle($middleNames);
-            $data[] = [
-                'surname' => $surnames[0],
-                'name' => $names[0],
-                'middle_name' => $middleNames[0],
-                'email' => $i.'email@email.it',
-                'phone' => '8095'.rand(1000000, 9999999),
-                'appointment' => 'нет',
-                'password' => '$2y$10$QT0vDEoeWtScNVfmBLJUC.hhCABVDIpGsZ6pCmxrTCKVvBL7J3Lcm', //qwerty
-                'role' => 4,
-                'your_child' => 'child-'.$i,
-                'created_at'=>date('Y-m-d', time())
-            ];
-        }
-        DB::table('users')->insert($data);
+        DB::table('users')->insert([
+            ['id' => 1,
+            'surname' => 'alex',
+            'name' => 'alex',
+            'middle_name' => 'alex',
+            'email' => 'alex@gmail.com',
+            'phone' => '1234567890',
+            'password' => '$2y$10$FNNqfmNsobSEeMsqzz6ZqOaBKc7.kjtmdBE5knRe/VJ88OnMeaDgq', //123456
+            'role' => '1',
+            'sex' => 'Мужской'                       
+            ],
+            [
+            'id' => 2,
+            'surname' => 'ivan',
+            'name' => 'ivan',
+            'middle_name' => 'ivan',
+            'email' => 'ivan@gmail.com',
+            'phone' => '1234567890',
+            'password' => '$2y$10$FNNqfmNsobSEeMsqzz6ZqOaBKc7.kjtmdBE5knRe/VJ88OnMeaDgq', //123456
+            'role' => '2',
+            'sex' => 'Мужской' 
+            ],
+            [
+            'id' => 3,
+            'surname' => 'igor',
+            'name' => 'igor',
+            'middle_name' => 'igor',
+            'email' => 'igor@gmail.com',
+            'phone' => '1234567890',
+            'password' => '$2y$10$FNNqfmNsobSEeMsqzz6ZqOaBKc7.kjtmdBE5knRe/VJ88OnMeaDgq', //123456
+            'role' => '3',
+            'sex' => 'Мужской' 
+            ],
+            [
+            'id' => 4,
+            'surname' => 'serg',
+            'name' => 'serg',
+            'middle_name' => 'serg',
+            'email' => 'sergey@gmail.com',
+            'phone' => '1234567890',
+            'password' => '$2y$10$FNNqfmNsobSEeMsqzz6ZqOaBKc7.kjtmdBE5knRe/VJ88OnMeaDgq', //123456
+            'role' => '4',
+            'sex' => 'Мужской' 
+            ],
+        ]);
     }
 }
