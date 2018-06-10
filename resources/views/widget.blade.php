@@ -54,7 +54,7 @@
                         <a href="{{route('album.index')}}"
                            title="Галерея">
                             <img width="1140" height="500"
-                                 src="{{asset('images/site/gallery.JPG')}}"
+                                 src="{{asset('images/site/gallery.jpg')}}"
                                  class="attachment-full size-full wp-post-image" alt=""
                                  srcset="{{asset('images/site/gallery.JPG')}}, {{asset('images/site/gallery.JPG')}} 600w"
                                  sizes="(max-width: 1140px) 100vw, 1140px"/>
