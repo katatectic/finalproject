@@ -21,7 +21,7 @@
     <div class="panel-widget-style panel-widget-style-for-425-1-2-1">
         <div class="so-widget-buntington2-button-banner so-widget-buntington2-button-banner-base">
             <h2 class="widget-title">Полезные ссылки</h2>
-            <a href="http://www.mon.gov.ua/" target="_self" class="button-banner-link">
+            <a href="http://www.mon.gov.ua/" target="_blank" class="button-banner-link">
                 <span class="button-banner-wrapper" style="background-color: #5dca9d; ; text-align: left; padding: 20px 20px 20px 20px;">
                     <span class="button-banner-text">
                         <h2 class="button-banner-title" style="color: #f7f5de; font-size: 22px;"> Министерство образования и науки Украины</h2>
@@ -30,7 +30,7 @@
                     <span class="dbb-hover-canvas"></span>
                 </span>
             </a>
-            <a href="http://testportal.gov.ua/" target="_self" class="button-banner-link" style="margin-top: 10px;">
+            <a href="http://testportal.gov.ua/" target="_blank" class="button-banner-link" style="margin-top: 10px;">
                 <span class="button-banner-wrapper" style="background-color: #b9becd; ; text-align: left; padding: 20px 20px 20px 20px;">
                     <span class="button-banner-text">
                         <h2 class="button-banner-title" style="color: #f7f5de; font-size: 22px;"> УЦОЯО</h2>
@@ -52,7 +52,7 @@
                             <img width="1140" height="500"
                                  src="{{asset('images/site/gallery.jpg')}}"
                                  class="attachment-full size-full wp-post-image" alt=""
-                                 srcset="{{asset('images/site/gallery.JPG')}}, {{asset('images/site/gallery.JPG')}} 600w"
+                                 srcset="{{asset('images/site/gallery.jpg')}}, {{asset('images/site/gallery.jpg')}} 600w"
                                  sizes="(max-width: 1140px) 100vw, 1140px"/>
                         </a>
                     </figure>
